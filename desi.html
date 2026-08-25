@@ -25,7 +25,7 @@
         }
 
         .header-content {
-            max-width: 900px;
+            max-width: 1000px;
             margin: auto;
             display: flex;
             justify-content: space-between;
@@ -49,7 +49,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 50px auto;
             padding: 0 20px;
         }
@@ -77,15 +77,49 @@
         .calculator {
             background: white;
             border-radius: 18px;
-            padding: 35px;
+            padding: 30px;
             border: 1px solid #e5e7eb;
             box-shadow: 0 8px 25px rgba(0,0,0,0.05);
         }
 
+        .package {
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 20px;
+            background: #ffffff;
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .package-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .delete-btn {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .delete-btn:hover {
+            background: #fecaca;
+        }
+
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
         }
 
         .form-group {
@@ -95,15 +129,16 @@
 
         label {
             font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 14px;
+            margin-bottom: 7px;
+            font-size: 13px;
         }
 
         input {
-            padding: 13px;
+            width: 100%;
+            padding: 12px;
             border: 1px solid #d1d5db;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
         }
 
@@ -111,10 +146,26 @@
             border-color: #2563eb;
         }
 
+        .add-btn {
+            width: 100%;
+            padding: 13px;
+            background: white;
+            color: #2563eb;
+            border: 2px dashed #2563eb;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .add-btn:hover {
+            background: #eff6ff;
+        }
+
         .calculate-btn {
             width: 100%;
-            margin-top: 25px;
-            padding: 15px;
+            padding: 16px;
             background: #2563eb;
             color: white;
             border: none;
@@ -130,7 +181,7 @@
 
         .result {
             display: none;
-            margin-top: 30px;
+            margin-top: 35px;
             border-top: 1px solid #e5e7eb;
             padding-top: 30px;
         }
@@ -142,26 +193,26 @@
 
         .result-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
         }
 
         .result-box {
             background: #f8fafc;
             border-radius: 12px;
-            padding: 20px;
+            padding: 20px 10px;
             text-align: center;
         }
 
         .result-box .label {
             display: block;
             color: #6b7280;
-            font-size: 13px;
+            font-size: 12px;
             margin-bottom: 8px;
         }
 
         .result-box .value {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
         }
 
@@ -211,22 +262,28 @@
             border-top: 1px solid #e5e7eb;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .result-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
             .form-grid,
             .result-grid {
                 grid-template-columns: 1fr;
             }
 
             .calculator {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
 
             .title h1 {
-                font-size: 30px;
-            }
-
-            nav {
-                display: none;
+                font-size: 29px;
             }
         }
     </style>
@@ -258,7 +315,7 @@
         <h1>Kargo Desi Hesaplama</h1>
 
         <p>
-            Kargonuzun hacimsel ağırlığını ve hesaplamaya esas ağırlığını bulun.
+            Farklı ölçülerdeki kolilerinizin desi ve hesaplamaya esas ağırlığını hesaplayın.
         </p>
 
     </div>
@@ -266,37 +323,15 @@
 
     <div class="calculator">
 
-        <div class="form-grid">
-
-            <div class="form-group">
-                <label for="width">En (cm)</label>
-                <input type="number" id="width" min="0" step="0.01" placeholder="Örn. 40">
-            </div>
-
-            <div class="form-group">
-                <label for="length">Boy (cm)</label>
-                <input type="number" id="length" min="0" step="0.01" placeholder="Örn. 50">
-            </div>
-
-            <div class="form-group">
-                <label for="height">Yükseklik (cm)</label>
-                <input type="number" id="height" min="0" step="0.01" placeholder="Örn. 30">
-            </div>
-
-            <div class="form-group">
-                <label for="weight">Gerçek Ağırlık (kg)</label>
-                <input type="number" id="weight" min="0" step="0.01" placeholder="Örn. 8">
-            </div>
-
-            <div class="form-group">
-                <label for="quantity">Koli Adedi</label>
-                <input type="number" id="quantity" min="1" step="1" value="1">
-            </div>
-
-        </div>
+        <div id="packages"></div>
 
 
-        <button class="calculate-btn" onclick="calculateDesi()">
+        <button class="add-btn" onclick="addPackage()">
+            + Koli Ekle
+        </button>
+
+
+        <button class="calculate-btn" onclick="calculateTotal()">
             HESAPLA
         </button>
 
@@ -308,18 +343,23 @@
             <div class="result-grid">
 
                 <div class="result-box">
-                    <span class="label">Hacimsel Ağırlık</span>
-                    <span class="value" id="volumeWeight">0 kg</span>
+                    <span class="label">Toplam Koli</span>
+                    <span class="value" id="totalPackages">0</span>
                 </div>
 
                 <div class="result-box">
                     <span class="label">Gerçek Ağırlık</span>
-                    <span class="value" id="actualWeight">0 kg</span>
+                    <span class="value" id="totalActualWeight">0 kg</span>
                 </div>
 
                 <div class="result-box">
-                    <span class="label">Desi</span>
-                    <span class="value" id="desiResult">0</span>
+                    <span class="label">Hacimsel Ağırlık</span>
+                    <span class="value" id="totalVolumeWeight">0 kg</span>
+                </div>
+
+                <div class="result-box">
+                    <span class="label">Toplam Desi</span>
+                    <span class="value" id="totalDesi">0</span>
                 </div>
 
             </div>
@@ -331,7 +371,7 @@
                     Hesaplamaya Esas Ağırlık
                 </div>
 
-                <div class="big" id="mainWeight">
+                <div class="big" id="chargeableWeight">
                     0 kg
                 </div>
 
@@ -361,69 +401,227 @@
 
 <script>
 
-function calculateDesi() {
+let packageCount = 0;
 
-    const width = parseFloat(document.getElementById("width").value);
-    const length = parseFloat(document.getElementById("length").value);
-    const height = parseFloat(document.getElementById("height").value);
-    const weight = parseFloat(document.getElementById("weight").value);
-    const quantity = parseInt(document.getElementById("quantity").value);
 
-    if (
-        isNaN(width) ||
-        isNaN(length) ||
-        isNaN(height) ||
-        isNaN(weight) ||
-        isNaN(quantity) ||
-        width <= 0 ||
-        length <= 0 ||
-        height <= 0 ||
-        weight < 0 ||
-        quantity <= 0
-    ) {
+/* İlk koliyi otomatik oluştur */
+addPackage();
 
-        alert("Lütfen tüm alanları doğru şekilde doldurun.");
+
+function addPackage() {
+
+    packageCount++;
+
+    const packages = document.getElementById("packages");
+
+    const packageDiv = document.createElement("div");
+
+    packageDiv.className = "package";
+
+    packageDiv.id = "package-" + packageCount;
+
+
+    packageDiv.innerHTML = `
+
+        <div class="package-header">
+
+            <div class="package-title">
+                📦 Koli ${packageCount}
+            </div>
+
+            <button
+                class="delete-btn"
+                onclick="deletePackage(${packageCount})">
+                Sil
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>En (cm)</label>
+
+                <input
+                    type="number"
+                    class="width"
+                    min="0"
+                    step="0.01"
+                    placeholder="Örn. 40">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Boy (cm)</label>
+
+                <input
+                    type="number"
+                    class="length"
+                    min="0"
+                    step="0.01"
+                    placeholder="Örn. 50">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Yükseklik (cm)</label>
+
+                <input
+                    type="number"
+                    class="height"
+                    min="0"
+                    step="0.01"
+                    placeholder="Örn. 30">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Gerçek Ağırlık (kg)</label>
+
+                <input
+                    type="number"
+                    class="weight"
+                    min="0"
+                    step="0.01"
+                    placeholder="Örn. 8">
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    packages.appendChild(packageDiv);
+}
+
+
+function deletePackage(id) {
+
+    const packageDiv = document.getElementById("package-" + id);
+
+    if (packageDiv) {
+
+        packageDiv.remove();
+
+    }
+
+}
+
+
+function calculateTotal() {
+
+    const packages = document.querySelectorAll(".package");
+
+
+    if (packages.length === 0) {
+
+        alert("Lütfen en az bir koli ekleyin.");
 
         return;
+
     }
 
 
-    // Tek koli için hacimsel ağırlık
-    const volumeWeight = (width * length * height) / 3000;
+    let totalActualWeight = 0;
+
+    let totalVolumeWeight = 0;
+
+    let totalDesi = 0;
+
+    let valid = true;
 
 
-    // Tek koli için desi
-    const desi = volumeWeight;
+    packages.forEach(packageDiv => {
+
+        const width = parseFloat(
+            packageDiv.querySelector(".width").value
+        );
+
+        const length = parseFloat(
+            packageDiv.querySelector(".length").value
+        );
+
+        const height = parseFloat(
+            packageDiv.querySelector(".height").value
+        );
+
+        const weight = parseFloat(
+            packageDiv.querySelector(".weight").value
+        );
 
 
-    // Toplam gerçek ağırlık
-    const totalActualWeight = weight * quantity;
+        if (
+            isNaN(width) ||
+            isNaN(length) ||
+            isNaN(height) ||
+            isNaN(weight) ||
+            width <= 0 ||
+            length <= 0 ||
+            height <= 0 ||
+            weight < 0
+        ) {
+
+            valid = false;
+
+            return;
+
+        }
 
 
-    // Toplam hacimsel ağırlık
-    const totalVolumeWeight = volumeWeight * quantity;
+        const volumeWeight =
+            (width * length * height) / 3000;
 
 
-    // Büyük olan değer esas alınır
+        totalVolumeWeight += volumeWeight;
+
+        totalActualWeight += weight;
+
+        totalDesi += volumeWeight;
+
+    });
+
+
+    if (!valid) {
+
+        alert("Lütfen tüm kolilerin ölçü ve ağırlık bilgilerini doğru şekilde doldurun.");
+
+        return;
+
+    }
+
+
     const chargeableWeight = Math.max(
         totalActualWeight,
         totalVolumeWeight
     );
 
 
-    document.getElementById("volumeWeight").textContent =
-        totalVolumeWeight.toFixed(2) + " kg";
+    document.getElementById("totalPackages").textContent =
+        packages.length;
 
 
-    document.getElementById("actualWeight").textContent =
+    document.getElementById("totalActualWeight").textContent =
         totalActualWeight.toFixed(2) + " kg";
 
 
-    document.getElementById("desiResult").textContent =
-        (desi * quantity).toFixed(2);
+    document.getElementById("totalVolumeWeight").textContent =
+        totalVolumeWeight.toFixed(2) + " kg";
 
 
-    document.getElementById("mainWeight").textContent =
+    document.getElementById("totalDesi").textContent =
+        totalDesi.toFixed(2);
+
+
+    document.getElementById("chargeableWeight").textContent =
         chargeableWeight.toFixed(2) + " kg";
 
 
@@ -432,12 +630,16 @@ function calculateDesi() {
         document.getElementById("explanation").textContent =
             "Hacimsel ağırlık gerçek ağırlıktan yüksek olduğu için hesaplamaya hacimsel ağırlık esas alınmıştır.";
 
-    } else if (totalActualWeight > totalVolumeWeight) {
+    }
+
+    else if (totalActualWeight > totalVolumeWeight) {
 
         document.getElementById("explanation").textContent =
             "Gerçek ağırlık hacimsel ağırlıktan yüksek olduğu için hesaplamaya gerçek ağırlık esas alınmıştır.";
 
-    } else {
+    }
+
+    else {
 
         document.getElementById("explanation").textContent =
             "Gerçek ağırlık ve hacimsel ağırlık eşit olduğu için aynı değer esas alınmıştır.";
