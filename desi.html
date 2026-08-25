@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kargo Desi Hesaplama | HesapPoint</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px 40px;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+        .back {
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .title .icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .calculator {
+            background: white;
+            border-radius: 18px;
+            padding: 35px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input {
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .calculate-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            display: none;
+            margin-top: 30px;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 30px;
+        }
+
+        .result h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .result-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .result-box .label {
+            display: block;
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .result-box .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .main-result {
+            margin-top: 20px;
+            background: #eff6ff;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .main-result .small {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .main-result .big {
+            color: #2563eb;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .explanation {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f9fafb;
+            color: #4b5563;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .formula {
+            margin-top: 25px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        footer {
+            margin-top: 70px;
+            padding: 30px;
+            text-align: center;
+            color: #6b7280;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 700px) {
+            .form-grid,
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator {
+                padding: 25px 20px;
+            }
+
+            .title h1 {
+                font-size: 30px;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+
+        <div class="logo">
+            🧮 Hesap<span>Point</span>
+        </div>
+
+        <a class="back" href="index.html">
+            ← Ana Sayfaya Dön
+        </a>
+
+    </div>
+</header>
+
+
+<div class="container">
+
+    <div class="title">
+
+        <div class="icon">📦</div>
+
+        <h1>Kargo Desi Hesaplama</h1>
+
+        <p>
+            Kargonuzun hacimsel ağırlığını ve hesaplamaya esas ağırlığını bulun.
+        </p>
+
+    </div>
+
+
+    <div class="calculator">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label for="width">En (cm)</label>
+                <input type="number" id="width" min="0" step="0.01" placeholder="Örn. 40">
+            </div>
+
+            <div class="form-group">
+                <label for="length">Boy (cm)</label>
+                <input type="number" id="length" min="0" step="0.01" placeholder="Örn. 50">
+            </div>
+
+            <div class="form-group">
+                <label for="height">Yükseklik (cm)</label>
+                <input type="number" id="height" min="0" step="0.01" placeholder="Örn. 30">
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Gerçek Ağırlık (kg)</label>
+                <input type="number" id="weight" min="0" step="0.01" placeholder="Örn. 8">
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Koli Adedi</label>
+                <input type="number" id="quantity" min="1" step="1" value="1">
+            </div>
+
+        </div>
+
+
+        <button class="calculate-btn" onclick="calculateDesi()">
+            HESAPLA
+        </button>
+
+
+        <div class="result" id="result">
+
+            <h2>Hesaplama Sonucu</h2>
+
+            <div class="result-grid">
+
+                <div class="result-box">
+                    <span class="label">Hacimsel Ağırlık</span>
+                    <span class="value" id="volumeWeight">0 kg</span>
+                </div>
+
+                <div class="result-box">
+                    <span class="label">Gerçek Ağırlık</span>
+                    <span class="value" id="actualWeight">0 kg</span>
+                </div>
+
+                <div class="result-box">
+                    <span class="label">Desi</span>
+                    <span class="value" id="desiResult">0</span>
+                </div>
+
+            </div>
+
+
+            <div class="main-result">
+
+                <div class="small">
+                    Hesaplamaya Esas Ağırlık
+                </div>
+
+                <div class="big" id="mainWeight">
+                    0 kg
+                </div>
+
+            </div>
+
+
+            <div class="explanation" id="explanation">
+                Sonuç
+            </div>
+
+
+            <div class="formula">
+                Hacimsel Ağırlık = En × Boy × Yükseklik ÷ 3000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 HesapPoint — Kargo Desi Hesaplama
+</footer>
+
+
+<script>
+
+function calculateDesi() {
+
+    const width = parseFloat(document.getElementById("width").value);
+    const length = parseFloat(document.getElementById("length").value);
+    const height = parseFloat(document.getElementById("height").value);
+    const weight = parseFloat(document.getElementById("weight").value);
+    const quantity = parseInt(document.getElementById("quantity").value);
+
+    if (
+        isNaN(width) ||
+        isNaN(length) ||
+        isNaN(height) ||
+        isNaN(weight) ||
+        isNaN(quantity) ||
+        width <= 0 ||
+        length <= 0 ||
+        height <= 0 ||
+        weight < 0 ||
+        quantity <= 0
+    ) {
+
+        alert("Lütfen tüm alanları doğru şekilde doldurun.");
+
+        return;
+    }
+
+
+    // Tek koli için hacimsel ağırlık
+    const volumeWeight = (width * length * height) / 3000;
+
+
+    // Tek koli için desi
+    const desi = volumeWeight;
+
+
+    // Toplam gerçek ağırlık
+    const totalActualWeight = weight * quantity;
+
+
+    // Toplam hacimsel ağırlık
+    const totalVolumeWeight = volumeWeight * quantity;
+
+
+    // Büyük olan değer esas alınır
+    const chargeableWeight = Math.max(
+        totalActualWeight,
+        totalVolumeWeight
+    );
+
+
+    document.getElementById("volumeWeight").textContent =
+        totalVolumeWeight.toFixed(2) + " kg";
+
+
+    document.getElementById("actualWeight").textContent =
+        totalActualWeight.toFixed(2) + " kg";
+
+
+    document.getElementById("desiResult").textContent =
+        (desi * quantity).toFixed(2);
+
+
+    document.getElementById("mainWeight").textContent =
+        chargeableWeight.toFixed(2) + " kg";
+
+
+    if (totalVolumeWeight > totalActualWeight) {
+
+        document.getElementById("explanation").textContent =
+            "Hacimsel ağırlık gerçek ağırlıktan yüksek olduğu için hesaplamaya hacimsel ağırlık esas alınmıştır.";
+
+    } else if (totalActualWeight > totalVolumeWeight) {
+
+        document.getElementById("explanation").textContent =
+            "Gerçek ağırlık hacimsel ağırlıktan yüksek olduğu için hesaplamaya gerçek ağırlık esas alınmıştır.";
+
+    } else {
+
+        document.getElementById("explanation").textContent =
+            "Gerçek ağırlık ve hacimsel ağırlık eşit olduğu için aynı değer esas alınmıştır.";
+
+    }
+
+
+    document.getElementById("result").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
