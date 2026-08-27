@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Araç Yükleme Simülatörü | HesapPoint</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 20px 40px;
+}
+
+.header-content {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.logo span {
+    color: #111827;
+}
+
+.back {
+    text-decoration: none;
+    color: #2563eb;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.title .icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.title h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.title p {
+    color: #6b7280;
+}
+
+.calculator {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+input,
+select {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #2563eb;
+}
+
+.info-box {
+    margin-bottom: 30px;
+    padding: 16px;
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 10px;
+    color: #78350f;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.custom-box {
+    margin-top: 18px;
+    padding: 18px;
+    background: #f8fafc;
+    border-radius: 12px;
+    display: none;
+}
+
+.calculate-btn {
+    width: 100%;
+    padding: 16px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.calculate-btn:hover {
+    background: #1d4ed8;
+}
+
+.result {
+    display: none;
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.result h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.result-box {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.result-box .label {
+    display: block;
+    color: #6b7280;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.result-box .value {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.main-result {
+    margin-top: 20px;
+    padding: 25px;
+    background: #eff6ff;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.main-result .small {
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+.main-result .big {
+    color: #2563eb;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.status {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.status.ok {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status.warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.visual {
+    margin-top: 35px;
+}
+
+.visual h3 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.vehicle-wrapper {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.vehicle-box {
+    position: relative;
+    width: 100%;
+    min-height: 330px;
+    background: #e5e7eb;
+    border: 5px solid #374151;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vehicle-label {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 12px;
+    color: #374151;
+    font-weight: bold;
+    z-index: 20;
+}
+
+.cargo-item {
+    position: absolute;
+    background: #dbeafe;
+    border: 1px solid #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: #1e3a8a;
+    overflow: hidden;
+}
+
+.note {
+    margin-top: 15px;
+    padding: 14px;
+    background: #f8fafc;
+    border-radius: 10px;
+    color: #6b7280;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+footer {
+    margin-top: 70px;
+    padding: 30px;
+    text-align: center;
+    color: #6b7280;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 850px) {
+    .form-grid,
+    .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .form-grid,
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator {
+        padding: 20px 15px;
+    }
+
+    .title h1 {
+        font-size: 29px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+
+<div class="logo">
+🧮 Hesap<span>Point</span>
+</div>
+
+<a href="index.html" class="back">
+← Ana Sayfaya Dön
+</a>
+
+</div>
+</header>
+
+
+<div class="container">
+
+<div class="title">
+
+<div class="icon">🚚</div>
+
+<h1>Araç Yükleme Simülatörü</h1>
+
+<p>
+Araç ve yük ölçülerini girerek kapasiteyi ve taşıma uygunluğunu hesaplayın.
+</p>
+
+</div>
+
+
+<div class="calculator">
+
+
+<div class="info-box">
+
+<strong>ℹ️ Önemli Bilgilendirme</strong>
+
+<p style="margin-top:8px;">
+Araç ölçüleri ve taşıma kapasiteleri, piyasada yaygın olarak kullanılan araç tipleri ve genel teknik özellikler baz alınarak yaklaşık değerler üzerinden oluşturulmuştur.
+</p>
+
+<p style="margin-top:7px;">
+Gerçek ölçü ve taşıma kapasitesi; araç marka/modeline, kasa tipine, üstyapısına ve teknik özelliklerine göre farklılık gösterebilir.
+</p>
+
+<p style="margin-top:7px;">
+Kesin yükleme planlaması öncesinde aracın güncel teknik bilgilerinin kontrol edilmesi önerilir.
+</p>
+
+</div>
+
+
+<!-- ARAÇ -->
+
+<div class="section">
+
+<div class="section-title">
+🚚 Araç Bilgileri
+</div>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Araç Tipi</label>
+
+<select id="vehicleType" onchange="vehicleChanged()">
+
+<option value="panelvan">
+Panelvan
+</option>
+
+<option value="kamyonet">
+Kamyonet
+</option>
+
+<option value="6teker">
+6 Teker Kamyon
+</option>
+
+<option value="10teker">
+10 Teker Kamyon
+</option>
+
+<option value="tir">
+TIR
+</option>
+
+<option value="custom">
+Özel Araç
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>En (cm)</label>
+
+<input
+type="number"
+id="vehicleWidth"
+value="160"
+min="1"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Boy (cm)</label>
+
+<input
+type="number"
+id="vehicleLength"
+value="400"
+min="1"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Yükseklik (cm)</label>
+
+<input
+type="number"
+id="vehicleHeight"
+value="180"
+min="1"
+>
+
+</div>
+
+</div>
+
+
+<div
+class="custom-box"
+id="customBox"
+>
+
+<strong>⚙️ Özel Araç</strong>
+
+<p style="margin-top:8px;color:#6b7280;">
+Kendi aracınızın gerçek kasa ölçülerini ve taşıma kapasitesini girebilirsiniz.
+</p>
+
+</div>
+
+
+<div
+class="form-grid"
+style="margin-top:15px;"
+>
+
+<div class="form-group">
+
+<label>
+Taşıma Kapasitesi (kg)
+</label>
+
+<input
+type="number"
+id="vehicleCapacity"
+value="1000"
+min="1"
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- YÜK -->
+
+<div class="section">
+
+<div class="section-title">
+📦 Yük Bilgileri
+</div>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Yük Tipi</label>
+
+<select id="cargoType">
+
+<option value="palet">
+Palet
+</option>
+
+<option value="koli">
+Koli
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>En (cm)</label>
+
+<input
+type="number"
+id="cargoWidth"
+value="80"
+min="1"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Boy (cm)</label>
+
+<input
+type="number"
+id="cargoLength"
+value="120"
+min="1"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Yükseklik (cm)</label>
+
+<input
+type="number"
+id="cargoHeight"
+value="150"
+min="1"
+>
+
+</div>
+
+</div>
+
+
+<div
+class="form-grid"
+style="margin-top:15px;"
+>
+
+<div class="form-group">
+
+<label>
+Birim Ağırlık (kg)
+</label>
+
+<input
+type="number"
+id="cargoWeight"
+value="500"
+min="0"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Adet</label>
+
+<input
+type="number"
+id="cargoQuantity"
+value="10"
+min="1"
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<button
+class="calculate-btn"
+onclick="calculateVehicle()"
+>
+
+🚚 YÜKLEMEYİ HESAPLA
+
+</button>
+
+
+<!-- SONUÇ -->
+
+<div
+class="result"
+id="result"
+>
+
+<h2>
+📊 Hesaplama Sonucu
+</h2>
+
+
+<div class="result-grid">
+
+<div class="result-box">
+
+<span class="label">
+Araç Alanı
+</span>
+
+<span
+class="value"
+id="vehicleArea"
+>
+-
+</span>
+
+</div>
+
+
+<div class="result-box">
+
+<span class="label">
+Tek Yük Alanı
+</span>
+
+<span
+class="value"
+id="cargoArea"
+>
+-
+</span>
+
+</div>
+
+
+<div class="result-box">
+
+<span class="label">
+Toplam Ağırlık
+</span>
+
+<span
+class="value"
+id="totalWeight"
+>
+-
+</span>
+
+</div>
+
+
+<div class="result-box">
+
+<span class="label">
+Araç Kapasitesi
+</span>
+
+<span
+class="value"
+id="weightCapacity"
+>
+-
+</span>
+
+</div>
+
+</div>
+
+
+<div class="main-result">
+
+<div class="small">
+Alan açısından maksimum adet
+</div>
+
+<div
+class="big"
+id="maxPhysical"
+>
+-
+</div>
+
+</div>
+
+
+<div class="main-result">
+
+<div class="small">
+Ağırlık açısından maksimum adet
+</div>
+
+<div
+class="big"
+id="maxWeight"
+>
+-
+</div>
+
+</div>
+
+
+<div class="main-result">
+
+<div class="small">
+Gerçek maksimum yükleme
+</div>
+
+<div
+class="big"
+id="maxQuantity"
+>
+-
+</div>
+
+</div>
+
+
+<div
+class="status"
+id="status"
+>
+Sonuç
+</div>
+
+
+<!-- GÖRSEL -->
+
+<div class="visual">
+
+<h3>
+📐 Araç Üstten Görünüş
+</h3>
+
+
+<div class="vehicle-wrapper">
+
+<div
+class="vehicle-box"
+id="vehicleBox"
+>
+
+<div class="vehicle-label">
+Araç Kasası
+</div>
+
+</div>
+
+</div>
+
+
+<div class="note">
+
+⚠️ Bu görsel, yüklerin araç kasası içerisindeki yaklaşık yerleşimini göstermek amacıyla oluşturulmuştur. Paletler arasında minimum <strong>1 cm</strong> boşluk kabul edilir. Gerçek yükleme planı; paletlerin/kollilerin yönü, istiflenebilirliği, yükseklik, ağırlık dağılımı, dingil yükleri, kapı/erişim alanları ve operasyonel koşullara göre değişebilir.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+© 2026 HesapPoint — Araç Yükleme Simülatörü
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   ARAÇ BİLGİLERİ
+========================================== */
+
+const vehicles = {
+
+panelvan: {
+    width: 160,
+    length: 400,
+    height: 180,
+    capacity: 1000
+},
+
+kamyonet: {
+    width: 200,
+    length: 300,
+    height: 200,
+    capacity: 1500
+},
+
+"6teker": {
+    width: 205,
+    length: 450,
+    height: 220,
+    capacity: 3500
+},
+
+"10teker": {
+    width: 245,
+    length: 720,
+    height: 255,
+    capacity: 15000
+},
+
+tir: {
+    width: 245,
+    length: 1360,
+    height: 270,
+    capacity: 22000
+}
+
+};
+
+
+/* ==========================================
+   PALETLER ARASI MİNİMUM BOŞLUK
+========================================== */
+
+const GAP = 1;
+
+
+/* ==========================================
+   ARAÇ DEĞİŞTİR
+========================================== */
+
+function vehicleChanged() {
+
+    const type =
+        document.getElementById("vehicleType").value;
+
+    const customBox =
+        document.getElementById("customBox");
+
+    if (type === "custom") {
+
+        customBox.style.display = "block";
+
+        return;
+    }
+
+    customBox.style.display = "none";
+
+    const vehicle = vehicles[type];
+
+    document.getElementById("vehicleWidth").value =
+        vehicle.width;
+
+    document.getElementById("vehicleLength").value =
+        vehicle.length;
+
+    document.getElementById("vehicleHeight").value =
+        vehicle.height;
+
+    document.getElementById("vehicleCapacity").value =
+        vehicle.capacity;
+}
+
+
+/* ==========================================
+   DİKDÖRTGEN YERLEŞİM HESABI
+========================================== */
+
+function calculateGrid(
+    vehicleWidth,
+    vehicleLength,
+    cargoWidth,
+    cargoLength
+) {
+
+    /*
+       N adet paletin aynı yönde
+       yerleşebilmesi için:
+
+       n * palet ölçüsü
+       +
+       aradaki boşluklar
+       <= araç ölçüsü
+    */
+
+    const across =
+        Math.floor(
+            (vehicleWidth + GAP) /
+            (cargoWidth + GAP)
+        );
+
+    const along =
+        Math.floor(
+            (vehicleLength + GAP) /
+            (cargoLength + GAP)
+        );
+
+    return {
+        count: across * along,
+        across: across,
+        along: along,
+        width: cargoWidth,
+        length: cargoLength
+    };
+}
+
+
+/* ==========================================
+   EN İYİ YERLEŞİM
+========================================== */
+
+function calculatePlacement(
+    vehicleWidth,
+    vehicleLength,
+    cargoWidth,
+    cargoLength
+) {
+
+    const normal =
+        calculateGrid(
+            vehicleWidth,
+            vehicleLength,
+            cargoWidth,
+            cargoLength
+        );
+
+
+    const rotated =
+        calculateGrid(
+            vehicleWidth,
+            vehicleLength,
+            cargoLength,
+            cargoWidth
+        );
+
+
+    if (rotated.count > normal.count) {
+
+        return rotated;
+
+    }
+
+    return normal;
+}
+
+
+/* ==========================================
+   ANA HESAPLAMA
+========================================== */
+
+function calculateVehicle() {
+
+    const vehicleWidth =
+        parseFloat(
+            document.getElementById(
+                "vehicleWidth"
+            ).value
+        );
+
+    const vehicleLength =
+        parseFloat(
+            document.getElementById(
+                "vehicleLength"
+            ).value
+        );
+
+    const vehicleHeight =
+        parseFloat(
+            document.getElementById(
+                "vehicleHeight"
+            ).value
+        );
+
+    const vehicleCapacity =
+        parseFloat(
+            document.getElementById(
+                "vehicleCapacity"
+            ).value
+        );
+
+    const cargoWidth =
+        parseFloat(
+            document.getElementById(
+                "cargoWidth"
+            ).value
+        );
+
+    const cargoLength =
+        parseFloat(
+            document.getElementById(
+                "cargoLength"
+            ).value
+        );
+
+    const cargoHeight =
+        parseFloat(
+            document.getElementById(
+                "cargoHeight"
+            ).value
+        );
+
+    const cargoWeight =
+        parseFloat(
+            document.getElementById(
+                "cargoWeight"
+            ).value
+        );
+
+    const quantity =
+        parseInt(
+            document.getElementById(
+                "cargoQuantity"
+            ).value
+        );
+
+
+    if (
+        vehicleWidth <= 0 ||
+        vehicleLength <= 0 ||
+        vehicleHeight <= 0 ||
+        vehicleCapacity <= 0 ||
+        cargoWidth <= 0 ||
+        cargoLength <= 0 ||
+        cargoHeight <= 0 ||
+        cargoWeight <= 0 ||
+        quantity <= 0
+    ) {
+
+        alert(
+            "Lütfen tüm alanları doğru şekilde doldurun."
+        );
+
+        return;
+    }
+
+
+    if (cargoHeight > vehicleHeight) {
+
+        alert(
+            "Yük yüksekliği araç iç yüksekliğinden fazla."
+        );
+
+        return;
+    }
+
+
+    /* ALAN */
+
+    const vehicleArea =
+        (
+            vehicleWidth *
+            vehicleLength
+        ) / 10000;
+
+
+    const cargoArea =
+        (
+            cargoWidth *
+            cargoLength
+        ) / 10000;
+
+
+    /* YERLEŞİM */
+
+    const placement =
+        calculatePlacement(
+            vehicleWidth,
+            vehicleLength,
+            cargoWidth,
+            cargoLength
+        );
+
+
+    const maxPhysical =
+        placement.count;
+
+
+    /* AĞIRLIK */
+
+    const maxByWeight =
+        Math.floor(
+            vehicleCapacity /
+            cargoWeight
+        );
+
+
+    const maxQuantity =
+        Math.min(
+            maxPhysical,
+            maxByWeight
+        );
+
+
+    const totalWeight =
+        cargoWeight *
+        quantity;
+
+
+    /* SONUÇLAR */
+
+    document.getElementById(
+        "vehicleArea"
+    ).textContent =
+        vehicleArea.toFixed(2)
+        + " m²";
+
+
+    document.getElementById(
+        "cargoArea"
+    ).textContent =
+        cargoArea.toFixed(2)
+        + " m²";
+
+
+    document.getElementById(
+        "totalWeight"
+    ).textContent =
+        totalWeight.toLocaleString(
+            "tr-TR"
+        )
+        + " kg";
+
+
+    document.getElementById(
+        "weightCapacity"
+    ).textContent =
+        vehicleCapacity.toLocaleString(
+            "tr-TR"
+        )
+        + " kg";
+
+
+    document.getElementById(
+        "maxPhysical"
+    ).textContent =
+        maxPhysical
+        + " adet";
+
+
+    document.getElementById(
+        "maxWeight"
+    ).textContent =
+        maxByWeight
+        + " adet";
+
+
+    document.getElementById(
+        "maxQuantity"
+    ).textContent =
+        maxQuantity
+        + " adet";
+
+
+    /* DURUM */
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    if (quantity > maxPhysical) {
+
+        status.className =
+            "status error";
+
+        status.textContent =
+            "🔴 Yükün tamamı fiziksel olarak araca sığmıyor.";
+
+    }
+
+    else if (quantity > maxByWeight) {
+
+        status.className =
+            "status error";
+
+        status.textContent =
+            "🔴 Yükün toplam ağırlığı araç kapasitesini aşıyor.";
+
+    }
+
+    else {
+
+        status.className =
+            "status ok";
+
+        status.textContent =
+            "🟢 Yük, hesaplanan alan ve ağırlık kapasitesi açısından uygun görünüyor.";
+
+    }
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "block";
+
+
+    /* GÖRSEL */
+
+    drawVehicle(
+        vehicleWidth,
+        vehicleLength,
+        placement,
+        Math.min(
+            quantity,
+            maxQuantity
+        )
+    );
+}
+
+
+/* ==========================================
+   ARAÇ GÖRSELİ
+========================================== */
+
+function drawVehicle(
+    vehicleWidth,
+    vehicleLength,
+    placement,
+    quantity
+) {
+
+    const box =
+        document.getElementById(
+            "vehicleBox"
+        );
+
+
+    box.innerHTML =
+        '<div class="vehicle-label">Araç Kasası</div>';
+
+
+    const availableWidth =
+        box.clientWidth - 20;
+
+
+    const availableHeight =
+        box.clientHeight - 20;
+
+
+    const scale =
+        Math.min(
+            availableWidth /
+            vehicleWidth,
+
+            availableHeight /
+            vehicleLength
+        );
+
+
+    const visualWidth =
+        vehicleWidth *
+        scale;
+
+
+    const visualHeight =
+        vehicleLength *
+        scale;
+
+
+    const vehicle =
+        document.createElement(
+            "div"
+        );
+
+
+    vehicle.style.position =
+        "relative";
+
+    vehicle.style.width =
+        visualWidth + "px";
+
+    vehicle.style.height =
+        visualHeight + "px";
+
+    vehicle.style.border =
+        "3px solid #111827";
+
+    vehicle.style.background =
+        "#f9fafb";
+
+    vehicle.style.overflow =
+        "hidden";
+
+
+    box.appendChild(
+        vehicle
+    );
+
+
+    /*
+       Gerçek yerleşim koordinatları
+    */
+
+    let placed = 0;
+
+
+    for (
+        let row = 0;
+        row < placement.along;
+        row++
+    ) {
+
+        for (
+            let col = 0;
+            col < placement.across;
+            col++
+        ) {
+
+            if (placed >= quantity) {
+                break;
+            }
+
+
+            const cargo =
+                document.createElement(
+                    "div"
+                );
+
+
+            cargo.className =
+                "cargo-item";
+
+
+            cargo.textContent =
+                placed + 1;
+
+
+            const x =
+                col *
+                (
+                    placement.width +
+                    GAP
+                );
+
+
+            const y =
+                row *
+                (
+                    placement.length +
+                    GAP
+                );
+
+
+            cargo.style.left =
+                (x * scale) + "px";
+
+
+            cargo.style.top =
+                (y * scale) + "px";
+
+
+            cargo.style.width =
+                (placement.width * scale)
+                + "px";
+
+
+            cargo.style.height =
+                (placement.length * scale)
+                + "px";
+
+
+            vehicle.appendChild(
+                cargo
+            );
+
+
+            placed++;
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>
