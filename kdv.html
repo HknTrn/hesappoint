@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDV Hesaplama | HesapPoint</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px 40px;
+        }
+
+        .header-content {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+        .back {
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 14px;
+        }
+
+        /* MAIN */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .title .icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #6b7280;
+        }
+
+        /* CALCULATOR */
+        .calculator {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        /* TABS */
+        .tabs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 14px 10px;
+            border: 1px solid #d1d5db;
+            background: #f8fafc;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            color: #374151;
+            text-align: center;
+        }
+
+        .tab:hover {
+            border-color: #2563eb;
+        }
+
+        .tab.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        /* PANELS */
+        .panel {
+            display: none;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        .panel-title {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .panel-description {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* FORM */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input, select {
+            padding: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            background: white;
+        }
+
+        input:focus, select:focus {
+            border-color: #2563eb;
+        }
+
+        /* BUTTON */
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .calculate-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* RESULT */
+        .result {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            background: #eff6ff;
+            border-radius: 12px;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #bfdbfe;
+            font-size: 15px;
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-top: 5px;
+        }
+
+        /* INFO */
+        .info-box {
+            margin-top: 30px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 70px;
+            padding: 30px;
+            text-align: center;
+            color: #6b7280;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 600px) {
+            .tabs, .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">
+            🧮 Hesap<span>Point</span>
+        </div>
+        <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="title">
+        <div class="icon">💰</div>
+        <h1>KDV Hesaplama</h1>
+        <p>KDV dahil ve KDV hariç tutarları hızlı ve kolay şekilde hesaplayın.</p>
+    </div>
+
+    <div class="calculator">
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab active" onclick="showPanel(1)">KDV Ekle (Hariç → Dahil)</button>
+            <button class="tab" onclick="showPanel(2)">KDV Çıkar (Dahil → Hariç)</button>
+        </div>
+
+        <!-- PANEL 1: KDV EKLE -->
+        <div class="panel active" id="panel1">
+            <div class="panel-title">KDV Hariç Tutar Üzerinden KDV Ekleme</div>
+            <div class="panel-description">Matrah (net) tutara KDV oranını ekleyerek toplam KDV Dahil tutarı bulun.</div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>KDV Hariç Tutar (TL)</label>
+                    <input type="number" id="amount1" placeholder="Örn. 1000">
+                </div>
+                <div class="form-group">
+                    <label>KDV Oranı (%)</label>
+                    <select id="rate1">
+                        <option value="20" selected>%20 (Standart Oran)</option>
+                        <option value="10">%10 (Gıda / Tekstil vb.)</option>
+                        <option value="1">%1 (Temel Gıda vb.)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateAddKdv()">HESAPLA</button>
+
+            <div class="result" id="result1">
+                <div class="result-row">
+                    <span>KDV Hariç Tutar (Matrah):</span>
+                    <span id="resNet1">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Hesaplanan KDV Tutarı:</span>
+                    <span id="resKdv1">-</span>
+                </div>
+                <div class="result-row">
+                    <span>KDV Dahil Toplam Tutar:</span>
+                    <span id="resTotal1">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 2: KDV ÇIKAR -->
+        <div class="panel" id="panel2">
+            <div class="panel-title">KDV Dahil Tutardan KDV Ayırma</div>
+            <div class="panel-description">Toplam tutarın içerisindeki net tutarı (matrah) ve KDV payını ayırın.</div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>KDV Dahil Tutar (TL)</label>
+                    <input type="number" id="amount2" placeholder="Örn. 1200">
+                </div>
+                <div class="form-group">
+                    <label>KDV Oranı (%)</label>
+                    <select id="rate2">
+                        <option value="20" selected>%20 (Standart Oran)</option>
+                        <option value="10">%10 (Gıda / Tekstil vb.)</option>
+                        <option value="1">%1 (Temel Gıda vb.)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateSubKdv()">HESAPLA</button>
+
+            <div class="result" id="result2">
+                <div class="result-row">
+                    <span>KDV Hariç Tutar (Matrah):</span>
+                    <span id="resNet2">-</span>
+                </div>
+                <div class="result-row">
+                    <span>İçindeki KDV Tutarı:</span>
+                    <span id="resKdv2">-</span>
+                </div>
+                <div class="result-row">
+                    <span>KDV Dahil Toplam Tutar:</span>
+                    <span id="resTotal2">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <strong>ℹ️ KDV Oranları Hakkında</strong>
+            <p style="margin-top:8px;">Türkiye'de standart KDV oranı <strong>%20</strong>'dir. Tekstil, konaklama ve bazı gıda ürünlerinde <strong>%10</strong>; temel gıda maddeleri gibi ürünlerde ise <strong>%1</strong> uygulanmaktadır.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2026 HesapPoint — KDV Hesaplama
+</footer>
+
+<script>
+function showPanel(number) {
+    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+
+    document.getElementById("panel" + number).classList.add("active");
+    document.querySelectorAll(".tab")[number - 1].classList.add("active");
+}
+
+function calculateAddKdv() {
+    const amount = parseFloat(document.getElementById("amount1").value);
+    const rate = parseFloat(document.getElementById("rate1").value);
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Lütfen geçerli bir tutar girin.");
+        return;
+    }
+
+    const kdv = amount * (rate / 100);
+    const total = amount + kdv;
+
+    document.getElementById("resNet1").textContent = formatCurrency(amount);
+    document.getElementById("resKdv1").textContent = formatCurrency(kdv);
+    document.getElementById("resTotal1").textContent = formatCurrency(total);
+    document.getElementById("result1").style.display = "block";
+}
+
+function calculateSubKdv() {
+    const total = parseFloat(document.getElementById("amount2").value);
+    const rate = parseFloat(document.getElementById("rate2").value);
+
+    if (isNaN(total) || total <= 0) {
+        alert("Lütfen geçerli bir tutar girin.");
+        return;
+    }
+
+    const net = total / (1 + (rate / 100));
+    const kdv = total - net;
+
+    document.getElementById("resNet2").textContent = formatCurrency(net);
+    document.getElementById("resKdv2").textContent = formatCurrency(kdv);
+    document.getElementById("resTotal2").textContent = formatCurrency(total);
+    document.getElementById("result2").style.display = "block";
+}
+
+function formatCurrency(val) {
+    return val.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " TL";
+}
+</script>
+
+</body>
+</html>
