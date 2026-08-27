@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brütten Nete Maaş Hesabı | HesapPoint</title>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
+
+        header { background: white; border-bottom: 1px solid #e5e7eb; padding: 20px 40px; }
+        .header-content { max-width: 1450px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 25px; font-weight: bold; color: #2563eb; }
+        .logo span { color: #111827; }
+        .back { text-decoration: none; color: #2563eb; font-size: 14px; }
+
+        .container { max-width: 1450px; margin: 40px auto; padding: 0 20px; }
+        .title { text-align: center; margin-bottom: 30px; }
+        .title h1 { font-size: 32px; margin-bottom: 10px; }
+
+        .calculator { background: white; padding: 25px; border-radius: 18px; border: 1px solid #e5e7eb; box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
+
+        .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-size: 13px; font-weight: bold; margin-bottom: 7px; }
+        input, select { padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; outline: none; background: white; }
+
+        .calculate-btn { width: 100%; padding: 14px; background: #2563eb; color: white; border: none; border-radius: 9px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .calculate-btn:hover { background: #1d4ed8; }
+
+        /* TABLE STYLES */
+        .table-container { display: none; margin-top: 25px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: right; background: white; min-width: 1300px; }
+        th, td { padding: 8px 6px; border: 1px solid #e5e7eb; }
+        th { background: #f8fafc; color: #374151; font-weight: bold; text-align: center; }
+        td:first-child, th:first-child { text-align: left; font-weight: bold; }
+        
+        .table-input { width: 50px; padding: 4px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 12px; }
+        tr.total-row { background: #eff6ff; font-weight: bold; color: #1e40af; }
+
+        /* WARNING & LEGAL BOXES */
+        .info-box { margin-top: 25px; padding: 18px; background: #f8fafc; border-radius: 10px; color: #4b5563; font-size: 13px; line-height: 1.6; border: 1px solid #e2e8f0; }
+        .info-box ol { margin-left: 20px; margin-top: 8px; }
+        .info-box li { margin-bottom: 4px; }
+        
+        .disclaimer-box { margin-top: 15px; padding: 15px; background: #fffbeeb; border-radius: 8px; color: #78350f; font-size: 11px; line-height: 1.5; font-style: italic; border: 1px solid #fef3c7; }
+
+        footer { margin-top: 50px; padding: 25px; text-align: center; color: #6b7280; background: white; border-top: 1px solid #e5e7eb; }
+
+        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">🧮 Hesap<span>Point</span></div>
+        <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="title">
+        <h1>Brütten Nete Maaş Hesabı</h1>
+        <p>Aylık brüt maaşınızı girin, dilerseniz tablo içerisinden her ayın mesaisini düzenleyin.</p>
+    </div>
+
+    <div class="calculator">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Aylık Çıplak Brüt Maaş (TL)</label>
+                <input type="number" id="grossSalary" placeholder="Örn. 100000" value="100000">
+            </div>
+            <div class="form-group">
+                <label>Çalışma Statüsü</label>
+                <select id="employeeType">
+                    <option value="normal" selected>Normal Çalışan (4/A)</option>
+                    <option value="retired">Emekli Çalışan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>İşveren Prim İndirimi Teşviki</label>
+                <select id="employerDiscount">
+                    <option value="5" selected>5 Puanlık Hazine İndirimi Dikkate Alınsın (%16.75)</option>
+                    <option value="2">2 Puanlık Sektörel İndirim Dikkate Alınsın (%19.75)</option>
+                    <option value="0">İndirim Uygulanmasın (%21.75)</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateYearlySalary()">HESAPLA</button>
+
+        <div class="table-container" id="resultTableBox">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ay</th>
+                        <th>H.İçi (Saat)</th>
+                        <th>H.Sonu (Saat)</th>
+                        <th>Brüt</th>
+                        <th>SSK İşçi</th>
+                        <th>İşsizlik İşçi</th>
+                        <th>Aylık Gelir Vergisi</th>
+                        <th>Damga Vergisi</th>
+                        <th>Kümülâtif Vergi Matrahı</th>
+                        <th>Net</th>
+                        <th>Asgari Ücret Gelir Vergisi İstisnası</th>
+                        <th>Asgari Ücret Damga Vergisi İstisnası</th>
+                        <th>Toplam Net Ele Geçen</th>
+                        <th>SSK İşveren</th>
+                        <th>İşsizlik İşveren</th>
+                        <th>Toplam Maliyet</th>
+                    </tr>
+                </thead>
+                <tbody id="salaryTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <strong>📌 Bilgilendirme Notları:</strong>
+            <ol>
+                <li>Yapılan maaş hesaplamalarında para birimi TL değerleri esas alınmaktadır.</li>
+                <li>Yapılan maaş hesaplamaları ile ilgili olarak kesin bordro işlemleri öncesi uzman veya danışman bilgisine başvurulması tavsiye olunur.</li>
+                <li>Rakam asgari ücretin altında olduğunda hesaplama yapılmaz.</li>
+            </ol>
+        </div>
+
+        <div class="disclaimer-box">
+            Bu hesaplamada yer alan bilgiler sadece genel bilgilendirme amaçlıdır ve HesapPoint veya ilişkili kuruluşları tarafından profesyonel bağlamda herhangi bir tavsiye veya hizmet sunmayı amaçlamamakta ve bilgilerin doğruluğuna dair herhangi bir garanti vermemektedir. Şirketinizi, işinizi, finansmanınızı ya da mali durumunuzu etkileyecek herhangi bir karar ya da aksiyon almadan önce yetkin bir profesyonel uzmana danışın. HesapPoint bünyesinde bulunan hiçbir kuruluş, bu hesaplamada yer alan bilgilerin üçüncü kişiler tarafından kullanılması sonucunda ortaya çıkabilecek zarar veya ziyandan sorumlu değildir.
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2026 HesapPoint — Bordro Simülatörü
+</footer>
+
+<script>
+const months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+let monthlyOvertimes = Array(12).fill(null).map(() => ({ weekday: 0, weekend: 0 }));
+
+function calculateYearlySalary() {
+    const baseGross = parseFloat(document.getElementById("grossSalary").value);
+    const type = document.getElementById("employeeType").value;
+    const discount = parseFloat(document.getElementById("employerDiscount").value);
+
+    if (isNaN(baseGross) || baseGross <= 0) {
+        alert("Lütfen geçerli bir brüt maaş girin.");
+        return;
+    }
+
+    const hourlyRate = baseGross / 225;
+    let sgkWorkerRate = type === "retired" ? 0.075 : 0.14;
+    let unempWorkerRate = type === "retired" ? 0.0 : 0.01;
+    
+    let sgkEmployerRate = 0.1675;
+    if (type === "retired") {
+        sgkEmployerRate = 0.245;
+    } else {
+        if (discount === 5) sgkEmployerRate = 0.1675;
+        else if (discount === 2) sgkEmployerRate = 0.1975;
+        else sgkEmployerRate = 0.2175;
+    }
+
+    let unempEmployerRate = type === "retired" ? 0.0 : 0.02;
+
+    const getTaxExemption = (monthIndex) => {
+        if (monthIndex < 6) return 4211.33;
+        if (monthIndex === 6) return 4537.75;
+        return 5615.10;
+    };
+
+    const minStampExemption = 250.70;
+
+    let cumulativeTaxBase = 0;
+    let tbodyHtml = "";
+
+    let sumTotalGross = 0, sumSgkWorker = 0, sumUnempWorker = 0, sumIncomeTax = 0, sumStampTax = 0;
+    let sumNet = 0, sumTaxExemption = 0, sumStampExemption = 0, sumFinalNet = 0;
+    let sumSgkEmployer = 0, sumUnempEmployer = 0, sumTotalCost = 0;
+
+    // 2026 Resmî Ücret Gelir Vergisi Dilimleri
+    function getIncomeTax(monthlyBase, currentCumulative) {
+        const brackets = [
+            { limit: 190000, rate: 0.15 },
+            { limit: 400000, rate: 0.20 },
+            { limit: 1500000, rate: 0.27 },
+            { limit: 5300000, rate: 0.35 },
+            { limit: Infinity, rate: 0.40 }
+        ];
+
+        let tax = 0;
+        let remainingBase = monthlyBase;
+        let tempCumulative = currentCumulative;
+
+        for (let b of brackets) {
+            if (tempCumulative < b.limit) {
+                let available = b.limit - tempCumulative;
+                let taxable = Math.min(remainingBase, available);
+                tax += taxable * b.rate;
+                remainingBase -= taxable;
+                tempCumulative += taxable;
+                if (remainingBase <= 0) break;
+            }
+        }
+        return tax;
+    }
+
+    for (let i = 0; i < 12; i++) {
+        const ot = monthlyOvertimes[i];
+        const weekdayPay = ot.weekday * hourlyRate * 1.5;
+        const weekendPay = ot.weekend * hourlyRate * 2.0;
+        const monthGross = baseGross + weekdayPay + weekendPay;
+
+        const sgkWorker = monthGross * sgkWorkerRate;
+        const unempWorker = monthGross * unempWorkerRate;
+        const monthlyTaxBase = monthGross - (sgkWorker + unempWorker);
+
+        const incomeTax = getIncomeTax(monthlyTaxBase, cumulativeTaxBase);
+        cumulativeTaxBase += monthlyTaxBase;
+
+        const stampTax = monthGross * 0.00759;
+        
+        const rawNet = monthGross - (sgkWorker + unempWorker + incomeTax + stampTax);
+        
+        const minTaxExemption = getTaxExemption(i);
+        const finalNet = rawNet + minTaxExemption + minStampExemption;
+
+        const sgkEmployer = monthGross * sgkEmployerRate;
+        const unempEmployer = monthGross * unempEmployerRate;
+        const totalCost = monthGross + sgkEmployer + unempEmployer;
+
+        sumTotalGross += monthGross;
+        sumSgkWorker += sgkWorker;
+        sumUnempWorker += unempWorker;
+        sumIncomeTax += incomeTax;
+        sumStampTax += stampTax;
+        sumNet += rawNet;
+        sumTaxExemption += minTaxExemption;
+        sumStampExemption += minStampExemption;
+        sumFinalNet += finalNet;
+        sumSgkEmployer += sgkEmployer;
+        sumUnempEmployer += unempEmployer;
+        sumTotalCost += totalCost;
+
+        tbodyHtml += `
+            <tr>
+                <td>${months[i]}</td>
+                <td style="text-align:center;"><input type="number" class="table-input" value="${ot.weekday}" onchange="updateOvertime(${i}, 'weekday', this.value)"></td>
+                <td style="text-align:center;"><input type="number" class="table-input" value="${ot.weekend}" onchange="updateOvertime(${i}, 'weekend', this.value)"></td>
+                <td>${fmt(monthGross)}</td>
+                <td>${fmt(sgkWorker)}</td>
+                <td>${fmt(unempWorker)}</td>
+                <td>${fmt(incomeTax)}</td>
+                <td>${fmt(stampTax)}</td>
+                <td>${fmt(cumulativeTaxBase)}</td>
+                <td>${fmt(rawNet)}</td>
+                <td>${fmt(minTaxExemption)}</td>
+                <td>${fmt(minStampExemption)}</td>
+                <td><strong>${fmt(finalNet)}</strong></td>
+                <td>${fmt(sgkEmployer)}</td>
+                <td>${fmt(unempEmployer)}</td>
+                <td><strong>${fmt(totalCost)}</strong></td>
+            </tr>
+        `;
+    }
+
+    tbodyHtml += `
+        <tr class="total-row">
+            <td>TOPLAM</td>
+            <td colspan="2" style="text-align:center;">-</td>
+            <td>${fmt(sumTotalGross)}</td>
+            <td>${fmt(sumSgkWorker)}</td>
+            <td>${fmt(sumUnempWorker)}</td>
+            <td>${fmt(sumIncomeTax)}</td>
+            <td>${fmt(sumStampTax)}</td>
+            <td>-</td>
+            <td>${fmt(sumNet)}</td>
+            <td>${fmt(sumTaxExemption)}</td>
+            <td>${fmt(sumStampExemption)}</td>
+            <td>${fmt(sumFinalNet)}</td>
+            <td>${fmt(sumSgkEmployer)}</td>
+            <td>${fmt(sumUnempEmployer)}</td>
+            <td>${fmt(sumTotalCost)}</td>
+        </tr>
+    `;
+
+    document.getElementById("salaryTableBody").innerHTML = tbodyHtml;
+    document.getElementById("resultTableBox").style.display = "block";
+}
+
+function updateOvertime(monthIndex, type, value) {
+    const val = parseFloat(value) || 0;
+    monthlyOvertimes[monthIndex][type] = val;
+    calculateYearlySalary();
+}
+
+function fmt(val) {
+    return val.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+window.onload = function() {
+    calculateYearlySalary();
+};
+</script>
+
+</body>
+</html>
