@@ -3,357 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HesapPoint | Akıllı Hesaplama Araçları</title>
-
+    <title>HesapPoint — Online Hesaplama Araçları Portalı</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
+        
+        header { background: white; border-bottom: 1px solid #e5e7eb; padding: 20px 40px; }
+        .header-content { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 26px; font-weight: bold; color: #2563eb; }
+        .logo span { color: #111827; }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #1f2937;
-        }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { font-size: 36px; margin-bottom: 10px; color: #111827; }
+        .hero p { color: #4b5563; font-size: 16px; }
 
-        header {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 20px 40px;
-        }
-
-        .header-content {
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: #2563eb;
-        }
-
-        .logo span {
-            color: #111827;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #4b5563;
-            margin-left: 25px;
-            font-size: 15px;
-        }
-
-        nav a:hover {
-            color: #2563eb;
-        }
-
-        .hero {
-            max-width: 1100px;
-            margin: 70px auto 40px;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 46px;
-            margin-bottom: 20px;
-            color: #111827;
-        }
-
-        .hero h1 span {
-            color: #2563eb;
-        }
-
-        .hero p {
-            font-size: 19px;
-            color: #6b7280;
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.6;
-        }
-
-        .tools {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .tools h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 30px;
-        }
-
-        .tool-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .tool-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #e5e7eb;
-            transition: 0.2s;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        .tool-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .tool-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .tool-card p {
-            color: #6b7280;
-            line-height: 1.5;
-            font-size: 14px;
-        }
-
-        .coming {
-            margin-top: 15px;
-            display: inline-block;
-            background: #eff6ff;
-            color: #2563eb;
-            padding: 6px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-
-        footer {
-            margin-top: 80px;
-            padding: 30px;
-            text-align: center;
-            color: #6b7280;
-            background: white;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        @media (max-width: 800px) {
-            .tool-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            nav {
-                display: none;
-            }
-        }
+        /* KATEGORİ BAŞLIKLARI VE GRID */
+        .category-section { margin-bottom: 40px; }
+        .category-title { font-size: 20px; font-weight: bold; color: #1e3a8a; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        
+        .card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; text-decoration: none; color: inherit; transition: all 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); border-color: #2563eb; }
+        .card-icon { font-size: 28px; margin-bottom: 12px; }
+        .card h3 { font-size: 16px; font-weight: bold; margin-bottom: 6px; color: #111827; }
+        .card p { font-size: 13px; color: #6b7280; line-height: 1.4; }
+        
+        footer { margin-top: 60px; padding: 25px; text-align: center; color: #6b7280; background: white; border-top: 1px solid #e5e7eb; }
     </style>
 </head>
-
 <body>
 
 <header>
     <div class="header-content">
-        <div class="logo">
-            🧮 Hesap<span>Point</span>
-        </div>
-
-        <nav>
-            <a href="#">Ana Sayfa</a>
-            <a href="#araclar">Araçlar</a>
-            <a href="#hakkinda">Hakkında</a>
-        </nav>
+        <div class="logo">🧮 Hesap<span>Point</span></div>
     </div>
 </header>
 
-<section class="hero">
-    <h1>Hesaplama artık <span>çok daha kolay.</span></h1>
+<div class="container">
+    <div class="hero">
+        <h1>Tüm Hesaplamalarınız Tek Noktada</h1>
+        <p>İhtiyacınız olan kategoriyi seçerek hesaplamalarınızı hızlı ve doğru şekilde yapın.</p>
+    </div>
 
-    <p>
-        Günlük hayatta, işte ve finansal işlemlerde
-        ihtiyacınız olan hesaplamaları hızlı ve kolay
-        bir şekilde yapın.
-    </p>
-</section>
-
-<section class="tools" id="araclar">
-
-    <h2>Hesaplama Araçları</h2>
-
-    <div class="tool-grid">
-
-        <div class="tool-card">
-    <div class="tool-icon">📦</div>
-    <h3>Desi Hesaplama</h3>
-    <p>
-        Kargo ve taşımacılık işlemlerinde
-        desi ve hesaplamaya esas ağırlığı hızlıca hesaplayın.
-    </p>
-
-    <a href="desi.html"
-       style="
-       display:inline-block;
-       margin-top:15px;
-       background:#2563eb;
-       color:white;
-       padding:9px 15px;
-       border-radius:7px;
-       text-decoration:none;
-       font-size:14px;
-       font-weight:bold;
-       ">
-       Hesaplamaya Başla →
-    </a>
-</div>
-        <div class="tool-card">
-            <div class="tool-icon">⚖️</div>
-            <h3>Ağırlık Hesaplama</h3>
-            <p>
-                Farklı ölçü ve birimler arasında
-                ağırlık hesaplamalarınızı kolaylaştırın.
-            </p>
-            <span class="coming">Yakında</span>
+    <!-- 1. KATEGORİ: İNSAN KAYNAKLARI -->
+    <div class="category-section">
+        <div class="category-title">💼 İnsan Kaynakları & Bordro</div>
+        <div class="grid">
+            <a href="maas.html" class="card">
+                <div>
+                    <div class="card-icon">💵</div>
+                    <h3>Brütten Nete Maaş</h3>
+                    <p>Mesai, vergi dilimleri ve 2026 asgari ücret istisnasıyla detaylı bordro.</p>
+                </div>
+            </a>
+            <!-- Gelecek Araçlar -->
+            <a href="#" class="card" style="opacity: 0.6; pointer-events: none;">
+                <div>
+                    <div class="card-icon">📜</div>
+                    <h3>Kıdem & İhbar Tazminatı</h3>
+                    <p>Çalışma süresi ve tavan ücrete göre tazminat simülasyonu (Yakında).</p>
+                </div>
+            </a>
         </div>
+    </div>
 
-        <div class="tool-card">
-            <div class="tool-icon">📐</div>
-            <h3>Hacim Hesaplama</h3>
-            <p>
-                En, boy ve yükseklik bilgilerini
-                kullanarak hacim hesaplayın.
-            </p>
-            <span class="coming">Yakında</span>
+    <!-- 2. KATEGORİ: LOJİSTİK -->
+    <div class="category-section">
+        <div class="category-title">🚚 Lojistik & Taşıma</div>
+        <div class="grid">
+            <a href="desi.html" class="card">
+                <div>
+                    <div class="card-icon">📦</div>
+                    <h3>Desi & Hacim Hesabı</h3>
+                    <p>Koli ve paketlerin volümetrik ağırlık (desi) hesaplaması.</p>
+                </div>
+            </a>
+            <a href="yakit.html" class="card">
+                <div>
+                    <div class="card-icon">⛽</div>
+                    <h3>Yakıt Maliyeti</h3>
+                    <p>Mesafe ve tüketim değerlerine göre yol maliyet hesabı.</p>
+                </div>
+            </a>
         </div>
+    </div>
 
-    <div class="tool-card">
-    <div class="tool-icon">🚚</div>
-    <h3>Araç Kapasitesi</h3>
-    <p>
-        Yük ölçülerine göre hangi araç tipinin
-        uygun olduğunu belirleyin.
-    </p>
+    <!-- 3. KATEGORİ: GÜNDELİK -->
+    <div class="category-section">
+        <div class="category-title">🧮 Gündelik & Pratik</div>
+        <div class="grid">
+            <a href="yuzde.html" class="card">
+                <div>
+                    <div class="card-icon">📊</div>
+                    <h3>Yüzde Hesaplama</h3>
+                    <p>Artış, azalış ve orantı hesaplamaları.</p>
+                </div>
+            </a>
+            <a href="kdv.html" class="card">
+                <div>
+                    <div class="card-icon">🏷️</div>
+                    <h3>KDV Dahil / Hariç</h3>
+                    <p>Matrah ve KDV tutarı ayırma aracı.</p>
+                </div>
+            </a>
+        </div>
+    </div>
 
-    <a href="arac.html"
-       style="
-       display:inline-block;
-       margin-top:15px;
-       background:#2563eb;
-       color:white;
-       padding:9px 15px;
-       border-radius:7px;
-       text-decoration:none;
-       font-size:14px;
-       font-weight:bold;
-       ">
-        Hesaplamaya Başla →
-    </a>
 </div>
 
-<div class="tool-card">
-    <div class="tool-icon">💰</div>
-    <h3>KDV Hesaplama</h3>
-    <p>
-        KDV dahil ve hariç tutarları
-        kolayca hesaplayın.
-    </p>
-
-    <a href="kdv.html"
-       style="
-       display:inline-block;
-       margin-top:15px;
-       background:#2563eb;
-       color:white;
-       padding:9px 15px;
-       border-radius:7px;
-       text-decoration:none;
-       font-size:14px;
-       font-weight:bold;
-       ">
-        Hesaplamaya Başla →
-    </a>
-</div>
-        <div class="tool-card">
-    <div class="tool-icon">📊</div>
-    <h3>Yüzde Hesaplama</h3>
-    <p>
-        Yüzde artış, azalış ve oran
-        hesaplamalarını hızlıca yapın.
-    </p>
-
-    <a href="yuzde.html"
-       style="
-       display:inline-block;
-       margin-top:15px;
-       background:#2563eb;
-       color:white;
-       padding:9px 15px;
-       border-radius:7px;
-       text-decoration:none;
-       font-size:14px;
-       font-weight:bold;
-       ">
-        Hesaplamaya Başla →
-    </a>
-</div>
-<div class="tool-card">
-    <div class="tool-icon">⛽</div>
-    <h3>Yakıt & Yol Maliyeti</h3>
-    <p>
-        Gidilecek mesafeye göre toplam yakıt
-        tüketimini ve yol maliyetini hesaplayın.
-    </p>
-
-    <a href="yakit.html"
-       style="
-       display:inline-block;
-       margin-top:15px;
-       background:#2563eb;
-       color:white;
-       padding:9px 15px;
-       border-radius:7px;
-       text-decoration:none;
-       font-size:14px;
-       font-weight:bold;
-       ">
-        Hesaplamaya Başla →
-    </a>
-</div>
-<div class="tool-card">
-    <div class="tool-icon">💼</div>
-    <h3>Brütten Nete Maaş Hesabı</h3>
-    <p>
-        2026 yılı güncel vergi dilimleri ve mesai
-        seçenekleriyle net maaş ve maliyet hesaplayın.
-    </p>
-
-    <a href="maas.html"
-       style="
-       display:inline-block;
-       margin-top:15px;
-       background:#2563eb;
-       color:white;
-       padding:9px 15px;
-       border-radius:7px;
-       text-decoration:none;
-       font-size:14px;
-       font-weight:bold;
-       ">
-        Hesaplamaya Başla →
-    </a>
-</div>
-</section>
-
-<footer id="hakkinda">
-    © 2026 HesapPoint — Akıllı Hesaplama Araçları
+<footer>
+    © 2026 HesapPoint — Tüm Hakları Saklıdır.
 </footer>
 
 </body>
