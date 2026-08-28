@@ -3,34 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HesapPoint — Online Hesaplama Araçları Portalı</title>
+    <title>HesapPoint — Pratik Online Hesaplama Araçları</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
-        
+
         header { background: white; border-bottom: 1px solid #e5e7eb; padding: 20px 40px; }
         .header-content { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 26px; font-weight: bold; color: #2563eb; }
         .logo span { color: #111827; }
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        .hero h1 { font-size: 36px; margin-bottom: 10px; color: #111827; }
-        .hero p { color: #4b5563; font-size: 16px; }
+        .hero { text-align: center; padding: 50px 20px 30px; }
+        .hero h1 { font-size: 36px; margin-bottom: 12px; color: #111827; }
+        .hero p { color: #4b5563; font-size: 16px; max-width: 600px; margin: auto; }
 
-        /* KATEGORİ BAŞLIKLARI VE GRID */
+        .container { max-width: 1200px; margin: 20px auto 50px; padding: 0 20px; }
+        
+        /* KATEGORİ BAŞLIKLARI */
         .category-section { margin-bottom: 40px; }
         .category-title { font-size: 20px; font-weight: bold; color: #1e3a8a; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+        .card { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; text-decoration: none; color: inherit; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(37,99,235,0.1); border-color: #bfdbfe; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-        
-        .card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; text-decoration: none; color: inherit; transition: all 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); border-color: #2563eb; }
-        .card-icon { font-size: 28px; margin-bottom: 12px; }
-        .card h3 { font-size: 16px; font-weight: bold; margin-bottom: 6px; color: #111827; }
-        .card p { font-size: 13px; color: #6b7280; line-height: 1.4; }
-        
-        footer { margin-top: 60px; padding: 25px; text-align: center; color: #6b7280; background: white; border-top: 1px solid #e5e7eb; }
+        .card-icon { font-size: 32px; margin-bottom: 12px; }
+        .card h2 { font-size: 18px; margin-bottom: 8px; color: #1e3a8a; }
+        .card p { font-size: 14px; color: #6b7280; line-height: 1.5; flex-grow: 1; }
+
+        footer { padding: 25px; text-align: center; color: #6b7280; background: white; border-top: 1px solid #e5e7eb; }
     </style>
 </head>
 <body>
@@ -41,86 +43,76 @@
     </div>
 </header>
 
+<div class="hero">
+    <h1>Pratik Hesaplama Araçları</h1>
+    <p>Lojistik, ik, finans ve günlük hayat hesaplamalarınızı saniyeler içinde kolayca yapın.</p>
+</div>
+
 <div class="container">
-    <div class="hero">
-        <h1>Tüm Hesaplamalarınız Tek Noktada</h1>
-        <p>İhtiyacınız olan kategoriyi seçerek hesaplamalarınızı hızlı ve doğru şekilde yapın.</p>
-    </div>
 
-    <!-- 1. KATEGORİ: İNSAN KAYNAKLARI -->
+    <!-- KATEGORİ 1: İNSAN KAYNAKLARI & BORDRO -->
     <div class="category-section">
-        <div class="category-title">💼 İnsan Kaynakları & Bordro</div>
+        <div class="category-title">👥 İnsan Kaynakları & Bordro</div>
         <div class="grid">
+            
+            <a href="tazminat.html" class="card">
+                <div class="card-icon">💼</div>
+                <h2>Kıdem & İhbar Tazminatı</h2>
+                <p>Çalışma süresi, brüt maaş, kıdem tavanı, ihbar ve kullanılmayan yıllık izin ücreti hesabı.</p>
+            </a>
+
             <a href="maas.html" class="card">
-                <div>
-                    <div class="card-icon">💵</div>
-                    <h3>Brütten Nete Maaş</h3>
-                    <p>Mesai, vergi dilimleri ve 2026 asgari ücret istisnasıyla detaylı bordro.</p>
-                </div>
+                <div class="card-icon">💵</div>
+                <h2>Maaş & Vergi Hesabı</h2>
+                <p>Brütten nete ve netten brüte 2026 vergi dilimlerine göre detaylı maaş ve SGK hesabı.</p>
             </a>
-            <!-- Gelecek Araçlar -->
-            <a href="#" class="card" style="opacity: 0.6; pointer-events: none;">
-                <div>
-                    <div class="card-icon">📜</div>
-                    <h3>Kıdem & İhbar Tazminatı</h3>
-                    <p>Çalışma süresi ve tavan ücrete göre tazminat simülasyonu (Yakında).</p>
-                </div>
-            </a>
+
         </div>
     </div>
 
-    <!-- 2. KATEGORİ: LOJİSTİK -->
+    <!-- KATEGORİ 2: LOJİSTİK & TAŞIMACILIK -->
     <div class="category-section">
-        <div class="category-title">🚚 Lojistik & Taşıma</div>
+        <div class="category-title">🚛 Lojistik & Taşımacılık</div>
         <div class="grid">
+
             <a href="desi.html" class="card">
-                <div>
-                    <div class="card-icon">📦</div>
-                    <h3>Desi & Hacim Hesabı</h3>
-                    <p>Koli ve paketlerin volümetrik ağırlık (desi) hesaplaması.</p>
-                </div>
+                <div class="card-icon">📦</div>
+                <h2>Desi & Hacim Hesabı</h2>
+                <p>Koli ve paletlerinizin hacimsel ağırlığını (desi) ve toplam hacmini kolayca hesaplayın.</p>
             </a>
+
+            <a href="arac-kapasite.html" class="card">
+                <div class="card-icon">🚚</div>
+                <h2>Araç Kapasite Hesabı</h2>
+                <p>Panelvan, Kamyonet, Kamyon ve TIR yükleme ile palet kapasitelerini simüle edin.</p>
+            </a>
+
             <a href="yakit.html" class="card">
-                <div>
-                    <div class="card-icon">⛽</div>
-                    <h3>Yakıt Maliyeti</h3>
-                    <p>Mesafe ve tüketim değerlerine göre yol maliyet hesabı.</p>
-                </div>
+                <div class="card-icon">⛽</div>
+                <h2>Yakıt & Yol Maliyeti</h2>
+                <p>Mesafe ve ortalama araç tüketimine göre seyahat yakıt gideri hesabı.</p>
             </a>
+
         </div>
     </div>
 
-    <!-- 3. KATEGORİ: GÜNDELİK -->
+    <!-- KATEGORİ 3: FİNANS & PRATİK HESAPLAMALAR -->
     <div class="category-section">
-        <div class="category-title">🧮 Gündelik & Pratik</div>
+        <div class="category-title">📊 Finans & Pratik Hesaplamalar</div>
         <div class="grid">
+
             <a href="yuzde.html" class="card">
-                <div>
-                    <div class="card-icon">📊</div>
-                    <h3>Yüzde Hesaplama</h3>
-                    <p>Artış, azalış ve orantı hesaplamaları.</p>
-                </div>
+                <div class="card-icon">📈</div>
+                <h2>Yüzde Hesabı</h2>
+                <p>Yüzde artış, azalış, oran bulma ve değişim yüzdesi hesaplama araçları.</p>
             </a>
+
             <a href="kdv.html" class="card">
-                <div>
-                    <div class="card-icon">🏷️</div>
-                    <h3>KDV Dahil / Hariç</h3>
-                    <p>Matrah ve KDV tutarı ayırma aracı.</p>
-                </div>
+                <div class="card-icon">🧾</div>
+                <h2>KDV Hesabı</h2>
+                <p>KDV dahil ve KDV hariç tutarları hızlıca ayrıştırın ve hesaplayın.</p>
             </a>
-        </div>
-    </div>
-<!-- FINANS KATEGORİSİ -->
-    <div class="category-section">
-        <div class="category-title">🏦 Finans & Bankacılık</div>
-        <div class="grid">
-            <a href="kredi.html" class="card">
-                <div>
-                    <div class="card-icon">💳</div>
-                    <h3>Kredi Taksit Hesabı</h3>
-                    <p>İhtiyaç, konut ve taşıt kredileri için aylık taksit ve ödeme planı.</p>
-                </div>
-            </a>
+
         </div>
     </div>
 
