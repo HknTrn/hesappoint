@@ -3,36 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HesapPoint — Pratik Online Hesaplama Araçları</title>
+    
+    <!-- SEO Meta Etiketleri -->
+    <title>hesappoint - Pratik ve Hızlı Online Hesaplama Araçları</title>
+    <meta name="description" content="Maaş, kıdem tazminatı, desi, araç yük kapasitesi, KDV, kredi ve yakıt hesaplamalarını pratik ve hızlıca yapın. Güncel online hesaplama araçları hesappoint'ta.">
+    <meta name="keywords" content="hesaplama araçları, maaş hesaplama, desi hesaplama, kıdem tazminatı hesaplama, kdv hesaplama, araç yük kapasitesi">
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media / Open Graph Meta Etiketleri -->
+    <meta property="og:title" content="hesappoint - Pratik ve Hızlı Online Hesaplama Araçları">
+    <meta property="og:description" content="Maaş, kıdem tazminatı, desi, araç yük kapasitesi, KDV, kredi ve yakıt hesaplama araçları.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hesappoint.com/">
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
 
         header { background: white; border-bottom: 1px solid #e5e7eb; padding: 20px 40px; }
         .header-content { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 26px; font-weight: bold; color: #2563eb; }
+        .logo { font-size: 26px; font-weight: bold; color: #2563eb; text-decoration: none; }
         .logo span { color: #111827; }
 
-        .hero { text-align: center; padding: 50px 20px 30px; }
-        .hero h1 { font-size: 36px; margin-bottom: 12px; color: #111827; }
-        .hero p { color: #4b5563; font-size: 16px; max-width: 600px; margin: auto; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { font-size: 36px; margin-bottom: 10px; color: #111827; }
+        .hero p { color: #6b7280; font-size: 18px; }
 
-        .container { max-width: 1200px; margin: 20px auto 50px; padding: 0 20px; }
-        
-        /* KATEGORİ BAŞLIKLARI */
+        /* Eski Güzel Kategori Stilleri */
         .category-section { margin-bottom: 40px; }
-        .category-title { font-size: 20px; font-weight: bold; color: #1e3a8a; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+        .category-title { 
+            font-size: 18px; 
+            font-weight: bold; 
+            color: #1e1b4b; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: all 0.2s ease; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #2563eb; }
+        .card-icon { font-size: 32px; margin-bottom: 15px; }
+        .card h2 { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #1e1b4b; }
+        .card p { font-size: 13px; color: #6b7280; line-height: 1.5; }
 
-        .card { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; text-decoration: none; color: inherit; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(37,99,235,0.1); border-color: #bfdbfe; }
-        
-        .card-icon { font-size: 32px; margin-bottom: 12px; }
-        .card h2 { font-size: 18px; margin-bottom: 8px; color: #1e3a8a; }
-        .card p { font-size: 14px; color: #6b7280; line-height: 1.5; flex-grow: 1; }
-
-        footer { padding: 25px; text-align: center; color: #6b7280; background: white; border-top: 1px solid #e5e7eb; }
+        footer { margin-top: 60px; padding: 30px; text-align: center; color: #6b7280; background: white; border-top: 1px solid #e5e7eb; font-size: 14px; }
     </style>
 </head>
 <body>
