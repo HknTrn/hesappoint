@@ -82,8 +82,8 @@
             <div class="form-group">
                 <label>İşveren Prim İndirimi Teşviki</label>
                 <select id="employerDiscount">
-                    <option value="5" selected>5 Puanlık Hazine İndirimi Dikkate Alınsın (%16.75)</option>
-                    <option value="2">2 Puanlık Sektörel İndirim Dikkate Alınsın (%19.75)</option>
+                    <option value="5">5 Puanlık Hazine İndirimi Dikkate Alınsın (%16.75)</option>
+                    <option value="2" selected>2 Puanlık Sektörel İndirim Dikkate Alınsın (%19.75)</option>
                     <option value="0">İndirim Uygulanmasın (%21.75)</option>
                 </select>
             </div>
@@ -96,8 +96,8 @@
                 <thead>
                     <tr>
                         <th>Ay</th>
-                        <th>H.İçi (Saat)</th>
-                        <th>H.Sonu (Saat)</th>
+                        <th>Fazla Mesai H.İçi (Saat)</th>
+                        <th>Fazla Mesai H.Sonu (Saat)</th>
                         <th>Brüt</th>
                         <th>SSK İşçi</th>
                         <th>İşsizlik İşçi</th>
@@ -123,7 +123,7 @@
             <ol>
                 <li>Yapılan maaş hesaplamalarında para birimi TL değerleri esas alınmaktadır.</li>
                 <li>Yapılan maaş hesaplamaları ile ilgili olarak kesin bordro işlemleri öncesi uzman veya danışman bilgisine başvurulması tavsiye olunur.</li>
-                <li>Rakam asgari ücretin altında olduğunda hesaplama yapılmaz.</li>
+                <li>2026 yılı aylık brüt asgari ücret tutarı olan 33.030,00 TL'nin altındaki tutarlar için hesaplama yapılmaz.</li>
             </ol>
         </div>
 
@@ -139,6 +139,7 @@
 
 <script>
 const months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+const MIN_GROSS_2026 = 33030.00; // 2026 Asgari Ücret Brüt Sınırı
 let monthlyOvertimes = Array(12).fill(null).map(() => ({ weekday: 0, weekend: 0 }));
 
 function calculateYearlySalary() {
@@ -146,8 +147,10 @@ function calculateYearlySalary() {
     const type = document.getElementById("employeeType").value;
     const discount = parseFloat(document.getElementById("employerDiscount").value);
 
-    if (isNaN(baseGross) || baseGross <= 0) {
-        alert("Lütfen geçerli bir brüt maaş girin.");
+    // 2026 Asgari Ücret Kontrolü
+    if (isNaN(baseGross) || baseGross < MIN_GROSS_2026) {
+        alert("Aylık brüt maaş 2026 yılı asgari ücret tutarı olan 33.030,00 TL'den düşük olamaz.");
+        document.getElementById("resultTableBox").style.display = "none";
         return;
     }
 
