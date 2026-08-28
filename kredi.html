@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kredi Taksit Hesabı | HesapPoint</title>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
+
+        header { background: white; border-bottom: 1px solid #e5e7eb; padding: 20px 40px; }
+        .header-content { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 25px; font-weight: bold; color: #2563eb; }
+        .logo span { color: #111827; }
+        .back { text-decoration: none; color: #2563eb; font-size: 14px; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .title { text-align: center; margin-bottom: 30px; }
+        .title h1 { font-size: 32px; margin-bottom: 10px; }
+        .title p { color: #4b5563; }
+
+        .calculator { background: white; padding: 25px; border-radius: 18px; border: 1px solid #e5e7eb; box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
+
+        .form-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-size: 13px; font-weight: bold; margin-bottom: 7px; }
+        input, select { padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; outline: none; background: white; }
+
+        .calculate-btn { width: 100%; padding: 14px; background: #2563eb; color: white; border: none; border-radius: 9px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .calculate-btn:hover { background: #1d4ed8; }
+
+        /* ÖZET KARTLARI */
+        .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 25px; display: none; }
+        .summary-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; text-align: center; }
+        .summary-card .label { font-size: 12px; color: #64748b; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
+        .summary-card .value { font-size: 20px; font-weight: bold; color: #1e3a8a; }
+        .summary-card.highlight { background: #eff6ff; border-color: #bfdbfe; }
+        .summary-card.highlight .value { color: #2563eb; }
+
+        /* TABLO STİLLERİ */
+        .table-container { display: none; margin-top: 25px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: right; background: white; }
+        th, td { padding: 10px 12px; border: 1px solid #e5e7eb; }
+        th { background: #f8fafc; color: #374151; font-weight: bold; text-align: center; }
+        td:first-child, th:first-child { text-align: center; font-weight: bold; }
+        tr.total-row { background: #eff6ff; font-weight: bold; color: #1e40af; }
+
+        .info-box { margin-top: 25px; padding: 18px; background: #f8fafc; border-radius: 10px; color: #4b5563; font-size: 13px; line-height: 1.6; border: 1px solid #e2e8f0; }
+        .info-box ul { margin-left: 20px; margin-top: 8px; }
+
+        footer { margin-top: 50px; padding: 25px; text-align: center; color: #6b7280; background: white; border-top: 1px solid #e5e7eb; }
+
+        @media (max-width: 900px) {
+            .form-grid, .summary-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .form-grid, .summary-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">🧮 Hesap<span>Point</span></div>
+        <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="title">
+        <h1>Kredi Taksit Hesabı</h1>
+        <p>Kredi türü, tutar, faiz oranı ve vade bilgisini girerek aylık taksit ve ödeme planınızı oluşturun.</p>
+    </div>
+
+    <div class="calculator">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Kredi Türü</label>
+                <select id="loanType">
+                    <option value="consumer" selected>İhtiyaç Kredisi (%15 KKDF, %15 BSMV)</option>
+                    <option value="housing">Konut Kredisi (%0 KKDF, %0 BSMV)</option>
+                    <option value="vehicle">Taşıt Kredisi (%15 KKDF, %15 BSMV)</option>
+                    <option value="commercial">Ticari Kredi (%0 KKDF, %5 BSMV)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Kredi Tutarı (TL)</label>
+                <input type="number" id="loanAmount" placeholder="Örn. 100000" value="100000" min="1000" step="1000">
+            </div>
+            <div class="form-group">
+                <label>Aylık Faiz Oranı (%)</label>
+                <input type="number" id="interestRate" placeholder="Örn. 3.99" value="3.99" step="0.01">
+            </div>
+            <div class="form-group">
+                <label>Vade (Ay)</label>
+                <input type="number" id="termMonths" placeholder="Örn. 12" value="12" min="1" max="120">
+            </div>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateLoan()">HESAPLA</button>
+
+        <!-- ÖZET SONUÇLAR -->
+        <div class="summary-grid" id="summaryBox">
+            <div class="summary-card highlight">
+                <div class="label">Aylık Taksit</div>
+                <div class="value" id="resMonthlyPayment">0,00 TL</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Toplam Geri Ödeme</div>
+                <div class="value" id="resTotalPayment">0,00 TL</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Toplam Faiz</div>
+                <div class="value" id="resTotalInterest">0,00 TL</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Toplam Vergi (BSMV + KKDF)</div>
+                <div class="value" id="resTotalTax">0,00 TL</div>
+            </div>
+        </div>
+
+        <!-- AMORTİZASYON TABLOSU -->
+        <div class="table-container" id="resultTableBox">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Taksit No</th>
+                        <th>Taksit Tutarı</th>
+                        <th>Anapara</th>
+                        <th>Faiz</th>
+                        <th>KKDF</th>
+                        <th>BSMV</th>
+                        <th>Kalan Anapara</th>
+                    </tr>
+                </thead>
+                <tbody id="amortizationBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <strong>📌 Kredi Hesaplama Hakkında Bilgilendirme:</strong>
+            <ul>
+                <li><strong>KKDF (Kaynak Kullanımını Destekleme Fonu):</strong> İhtiyaç ve taşıt kredilerinde faiz tutarı üzerinden %15 olarak uygulanır. Konut kredilerinde %0'dır.</li>
+                <li><strong>BSMV (Banka ve Sigorta Muameleleri Vergisi):</strong> İhtiyaç ve taşıt kredilerinde faiz tutarı üzerinden %15, ticari kredilerde %5 olarak uygulanır. Konut kredilerinde %0'dır.</li>
+                <li>Hesaplamada eşit taksitli (anüite) kredi modeli esas alınmaktadır. Bankaların dosya masrafı ve sigorta primleri hesaplamaya dahil edilmemiştir.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2026 HesapPoint — Kredi Simülatörü
+</footer>
+
+<script>
+function calculateLoan() {
+    const loanType = document.getElementById("loanType").value;
+    const amount = parseFloat(document.getElementById("loanAmount").value);
+    const monthlyRatePercent = parseFloat(document.getElementById("interestRate").value);
+    const months = parseInt(document.getElementById("termMonths").value);
+
+    if (isNaN(amount) || amount <= 0 || isNaN(monthlyRatePercent) || monthlyRatePercent <= 0 || isNaN(months) || months <= 0) {
+        alert("Lütfen tüm alanlara geçerli pozitif değerler girin.");
+        return;
+    }
+
+    // Vergi Oranları Belirleme
+    let kkdfRate = 0.15;
+    let bsmvRate = 0.15;
+
+    if (loanType === "housing") {
+        kkdfRate = 0.0;
+        bsmvRate = 0.0;
+    } else if (loanType === "commercial") {
+        kkdfRate = 0.0;
+        bsmvRate = 0.05;
+    }
+
+    const r = (monthlyRatePercent / 100);
+    const totalTaxRate = r * (kkdfRate + bsmvRate);
+    const effectiveMonthlyRate = r + totalTaxRate; // Vergiler dahil efektif aylık faiz oranı
+
+    // Aylık Taksit Formülü: A = P * [i * (1+i)^n] / [(1+i)^n - 1]
+    const monthlyPayment = amount * (effectiveMonthlyRate * Math.pow(1 + effectiveMonthlyRate, months)) / (Math.pow(1 + effectiveMonthlyRate, months) - 1);
+
+    let remainingPrincipal = amount;
+    let totalInterestSum = 0;
+    let totalKkdfSum = 0;
+    let totalBsmvSum = 0;
+
+    let tbodyHtml = "";
+
+    for (let i = 1; i <= months; i++) {
+        const monthlyInterest = remainingPrincipal * r;
+        const monthlyKkdf = monthlyInterest * kkdfRate;
+        const monthlyBsmv = monthlyInterest * bsmvRate;
+        
+        let monthlyPrincipal = monthlyPayment - (monthlyInterest + monthlyKkdf + monthlyBsmv);
+
+        // Son taksitte yuvarlama farkını sıfırlamak için
+        if (i === months) {
+            monthlyPrincipal = remainingPrincipal;
+        }
+
+        remainingPrincipal -= monthlyPrincipal;
+        if (remainingPrincipal < 0) remainingPrincipal = 0;
+
+        totalInterestSum += monthlyInterest;
+        totalKkdfSum += monthlyKkdf;
+        totalBsmvSum += monthlyBsmv;
+
+        tbodyHtml += `
+            <tr>
+                <td>${i}</td>
+                <td>${fmt(monthlyPayment)} TL</td>
+                <td>${fmt(monthlyPrincipal)} TL</td>
+                <td>${fmt(monthlyInterest)} TL</td>
+                <td>${fmt(monthlyKkdf)} TL</td>
+                <td>${fmt(monthlyBsmv)} TL</td>
+                <td>${fmt(remainingPrincipal)} TL</td>
+            </tr>
+        `;
+    }
+
+    const totalTaxSum = totalKkdfSum + totalBsmvSum;
+    const totalPaymentSum = amount + totalInterestSum + totalTaxSum;
+
+    tbodyHtml += `
+        <tr class="total-row">
+            <td>TOPLAM</td>
+            <td>${fmt(totalPaymentSum)} TL</td>
+            <td>${fmt(amount)} TL</td>
+            <td>${fmt(totalInterestSum)} TL</td>
+            <td>${fmt(totalKkdfSum)} TL</td>
+            <td>${fmt(totalBsmvSum)} TL</td>
+            <td>-</td>
+        </tr>
+    `;
+
+    // Özet Alanlarını Doldurma
+    document.getElementById("resMonthlyPayment").innerText = fmt(monthlyPayment) + " TL";
+    document.getElementById("resTotalPayment").innerText = fmt(totalPaymentSum) + " TL";
+    document.getElementById("resTotalInterest").innerText = fmt(totalInterestSum) + " TL";
+    document.getElementById("resTotalTax").innerText = fmt(totalTaxSum) + " TL";
+
+    document.getElementById("summaryBox").style.display = "grid";
+    document.getElementById("amortizationBody").innerHTML = tbodyHtml;
+    document.getElementById("resultTableBox").style.display = "block";
+}
+
+function fmt(val) {
+    return val.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+window.onload = function() {
+    calculateLoan();
+};
+</script>
+
+</body>
+</html>
