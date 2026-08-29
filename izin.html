@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Etiketleri -->
+    <title>Yıllık İzin Hesaplama 2026 - Hak Edilen İzin Günü Hesabı</title>
+    <meta name="description" content="İşe başlama ve doğum tarihinize göre 4857 Sayılı İş Kanununa uygun olarak toplam hak ettiğiniz ve kalan yıllık izin gün sayınızı anında hesaplayın.">
+    <meta name="keywords" content="yıllık izin hesaplama, kaç gün izin hakkım var, iş kanunu yıllık izin, yıllık izin kıdem hesabı, izin hakkı sorgulama">
+    <meta name="author" content="Hesappoint">
+    <link rel="canonical" href="https://hesappoint.com/izin.html" />
+
+    <!-- Open Graph (Sosyal Medya) -->
+    <meta property="og:title" content="Yıllık İzin Hesaplama - Hesappoint" />
+    <meta property="og:description" content="Kıdem sürenize ve yaşınıza göre yasal yıllık izin hakkınızı ve kalan izinlerinizi kolayca hesaplayın." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hesappoint.com/izin.html" />
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .header {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .date-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1.2fr;
+            gap: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            background-color: #fff;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            text-align: center;
+            width: 100%;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .results {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .result-card {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .result-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .result-card .label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .details-list {
+            list-style: none;
+        }
+
+        .details-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border);
+            font-size: 0.9rem;
+        }
+
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+
+        .details-list .val {
+            font-weight: 600;
+        }
+
+        .info-box {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 6px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Yıllık İzin Hesaplama</h1>
+        <p>İş Kanunu standartlarında hak kazandığınız gün sayısını öğrenin.</p>
+    </div>
+
+    <form id="permissionForm" onsubmit="calculateLeave(event)">
+        <!-- İşe Başlama Tarihi -->
+        <div class="form-group">
+            <label>İşe Başlama Tarihi</label>
+            <div class="date-input-group">
+                <input type="number" id="startDay" min="1" max="31" placeholder="Gün (1-31)" required>
+                <select id="startMonth" required></select>
+                <input type="number" id="startYear" min="1970" max="2026" placeholder="Yıl (2025)" required>
+            </div>
+        </div>
+
+        <!-- Doğum Tarihi (Elle Yazılabilir veya Listeden Seçilebilir) -->
+        <div class="form-group">
+            <label>Doğum Tarihi (İsteğe Bağlı)</label>
+            <div class="date-input-group">
+                <input type="number" id="birthDay" min="1" max="31" placeholder="Gün">
+                <select id="birthMonth">
+                    <option value="">Ay Seçin</option>
+                </select>
+                <input type="number" id="birthYear" min="1940" max="2026" placeholder="Yıl (Örn: 1985)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="usedDays">Kullanılan İzin Gün Sayısı</label>
+            <input type="number" id="usedDays" min="0" value="0" placeholder="Örn: 5">
+        </div>
+
+        <button type="submit">HESAPLA</button>
+        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+    </form>
+
+    <div id="results" class="results">
+        <div class="result-card">
+            <div class="number" id="resRemaining">0 Gün</div>
+            <div class="label">Kalan İzin Hakkınız</div>
+        </div>
+
+        <ul class="details-list">
+            <li>
+                <span>Toplam Kıdem Süreniz:</span>
+                <span class="val" id="resSeniority">-</span>
+            </li>
+            <li>
+                <span>Toplam Hak Edilen İzin:</span>
+                <span class="val" id="resTotalEarned">0 Gün</span>
+            </li>
+            <li>
+                <span>Mevcut İzin Skalanız:</span>
+                <span class="val" id="resScale">-</span>
+            </li>
+            <li>
+                <span>Bir Sonraki Kademeye Kalan:</span>
+                <span class="val" id="resNextTier">-</span>
+            </li>
+        </ul>
+
+        <div class="info-box">
+            * 4857 Sayılı İş Kanunu uyarınca 1-5 yıl kıdem için yılda 14 gün, 5-15 yıl için 20 gün, 15 yıl ve üzeri için 26 gün izin hakkı tanınır. 18 yaşından küçük ve 50 yaşından büyük çalışanlara verilen izin 20 günden az olamaz.
+        </div>
+    </div>
+</div>
+
+<script>
+    const monthsNames = [
+        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+    ];
+
+    // Ay Seçim Kutularını Doldur
+    function initMonths() {
+        const fill = (selectId) => {
+            const sel = document.getElementById(selectId);
+            monthsNames.forEach((name, index) => {
+                const opt = document.createElement('option');
+                opt.value = index;
+                opt.textContent = name;
+                sel.appendChild(opt);
+            });
+        };
+
+        fill('startMonth');
+        fill('birthMonth');
+        
+        // Varsayılan Değerler
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startDay').value = 1;
+        document.getElementById('startMonth').value = 0;
+        document.getElementById('startYear').value = currentYear - 1;
+    }
+
+    initMonths();
+
+    function calculateLeave(e) {
+        e.preventDefault();
+
+        const sDay = parseInt(document.getElementById('startDay').value);
+        const sMonth = parseInt(document.getElementById('startMonth').value);
+        const sYear = parseInt(document.getElementById('startYear').value);
+
+        if (!sDay || sMonth === NaN || !sYear) {
+            alert("Lütfen işe başlama tarihini eksiksiz girin.");
+            return;
+        }
+
+        const startDate = new Date(sYear, sMonth, sDay);
+        const today = new Date();
+
+        if (startDate > today) {
+            alert("İşe başlama tarihi bugünden ileriki bir tarih olamaz.");
+            return;
+        }
+
+        // Doğum Tarihi & Yaş Hesabı
+        let age = 30; // Varsayılan yetişkin
+        const bDay = parseInt(document.getElementById('birthDay').value);
+        const bMonthVal = document.getElementById('birthMonth').value;
+        const bYear = parseInt(document.getElementById('birthYear').value);
+
+        if (bDay && bMonthVal !== "" && bYear) {
+            const birthDate = new Date(bYear, parseInt(bMonthVal), bDay);
+            age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+        }
+
+        const usedDays = parseInt(document.getElementById('usedDays').value) || 0;
+
+        // Tamamlanan Kıdem Yılı Hesabı
+        let years = today.getFullYear() - startDate.getFullYear();
+        let months = today.getMonth() - startDate.getMonth();
+        let days = today.getDate() - startDate.getDate();
+
+        if (days < 0) months--;
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        const completedYears = years;
+
+        if (completedYears < 1) {
+            document.getElementById('resRemaining').innerText = "0 Gün";
+            document.getElementById('resSeniority').innerText = `${months} Ay ${Math.max(0, days)} Gün`;
+            document.getElementById('resTotalEarned').innerText = "0 Gün";
+            document.getElementById('resScale').innerText = "Henüz 1 Yıl Dolmadı";
+            document.getElementById('resNextTier').innerText = `${12 - months} Ay Sonra (14 Gün)`;
+            document.getElementById('results').classList.add('active');
+            return;
+        }
+
+        // İzin Günleri Hesabı
+        let totalEarned = 0;
+        let currentScale = "";
+
+        for (let y = 1; y <= completedYears; y++) {
+            let yearAllowance = 14;
+
+            if (y > 5 && y < 15) {
+                yearAllowance = 20;
+            } else if (y >= 15) {
+                yearAllowance = 26;
+            }
+
+            // 18 Yaş altı veya 50 Yaş üstü İstisnası
+            if ((age < 18 || age >= 50) && yearAllowance < 20) {
+                yearAllowance = 20;
+            }
+
+            totalEarned += yearAllowance;
+        }
+
+        const nextYearKidem = completedYears + 1;
+        if (nextYearKidem <= 5) {
+            currentScale = (age < 18 || age >= 50) ? "20 Gün / Yıl (Özel Yaş Kuralı)" : "14 Gün / Yıl";
+        } else if (nextYearKidem < 15) {
+            currentScale = "20 Gün / Yıl";
+        } else {
+            currentScale = "26 Gün / Yıl";
+        }
+
+        let nextTierText = "";
+        if (completedYears < 5) {
+            nextTierText = `${5 - completedYears} Yıl Sonra (20 Gün Skalası)`;
+        } else if (completedYears < 15) {
+            nextTierText = `${15 - completedYears} Yıl Sonra (26 Gün Skalası)`;
+        } else {
+            nextTierText = "En Yüksek Skaladasınız (26 Gün)";
+        }
+
+        const remaining = totalEarned - usedDays;
+
+        // Sonuçları Yazdır
+        document.getElementById('resRemaining').innerText = `${remaining} Gün`;
+        document.getElementById('resSeniority').innerText = `${completedYears} Yıl ${months} Ay`;
+        document.getElementById('resTotalEarned').innerText = `${totalEarned} Gün`;
+        document.getElementById('resScale').innerText = currentScale;
+        document.getElementById('resNextTier').innerText = nextTierText;
+
+        document.getElementById('results').classList.add('active');
+    }
+</script>
+
+</body>
+</html>
