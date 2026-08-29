@@ -3,155 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HesapPoint | Pratik Hesaplama Araçları</title>
+    <meta name="description" content="Maaş, tazminat, izin, desi, araç kapasite, KDV ve yakıt hesaplama araçları.">
     
-    <!-- SEO Meta Etiketleri -->
-    <title>hesappoint - Pratik ve Hızlı Online Hesaplama Araçları</title>
-    <meta name="description" content="Maaş, kıdem tazminatı, desi, araç yük kapasitesi, KDV, kredi ve yakıt hesaplamalarını pratik ve hızlıca yapın. Güncel online hesaplama araçları hesappoint'ta.">
-    <meta name="keywords" content="hesaplama araçları, maaş hesaplama, desi hesaplama, kıdem tazminatı hesaplama, kdv hesaplama, araç yük kapasitesi">
-    <meta name="robots" content="index, follow">
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
-    <!-- Social Media / Open Graph Meta Etiketleri -->
-    <meta property="og:title" content="hesappoint - Pratik ve Hızlı Online Hesaplama Araçları">
-    <meta property="og:description" content="Maaş, kıdem tazminatı, desi, araç yük kapasitesi, KDV, kredi ve yakıt hesaplama araçları.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hesappoint.com/">
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
 
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
+            <!-- Kategori Filtre Butonları (Tıklayınca Sadece O Grubu Gösterir) -->
+            <nav class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
+                <button onclick="filterCategory('all')" id="btn-all" class="cat-btn px-3 py-1.5 rounded-lg bg-white text-indigo-600 shadow-sm transition">Tümü</button>
+                <button onclick="filterCategory('ik')" id="btn-ik" class="cat-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">İnsan Kaynakları</button>
+                <button onclick="filterCategory('lojistik')" id="btn-lojistik" class="cat-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Lojistik</button>
+                <button onclick="filterCategory('finans')" id="btn-finans" class="cat-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Finans</button>
+            </nav>
+        </div>
+    </header>
 
-        header { background: white; border-bottom: 1px solid #e5e7eb; padding: 20px 40px; }
-        .header-content { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 26px; font-weight: bold; color: #2563eb; text-decoration: none; }
-        .logo span { color: #111827; }
+    <!-- Hero / Arama -->
+    <section class="py-10 bg-white border-b border-slate-200">
+        <div class="max-w-3xl mx-auto px-4 text-center space-y-3">
+            <!-- Rozet / Badge -->
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-600 border border-indigo-100">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Akıllı Hesaplama Platformu
+            </span>
+            
+            <!-- Ana Slogan -->
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Operasyonel ve Finansal Hesaplamalar, <span class="text-indigo-600">Nokta Atışı.</span>
+            </h1>
+            
+            <!-- Alt Açıklama -->
+            <p class="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
+                Lojistik, İK ve finans hesaplamalarınızı saniyeler içinde tamamlayın.
+            </p>
+            
+            <!-- Arama Çubuğu -->
+            <div class="relative max-w-md mx-auto pt-3">
+                <input type="text" id="searchInput" placeholder="Araç adı ara (Örn: Yakıt, Tazminat, Desi)..." class="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-xs font-medium">
+                <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-6"></i>
+            </div>
+        </div>
+    </section>
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        .hero h1 { font-size: 36px; margin-bottom: 10px; color: #111827; }
-        .hero p { color: #6b7280; font-size: 18px; }
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 space-y-10">
 
-        /* Eski Güzel Kategori Stilleri */
-        .category-section { margin-bottom: 40px; }
-        .category-title { 
-            font-size: 18px; 
-            font-weight: bold; 
-            color: #1e1b4b; 
-            margin-bottom: 15px; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e5e7eb;
+        <!-- 1. İNSAN KAYNAKLARI KATEGORİSİ -->
+        <div class="category-group space-y-4" data-category="ik">
+            <h2 class="text-base font-bold text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
+                <i data-lucide="users" class="w-4 h-4 text-indigo-600"></i> İnsan Kaynakları & Bordro
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                
+                <a href="tazminat.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-indigo-50 text-indigo-600 rounded-lg"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">Kıdem & İhbar Tazminatı</h3>
+                            <p class="text-xs text-slate-500 mt-1">Çalışma süresi, brüt maaş ve izin hak ediş hesabı.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="maas.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-emerald-50 text-emerald-600 rounded-lg"><i data-lucide="wallet" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">Maaş & Vergi Hesabı</h3>
+                            <p class="text-xs text-slate-500 mt-1">Brütten nete 2026 vergi dilimleriyle detaylı maaş hesabı.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="izin.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-teal-50 text-teal-600 rounded-lg"><i data-lucide="calendar" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">Yıllık İzin Hesabı</h3>
+                            <p class="text-xs text-slate-500 mt-1">Kıdem süresine göre hak edilen yıllık izin günü hesabı.</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- 2. LOJİSTİK KATEGORİSİ -->
+        <div class="category-group space-y-4" data-category="lojistik">
+            <h2 class="text-base font-bold text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
+                <i data-lucide="truck" class="w-4 h-4 text-indigo-600"></i> Lojistik & Taşımacılık
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <a href="yakit.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-indigo-50 text-indigo-600 rounded-lg"><i data-lucide="fuel" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">Yakıt & Yol Maliyeti (HGS Entegre)</h3>
+                            <p class="text-xs text-slate-500 mt-1">Tonaja göre oransal tüketim ve köprü/otoban geçiş matrisi.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="desi.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-blue-50 text-blue-600 rounded-lg"><i data-lucide="box" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">Desi & Hacim Hesabı</h3>
+                            <p class="text-xs text-slate-500 mt-1">Koli/Palet ölçülerinden desi ve m³ hacim hesaplama.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="arac.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-sky-50 text-sky-600 rounded-lg"><i data-lucide="layout-grid" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">Araç Kapasite Hesabı</h3>
+                            <p class="text-xs text-slate-500 mt-1">Panelvan, Kamyon, TIR palet yükleme kapasiteleri.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="eskalasyon.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-amber-50 text-amber-600 rounded-lg"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">Navlun Eskalasyon Hesabı</h3>
+                            <p class="text-xs text-slate-500 mt-1">TÜİK ve yakıt artışlarına göre sözleşmeli navlun güncelleme.</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- 3. FİNANS KATEGORİSİ -->
+        <div class="category-group space-y-4" data-category="finans">
+            <h2 class="text-base font-bold text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
+                <i data-lucide="coins" class="w-4 h-4 text-indigo-600"></i> Finans & Pratik Hesaplar
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <a href="yuzde.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-purple-50 text-purple-600 rounded-lg"><i data-lucide="percent" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">Yüzde Hesabı</h3>
+                            <p class="text-xs text-slate-500 mt-1">Artış, azalış ve oran hesaplama araçları.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="kdv.html" class="tool-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 hover:shadow-md transition">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-emerald-50 text-emerald-600 rounded-lg"><i data-lucide="receipt" class="w-5 h-5"></i></div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-900">KDV Hesabı</h3>
+                            <p class="text-xs text-slate-500 mt-1">KDV dahil/hariç ve tevkifat hesaplama.</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        © 2026 HesapPoint — Pratik Operasyonel Hesaplama Araçları
+    </footer>
+
+    <!-- Filtreleme & İkon Scripti -->
+    <script>
+        lucide.createIcons();
+
+        // Kategori Filtreleme Scripti
+        function filterCategory(cat) {
+            const groups = document.querySelectorAll('.category-group');
+            const buttons = document.querySelectorAll('.cat-btn');
+
+            // Buton Stillerini Güncelle
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-white', 'text-indigo-600', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`btn-${cat}`);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-white', 'text-indigo-600', 'shadow-sm');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            // Kategori Gruplarını Göster/Gizle
+            groups.forEach(group => {
+                if (cat === 'all' || group.getAttribute('data-category') === cat) {
+                    group.style.display = 'block';
+                } else {
+                    group.style.display = 'none';
+                }
+            });
         }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: all 0.2s ease; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #2563eb; }
-        .card-icon { font-size: 32px; margin-bottom: 15px; }
-        .card h2 { font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #1e1b4b; }
-        .card p { font-size: 13px; color: #6b7280; line-height: 1.5; }
+        // Canlı Arama Scripti
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.tool-card');
 
-        footer { margin-top: 60px; padding: 30px; text-align: center; color: #6b7280; background: white; border-top: 1px solid #e5e7eb; font-size: 14px; }
-    </style>
-</head>
-<body>
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
 
-<header>
-    <div class="header-content">
-        <div class="logo">🧮 Hesap<span>Point</span></div>
-    </div>
-</header>
-
-<div class="hero">
-    <h1>Pratik Hesaplama Araçları</h1>
-    <p>Lojistik, ik, finans ve günlük hayat hesaplamalarınızı saniyeler içinde kolayca yapın.</p>
-</div>
-
-<div class="container">
-
-    <!-- KATEGORİ 1: İNSAN KAYNAKLARI & BORDRO -->
-    <div class="category-section">
-        <div class="category-title">👥 İnsan Kaynakları & Bordro</div>
-        <div class="grid">
-            
-            <a href="tazminat.html" class="card">
-                <div class="card-icon">💼</div>
-                <h2>Kıdem & İhbar Tazminatı</h2>
-                <p>Çalışma süresi, brüt maaş, kıdem tavanı, ihbar ve kullanılmayan yıllık izin ücreti hesabı.</p>
-            </a>
-
-            <a href="maas.html" class="card">
-                <div class="card-icon">💵</div>
-                <h2>Maaş & Vergi Hesabı</h2>
-                <p>Brütten nete ve netten brüte 2026 vergi dilimlerine göre detaylı maaş ve SGK hesabı.</p>
-            </a>
-             
-            <a href="izin.html" class="card">
-                <div class="card-icon">📅</div>
-                <h2>Yıllık İzin Hesabı</h2>
-                <p>İşe başlama tarihi ve yaşa göre İş Kanunu standartlarında hak edilen ve kalan izin günü hesabı.</p>
-            </a>
-
-        </div>
-    </div>
-
-    <!-- KATEGORİ 2: LOJİSTİK & TAŞIMACILIK -->
-    <div class="category-section">
-        <div class="category-title">🚛 Lojistik & Taşımacılık</div>
-        <div class="grid">
-
-            <a href="desi.html" class="card">
-                <div class="card-icon">📦</div>
-                <h2>Desi & Hacim Hesabı</h2>
-                <p>Koli ve paletlerinizin hacimsel ağırlığını (desi) ve toplam hacmini kolayca hesaplayın.</p>
-            </a>
-
-            <a href="arac.html" class="card">
-                <div class="card-icon">🚚</div>
-                <h2>Araç Kapasite Hesabı</h2>
-                <p>Panelvan, Kamyonet, Kamyon ve TIR yükleme ile palet kapasitelerini simüle edin.</p>
-            </a>
-
-            <a href="yakit.html" class="card">
-                <div class="card-icon">⛽</div>
-                <h2>Yakıt & Yol Maliyeti</h2>
-                <p>Mesafe ve ortalama araç tüketimine göre seyahat yakıt gideri hesabı.</p>
-            </a>
-
-            <a href="eskalasyon.html" class="card">
-                <div class="card-icon">📈</div>
-                <h2>Navlun Eskalasyon Hesaplama</h2>
-                <p>Yakıt değişimi ve kümülatif TÜİK enflasyonu ile sözleşmeli navlun fiyatınızı güncelleyin.</p>
-            </a>
-
-        </div>
-    </div>
-
-    <!-- KATEGORİ 3: FİNANS & PRATİK HESAPLAMALAR -->
-    <div class="category-section">
-        <div class="category-title">📊 Finans & Pratik Hesaplamalar</div>
-        <div class="grid">
-
-            <a href="yuzde.html" class="card">
-                <div class="card-icon">📈</div>
-                <h2>Yüzde Hesabı</h2>
-                <p>Yüzde artış, azalış, oran bulma ve değişim yüzdesi hesaplama araçları.</p>
-            </a>
-
-            <a href="kdv.html" class="card">
-                <div class="card-icon">🧾</div>
-                <h2>KDV Hesabı</h2>
-                <p>KDV dahil ve KDV hariç tutarları hızlıca ayrıştırın ve hesaplayın.</p>
-            </a>
-
-        </div>
-    </div>
-
-</div>
-
-<footer>
-    © 2026 HesapPoint — Tüm Hakları Saklıdır.
-</footer>
-
+                if (title.includes(query) || desc.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
