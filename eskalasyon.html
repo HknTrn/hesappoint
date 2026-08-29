@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Etiketleri -->
+    <title>Navlun Eskalasyon Hesaplama 2026 - Lojistik Fiyat Güncelleme</title>
+    <meta name="description" content="Yurt içi karayolu taşımacılığında motorin fiyatı ve kümülatif TÜFE / Yİ-ÜFE enflasyon değişimlerine göre yeni navlun fiyatını ve zam oranını anında hesaplayın.">
+    <meta name="keywords" content="navlun eskalasyon hesaplama, lojistik zam hesabı, yakıt eskalasyonu, baf hesaplama, tüfe üfe navlun zammı, taşıma fiyat güncelleme">
+    <meta name="author" content="Hesappoint">
+    <link rel="canonical" href="https://hesappoint.com/eskalasyon.html" />
+
+    <!-- Open Graph (Sosyal Medya) -->
+    <meta property="og:title" content="Navlun Eskalasyon Hesaplama - Hesappoint" />
+    <meta property="og:description" content="Yakıt değişimi ve TÜİK kümülatif enflasyon verileri ile sözleşmeli navlun fiyat güncelleme aracı." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hesappoint.com/eskalasyon.html" />
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --accent: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .header {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 18px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #eff6ff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            background-color: #fff;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+        }
+
+        .presets {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .preset-btn {
+            flex: 1;
+            padding: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .preset-btn:hover, .preset-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .mode-switch {
+            display: flex;
+            background: #f1f5f9;
+            padding: 3px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .mode-btn.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .calc-btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 12px;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .results {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .result-main {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .result-main .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .result-main .sub-number {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-top: 4px;
+        }
+
+        .details-list {
+            list-style: none;
+        }
+
+        .details-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border);
+            font-size: 0.875rem;
+        }
+
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+
+        .details-list .val {
+            font-weight: 600;
+        }
+
+        .info-box {
+            margin-top: 16px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: #f1f5f9;
+            padding: 10px 12px;
+            border-radius: 6px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 16px; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Navlun Eskalasyon Hesaplama</h1>
+        <p>Yakıt değişimi ve TÜİK kümülatif enflasyon verileriyle navlun fiyatınızı güncelleyin.</p>
+    </div>
+
+    <form id="eskalasyonForm" onsubmit="calculateEskalasyon(event)">
+        
+        <!-- 1. NAVLUN BİLGİSİ -->
+        <div class="section-title">📦 1. Baz Navlun Tutar</div>
+        <div class="form-group">
+            <label for="baseNavlun">Mevcut / Baz Navlun Fiyatı (TL)</label>
+            <input type="number" id="baseNavlun" step="0.01" min="0" placeholder="Örn: 20000" required>
+        </div>
+
+        <!-- 2. YAKIT BİLGİLERİ -->
+        <div class="section-title">⛽ 2. Yakıt (Motorin) Değişimi</div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label for="baseFuel">Sözleşme Başı Motorin (TL)</label>
+                <input type="number" id="baseFuel" step="0.01" min="0" placeholder="Örn: 42.50" required>
+            </div>
+            <div class="form-group">
+                <label for="currentFuel">Güncel Motorin (TL)</label>
+                <input type="number" id="currentFuel" step="0.01" min="0" placeholder="Örn: 46.20" required>
+            </div>
+        </div>
+
+        <!-- 3. MALİYET AĞIRLIKLARI (PAYLAR) -->
+        <div class="section-title">⚖️ 3. Maliyet Ağırlıkları (% Toplam = 100)</div>
+        <div class="presets">
+            <button type="button" class="preset-btn active" onclick="setPreset(40, 60, this)">🚚 TIR / FTH (%40 - %60)</button>
+            <button type="button" class="preset-btn" onclick="setPreset(30, 70, this)">🚛 Dağıtım (%30 - %70)</button>
+            <button type="button" class="preset-btn" onclick="setPreset(50, 50, this)">⚙️ Yarı Yarıya (%50 - %50)</button>
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label for="fuelWeight">Yakıt Payı (%)</label>
+                <input type="number" id="fuelWeight" min="0" max="100" value="40" oninput="updateWeights('fuel')" required>
+            </div>
+            <div class="form-group">
+                <label for="infWeight">Enflasyon Payı (%)</label>
+                <input type="number" id="infWeight" min="0" max="100" value="60" oninput="updateWeights('inf')" required>
+            </div>
+        </div>
+
+        <!-- 4. ENFLASYON HESABI -->
+        <div class="section-title">📈 4. Enflasyon (TÜFE & Yİ-ÜFE) Oranı</div>
+        
+        <div class="mode-switch">
+            <button type="button" class="mode-btn active" id="btnModeDate" onclick="setInfMode('date')">📅 Tarih Seç (Kümülatif TÜİK)</button>
+            <button type="button" class="mode-btn" id="btnModeManual" onclick="setInfMode('manual')">✏️ Manuel Oran Gir</button>
+        </div>
+
+        <!-- Tarih Seçim Alanı -->
+        <div id="dateInfArea">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="startPeriod">Başlangıç Ayı</label>
+                    <select id="startPeriod" onchange="calcAutoInflation()"></select>
+                </div>
+                <div class="form-group">
+                    <label for="endPeriod">Bitiş / Güncel Ay</label>
+                    <select id="endPeriod" onchange="calcAutoInflation()"></select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manuel Oran Giriş Alanı -->
+        <div id="manualInfArea" style="display: none;">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="cpiInput">TÜFE Değişimi (%)</label>
+                    <input type="number" id="cpiInput" step="0.01" placeholder="Örn: 4.50">
+                </div>
+                <div class="form-group">
+                    <label for="ppiInput">Yİ-ÜFE Değişimi (%)</label>
+                    <input type="number" id="ppiInput" step="0.01" placeholder="Örn: 5.20">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="calc-btn">HESAPLA</button>
+        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+    </form>
+
+    <!-- SONUÇ EKRANI -->
+    <div id="results" class="results">
+        <div class="result-main">
+            <div class="number" id="resNewNavlun">0,00 TL</div>
+            <div class="sub-number" id="resTotalRate">+%0,00 Zam Oranı</div>
+        </div>
+
+        <ul class="details-list">
+            <li>
+                <span>Net Zam Farkı:</span>
+                <span class="val" id="resDiffTL">0,00 TL</span>
+            </li>
+            <li>
+                <span>Yakıt Kaynaklı Zam Etkisi:</span>
+                <span class="val" id="resFuelEffect">+%0,00</span>
+            </li>
+            <li>
+                <span>Enflasyon Kaynaklı Zam Etkisi:</span>
+                <span class="val" id="resInfEffect">+%0,00</span>
+            </li>
+            <li>
+                <span>Yakıt Değişim Oranı:</span>
+                <span class="val" id="resFuelRate">%0,00</span>
+            </li>
+            <li>
+                <span>Hesaplanan Ort. Enflasyon ((TÜFE+ÜFE)/2):</span>
+                <span class="val" id="resAvgInf">%0,00</span>
+            </li>
+        </ul>
+
+        <div class="info-box">
+            * <strong>Formül:</strong> Toplam Zam Oranı = (Yakıt Değişimi × Yakıt Payı) + (((Kümülatif TÜFE + Kümülatif Yİ-ÜFE) / 2) × Enflasyon Payı). Tarih modunda TÜİK verileri bileşik (kümülatif) olarak hesaplanır.
+        </div>
+    </div>
+</div>
+
+<script>
+    // TÜİK Aylık Enflasyon Değişim Oranları (%) (Bileşik Çarpan İçin)
+    const monthlyData = {
+        "2024-01": { cpi: 6.70, ppi: 4.14 },
+        "2024-02": { cpi: 4.53, ppi: 3.74 },
+        "2024-03": { cpi: 3.16, ppi: 3.21 },
+        "2024-04": { cpi: 3.18, ppi: 3.60 },
+        "2024-05": { cpi: 3.37, ppi: 2.67 },
+        "2024-06": { cpi: 1.64, ppi: 0.07 },
+        "2024-07": { cpi: 3.23, ppi: 1.94 },
+        "2024-08": { cpi: 2.47, ppi: 1.68 },
+        "2024-09": { cpi: 2.97, ppi: 1.37 },
+        "2024-10": { cpi: 2.88, ppi: 1.29 },
+        "2024-11": { cpi: 2.24, ppi: 0.66 },
+        "2024-12": { cpi: 1.03, ppi: 0.45 },
+        "2025-01": { cpi: 4.00, ppi: 2.50 },
+        "2025-02": { cpi: 2.27, ppi: 1.80 },
+        "2025-03": { cpi: 2.46, ppi: 1.90 },
+        "2025-04": { cpi: 3.00, ppi: 2.10 },
+        "2025-05": { cpi: 1.50, ppi: 1.20 },
+        "2025-06": { cpi: 1.60, ppi: 1.10 },
+        "2025-07": { cpi: 2.10, ppi: 1.50 },
+        "2025-08": { cpi: 2.40, ppi: 1.70 },
+        "2025-09": { cpi: 2.80, ppi: 2.00 },
+        "2025-10": { cpi: 2.50, ppi: 1.80 },
+        "2025-11": { cpi: 2.00, ppi: 1.40 },
+        "2025-12": { cpi: 1.20, ppi: 0.90 },
+        "2026-01": { cpi: 3.80, ppi: 2.30 },
+        "2026-02": { cpi: 2.10, ppi: 1.60 },
+        "2026-03": { cpi: 2.30, ppi: 1.75 },
+        "2026-04": { cpi: 2.80, ppi: 2.00 },
+        "2026-05": { cpi: 1.40, ppi: 1.10 },
+        "2026-06": { cpi: 1.50, ppi: 1.05 },
+        "2026-07": { cpi: 2.00, ppi: 1.40 },
+        "2026-08": { cpi: 2.20, ppi: 1.55 }
+    };
+
+    const periodKeys = Object.keys(monthlyData);
+    let infMode = 'date';
+
+    function initPeriods() {
+        const startSel = document.getElementById('startPeriod');
+        const endSel = document.getElementById('endPeriod');
+
+        periodKeys.forEach((key) => {
+            const [y, m] = key.split('-');
+            const dateObj = new Date(y, m - 1);
+            const monthName = dateObj.toLocaleString('tr-TR', { month: 'long' });
+            const label = `${monthName} ${y}`;
+
+            const opt1 = new Option(label, key);
+            const opt2 = new Option(label, key);
+            startSel.add(opt1);
+            endSel.add(opt2);
+        });
+
+        // Varsayılan Seçimler: Başlangıç: 2026-01, Bitiş: Son Ay (2026-08)
+        startSel.value = "2026-01";
+        endSel.value = periodKeys[periodKeys.length - 1];
+    }
+
+    initPeriods();
+
+    function setPreset(f, i, btn) {
+        document.getElementById('fuelWeight').value = f;
+        document.getElementById('infWeight').value = i;
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function updateWeights(changed) {
+        const fInput = document.getElementById('fuelWeight');
+        const iInput = document.getElementById('infWeight');
+        
+        let val = parseInt(changed === 'fuel' ? fInput.value : iInput.value) || 0;
+        if (val > 100) val = 100;
+        if (val < 0) val = 0;
+
+        if (changed === 'fuel') {
+            fInput.value = val;
+            iInput.value = 100 - val;
+        } else {
+            iInput.value = val;
+            fInput.value = 100 - val;
+        }
+
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    }
+
+    function setInfMode(mode) {
+        infMode = mode;
+        const btnD = document.getElementById('btnModeDate');
+        const btnM = document.getElementById('btnModeManual');
+        const areaD = document.getElementById('dateInfArea');
+        const areaM = document.getElementById('manualInfArea');
+
+        if (mode === 'date') {
+            btnD.classList.add('active');
+            btnM.classList.remove('active');
+            areaD.style.display = 'block';
+            areaM.style.display = 'none';
+        } else {
+            btnM.classList.add('active');
+            btnD.classList.remove('active');
+            areaM.style.display = 'block';
+            areaD.style.display = 'none';
+        }
+    }
+
+    // Kümülatif Enflasyon Hesabı ((1+r1)*(1+r2)... - 1) * 100
+    function getCumulativeInflation() {
+        if (infMode === 'manual') {
+            const cpi = parseFloat(document.getElementById('cpiInput').value) || 0;
+            const ppi = parseFloat(document.getElementById('ppiInput').value) || 0;
+            return { cpi, ppi, avg: (cpi + ppi) / 2 };
+        }
+
+        const startKey = document.getElementById('startPeriod').value;
+        const endKey = document.getElementById('endPeriod').value;
+
+        const sIdx = periodKeys.indexOf(startKey);
+        const eIdx = periodKeys.indexOf(endKey);
+
+        if (sIdx > eIdx) {
+            return { cpi: 0, ppi: 0, avg: 0, error: "Başlangıç ayı bitiş ayından sonra olamaz." };
+        }
+
+        let cpiMul = 1.0;
+        let ppiMul = 1.0;
+
+        // Başlangıç ayından sonraki aydan başlayıp bitiş ayına kadar kümülatif çarpım
+        for (let i = sIdx + 1; i <= eIdx; i++) {
+            const data = monthlyData[periodKeys[i]];
+            cpiMul *= (1 + data.cpi / 100);
+            ppiMul *= (1 + data.ppi / 100);
+        }
+
+        const cpiCum = (cpiMul - 1) * 100;
+        const ppiCum = (ppiMul - 1) * 100;
+
+        return { cpi: cpiCum, ppi: ppiCum, avg: (cpiCum + ppiCum) / 2 };
+    }
+
+    function calculateEskalasyon(e) {
+        e.preventDefault();
+
+        const baseNavlun = parseFloat(document.getElementById('baseNavlun').value) || 0;
+        const baseFuel = parseFloat(document.getElementById('baseFuel').value) || 0;
+        const currentFuel = parseFloat(document.getElementById('currentFuel').value) || 0;
+
+        const fuelW = (parseFloat(document.getElementById('fuelWeight').value) || 0) / 100;
+        const infW = (parseFloat(document.getElementById('infWeight').value) || 0) / 100;
+
+        if (baseFuel <= 0) {
+            alert("Lütfen geçerli bir başlangıç motorin fiyatı giriniz.");
+            return;
+        }
+
+        const infRes = getCumulativeInflation();
+        if (infRes.error) {
+            alert(infRes.error);
+            return;
+        }
+
+        // Yakıt Değişim Oranı (%)
+        const fuelRate = ((currentFuel - baseFuel) / baseFuel) * 100;
+
+        // Zam Etkileri
+        const fuelEffect = fuelRate * fuelW;
+        const infEffect = infRes.avg * infW;
+
+        // Toplam Navlun Zam Oranı (%)
+        const totalRate = fuelEffect + infEffect;
+
+        // Yeni Navlun ve Fark
+        const diffTL = baseNavlun * (totalRate / 100);
+        const newNavlun = baseNavlun + diffTL;
+
+        // Formatlama Fonksiyonu
+        const fmt = (num) => num.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        // Sonuçları Yazdır
+        document.getElementById('resNewNavlun').innerText = `${fmt(newNavlun)} TL`;
+        document.getElementById('resTotalRate').innerText = `${totalRate >= 0 ? '+' : ''}%${fmt(totalRate)} Zam Oranı`;
+        document.getElementById('resDiffTL').innerText = `${diffTL >= 0 ? '+' : ''}${fmt(diffTL)} TL`;
+        document.getElementById('resFuelEffect').innerText = `${fuelEffect >= 0 ? '+' : ''}%${fmt(fuelEffect)}`;
+        document.getElementById('resInfEffect').innerText = `${infEffect >= 0 ? '+' : ''}%${fmt(infEffect)}`;
+        document.getElementById('resFuelRate').innerText = `%${fmt(fuelRate)}`;
+        document.getElementById('resAvgInf').innerText = `%${fmt(infRes.avg)} (TÜFE: %${fmt(infRes.cpi)} | ÜFE: %${fmt(infRes.ppi)})`;
+
+        document.getElementById('results').classList.add('active');
+    }
+</script>
+
+</body>
+</html>
