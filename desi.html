@@ -3,666 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desi & CBM (Hacim) Hesaplama | HesapPoint</title>
+    <meta name="description" content="Kargo desi, m³, havayolu, karayolu ve deniz yolu W/M faturalandırılabilir ağırlık hesaplayıcı.">
     
-    <!-- SEO Meta Etiketleri -->
-    <title>Kargo Desi ve Hacimsel Ağırlık Hesaplama | hesappoint</title>
-    <meta name="description" content="Kolilerinizin en, boy, yükseklik ve ağırlık bilgilerini girerek kargo desi tutarını ve hesaplamaya esas ağırlığını anında hesaplayın. Multi-koli desteği.">
-    <meta name="keywords" content="desi hesaplama, kargo desi hesabı, hacimsel ağırlık hesaplama, koli desi hesaplama, kargo ücreti esas ağırlık">
-    <meta name="robots" content="index, follow">
-
-    <!-- Social Media / Open Graph Meta Etiketleri -->
-    <meta property="og:title" content="Kargo Desi ve Hacimsel Ağırlık Hesaplama | hesappoint">
-    <meta property="og:description" content="Çoklu koli seçeneğiyle kargo gönderilerinizin desi ve navlun hesaplamasına esas ağırlığını ücretsiz hesaplayın.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hesappoint.com/desi.html">
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #1f2937;
-        }
-
-        header {
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 20px 40px;
-        }
-
-        .header-content {
-            max-width: 1000px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #2563eb;
-        }
-
-        .logo span {
-            color: #111827;
-        }
-
-        .back {
-            text-decoration: none;
-            color: #2563eb;
-            font-size: 14px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .title {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .title .icon {
-            font-size: 45px;
-            margin-bottom: 10px;
-        }
-
-        .title h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .title p {
-            color: #6b7280;
-            font-size: 16px;
-        }
-
-        .calculator {
-            background: white;
-            border-radius: 18px;
-            padding: 30px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-        }
-
-        .package {
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 22px;
-            margin-bottom: 20px;
-            background: #ffffff;
-        }
-
-        .package-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .package-title {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .delete-btn {
-            background: #fee2e2;
-            color: #dc2626;
-            border: none;
-            padding: 7px 12px;
-            border-radius: 7px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .delete-btn:hover {
-            background: #fecaca;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 7px;
-            font-size: 13px;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-        }
-
-        input:focus {
-            border-color: #2563eb;
-        }
-
-        .add-btn {
-            width: 100%;
-            padding: 13px;
-            background: white;
-            color: #2563eb;
-            border: 2px dashed #2563eb;
-            border-radius: 9px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .add-btn:hover {
-            background: #eff6ff;
-        }
-
-        .calculate-btn {
-            width: 100%;
-            padding: 16px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 9px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .calculate-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .result {
-            display: none;
-            margin-top: 35px;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 30px;
-        }
-
-        .result h2 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .result-box {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 20px 10px;
-            text-align: center;
-        }
-
-        .result-box .label {
-            display: block;
-            color: #6b7280;
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-
-        .result-box .value {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .main-result {
-            margin-top: 20px;
-            background: #eff6ff;
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .main-result .small {
-            color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .main-result .big {
-            color: #2563eb;
-            font-size: 36px;
-            font-weight: bold;
-        }
-
-        .explanation {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            background: #f9fafb;
-            color: #4b5563;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .formula {
-            margin-top: 25px;
-            text-align: center;
-            color: #6b7280;
-            font-size: 13px;
-        }
-
-        footer {
-            margin-top: 70px;
-            padding: 30px;
-            text-align: center;
-            color: #6b7280;
-            background: white;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        @media (max-width: 800px) {
-            .form-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .result-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 500px) {
-            .form-grid,
-            .result-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .calculator {
-                padding: 20px 15px;
-            }
-
-            .title h1 {
-                font-size: 29px;
-            }
-        }
-    </style>
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
-<body>
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
 
-<header>
-    <div class="header-content">
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-6">
 
-        <div class="logo">
-            🧮 Hesap<span>Point</span>
+        <!-- Sayfa Başlığı -->
+        <div class="space-y-1 text-center sm:text-left">
+            <h1 class="text-2xl font-black text-slate-900 flex items-center justify-center sm:justify-start gap-2">
+                <i data-lucide="box" class="w-7 h-7 text-indigo-600"></i>
+                Desi & CBM (Hacim) Hesaplayıcı
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500">
+                Koli ve paletlerinizin Desi, CBM (m³) ve Faturalandırılabilir Ağırlık (W/M) değerlerini hesaplayın.
+            </p>
         </div>
 
-        <a class="back" href="index.html">
-            ← Ana Sayfaya Dön
-        </a>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-    </div>
-</header>
-
-
-<div class="container">
-
-    <div class="title">
-
-        <div class="icon">📦</div>
-
-        <h1>Kargo Desi Hesaplama</h1>
-
-        <p>
-            Farklı ölçülerdeki kolilerinizin desi ve hesaplamaya esas ağırlığını hesaplayın.
-        </p>
-
-    </div>
-
-
-    <div class="calculator">
-
-        <div id="packages"></div>
-
-
-        <button class="add-btn" onclick="addPackage()">
-            + Koli Ekle
-        </button>
-
-
-        <button class="calculate-btn" onclick="calculateTotal()">
-            HESAPLA
-        </button>
-
-
-        <div class="result" id="result">
-
-            <h2>Hesaplama Sonucu</h2>
-
-            <div class="result-grid">
-
-                <div class="result-box">
-                    <span class="label">Toplam Koli</span>
-                    <span class="value" id="totalPackages">0</span>
+            <!-- Sol Taraf: Giriş Formu ve Parça Listesi -->
+            <div class="lg:col-span-2 space-y-5">
+                
+                <!-- Taşıma Modu Seçimi -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Taşıma Modu & Katsayı</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold">
+                        <button type="button" onclick="setMode('domestic')" id="mode-domestic" class="mode-btn p-3 rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 flex flex-col items-center gap-1.5 transition">
+                            <i data-lucide="truck" class="w-5 h-5"></i>
+                            <span>Yurtiçi Kargo</span>
+                            <span class="text-[10px] text-slate-400 font-normal">/ 3000</span>
+                        </button>
+                        <button type="button" onclick="setMode('road')" id="mode-road" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
+                            <i data-lucide="container" class="w-5 h-5"></i>
+                            <span>Kara Nakliye</span>
+                            <span class="text-[10px] text-slate-400 font-normal">/ 5000</span>
+                        </button>
+                        <button type="button" onclick="setMode('air')" id="mode-air" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
+                            <i data-lucide="plane" class="w-5 h-5"></i>
+                            <span>Havayolu</span>
+                            <span class="text-[10px] text-slate-400 font-normal">/ 6000 (IATA)</span>
+                        </button>
+                        <button type="button" onclick="setMode('sea')" id="mode-sea" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
+                            <i data-lucide="ship" class="w-5 h-5"></i>
+                            <span>Deniz Yolu</span>
+                            <span class="text-[10px] text-slate-400 font-normal">CBM / W-M</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="result-box">
-                    <span class="label">Gerçek Ağırlık</span>
-                    <span class="value" id="totalActualWeight">0 kg</span>
-                </div>
+                <!-- Koli / Palet Satırları -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Kargo Ölçü Detayları (cm & kg)</span>
+                        <button onclick="addRow()" class="inline-flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 transition">
+                            <i data-lucide="plus-circle" class="w-4 h-4"></i> Satır Ekle
+                        </button>
+                    </div>
 
-                <div class="result-box">
-                    <span class="label">Hacimsel Ağırlık</span>
-                    <span class="value" id="totalVolumeWeight">0 kg</span>
-                </div>
-
-                <div class="result-box">
-                    <span class="label">Toplam Desi</span>
-                    <span class="value" id="totalDesi">0</span>
+                    <!-- Satır Container -->
+                    <div id="itemsContainer" class="space-y-3">
+                        <!-- Javascript ile Satırlar Buraya Eklenecek -->
+                    </div>
                 </div>
 
             </div>
 
+            <!-- Sağ Taraf: Sonuç Özet Kartı -->
+            <div class="space-y-5">
+                <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-xl space-y-5 sticky top-20">
+                    <h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3 flex items-center justify-between">
+                        <span>Hesaplama Özeti</span>
+                        <i data-lucide="package-check" class="w-4 h-4 text-indigo-400"></i>
+                    </h2>
 
-            <div class="main-result">
+                    <div class="space-y-4">
+                        <!-- Toplam Adet ve Hacim -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/50">
+                                <span class="text-[11px] text-slate-400 block font-medium">Toplam Kap</span>
+                                <span id="res-total-qty" class="text-xl font-black text-white">0</span> <span class="text-xs text-slate-400">Adet</span>
+                            </div>
+                            <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/50">
+                                <span class="text-[11px] text-slate-400 block font-medium">Toplam Hacim</span>
+                                <span id="res-total-cbm" class="text-xl font-black text-indigo-400">0.000</span> <span class="text-xs text-slate-400">m³</span>
+                            </div>
+                        </div>
 
-                <div class="small">
-                    Hesaplamaya Esas Ağırlık
+                        <!-- Desi ve Reel Ağırlık -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/50">
+                                <span class="text-[11px] text-slate-400 block font-medium">Hesaplanan Desi</span>
+                                <span id="res-total-desi" class="text-xl font-black text-amber-400">0.0</span> <span class="text-xs text-slate-400">Desi</span>
+                            </div>
+                            <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/50">
+                                <span class="text-[11px] text-slate-400 block font-medium">Gerçek Ağırlık</span>
+                                <span id="res-total-weight" class="text-xl font-black text-emerald-400">0.0</span> <span class="text-xs text-slate-400">kg</span>
+                            </div>
+                        </div>
+
+                        <!-- Faturalandırılabilir Karar Kartı -->
+                        <div class="p-4 rounded-xl bg-indigo-950/80 border border-indigo-800/50 space-y-1">
+                            <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-300">Faturalandırılacak Matrah</span>
+                            <div id="res-billable" class="text-lg font-black text-white">0 Desi / Kg</div>
+                            <p id="res-billable-desc" class="text-[11px] text-indigo-200/70 leading-tight">Yükleme detaylarını giriniz.</p>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp / E-Posta İletimi İçin Kopyalama Butonu -->
+                    <button onclick="copySummary()" class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-lg shadow-indigo-600/30">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Özeti Kopyala (WhatsApp / Mail)</span>
+                    </button>
                 </div>
-
-                <div class="big" id="chargeableWeight">
-                    0 kg
-                </div>
-
-            </div>
-
-
-            <div class="explanation" id="explanation">
-                Sonuç
-            </div>
-
-
-            <div class="formula">
-                Hacimsel Ağırlık = En × Boy × Yükseklik ÷ 3000
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<footer>
-    © 2026 HesapPoint — Kargo Desi Hesaplama
-</footer>
-
-
-<script>
-
-let packageCount = 0;
-
-
-/* İlk koliyi otomatik oluştur */
-addPackage();
-
-
-function addPackage() {
-
-    packageCount++;
-
-    const packages = document.getElementById("packages");
-
-    const packageDiv = document.createElement("div");
-
-    packageDiv.className = "package";
-
-    packageDiv.id = "package-" + packageCount;
-
-
-    packageDiv.innerHTML = `
-
-        <div class="package-header">
-
-            <div class="package-title">
-                📦 Koli ${packageCount}
-            </div>
-
-            <button
-                class="delete-btn"
-                onclick="deletePackage(${packageCount})">
-                Sil
-            </button>
-
-        </div>
-
-
-        <div class="form-grid">
-
-            <div class="form-group">
-
-                <label>En (cm)</label>
-
-                <input
-                    type="number"
-                    class="width"
-                    min="0"
-                    step="0.01"
-                    placeholder="Örn. 40">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Boy (cm)</label>
-
-                <input
-                    type="number"
-                    class="length"
-                    min="0"
-                    step="0.01"
-                    placeholder="Örn. 50">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Yükseklik (cm)</label>
-
-                <input
-                    type="number"
-                    class="height"
-                    min="0"
-                    step="0.01"
-                    placeholder="Örn. 30">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Gerçek Ağırlık (kg)</label>
-
-                <input
-                    type="number"
-                    class="weight"
-                    min="0"
-                    step="0.01"
-                    placeholder="Örn. 8">
-
             </div>
 
         </div>
 
-    `;
+    </main>
 
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Pratik Lojistik Hesaplama Araçları
+    </footer>
 
-    packages.appendChild(packageDiv);
-}
+    <!-- JS Mantığı -->
+    <script>
+        let currentMode = 'domestic'; // domestic, road, air, sea
+        const multipliers = {
+            domestic: 3000,
+            road: 5000,
+            air: 6000,
+            sea: 1000 // Deniz yolunda 1 CBM = 1000 kg W/M
+        };
 
+        // Sayfa Yüklendiğinde 1 Tane Boş Satır Ekle
+        window.onload = function() {
+            addRow();
+            lucide.createIcons();
+        };
 
-function deletePackage(id) {
+        // Taşıma Modunu Değiştir
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('border-indigo-600', 'bg-indigo-50', 'text-indigo-600');
+                btn.classList.add('border-slate-200', 'bg-white', 'text-slate-600');
+            });
 
-    const packageDiv = document.getElementById("package-" + id);
+            const activeBtn = document.getElementById(`mode-${mode}`);
+            activeBtn.classList.add('border-indigo-600', 'bg-indigo-50', 'text-indigo-600');
+            activeBtn.classList.remove('border-slate-200', 'bg-white', 'text-slate-600');
 
-    if (packageDiv) {
-
-        packageDiv.remove();
-
-    }
-
-}
-
-
-function calculateTotal() {
-
-    const packages = document.querySelectorAll(".package");
-
-
-    if (packages.length === 0) {
-
-        alert("Lütfen en az bir koli ekleyin.");
-
-        return;
-
-    }
-
-
-    let totalActualWeight = 0;
-
-    let totalVolumeWeight = 0;
-
-    let totalDesi = 0;
-
-    let valid = true;
-
-
-    packages.forEach(packageDiv => {
-
-        const width = parseFloat(
-            packageDiv.querySelector(".width").value
-        );
-
-        const length = parseFloat(
-            packageDiv.querySelector(".length").value
-        );
-
-        const height = parseFloat(
-            packageDiv.querySelector(".height").value
-        );
-
-        const weight = parseFloat(
-            packageDiv.querySelector(".weight").value
-        );
-
-
-        if (
-            isNaN(width) ||
-            isNaN(length) ||
-            isNaN(height) ||
-            isNaN(weight) ||
-            width <= 0 ||
-            length <= 0 ||
-            height <= 0 ||
-            weight < 0
-        ) {
-
-            valid = false;
-
-            return;
-
+            calculate();
         }
 
+        // Yeni Satır Ekle
+        function addRow() {
+            const container = document.getElementById('itemsContainer');
+            const rowId = Date.now();
 
-        const volumeWeight =
-            (width * length * height) / 3000;
+            const rowHTML = `
+                <div id="row-${rowId}" class="item-row grid grid-cols-12 gap-2 items-center bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <div class="col-span-3 sm:col-span-2">
+                        <label class="text-[10px] text-slate-400 block font-semibold">Adet</label>
+                        <input type="number" min="1" value="1" oninput="calculate()" class="qty w-full p-2 text-xs border border-slate-300 rounded-lg font-bold outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="col-span-3 sm:col-span-2">
+                        <label class="text-[10px] text-slate-400 block font-semibold">En (cm)</label>
+                        <input type="number" placeholder="40" oninput="calculate()" class="width w-full p-2 text-xs border border-slate-300 rounded-lg font-bold outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="col-span-3 sm:col-span-2">
+                        <label class="text-[10px] text-slate-400 block font-semibold">Boy (cm)</label>
+                        <input type="number" placeholder="60" oninput="calculate()" class="length w-full p-2 text-xs border border-slate-300 rounded-lg font-bold outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="col-span-3 sm:col-span-2">
+                        <label class="text-[10px] text-slate-400 block font-semibold">Yük. (cm)</label>
+                        <input type="number" placeholder="40" oninput="calculate()" class="height w-full p-2 text-xs border border-slate-300 rounded-lg font-bold outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="col-span-9 sm:col-span-3">
+                        <label class="text-[10px] text-slate-400 block font-semibold">Birim Ağ. (kg)</label>
+                        <input type="number" placeholder="Op." oninput="calculate()" class="weight w-full p-2 text-xs border border-slate-300 rounded-lg font-bold outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="col-span-3 sm:col-span-1 text-right pt-3">
+                        <button onclick="removeRow('row-${rowId}')" class="p-2 text-slate-400 hover:text-rose-600 transition">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', rowHTML);
+            lucide.createIcons();
+            calculate();
+        }
 
+        // Satır Sil
+        function removeRow(id) {
+            const rows = document.querySelectorAll('.item-row');
+            if(rows.length > 1) {
+                document.getElementById(id).remove();
+                calculate();
+            }
+        }
 
-        totalVolumeWeight += volumeWeight;
+        // Hesaplama Fonksiyonu
+        function calculate() {
+            let totalQty = 0;
+            let totalCbm = 0;
+            let totalDesi = 0;
+            let totalWeight = 0;
 
-        totalActualWeight += weight;
+            const rows = document.querySelectorAll('.item-row');
 
-        totalDesi += volumeWeight;
+            rows.forEach(row => {
+                const qty = parseFloat(row.querySelector('.qty').value) || 0;
+                const w = parseFloat(row.querySelector('.width').value) || 0;
+                const l = parseFloat(row.querySelector('.length').value) || 0;
+                const h = parseFloat(row.querySelector('.height').value) || 0;
+                const kg = parseFloat(row.querySelector('.weight').value) || 0;
 
-    });
+                if (qty > 0 && w > 0 && l > 0 && h > 0) {
+                    const rowCbm = (w * l * h) / 1000000 * qty;
+                    const rowDesi = (w * l * h) / multipliers[currentMode] * qty;
+                    
+                    totalQty += qty;
+                    totalCbm += rowCbm;
+                    totalDesi += rowDesi;
+                    totalWeight += (kg * qty);
+                }
+            });
 
+            // Ekran Metinlerini Güncelle
+            document.getElementById('res-total-qty').innerText = totalQty;
+            document.getElementById('res-total-cbm').innerText = totalCbm.toFixed(3);
+            document.getElementById('res-total-desi').innerText = totalDesi.toFixed(1);
+            document.getElementById('res-total-weight').innerText = totalWeight.toFixed(1);
 
-    if (!valid) {
+            // Faturalandırılabilir Matrah Kararı
+            const billableElem = document.getElementById('res-billable');
+            const descElem = document.getElementById('res-billable-desc');
 
-        alert("Lütfen tüm kolilerin ölçü ve ağırlık bilgilerini doğru şekilde doldurun.");
+            if (currentMode === 'sea') {
+                // Deniz Yolu W/M Esası
+                const seaWeightTon = totalWeight / 1000;
+                if (totalCbm >= seaWeightTon) {
+                    billableElem.innerText = `${totalCbm.toFixed(3)} CBM (W/M)`;
+                    descElem.innerText = `Hacim (${totalCbm.toFixed(3)} m³), ağırlıktan (${seaWeightTon.toFixed(2)} Ton) büyük olduğu için navlun CBM üzerinden kesilecektir.`;
+                } else {
+                    billableElem.innerText = `${seaWeightTon.toFixed(2)} Ton (W/M)`;
+                    descElem.innerText = `Ağırlık (${seaWeightTon.toFixed(2)} Ton), hacimden (${totalCbm.toFixed(3)} m³) büyük olduğu için navlun Tonaj üzerinden kesilecektir.`;
+                }
+            } else {
+                // Karayolu, Havayolu ve Kargo
+                if (totalDesi >= totalWeight) {
+                    billableElem.innerText = `${Math.ceil(totalDesi)} Desi`;
+                    descElem.innerText = `Desi (${totalDesi.toFixed(1)}), reel ağırlıktan (${totalWeight.toFixed(1)} kg) büyük olduğu için navlun Desi üzerinden hesaplanır.`;
+                } else {
+                    billableElem.innerText = `${totalWeight.toFixed(1)} Kg`;
+                    descElem.innerText = `Reel ağırlık (${totalWeight.toFixed(1)} kg), Desi değerinden (${totalDesi.toFixed(1)}) büyük olduğu için navlun Kg üzerinden hesaplanır.`;
+                }
+            }
+        }
 
-        return;
+        // Özeti Kopyala
+        function copySummary() {
+            const qty = document.getElementById('res-total-qty').innerText;
+            const cbm = document.getElementById('res-total-cbm').innerText;
+            const desi = document.getElementById('res-total-desi').innerText;
+            const weight = document.getElementById('res-total-weight').innerText;
+            const billable = document.getElementById('res-billable').innerText;
 
-    }
+            const text = `📦 *HesapPoint Cargo Özet Bilgisi*\n` +
+                         `------------------------------------\n` +
+                         `Taşıma Modu: ${currentMode.toUpperCase()}\n` +
+                         `Toplam Kap: ${qty} Adet\n` +
+                         `Toplam Hacim: ${cbm} m³ (CBM)\n` +
+                         `Toplam Desi: ${desi} Desi\n` +
+                         `Gerçek Ağırlık: ${weight} kg\n` +
+                         `*Faturalandırılabilir Matrah: ${billable}*\n` +
+                         `------------------------------------\n` +
+                         `https://hkntrn.github.io/hesappoint/desi.html`;
 
-
-    const chargeableWeight = Math.max(
-        totalActualWeight,
-        totalVolumeWeight
-    );
-
-
-    document.getElementById("totalPackages").textContent =
-        packages.length;
-
-
-    document.getElementById("totalActualWeight").textContent =
-        totalActualWeight.toFixed(2) + " kg";
-
-
-    document.getElementById("totalVolumeWeight").textContent =
-        totalVolumeWeight.toFixed(2) + " kg";
-
-
-    document.getElementById("totalDesi").textContent =
-        totalDesi.toFixed(2);
-
-
-    document.getElementById("chargeableWeight").textContent =
-        chargeableWeight.toFixed(2) + " kg";
-
-
-    if (totalVolumeWeight > totalActualWeight) {
-
-        document.getElementById("explanation").textContent =
-            "Hacimsel ağırlık gerçek ağırlıktan yüksek olduğu için hesaplamaya hacimsel ağırlık esas alınmıştır.";
-
-    }
-
-    else if (totalActualWeight > totalVolumeWeight) {
-
-        document.getElementById("explanation").textContent =
-            "Gerçek ağırlık hacimsel ağırlıktan yüksek olduğu için hesaplamaya gerçek ağırlık esas alınmıştır.";
-
-    }
-
-    else {
-
-        document.getElementById("explanation").textContent =
-            "Gerçek ağırlık ve hacimsel ağırlık eşit olduğu için aynı değer esas alınmıştır.";
-
-    }
-
-
-    document.getElementById("result").style.display = "block";
-
-}
-
-</script>
-
+            navigator.clipboard.writeText(text);
+            alert("Kargo hesaplama özeti panoya kopyalandı!");
+        }
+    </script>
 </body>
 </html>
