@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO Meta Etiketleri -->
 <title>Yüzde Hesaplama 2026 | Yüzde Artış, Azalış ve Oran Bulma | hesappoint</title>
 <meta name="description" content="Bir sayının yüzdesini bulma, iki sayı arasındaki yüzde oranını hesaplama, yüzde artış ve azalış miktarlarını anında hesaplayabileceğiniz pratik hesaplama aracı.">
 <meta name="keywords" content="yüzde hesaplama, yüzde artış hesaplama, yüzde azalış hesaplama, bir sayının yüzdesi, yüzde oranı bulma, yüzde kaç yapma">
@@ -18,6 +16,18 @@
 <meta property="og:url" content="https://hesappoint.com/yuzde.html">
 
 <style>
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+    --bg-body: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --success: #10b981;
+    --warning: #f59e0b;
+}
 
 * {
     box-sizing: border-box;
@@ -26,1260 +36,669 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f7fb;
-    color: #1f2937;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
 }
 
-
-/* HEADER */
-
 header {
-    background: white;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 20px 40px;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 32px;
 }
 
 .header-content {
-    max-width: 1150px;
+    max-width: 1200px;
     margin: auto;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #2563eb;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
 }
 
 .logo span {
-    color: #111827;
+    color: var(--text-main);
 }
 
 .back {
     text-decoration: none;
-    color: #2563eb;
+    color: var(--text-muted);
     font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
-
-/* MAIN */
+.back:hover {
+    color: var(--primary);
+}
 
 .container {
-    max-width: 1000px;
-    margin: 40px auto;
+    max-width: 1100px;
+    margin: 32px auto;
     padding: 0 20px;
 }
 
-.title {
+.page-header {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 32px;
 }
 
-.title .icon {
-    font-size: 50px;
-    margin-bottom: 10px;
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
 }
 
-.title h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+.page-header p {
+    color: var(--text-muted);
+    font-size: 15px;
 }
 
-.title p {
-    color: #6b7280;
+/* 2 SÜTUNLU DASHBOARD DÜZENİ */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    gap: 28px;
+    align-items: start;
 }
 
-
-/* CALCULATOR */
-
-.calculator {
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-
-    border: 1px solid #e5e7eb;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.05);
+.panel {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
 }
-
 
 /* TABS */
-
 .tabs {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 10px;
-
-    margin-bottom: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 12px;
 }
 
 .tab {
-    padding: 14px 10px;
-
-    border: 1px solid #d1d5db;
-
-    background: #f8fafc;
-
-    border-radius: 9px;
-
+    padding: 10px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
     cursor: pointer;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    color: #374151;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-align: center;
+    transition: all 0.2s;
 }
 
 .tab:hover {
-    border-color: #2563eb;
+    color: var(--text-main);
 }
 
 .tab.active {
-    background: #2563eb;
-    color: white;
-    border-color: #2563eb;
-}
-
-
-/* PANELS */
-
-.panel {
-    display: none;
-}
-
-.panel.active {
-    display: block;
+    background: var(--card-bg);
+    color: var(--primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .panel-title {
-    font-size: 21px;
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text-main);
 }
 
 .panel-description {
-    color: #6b7280;
-    font-size: 14px;
-    margin-bottom: 25px;
-}
-
-
-/* FORM */
-
-.form-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 18px;
-
-    margin-bottom: 22px;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 14px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 18px;
 }
 
 label {
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 7px;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-input {
-    padding: 14px;
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 8px;
-
-    font-size: 16px;
-
-    outline: none;
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-input:focus {
-    border-color: #2563eb;
+.input-icon {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 14px;
+    pointer-events: none;
 }
 
-
-/* BUTTON */
-
-.calculate-btn {
-
+input, select {
     width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    background: #fff;
+    outline: none;
+    transition: all 0.2s;
+}
 
-    padding: 15px;
+.with-icon {
+    padding-left: 36px;
+}
 
-    background: #2563eb;
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3.5px rgba(79, 70, 229, 0.12);
+}
 
+.btn-calculate {
+    width: 100%;
+    padding: 13px;
+    background: var(--primary);
     color: white;
-
     border: none;
-
-    border-radius: 9px;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
 }
 
-.calculate-btn:hover {
-    background: #1d4ed8;
+.btn-calculate:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
 }
 
-
-/* RESULT */
-
-.result {
-
-    display: none;
-
-    margin-top: 25px;
-
-    padding: 25px;
-
-    background: #eff6ff;
-
-    border-radius: 12px;
-
-    text-align: center;
+/* SAĞ TARAF: SONUÇ KARTLARI */
+.summary-card {
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 24px -4px rgba(79, 70, 229, 0.35);
 }
 
-.result-label {
-
-    color: #6b7280;
-
-    font-size: 13px;
-
-    margin-bottom: 8px;
+.summary-card::after {
+    content: "%";
+    position: absolute;
+    right: 5px;
+    bottom: -25px;
+    font-size: 140px;
+    font-weight: 900;
+    opacity: 0.12;
+    pointer-events: none;
 }
 
-.result-value {
-
-    color: #2563eb;
-
-    font-size: 34px;
-
-    font-weight: bold;
-
+.summary-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
     margin-bottom: 10px;
 }
 
-.result-detail {
-
-    color: #374151;
-
-    font-size: 14px;
-
-    line-height: 1.5;
+.summary-main {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 24px;
 }
 
+.summary-main .val {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1px;
+}
 
-/* INFO */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    padding-top: 20px;
+}
+
+.metric-box-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.metric-box-value {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.details-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.details-header {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-list {
+    list-style: none;
+}
+
+.details-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 14px;
+}
+
+.details-list li:last-child {
+    border-bottom: none;
+}
+
+.details-list .label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.details-list .val {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.badge {
+    background: #e0e7ff;
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
 
 .info-box {
-
-    margin-top: 30px;
-
+    margin-top: 20px;
     padding: 16px;
-
-    background: #f8fafc;
-
-    border-radius: 10px;
-
-    color: #6b7280;
-
-    font-size: 13px;
-
+    border-radius: 12px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: var(--text-muted);
+    font-size: 12px;
     line-height: 1.6;
 }
 
-
-/* FOOTER */
+.info-box strong {
+    color: var(--text-main);
+}
 
 footer {
-
-    margin-top: 70px;
-
-    padding: 30px;
-
+    margin-top: 60px;
+    padding: 24px;
     text-align: center;
-
-    color: #6b7280;
-
-    background: white;
-
-    border-top:
-        1px solid #e5e7eb;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    background: var(--card-bg);
 }
 
-
-/* MOBILE */
-
-@media (max-width: 750px) {
-
-    .tabs {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .form-grid {
+@media (max-width: 900px) {
+    .dashboard-grid {
         grid-template-columns: 1fr;
     }
-
 }
-
-
-@media (max-width: 500px) {
-
-    header {
-        padding: 18px 20px;
-    }
-
-    .calculator {
-        padding: 20px 15px;
-    }
-
-    .title h1 {
-        font-size: 29px;
-    }
-
-    .tabs {
-        grid-template-columns: 1fr;
-    }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
-
-<div class="header-content">
-
-<div class="logo">
-
-🧮 Hesap<span>Point</span>
-
-</div>
-
-
-<a
-href="index.html"
-class="back"
->
-
-← Ana Sayfaya Dön
-
-</a>
-
-</div>
-
+    <div class="header-content">
+        <a href="index.html" class="logo">🧮 Hesap<span>Point</span></a>
+        <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+    </div>
 </header>
-
-
 
 <div class="container">
 
+    <div class="page-header">
+        <h1>% Yüzde Hesaplama Simülatörü</h1>
+        <p>Artış, azalış ve yüzde oranlarını hızlı ve kolay şekilde hesaplayın.</p>
+    </div>
 
-<div class="title">
+    <div class="dashboard-grid">
+        
+        <!-- SOL PANEL: GİRDİ FORMU & TABS -->
+        <div class="panel">
+            
+            <div class="tabs">
+                <button class="tab active" id="tab1" onclick="switchPanel(1)">Değer Bul</button>
+                <button class="tab" id="tab2" onclick="switchPanel(2)">Yüzde Kaç?</button>
+                <button class="tab" id="tab3" onclick="switchPanel(3)">Yüzde Artış</button>
+                <button class="tab" id="tab4" onclick="switchPanel(4)">Yüzde Azalış</button>
+            </div>
 
-<div class="icon">
-%
-</div>
+            <!-- TAB 1: YÜZDE DEĞERİ -->
+            <div id="panel1" class="panel-content">
+                <div class="panel-title">Bir Sayının Yüzdesini Bul</div>
+                <div class="panel-description">Belirli bir sayının istediğiniz yüzdesini hesaplayın.</div>
+                
+                <div class="form-group">
+                    <label>Sayı</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">🔢</span>
+                        <input type="number" step="any" class="with-icon" id="number1" placeholder="Örn: 500" oninput="calculate()">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Yüzde Oranı (%)</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">%</span>
+                        <input type="number" step="any" class="with-icon" id="percent1" placeholder="Örn: 20" oninput="calculate()">
+                    </div>
+                </div>
+            </div>
 
-<h1>
-Yüzde Hesaplama
-</h1>
+            <!-- TAB 2: YÜZDE KAÇI -->
+            <div id="panel2" class="panel-content" style="display: none;">
+                <div class="panel-title">Bir Sayı Diğerinin Yüzde Kaçı?</div>
+                <div class="panel-description">Bir değerin başka bir değere oranını yüzde olarak hesaplayın.</div>
+                
+                <div class="form-group">
+                    <label>Birinci Sayı (Pay)</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">🔢</span>
+                        <input type="number" step="any" class="with-icon" id="number2a" placeholder="Örn: 100" oninput="calculate()">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>İkinci Sayı (Payda / Toplam)</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">📊</span>
+                        <input type="number" step="any" class="with-icon" id="number2b" placeholder="Örn: 500" oninput="calculate()">
+                    </div>
+                </div>
+            </div>
 
-<p>
-Artış, azalış ve yüzde oranlarını hızlı ve kolay şekilde hesaplayın.
-</p>
+            <!-- TAB 3: YÜZDE ARTIŞ -->
+            <div id="panel3" class="panel-content" style="display: none;">
+                <div class="panel-title">Yüzde Artış Hesaplama</div>
+                <div class="panel-description">Eski değer ile yeni değer arasındaki yüzde artışı hesaplayın.</div>
+                
+                <div class="form-group">
+                    <label>Eski Değer</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">📉</span>
+                        <input type="number" step="any" class="with-icon" id="oldValue3" placeholder="Örn: 500" oninput="calculate()">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Yeni Değer</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">📈</span>
+                        <input type="number" step="any" class="with-icon" id="newValue3" placeholder="Örn: 600" oninput="calculate()">
+                    </div>
+                </div>
+            </div>
 
-</div>
+            <!-- TAB 4: YÜZDE AZALIŞ -->
+            <div id="panel4" class="panel-content" style="display: none;">
+                <div class="panel-title">Yüzde Azalış Hesaplama</div>
+                <div class="panel-description">Eski değer ile yeni değer arasındaki yüzde azalışı hesaplayın.</div>
+                
+                <div class="form-group">
+                    <label>Eski Değer</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">📈</span>
+                        <input type="number" step="any" class="with-icon" id="oldValue4" placeholder="Örn: 500" oninput="calculate()">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Yeni Değer</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">📉</span>
+                        <input type="number" step="any" class="with-icon" id="newValue4" placeholder="Örn: 400" oninput="calculate()">
+                    </div>
+                </div>
+            </div>
 
+            <button type="button" class="btn-calculate" onclick="calculate()">Hesapla</button>
 
+        </div>
 
-<div class="calculator">
+        <!-- SAĞ PANEL: DASHBOARD & SONUÇ KARTLARI -->
+        <div class="results-column">
+            
+            <div class="summary-card">
+                <div class="summary-title" id="resSummaryTitle">HESAPLANAN SONUÇ</div>
+                
+                <div class="summary-main">
+                    <span class="val" id="resPrimaryValue">0</span>
+                </div>
 
+                <div class="metrics-grid">
+                    <div>
+                        <div class="metric-box-title" id="resMetricLabel1">İşlem Türü</div>
+                        <div class="metric-box-value" id="resMetricVal1">Değer Bulma</div>
+                    </div>
+                    <div>
+                        <div class="metric-box-title" id="resMetricLabel2">Fark / Değişim</div>
+                        <div class="metric-box-value" id="resMetricVal2">-</div>
+                    </div>
+                </div>
+            </div>
 
-<!-- TABS -->
+            <div class="details-card">
+                <div class="details-header">
+                    <span>📊 Hesaplama Detayları</span>
+                </div>
 
-<div class="tabs">
+                <ul class="details-list">
+                    <li>
+                        <span class="label">Aktif Mod:</span>
+                        <span class="badge" id="resModeBadge">Yüzde Değeri</span>
+                    </li>
+                    <li>
+                        <span class="label">İşlem Açıklaması:</span>
+                        <span class="val" id="resDetailText" style="text-align: right; max-width: 240px;">-</span>
+                    </li>
+                </ul>
 
+                <div class="info-box">
+                    <strong>📌 Örnek Yüzde Hesaplamaları:</strong><br>
+                    • 500 TL'nin %20'si = <strong>100 TL</strong><br>
+                    • 500 TL'den 600 TL'ye artış = <strong>%20</strong><br>
+                    • 500 TL'den 400 TL'ye azalış = <strong>%20</strong>
+                </div>
+            </div>
 
-<button
-class="tab active"
-onclick="showPanel(1)"
->
+        </div>
 
-Yüzde Değerini Bul
-
-</button>
-
-
-<button
-class="tab"
-onclick="showPanel(2)"
->
-
-Yüzde Kaç?
-
-</button>
-
-
-<button
-class="tab"
-onclick="showPanel(3)"
->
-
-Yüzde Artış
-
-</button>
-
-
-<button
-class="tab"
-onclick="showPanel(4)"
->
-
-Yüzde Azalış
-
-</button>
-
-
-</div>
-
-
-
-<!-- =====================================
-     PANEL 1
-===================================== -->
-
-<div
-class="panel active"
-id="panel1"
->
-
-<div class="panel-title">
-
-Bir Sayının Yüzdesini Bul
-
-</div>
-
-<div class="panel-description">
-
-Belirli bir sayının istediğiniz yüzdesini hesaplayın.
-
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Sayı
-</label>
-
-<input
-type="number"
-id="number1"
-placeholder="Örn. 500"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Yüzde (%)
-</label>
-
-<input
-type="number"
-id="percent1"
-placeholder="Örn. 20"
->
-
-</div>
-
-</div>
-
-
-<button
-class="calculate-btn"
-onclick="calculatePercent()"
->
-
-HESAPLA
-
-</button>
-
-
-<div
-class="result"
-id="result1"
->
-
-<div class="result-label">
-Sonuç
-</div>
-
-<div
-class="result-value"
-id="resultValue1"
->
--
-</div>
-
-<div
-class="result-detail"
-id="resultDetail1"
->
--
-</div>
+    </div>
 
 </div>
-
-</div>
-
-
-
-<!-- =====================================
-     PANEL 2
-===================================== -->
-
-<div
-class="panel"
-id="panel2"
->
-
-<div class="panel-title">
-
-Bir Sayı Diğerinin Yüzde Kaçı?
-
-</div>
-
-<div class="panel-description">
-
-Bir değerin başka bir değere oranını yüzde olarak hesaplayın.
-
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-İlk Sayı
-</label>
-
-<input
-type="number"
-id="number2a"
-placeholder="Örn. 100"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-İkinci Sayı
-</label>
-
-<input
-type="number"
-id="number2b"
-placeholder="Örn. 500"
->
-
-</div>
-
-</div>
-
-
-<button
-class="calculate-btn"
-onclick="calculateRatio()"
->
-
-HESAPLA
-
-</button>
-
-
-<div
-class="result"
-id="result2"
->
-
-<div class="result-label">
-Sonuç
-</div>
-
-<div
-class="result-value"
-id="resultValue2"
->
--
-</div>
-
-<div
-class="result-detail"
-id="resultDetail2"
->
--
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =====================================
-     PANEL 3
-===================================== -->
-
-<div
-class="panel"
-id="panel3"
->
-
-<div class="panel-title">
-
-Yüzde Artış Hesaplama
-
-</div>
-
-<div class="panel-description">
-
-Eski değer ile yeni değer arasındaki yüzde artışı hesaplayın.
-
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Eski Değer
-</label>
-
-<input
-type="number"
-id="oldValue"
-placeholder="Örn. 500"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Yeni Değer
-</label>
-
-<input
-type="number"
-id="newValue"
-placeholder="Örn. 600"
->
-
-</div>
-
-</div>
-
-
-<button
-class="calculate-btn"
-onclick="calculateIncrease()"
->
-
-HESAPLA
-
-</button>
-
-
-<div
-class="result"
-id="result3"
->
-
-<div class="result-label">
-Yüzde Artış
-</div>
-
-<div
-class="result-value"
-id="resultValue3"
->
--
-</div>
-
-<div
-class="result-detail"
-id="resultDetail3"
->
--
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =====================================
-     PANEL 4
-===================================== -->
-
-<div
-class="panel"
-id="panel4"
->
-
-<div class="panel-title">
-
-Yüzde Azalış Hesaplama
-
-</div>
-
-<div class="panel-description">
-
-Eski değer ile yeni değer arasındaki yüzde azalışı hesaplayın.
-
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Eski Değer
-</label>
-
-<input
-type="number"
-id="oldValueDecrease"
-placeholder="Örn. 500"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Yeni Değer
-</label>
-
-<input
-type="number"
-id="newValueDecrease"
-placeholder="Örn. 400"
->
-
-</div>
-
-</div>
-
-
-<button
-class="calculate-btn"
-onclick="calculateDecrease()"
->
-
-HESAPLA
-
-</button>
-
-
-<div
-class="result"
-id="result4"
->
-
-<div class="result-label">
-Yüzde Azalış
-</div>
-
-<div
-class="result-value"
-id="resultValue4"
->
--
-</div>
-
-<div
-class="result-detail"
-id="resultDetail4"
->
--
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="info-box">
-
-<strong>
-ℹ️ Hesaplama Örneği
-</strong>
-
-<p style="margin-top:8px;">
-
-500 TL'nin %20'si = <strong>100 TL</strong>
-
-</p>
-
-<p style="margin-top:6px;">
-
-500 TL'den 600 TL'ye artış = <strong>%20</strong>
-
-</p>
-
-<p style="margin-top:6px;">
-
-500 TL'den 400 TL'ye azalış = <strong>%20</strong>
-
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-
 
 <footer>
-
-© 2026 HesapPoint — Yüzde Hesaplama
-
+    © 2026 HesapPoint — Yüzde Hesaplama Simülatörü
 </footer>
 
-
-
 <script>
+    let activeTab = 1;
 
+    function switchPanel(tabNum) {
+        activeTab = tabNum;
 
-/* ==========================================
-   SEKME DEĞİŞTİR
-========================================== */
-
-function showPanel(number) {
-
-    const panels =
-        document.querySelectorAll(
-            ".panel"
-        );
-
-    const tabs =
-        document.querySelectorAll(
-            ".tab"
-        );
-
-
-    panels.forEach(
-        panel => {
-
-            panel.classList.remove(
-                "active"
-            );
-
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById(`tab${i}`).classList.remove('active');
+            document.getElementById(`panel${i}`).style.display = 'none';
         }
-    );
 
+        document.getElementById(`tab${tabNum}`).classList.add('active');
+        document.getElementById(`panel${tabNum}`).style.display = 'block';
 
-    tabs.forEach(
-        tab => {
+        calculate();
+    }
 
-            tab.classList.remove(
-                "active"
-            );
-
+    function calculate() {
+        if (activeTab === 1) {
+            calculatePercent();
+        } else if (activeTab === 2) {
+            calculateRatio();
+        } else if (activeTab === 3) {
+            calculateIncrease();
+        } else if (activeTab === 4) {
+            calculateDecrease();
         }
-    );
-
-
-    document.getElementById(
-        "panel" + number
-    ).classList.add(
-        "active"
-    );
-
-
-    tabs[number - 1].classList.add(
-        "active"
-    );
-
-}
-
-
-/* ==========================================
-   1 - YÜZDE DEĞERİ
-========================================== */
-
-function calculatePercent() {
-
-    const number =
-        parseFloat(
-            document.getElementById(
-                "number1"
-            ).value
-        );
-
-
-    const percent =
-        parseFloat(
-            document.getElementById(
-                "percent1"
-            ).value
-        );
-
-
-    if (
-        isNaN(number) ||
-        isNaN(percent)
-    ) {
-
-        alert(
-            "Lütfen tüm alanları doldurun."
-        );
-
-        return;
     }
 
-
-    const result =
-        number *
-        percent /
-        100;
-
-
-    document.getElementById(
-        "resultValue1"
-    ).textContent =
-        formatNumber(result);
-
-
-    document.getElementById(
-        "resultDetail1"
-    ).textContent =
-
-        formatNumber(number)
-        + " sayısının %"
-        + formatNumber(percent)
-        + "’si = "
-        + formatNumber(result);
-
-
-    document.getElementById(
-        "result1"
-    ).style.display =
-        "block";
-
-}
-
-
-/* ==========================================
-   2 - YÜZDE KAÇ
-========================================== */
-
-function calculateRatio() {
-
-    const first =
-        parseFloat(
-            document.getElementById(
-                "number2a"
-            ).value
-        );
-
-
-    const second =
-        parseFloat(
-            document.getElementById(
-                "number2b"
-            ).value
-        );
-
-
-    if (
-        isNaN(first) ||
-        isNaN(second)
-    ) {
-
-        alert(
-            "Lütfen tüm alanları doldurun."
-        );
-
-        return;
-    }
-
-
-    if (second === 0) {
-
-        alert(
-            "İkinci sayı 0 olamaz."
-        );
-
-        return;
-    }
-
-
-    const result =
-        first /
-        second *
-        100;
-
-
-    document.getElementById(
-        "resultValue2"
-    ).textContent =
-        "%" +
-        formatNumber(result);
-
-
-    document.getElementById(
-        "resultDetail2"
-    ).textContent =
-
-        formatNumber(first)
-        + " sayısı, "
-        + formatNumber(second)
-        + " sayısının %"
-        + formatNumber(result)
-        + "’sidir.";
-
-
-    document.getElementById(
-        "result2"
-    ).style.display =
-        "block";
-
-}
-
-
-/* ==========================================
-   3 - YÜZDE ARTIŞ
-========================================== */
-
-function calculateIncrease() {
-
-    const oldValue =
-        parseFloat(
-            document.getElementById(
-                "oldValue"
-            ).value
-        );
-
-
-    const newValue =
-        parseFloat(
-            document.getElementById(
-                "newValue"
-            ).value
-        );
-
-
-    if (
-        isNaN(oldValue) ||
-        isNaN(newValue)
-    ) {
-
-        alert(
-            "Lütfen tüm alanları doldurun."
-        );
-
-        return;
-    }
-
-
-    if (oldValue === 0) {
-
-        alert(
-            "Eski değer 0 olamaz."
-        );
-
-        return;
-    }
-
-
-    const difference =
-        newValue -
-        oldValue;
-
-
-    const percentage =
-        difference /
-        Math.abs(oldValue) *
-        100;
-
-
-    document.getElementById(
-        "resultValue3"
-    ).textContent =
-
-        "%" +
-        formatNumber(percentage);
-
-
-    document.getElementById(
-        "resultDetail3"
-    ).textContent =
-
-        formatNumber(oldValue)
-        + " → "
-        + formatNumber(newValue)
-        + " | Değişim: "
-        + formatNumber(difference);
-
-
-    document.getElementById(
-        "result3"
-    ).style.display =
-        "block";
-
-}
-
-
-/* ==========================================
-   4 - YÜZDE AZALIŞ
-========================================== */
-
-function calculateDecrease() {
-
-    const oldValue =
-        parseFloat(
-            document.getElementById(
-                "oldValueDecrease"
-            ).value
-        );
-
-
-    const newValue =
-        parseFloat(
-            document.getElementById(
-                "newValueDecrease"
-            ).value
-        );
-
-
-    if (
-        isNaN(oldValue) ||
-        isNaN(newValue)
-    ) {
-
-        alert(
-            "Lütfen tüm alanları doldurun."
-        );
-
-        return;
-    }
-
-
-    if (oldValue === 0) {
-
-        alert(
-            "Eski değer 0 olamaz."
-        );
-
-        return;
-    }
-
-
-    const difference =
-        oldValue -
-        newValue;
-
-
-    const percentage =
-        difference /
-        Math.abs(oldValue) *
-        100;
-
-
-    document.getElementById(
-        "resultValue4"
-    ).textContent =
-
-        "%" +
-        formatNumber(percentage);
-
-
-    document.getElementById(
-        "resultDetail4"
-    ).textContent =
-
-        formatNumber(oldValue)
-        + " → "
-        + formatNumber(newValue)
-        + " | Değişim: -"
-        + formatNumber(difference);
-
-
-    document.getElementById(
-        "result4"
-    ).style.display =
-        "block";
-
-}
-
-
-/* ==========================================
-   SAYI FORMATLAMA
-========================================== */
-
-function formatNumber(number) {
-
-    return number.toLocaleString(
-        "tr-TR",
-        {
-            maximumFractionDigits: 2
+    function calculatePercent() {
+        document.getElementById('resSummaryTitle').innerText = "HESAPLANAN YÜZDE DEĞERİ";
+        document.getElementById('resModeBadge').innerText = "Yüzde Değeri";
+        document.getElementById('resMetricLabel1').innerText = "Taban Sayı";
+        document.getElementById('resMetricLabel2').innerText = "Oran";
+
+        const num = parseFloat(document.getElementById('number1').value);
+        const pct = parseFloat(document.getElementById('percent1').value);
+
+        if (isNaN(num) || isNaN(pct)) {
+            resetResults();
+            return;
         }
-    );
 
-}
+        const res = (num * pct) / 100;
 
+        document.getElementById('resPrimaryValue').innerText = formatNum(res);
+        document.getElementById('resMetricVal1').innerText = formatNum(num);
+        document.getElementById('resMetricVal2').innerText = `%${formatNum(pct)}`;
+        document.getElementById('resDetailText').innerText = `${formatNum(num)} sayısının %${formatNum(pct)}'si = ${formatNum(res)}`;
+    }
+
+    function calculateRatio() {
+        document.getElementById('resSummaryTitle').innerText = "YÜZDE ORANI";
+        document.getElementById('resModeBadge').innerText = "Yüzde Kaçı";
+        document.getElementById('resMetricLabel1').innerText = "Birinci Sayı";
+        document.getElementById('resMetricLabel2').innerText = "İkinci Sayı";
+
+        const first = parseFloat(document.getElementById('number2a').value);
+        const second = parseFloat(document.getElementById('number2b').value);
+
+        if (isNaN(first) || isNaN(second) || second === 0) {
+            resetResults();
+            return;
+        }
+
+        const res = (first / second) * 100;
+
+        document.getElementById('resPrimaryValue').innerText = `%${formatNum(res)}`;
+        document.getElementById('resMetricVal1').innerText = formatNum(first);
+        document.getElementById('resMetricVal2').innerText = formatNum(second);
+        document.getElementById('resDetailText').innerText = `${formatNum(first)}, ${formatNum(second)} sayısının %${formatNum(res)}'sidir.`;
+    }
+
+    function calculateIncrease() {
+        document.getElementById('resSummaryTitle').innerText = "YÜZDE ARTIŞ ORANI";
+        document.getElementById('resModeBadge').innerText = "Yüzde Artış";
+        document.getElementById('resMetricLabel1').innerText = "Eski Değer";
+        document.getElementById('resMetricLabel2').innerText = "Miktar Artışı";
+
+        const oldV = parseFloat(document.getElementById('oldValue3').value);
+        const newV = parseFloat(document.getElementById('newValue3').value);
+
+        if (isNaN(oldV) || isNaN(newV) || oldV === 0) {
+            resetResults();
+            return;
+        }
+
+        const diff = newV - oldV;
+        const res = (diff / Math.abs(oldV)) * 100;
+
+        document.getElementById('resPrimaryValue').innerText = `%${formatNum(res)}`;
+        document.getElementById('resMetricVal1').innerText = formatNum(oldV);
+        document.getElementById('resMetricVal2').innerText = `+${formatNum(diff)}`;
+        document.getElementById('resDetailText').innerText = `${formatNum(oldV)} → ${formatNum(newV)} (+${formatNum(diff)})`;
+    }
+
+    function calculateDecrease() {
+        document.getElementById('resSummaryTitle').innerText = "YÜZDE AZALIŞ ORANI";
+        document.getElementById('resModeBadge').innerText = "Yüzde Azalış";
+        document.getElementById('resMetricLabel1').innerText = "Eski Değer";
+        document.getElementById('resMetricLabel2').innerText = "Miktar Azalışı";
+
+        const oldV = parseFloat(document.getElementById('oldValue4').value);
+        const newV = parseFloat(document.getElementById('newValue4').value);
+
+        if (isNaN(oldV) || isNaN(newV) || oldV === 0) {
+            resetResults();
+            return;
+        }
+
+        const diff = oldV - newV;
+        const res = (diff / Math.abs(oldV)) * 100;
+
+        document.getElementById('resPrimaryValue').innerText = `%${formatNum(res)}`;
+        document.getElementById('resMetricVal1').innerText = formatNum(oldV);
+        document.getElementById('resMetricVal2').innerText = `-${formatNum(diff)}`;
+        document.getElementById('resDetailText').innerText = `${formatNum(oldV)} → ${formatNum(newV)} (-${formatNum(diff)})`;
+    }
+
+    function resetResults() {
+        document.getElementById('resPrimaryValue').innerText = "0";
+        document.getElementById('resMetricVal1').innerText = "-";
+        document.getElementById('resMetricVal2').innerText = "-";
+        document.getElementById('resDetailText').innerText = "-";
+    }
+
+    function formatNum(num) {
+        return num.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        calculate();
+    });
 </script>
-
 
 </body>
 </html>
