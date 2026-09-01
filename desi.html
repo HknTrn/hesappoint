@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desi & CBM (m³) Hesaplama | Deniz, Hava ve Kara Nakliye | HesapPoint</title>
-    <meta name="description" content="Koli ve paletleriniz için Desi, CBM (m³), havayolu IATA, karayolu ve deniz yolu W/M (Weight or Measure) faturalandırılabilir kargo ağırlığı hesaplayıcı.">
+    <meta name="description" content="Koli ve paletleriniz için Desi, CBM (m³), havayolu IATA, karayolu ve deniz yolu W/M faturalandırılabilir kargo ağırlığı hesaplayıcı.">
     <meta name="keywords" content="desi hesaplama, cbm hesaplama, m3 hesaplama, kargo desi, deniz yolu wm hesaplama, iata desi, palet hacim hesaplama, faturalandırılabilir ağırlık">
-    
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media / Open Graph -->
+    <meta property="og:title" content="Desi & CBM (m³) Hesaplama | HesapPoint">
+    <meta property="og:description" content="Koli ve paletlerinizin Kargo Desi, CBM (m³) ve Deniz Yolu W/M değerlerini anında hesaplayın.">
+    <meta property="og:type" content="website">
+
     <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
 
     <!-- Header / Navbar -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
@@ -20,7 +30,7 @@
                 <i data-lucide="calculator" class="w-6 h-6"></i>
                 <span>Hesap<span class="text-slate-900">Point</span></span>
             </a>
-            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-indigo-600 transition">
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
                 <i data-lucide="arrow-left" class="w-4 h-4"></i>
                 <span>Ana Sayfaya Dön</span>
             </a>
@@ -28,114 +38,121 @@
     </header>
 
     <!-- Ana İçerik -->
-    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-6">
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 space-y-8">
 
-        <!-- Sayfa Başlığı (SEO Uyumlu) -->
-        <div class="space-y-1 text-center sm:text-left">
-            <h1 class="text-2xl font-black text-slate-900 flex items-center justify-center sm:justify-start gap-2">
-                <i data-lucide="box" class="w-7 h-7 text-indigo-600"></i>
-                Desi, CBM (m³) ve Navlun Hacim Hesaplayıcı
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="box" class="w-8 h-8 text-indigo-600"></i>
+                Desi & CBM (m³) Hesaplama
             </h1>
-            <p class="text-xs sm:text-sm text-slate-500">
+            <p class="text-sm text-slate-500 font-medium">
                 Koli ve paletlerinizin Kargo Desi, CBM (m³) ve Deniz Yolu W/M (Weight/Measure) değerlerini anında hesaplayın.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
             <!-- Sol Taraf: Giriş Formu ve Parça Listesi -->
-            <div class="lg:col-span-2 space-y-5">
+            <div class="lg:col-span-7 space-y-6">
                 
                 <!-- Taşıma Modu Seçimi -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Taşıma Modu & Katsayı</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold">
-                        <button type="button" onclick="setMode('domestic')" id="mode-domestic" class="mode-btn p-3 rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 flex flex-col items-center gap-1.5 transition">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">1. Taşıma Modu ve Katsayı Seçimi</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-semibold">
+                        <button type="button" onclick="setMode('domestic')" id="mode-domestic" class="mode-btn p-3.5 rounded-xl border-2 border-indigo-600 bg-indigo-50/50 text-indigo-600 flex flex-col items-center gap-1.5 transition">
                             <i data-lucide="truck" class="w-5 h-5"></i>
-                            <span>Yurtiçi Kargo</span>
+                            <span class="font-bold">Yurtiçi Kargo</span>
                             <span class="text-[10px] text-slate-400 font-normal">/ 3000</span>
                         </button>
-                        <button type="button" onclick="setMode('road')" id="mode-road" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
+                        <button type="button" onclick="setMode('road')" id="mode-road" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
                             <i data-lucide="container" class="w-5 h-5"></i>
-                            <span>Kara Nakliye</span>
+                            <span class="font-bold">Kara Nakliye</span>
                             <span class="text-[10px] text-slate-400 font-normal">/ 5000</span>
                         </button>
-                        <button type="button" onclick="setMode('air')" id="mode-air" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
+                        <button type="button" onclick="setMode('air')" id="mode-air" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
                             <i data-lucide="plane" class="w-5 h-5"></i>
-                            <span>Havayolu</span>
+                            <span class="font-bold">Havayolu</span>
                             <span class="text-[10px] text-slate-400 font-normal">/ 6000 (IATA)</span>
                         </button>
-                        <button type="button" onclick="setMode('sea')" id="mode-sea" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
+                        <button type="button" onclick="setMode('sea')" id="mode-sea" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1.5 transition">
                             <i data-lucide="ship" class="w-5 h-5"></i>
-                            <span>Deniz Yolu</span>
+                            <span class="font-bold">Deniz Yolu</span>
                             <span class="text-[10px] text-slate-400 font-normal">CBM / W-M</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Koli / Palet Satırları -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                     <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                        <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Kargo Ölçü Detayları (cm & kg)</span>
-                        <button onclick="addRow()" class="inline-flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 transition">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">2. Kargo Ölçü Detayları (cm & kg)</label>
+                        <button onclick="addRow()" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 hover:text-indigo-800 transition">
                             <i data-lucide="plus-circle" class="w-4 h-4"></i> Satır Ekle
                         </button>
                     </div>
 
                     <!-- Satır Container -->
                     <div id="itemsContainer" class="space-y-3">
-                        <!-- Javascript ile Satırlar Buraya Eklenecek -->
+                        <!-- JS Satırları -->
                     </div>
                 </div>
 
             </div>
 
             <!-- Sağ Taraf: Sonuç Özet Kartı -->
-            <div class="space-y-5">
-                <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-xl space-y-5 sticky top-20">
-                    <h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3 flex items-center justify-between">
-                        <span>Hesaplama Özeti</span>
-                        <i data-lucide="package-check" class="w-4 h-4 text-indigo-400"></i>
+            <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-700 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">📦</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>HESAPLAMA ÖZETİ</span>
+                        <i data-lucide="package-check" class="w-4 h-4 text-indigo-200"></i>
                     </h2>
 
-                    <div class="space-y-4">
+                    <div class="space-y-4 relative z-10">
                         <!-- Toplam Adet ve Hacim -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/50">
-                                <span class="text-[11px] text-slate-400 block font-medium">Toplam Kap</span>
-                                <span id="res-total-qty" class="text-xl font-black text-white">0</span> <span class="text-xs text-slate-400">Adet</span>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Toplam Kap</span>
+                                <span id="res-total-qty" class="text-2xl font-black text-white">0</span> <span class="text-xs text-indigo-200">Adet</span>
                             </div>
-                            <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/50">
-                                <span class="text-[11px] text-slate-400 block font-medium">Toplam Hacim</span>
-                                <span id="res-total-cbm" class="text-xl font-black text-indigo-400">0.000</span> <span class="text-xs text-slate-400">m³</span>
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Toplam Hacim</span>
+                                <span id="res-total-cbm" class="text-2xl font-black text-amber-300">0.000</span> <span class="text-xs text-indigo-200">m³</span>
                             </div>
                         </div>
 
                         <!-- Desi ve Reel Ağırlık -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/50">
-                                <span class="text-[11px] text-slate-400 block font-medium">Hesaplanan Desi</span>
-                                <span id="res-total-desi" class="text-xl font-black text-amber-400">0.0</span> <span class="text-xs text-slate-400">Desi</span>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Hesaplanan Desi</span>
+                                <span id="res-total-desi" class="text-2xl font-black text-white">0.0</span> <span class="text-xs text-indigo-200">Desi</span>
                             </div>
-                            <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/50">
-                                <span class="text-[11px] text-slate-400 block font-medium">Gerçek Ağırlık</span>
-                                <span id="res-total-weight" class="text-xl font-black text-emerald-400">0.0</span> <span class="text-xs text-slate-400">kg</span>
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Gerçek Ağırlık</span>
+                                <span id="res-total-weight" class="text-2xl font-black text-emerald-300">0.0</span> <span class="text-xs text-indigo-200">kg</span>
                             </div>
                         </div>
 
                         <!-- Faturalandırılabilir Karar Kartı -->
-                        <div class="p-4 rounded-xl bg-indigo-950/80 border border-indigo-800/50 space-y-1">
-                            <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-300">Faturalandırılacak Matrah</span>
-                            <div id="res-billable" class="text-lg font-black text-white">0 Desi / Kg</div>
-                            <p id="res-billable-desc" class="text-[11px] text-indigo-200/70 leading-tight">Yükleme detaylarını giriniz.</p>
+                        <div class="p-4 rounded-xl bg-slate-900/40 border border-white/10 space-y-1">
+                            <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-200">Faturalandırılacak Matrah</span>
+                            <div id="res-billable" class="text-xl font-black text-white">0 Desi / Kg</div>
+                            <p id="res-billable-desc" class="text-[11px] text-indigo-100/80 leading-tight">Yükleme detaylarını giriniz.</p>
                         </div>
                     </div>
 
-                    <!-- WhatsApp / E-Posta İletimi İçin Kopyalama Butonu -->
-                    <button onclick="copySummary()" class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-lg shadow-indigo-600/30">
+                    <!-- Kopyalama Butonu -->
+                    <button onclick="copySummary()" class="w-full py-3.5 px-4 bg-white hover:bg-slate-100 text-indigo-600 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-lg relative z-10">
                         <i data-lucide="copy" class="w-4 h-4"></i>
-                        <span>Özeti Kopyala (WhatsApp / Mail)</span>
+                        <span>Özeti Kopyala (WhatsApp / E-Posta)</span>
                     </button>
+                </div>
+
+                <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs text-slate-500 space-y-1.5">
+                    <p class="font-bold text-slate-700">📌 Bilgilendirme:</p>
+                    <p>Navlun hesabında hacimsel ağırlık (Desi/CBM) ile gerçek brüt ağırlık karşılaştırılır ve yüksek olan değer matrah alınır.</p>
                 </div>
             </div>
 
@@ -150,36 +167,33 @@
 
     <!-- JS Mantığı -->
     <script>
-        let currentMode = 'domestic'; // domestic, road, air, sea
+        let currentMode = 'domestic';
         const multipliers = {
             domestic: 3000,
             road: 5000,
             air: 6000,
-            sea: 1000 // Deniz yolunda 1 CBM = 1000 kg W/M
+            sea: 1000
         };
 
-        // Sayfa Yüklendiğinde 1 Tane Boş Satır Ekle
         window.onload = function() {
             addRow();
             lucide.createIcons();
         };
 
-        // Taşıma Modunu Değiştir
         function setMode(mode) {
             currentMode = mode;
             document.querySelectorAll('.mode-btn').forEach(btn => {
-                btn.classList.remove('border-indigo-600', 'bg-indigo-50', 'text-indigo-600');
-                btn.classList.add('border-slate-200', 'bg-white', 'text-slate-600');
+                btn.classList.remove('border-2', 'border-indigo-600', 'bg-indigo-50/50', 'text-indigo-600');
+                btn.classList.add('border', 'border-slate-200', 'bg-white', 'text-slate-600');
             });
 
             const activeBtn = document.getElementById(`mode-${mode}`);
-            activeBtn.classList.add('border-indigo-600', 'bg-indigo-50', 'text-indigo-600');
-            activeBtn.classList.remove('border-slate-200', 'bg-white', 'text-slate-600');
+            activeBtn.classList.add('border-2', 'border-indigo-600', 'bg-indigo-50/50', 'text-indigo-600');
+            activeBtn.classList.remove('border', 'border-slate-200', 'bg-white', 'text-slate-600');
 
             calculate();
         }
 
-        // Yeni Satır Ekle
         function addRow() {
             const container = document.getElementById('itemsContainer');
             const rowId = Date.now();
@@ -204,10 +218,10 @@
                     </div>
                     <div class="col-span-9 sm:col-span-3">
                         <label class="text-[10px] text-slate-400 block font-semibold">Birim Ağ. (kg)</label>
-                        <input type="number" placeholder="Op." oninput="calculate()" class="weight w-full p-2 text-xs border border-slate-300 rounded-lg font-bold outline-none focus:border-indigo-500">
+                        <input type="number" placeholder="Opsiyonel" oninput="calculate()" class="weight w-full p-2 text-xs border border-slate-300 rounded-lg font-bold outline-none focus:border-indigo-500">
                     </div>
                     <div class="col-span-3 sm:col-span-1 text-right pt-3">
-                        <button onclick="removeRow('row-${rowId}')" class="p-2 text-slate-400 hover:text-rose-600 transition">
+                        <button type="button" onclick="removeRow('row-${rowId}')" class="p-2 text-slate-400 hover:text-rose-600 transition">
                             <i data-lucide="trash-2" class="w-4 h-4"></i>
                         </button>
                     </div>
@@ -218,7 +232,6 @@
             calculate();
         }
 
-        // Satır Sil
         function removeRow(id) {
             const rows = document.querySelectorAll('.item-row');
             if(rows.length > 1) {
@@ -227,7 +240,6 @@
             }
         }
 
-        // Hesaplama Fonksiyonu
         function calculate() {
             let totalQty = 0;
             let totalCbm = 0;
@@ -254,31 +266,27 @@
                 }
             });
 
-            // Ekran Metinlerini Güncelle
             document.getElementById('res-total-qty').innerText = totalQty;
             document.getElementById('res-total-cbm').innerText = totalCbm.toFixed(3);
             document.getElementById('res-total-desi').innerText = totalDesi.toFixed(1);
             document.getElementById('res-total-weight').innerText = totalWeight.toFixed(1);
 
-            // Faturalandırılabilir Matrah Kararı
             const billableElem = document.getElementById('res-billable');
             const descElem = document.getElementById('res-billable-desc');
 
             if (currentMode === 'sea') {
-                // Deniz Yolu W/M Esası
                 const seaWeightTon = totalWeight / 1000;
                 if (totalCbm >= seaWeightTon) {
                     billableElem.innerText = `${totalCbm.toFixed(3)} CBM (W/M)`;
-                    descElem.innerText = `Hacim (${totalCbm.toFixed(3)} m³), ağırlıktan (${seaWeightTon.toFixed(2)} Ton) büyük olduğu için navlun CBM üzerinden kesilecektir.`;
+                    descElem.innerText = `Hacim (${totalCbm.toFixed(3)} m³), tonajdan (${seaWeightTon.toFixed(2)} Ton) büyük olduğu için navlun CBM üzerinden kesilir.`;
                 } else {
                     billableElem.innerText = `${seaWeightTon.toFixed(2)} Ton (W/M)`;
-                    descElem.innerText = `Ağırlık (${seaWeightTon.toFixed(2)} Ton), hacimden (${totalCbm.toFixed(3)} m³) büyük olduğu için navlun Tonaj üzerinden kesilecektir.`;
+                    descElem.innerText = `Ağırlık (${seaWeightTon.toFixed(2)} Ton), hacimden (${totalCbm.toFixed(3)} m³) büyük olduğu için navlun Tonaj üzerinden kesilir.`;
                 }
             } else {
-                // Karayolu, Havayolu ve Kargo
                 if (totalDesi >= totalWeight) {
                     billableElem.innerText = `${Math.ceil(totalDesi)} Desi`;
-                    descElem.innerText = `Desi (${totalDesi.toFixed(1)}), reel ağırlıktan (${totalWeight.toFixed(1)} kg) büyük olduğu için navlun Desi üzerinden hesaplanır.`;
+                    descElem.innerText = `Desi (${totalDesi.toFixed(1)}), ağırlıktan (${totalWeight.toFixed(1)} kg) büyük olduğu için navlun Desi üzerinden hesaplanır.`;
                 } else {
                     billableElem.innerText = `${totalWeight.toFixed(1)} Kg`;
                     descElem.innerText = `Reel ağırlık (${totalWeight.toFixed(1)} kg), Desi değerinden (${totalDesi.toFixed(1)}) büyük olduğu için navlun Kg üzerinden hesaplanır.`;
@@ -286,7 +294,6 @@
             }
         }
 
-        // Özeti Kopyala
         function copySummary() {
             const qty = document.getElementById('res-total-qty').innerText;
             const cbm = document.getElementById('res-total-cbm').innerText;
@@ -303,7 +310,7 @@
                          `Gerçek Ağırlık: ${weight} kg\n` +
                          `*Faturalandırılabilir Matrah: ${billable}*\n` +
                          `------------------------------------\n` +
-                         `https://hkntrn.github.io/hesappoint/desi.html`;
+                         `https://hesappoint.com/desi.html`;
 
             navigator.clipboard.writeText(text);
             alert("Kargo hesaplama özeti panoya kopyalandı!");
