@@ -5,28 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Etiketleri -->
-    <title>Navlun Eskalasyon Hesaplama 2026 - Lojistik Fiyat Güncelleme</title>
+    <title>Navlun Eskalasyon & Fiyat Güncelleme Simülatörü 2026</title>
     <meta name="description" content="Yurt içi karayolu taşımacılığında motorin fiyatı ve kümülatif TÜFE / Yİ-ÜFE enflasyon değişimlerine göre yeni navlun fiyatını ve zam oranını anında hesaplayın.">
     <meta name="keywords" content="navlun eskalasyon hesaplama, lojistik zam hesabı, yakıt eskalasyonu, baf hesaplama, tüfe üfe navlun zammı, taşıma fiyat güncelleme">
     <meta name="author" content="Hesappoint">
     <link rel="canonical" href="https://hesappoint.com/eskalasyon.html" />
 
     <!-- Open Graph (Sosyal Medya) -->
-    <meta property="og:title" content="Navlun Eskalasyon Hesaplama - Hesappoint" />
+    <meta property="og:title" content="Navlun Eskalasyon Simülatörü - Hesappoint" />
     <meta property="og:description" content="Yakıt değişimi ve TÜİK kümülatif enflasyon verileri ile sözleşmeli navlun fiyat güncelleme aracı." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hesappoint.com/eskalasyon.html" />
 
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
             --bg: #f8fafc;
             --card-bg: #ffffff;
             --text: #0f172a;
             --text-muted: #64748b;
             --border: #e2e8f0;
-            --accent: #f59e0b;
+            --fuel-color: #3b82f6;
+            --inf-color: #f59e0b;
         }
 
         * {
@@ -40,49 +41,71 @@
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.5;
-            padding: 20px;
+            padding: 24px 16px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        .container {
+        .simulator-wrapper {
             width: 100%;
-            max-width: 650px;
+            max-width: 1050px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* 2 Kolonlu Grid Yapısı */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .card {
             background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
             padding: 24px;
             border: 1px solid var(--border);
         }
 
-        .header {
-            margin-bottom: 24px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 1.5rem;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
-
-        .header p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .section-title {
-            font-size: 0.95rem;
+        .card-title {
+            font-size: 1.05rem;
             font-weight: 700;
-            color: var(--primary);
-            margin: 18px 0 10px 0;
-            padding-bottom: 4px;
-            border-bottom: 2px solid #eff6ff;
+            color: var(--text);
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+        }
+
+        .section-divider {
+            font-size: 0.825rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 18px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--border);
         }
 
         .form-group {
@@ -96,42 +119,170 @@
         }
 
         label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.825rem;
+            font-weight: 600;
             margin-bottom: 6px;
-            color: var(--text);
+            color: #334155;
+        }
+
+        .input-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            font-weight: 600;
+            pointer-events: none;
         }
 
         input, select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 10px 12px 10px 32px;
             border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.95rem;
+            border-radius: 10px;
+            font-size: 0.925rem;
             outline: none;
             background-color: #fff;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        select {
+            padding-left: 12px;
         }
 
         input:focus, select:focus {
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        /* Tooltip */
+        .tooltip-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .tooltip-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 14px;
+            height: 14px;
+            background-color: #e2e8f0;
+            color: #475569;
+            border-radius: 50%;
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #0f172a;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 8px 10px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-size: 0.725rem;
+            font-weight: normal;
+            line-height: 1.3;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            pointer-events: none;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #0f172a transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-top: 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 10px 14px;
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background: #f8fafc;
+        }
+
+        .accordion-header:hover {
+            color: var(--primary);
+        }
+
+        .accordion-icon {
+            font-size: 0.75rem;
+            transition: transform 0.2s;
+        }
+
+        .accordion.open .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 14px;
+            background: #fff;
+            border-top: 1px solid var(--border);
+        }
+
+        .accordion.open .accordion-content {
+            display: block;
         }
 
         .presets {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             margin-bottom: 12px;
         }
 
         .preset-btn {
             flex: 1;
-            padding: 8px;
-            font-size: 0.75rem;
+            padding: 6px 4px;
+            font-size: 0.725rem;
             font-weight: 600;
             border: 1px solid var(--border);
             border-radius: 6px;
-            background: #f1f5f9;
+            background: #f8fafc;
             color: var(--text);
             cursor: pointer;
             transition: all 0.2s;
@@ -153,8 +304,8 @@
 
         .mode-btn {
             flex: 1;
-            padding: 8px;
-            font-size: 0.8rem;
+            padding: 7px;
+            font-size: 0.775rem;
             font-weight: 600;
             border: none;
             border-radius: 6px;
@@ -176,62 +327,113 @@
             border: none;
             padding: 12px;
             font-size: 1rem;
-            font-weight: 600;
-            border-radius: 8px;
+            font-weight: 700;
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.2s;
-            margin-top: 12px;
+            margin-top: 16px;
         }
 
         .calc-btn:hover {
             background-color: var(--primary-hover);
         }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 14px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            text-align: center;
-            width: 100%;
+        /* SAĞ KOLON: SONUÇ KARTLARI */
+        .result-primary-card {
+            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+            border-radius: 16px;
+            padding: 24px;
+            color: white;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
         }
 
-        .back-link:hover {
-            color: var(--primary);
+        .result-primary-card::after {
+            content: '🚚';
+            position: absolute;
+            right: -10px;
+            bottom: -15px;
+            font-size: 7rem;
+            opacity: 0.12;
+            pointer-events: none;
         }
 
-        .results {
-            margin-top: 20px;
-            padding-top: 18px;
-            border-top: 1px solid var(--border);
-            display: none;
-        }
-
-        .results.active {
-            display: block;
-        }
-
-        .result-main {
-            background-color: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 14px;
-            text-align: center;
-        }
-
-        .result-main .number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .result-main .sub-number {
-            font-size: 1rem;
+        .result-label {
+            font-size: 0.775rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.85;
             font-weight: 600;
-            color: #1e40af;
-            margin-top: 4px;
+        }
+
+        .result-main-price {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin: 6px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .result-sub-stats {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item {
+            flex: 1;
+        }
+
+        .stat-item .val {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .stat-item .lbl {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        /* ZAM DAĞILIM ÇUBUĞU (BREAKDOWN BAR) */
+        .breakdown-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .breakdown-header {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-bar-container {
+            height: 10px;
+            width: 100%;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .progress-fill-fuel {
+            background-color: var(--fuel-color);
+            height: 100%;
+            transition: width 0.4s ease;
+        }
+
+        .progress-fill-inf {
+            background-color: var(--inf-color);
+            height: 100%;
+            transition: width 0.4s ease;
         }
 
         .details-list {
@@ -241,161 +443,259 @@
         .details-list li {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
+            align-items: center;
+            padding: 9px 0;
             border-bottom: 1px dashed var(--border);
-            font-size: 0.875rem;
+            font-size: 0.825rem;
         }
 
         .details-list li:last-child {
             border-bottom: none;
         }
 
-        .details-list .val {
-            font-weight: 600;
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
         }
 
         .info-box {
-            margin-top: 16px;
-            font-size: 0.75rem;
+            margin-top: 14px;
+            font-size: 0.725rem;
             color: var(--text-muted);
-            background: #f1f5f9;
+            background: #f8fafc;
             padding: 10px 12px;
-            border-radius: 6px;
-            line-height: 1.4;
+            border-radius: 8px;
+            line-height: 1.45;
+            border: 1px solid var(--border);
         }
 
-        @media (max-width: 480px) {
-            .container { padding: 16px; }
-            .grid-2 { grid-template-columns: 1fr; }
+        .back-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-align: center;
+            width: 100%;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 850px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="simulator-wrapper">
     <div class="header">
-        <h1>Navlun Eskalasyon Hesaplama</h1>
-        <p>Yakıt değişimi ve TÜİK kümülatif enflasyon verileriyle navlun fiyatınızı güncelleyin.</p>
+        <h1>Navlun Eskalasyon & Fiyat Güncelleme Simülatörü</h1>
+        <p>Yakıt değişimi ve TÜİK kümülatif enflasyon verileriyle yeni navlun fiyatınızı ve zam oranınızı anında simüle edin.</p>
     </div>
 
     <form id="eskalasyonForm" onsubmit="calculateEskalasyon(event)">
-        
-        <!-- 1. NAVLUN BİLGİSİ -->
-        <div class="section-title">📦 1. Baz Navlun Tutar</div>
-        <div class="form-group">
-            <label for="baseNavlun">Mevcut / Baz Navlun Fiyatı (TL)</label>
-            <input type="number" id="baseNavlun" step="0.01" min="0" placeholder="Örn: 20000" required>
-        </div>
+        <div class="dashboard-grid">
+            
+            <!-- SOL KOLON: PARAMETRELER -->
+            <div class="card">
+                <div class="card-title">⚙️ Sevkiyat & Eskalasyon Parametreleri</div>
 
-        <!-- 2. YAKIT BİLGİLERİ -->
-        <div class="section-title">⛽ 2. Yakıt (Motorin) Değişimi</div>
-        <div class="grid-2">
-            <div class="form-group">
-                <label for="baseFuel">Sözleşme Başı Motorin (TL)</label>
-                <input type="number" id="baseFuel" step="0.01" min="0" placeholder="Örn: 42.50" required>
-            </div>
-            <div class="form-group">
-                <label for="currentFuel">Güncel Motorin (TL)</label>
-                <input type="number" id="currentFuel" step="0.01" min="0" placeholder="Örn: 46.20" required>
-            </div>
-        </div>
-
-        <!-- 3. MALİYET AĞIRLIKLARI (PAYLAR) -->
-        <div class="section-title">⚖️ 3. Maliyet Ağırlıkları (% Toplam = 100)</div>
-        <div class="presets">
-            <button type="button" class="preset-btn active" onclick="setPreset(40, 60, this)">🚚 TIR / FTH (%40 - %60)</button>
-            <button type="button" class="preset-btn" onclick="setPreset(30, 70, this)">🚛 Dağıtım (%30 - %70)</button>
-            <button type="button" class="preset-btn" onclick="setPreset(50, 50, this)">⚙️ Yarı Yarıya (%50 - %50)</button>
-        </div>
-        <div class="grid-2">
-            <div class="form-group">
-                <label for="fuelWeight">Yakıt Payı (%)</label>
-                <input type="number" id="fuelWeight" min="0" max="100" value="40" oninput="updateWeights('fuel')" required>
-            </div>
-            <div class="form-group">
-                <label for="infWeight">Enflasyon Payı (%)</label>
-                <input type="number" id="infWeight" min="0" max="100" value="60" oninput="updateWeights('inf')" required>
-            </div>
-        </div>
-
-        <!-- 4. ENFLASYON HESABI -->
-        <div class="section-title">📈 4. Enflasyon (TÜFE & Yİ-ÜFE) Oranı</div>
-        
-        <div class="mode-switch">
-            <button type="button" class="mode-btn active" id="btnModeDate" onclick="setInfMode('date')">📅 Tarih Seç (Kümülatif TÜİK)</button>
-            <button type="button" class="mode-btn" id="btnModeManual" onclick="setInfMode('manual')">✏️ Manuel Oran Gir</button>
-        </div>
-
-        <!-- Tarih Seçim Alanı -->
-        <div id="dateInfArea">
-            <div class="grid-2">
+                <!-- Baz Navlun -->
                 <div class="form-group">
-                    <label for="startPeriod">Başlangıç Ayı</label>
-                    <select id="startPeriod" onchange="calcAutoInflation()"></select>
+                    <label for="baseNavlun">
+                        Mevcut / Baz Navlun Fiyatı (TL)
+                        <span class="tooltip-container">
+                            <span class="tooltip-icon">?</span>
+                            <span class="tooltip-text">Sözleşmenizde geçerli olan mevcut taşıma birim fiyatı veya fatura tutarı.</span>
+                        </span>
+                    </label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">₺</span>
+                        <input type="number" id="baseNavlun" step="0.01" min="0" placeholder="Örn: 20000" value="20000" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="endPeriod">Bitiş / Güncel Ay</label>
-                    <select id="endPeriod" onchange="calcAutoInflation()"></select>
-                </div>
-            </div>
-        </div>
 
-        <!-- Manuel Oran Giriş Alanı -->
-        <div id="manualInfArea" style="display: none;">
-            <div class="grid-2">
-                <div class="form-group">
-                    <label for="cpiInput">TÜFE Değişimi (%)</label>
-                    <input type="number" id="cpiInput" step="0.01" placeholder="Örn: 4.50">
+                <!-- Yakıt Bilgileri -->
+                <div class="section-divider">Motorin (Yakıt) Değişimi</div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="baseFuel">
+                            Sözleşme Başı Motorin
+                            <span class="tooltip-container">
+                                <span class="tooltip-icon">?</span>
+                                <span class="tooltip-text">Sözleşmenin imzalandığı tarihteki litrelik motorin fiyatı.</span>
+                            </span>
+                        </label>
+                        <div class="input-icon-wrapper">
+                            <span class="input-icon">₺</span>
+                            <input type="number" id="baseFuel" step="0.01" min="0" placeholder="42.50" value="42.50" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentFuel">
+                            Güncel Motorin
+                            <span class="tooltip-container">
+                                <span class="tooltip-icon">?</span>
+                                <span class="tooltip-text">Bugünkü pompadaki ortalama motorin litre fiyatı.</span>
+                            </span>
+                        </label>
+                        <div class="input-icon-wrapper">
+                            <span class="input-icon">₺</span>
+                            <input type="number" id="currentFuel" step="0.01" min="0" placeholder="46.20" value="46.20" required>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="ppiInput">Yİ-ÜFE Değişimi (%)</label>
-                    <input type="number" id="ppiInput" step="0.01" placeholder="Örn: 5.20">
-                </div>
-            </div>
-        </div>
 
-        <button type="submit" class="calc-btn">HESAPLA</button>
-        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+                <!-- Enflasyon Bilgileri -->
+                <div class="section-divider">Enflasyon Değişimi</div>
+                
+                <div class="mode-switch">
+                    <button type="button" class="mode-btn active" id="btnModeDate" onclick="setInfMode('date')">📅 Dönem Seç (Kümülatif TÜİK)</button>
+                    <button type="button" class="mode-btn" id="btnModeManual" onclick="setInfMode('manual')">✏️ Manuel Oran</button>
+                </div>
+
+                <!-- Tarih Seçim Alanı -->
+                <div id="dateInfArea">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="startPeriod">Başlangıç Ayı</label>
+                            <select id="startPeriod" onchange="calculateEskalasyonSilent()"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="endPeriod">Bitiş / Güncel Ay</label>
+                            <select id="endPeriod" onchange="calculateEskalasyonSilent()"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manuel Oran Giriş Alanı -->
+                <div id="manualInfArea" style="display: none;">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="cpiInput">TÜFE Değişimi (%)</label>
+                            <div class="input-icon-wrapper">
+                                <span class="input-icon">%</span>
+                                <input type="number" id="cpiInput" step="0.01" placeholder="4.50">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ppiInput">Yİ-ÜFE Değişimi (%)</label>
+                            <div class="input-icon-wrapper">
+                                <span class="input-icon">%</span>
+                                <input type="number" id="ppiInput" step="0.01" placeholder="5.20">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gelişmiş Ayarlar (Accordion) -->
+                <div class="accordion" id="advancedAccordion">
+                    <div class="accordion-header" onclick="toggleAccordion()">
+                        <span>🎛️ Gelişmiş Ayarlar (Maliyet Kırılımları)</span>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="presets">
+                            <button type="button" class="preset-btn active" onclick="setPreset(40, 60, this)">TIR / FTH (%40 - %60)</button>
+                            <button type="button" class="preset-btn" onclick="setPreset(30, 70, this)">Dağıtım (%30 - %70)</button>
+                            <button type="button" class="preset-btn" onclick="setPreset(50, 50, this)">Eşit (%50 - %50)</button>
+                        </div>
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label for="fuelWeight">Yakıt Payı (%)</label>
+                                <div class="input-icon-wrapper">
+                                    <span class="input-icon">%</span>
+                                    <input type="number" id="fuelWeight" min="0" max="100" value="40" oninput="updateWeights('fuel')" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="infWeight">Enflasyon Payı (%)</label>
+                                <div class="input-icon-wrapper">
+                                    <span class="input-icon">%</span>
+                                    <input type="number" id="infWeight" min="0" max="100" value="60" oninput="updateWeights('inf')" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="calc-btn">Fiyat Güncellemesini Hesapla</button>
+            </div>
+
+            <!-- SAĞ KOLON: ÖZET VE DAĞILIM PANELLERİ -->
+            <div class="right-panel">
+                
+                <!-- Mavi Ana Özet Kartı -->
+                <div class="result-primary-card">
+                    <div class="result-label">Tahmini Güncel Navlun Fiyatı</div>
+                    <div class="result-main-price" id="resNewNavlun">₺0,00</div>
+                    
+                    <div class="result-sub-stats">
+                        <div class="stat-item">
+                            <div class="lbl">Uygulanacak Zam Oranı</div>
+                            <div class="val" id="resTotalRate">+%0,00</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="lbl">Fark (Net Zam Tutarı)</div>
+                            <div class="val" id="resDiffTL">₺0,00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detay ve Dağılım Kartı -->
+                <div class="breakdown-card">
+                    <div class="breakdown-header">
+                        <span>Zam Kalemleri Dağılımı</span>
+                    </div>
+
+                    <!-- Renkli Çubuk -->
+                    <div class="progress-bar-container">
+                        <div class="progress-fill-fuel" id="barFuel" style="width: 50%;"></div>
+                        <div class="progress-fill-inf" id="barInf" style="width: 50%;"></div>
+                    </div>
+
+                    <ul class="details-list">
+                        <li>
+                            <span><span class="indicator-dot" style="background-color: var(--fuel-color);"></span>Yakıt Kaynaklı Zam Etkisi:</span>
+                            <span class="val" style="color: var(--fuel-color);" id="resFuelEffect">+%0,00</span>
+                        </li>
+                        <li>
+                            <span><span class="indicator-dot" style="background-color: var(--inf-color);"></span>Enflasyon Kaynaklı Zam Etkisi:</span>
+                            <span class="val" style="color: var(--inf-color);" id="resInfEffect">+%0,00</span>
+                        </li>
+                        <li>
+                            <span>Pompa Yakıt Değişim Oranı:</span>
+                            <span class="val" id="resFuelRate">%0,00</span>
+                        </li>
+                        <li>
+                            <span>Hesaplanan Ort. Enflasyon:</span>
+                            <span class="val" id="resAvgInf">%0,00</span>
+                        </li>
+                    </ul>
+
+                    <div class="info-box">
+                        * <strong>Formül:</strong> Zam Oranı = (Yakıt Değişimi × Yakıt Payı) + (((Kümülatif TÜFE + Yİ-ÜFE) / 2) × Enflasyon Payı).
+                    </div>
+                </div>
+
+                <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+            </div>
+
+        </div>
     </form>
-
-    <!-- SONUÇ EKRANI -->
-    <div id="results" class="results">
-        <div class="result-main">
-            <div class="number" id="resNewNavlun">0,00 TL</div>
-            <div class="sub-number" id="resTotalRate">+%0,00 Zam Oranı</div>
-        </div>
-
-        <ul class="details-list">
-            <li>
-                <span>Net Zam Farkı:</span>
-                <span class="val" id="resDiffTL">0,00 TL</span>
-            </li>
-            <li>
-                <span>Yakıt Kaynaklı Zam Etkisi:</span>
-                <span class="val" id="resFuelEffect">+%0,00</span>
-            </li>
-            <li>
-                <span>Enflasyon Kaynaklı Zam Etkisi:</span>
-                <span class="val" id="resInfEffect">+%0,00</span>
-            </li>
-            <li>
-                <span>Yakıt Değişim Oranı:</span>
-                <span class="val" id="resFuelRate">%0,00</span>
-            </li>
-            <li>
-                <span>Hesaplanan Ort. Enflasyon ((TÜFE+ÜFE)/2):</span>
-                <span class="val" id="resAvgInf">%0,00</span>
-            </li>
-        </ul>
-
-        <div class="info-box">
-            * <strong>Formül:</strong> Toplam Zam Oranı = (Yakıt Değişimi × Yakıt Payı) + (((Kümülatif TÜFE + Kümülatif Yİ-ÜFE) / 2) × Enflasyon Payı). Tarih modunda TÜİK verileri bileşik (kümülatif) olarak hesaplanır.
-        </div>
-    </div>
 </div>
 
 <script>
-    // TÜİK Aylık Enflasyon Değişim Oranları (%) (Bileşik Çarpan İçin)
+    // TÜİK Aylık Enflasyon Değişim Oranları (%)
     const monthlyData = {
         "2024-01": { cpi: 6.70, ppi: 4.14 },
         "2024-02": { cpi: 4.53, ppi: 3.74 },
@@ -449,18 +749,23 @@
             endSel.add(opt2);
         });
 
-        // Varsayılan Seçimler: Başlangıç: 2026-01, Bitiş: Son Ay (2026-08)
         startSel.value = "2026-01";
         endSel.value = periodKeys[periodKeys.length - 1];
     }
 
     initPeriods();
 
+    function toggleAccordion() {
+        const accordion = document.getElementById('advancedAccordion');
+        accordion.classList.toggle('open');
+    }
+
     function setPreset(f, i, btn) {
         document.getElementById('fuelWeight').value = f;
         document.getElementById('infWeight').value = i;
         document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        calculateEskalasyonSilent();
     }
 
     function updateWeights(changed) {
@@ -480,6 +785,7 @@
         }
 
         document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        calculateEskalasyonSilent();
     }
 
     function setInfMode(mode) {
@@ -500,9 +806,9 @@
             areaM.style.display = 'block';
             areaD.style.display = 'none';
         }
+        calculateEskalasyonSilent();
     }
 
-    // Kümülatif Enflasyon Hesabı ((1+r1)*(1+r2)... - 1) * 100
     function getCumulativeInflation() {
         if (infMode === 'manual') {
             const cpi = parseFloat(document.getElementById('cpiInput').value) || 0;
@@ -523,7 +829,6 @@
         let cpiMul = 1.0;
         let ppiMul = 1.0;
 
-        // Başlangıç ayından sonraki aydan başlayıp bitiş ayına kadar kümülatif çarpım
         for (let i = sIdx + 1; i <= eIdx; i++) {
             const data = monthlyData[periodKeys[i]];
             cpiMul *= (1 + data.cpi / 100);
@@ -537,8 +842,11 @@
     }
 
     function calculateEskalasyon(e) {
-        e.preventDefault();
+        if (e) e.preventDefault();
+        calculateEskalasyonSilent();
+    }
 
+    function calculateEskalasyonSilent() {
         const baseNavlun = parseFloat(document.getElementById('baseNavlun').value) || 0;
         const baseFuel = parseFloat(document.getElementById('baseFuel').value) || 0;
         const currentFuel = parseFloat(document.getElementById('currentFuel').value) || 0;
@@ -546,45 +854,49 @@
         const fuelW = (parseFloat(document.getElementById('fuelWeight').value) || 0) / 100;
         const infW = (parseFloat(document.getElementById('infWeight').value) || 0) / 100;
 
-        if (baseFuel <= 0) {
-            alert("Lütfen geçerli bir başlangıç motorin fiyatı giriniz.");
-            return;
-        }
+        if (baseFuel <= 0) return;
 
         const infRes = getCumulativeInflation();
-        if (infRes.error) {
-            alert(infRes.error);
-            return;
-        }
+        if (infRes.error) return;
 
-        // Yakıt Değişim Oranı (%)
         const fuelRate = ((currentFuel - baseFuel) / baseFuel) * 100;
-
-        // Zam Etkileri
         const fuelEffect = fuelRate * fuelW;
         const infEffect = infRes.avg * infW;
-
-        // Toplam Navlun Zam Oranı (%)
         const totalRate = fuelEffect + infEffect;
 
-        // Yeni Navlun ve Fark
         const diffTL = baseNavlun * (totalRate / 100);
         const newNavlun = baseNavlun + diffTL;
 
-        // Formatlama Fonksiyonu
         const fmt = (num) => num.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
         // Sonuçları Yazdır
-        document.getElementById('resNewNavlun').innerText = `${fmt(newNavlun)} TL`;
-        document.getElementById('resTotalRate').innerText = `${totalRate >= 0 ? '+' : ''}%${fmt(totalRate)} Zam Oranı`;
-        document.getElementById('resDiffTL').innerText = `${diffTL >= 0 ? '+' : ''}${fmt(diffTL)} TL`;
+        document.getElementById('resNewNavlun').innerText = `₺${fmt(newNavlun)}`;
+        document.getElementById('resTotalRate').innerText = `${totalRate >= 0 ? '+' : ''}%${fmt(totalRate)}`;
+        document.getElementById('resDiffTL').innerText = `${diffTL >= 0 ? '+' : ''}₺${fmt(diffTL)}`;
         document.getElementById('resFuelEffect').innerText = `${fuelEffect >= 0 ? '+' : ''}%${fmt(fuelEffect)}`;
         document.getElementById('resInfEffect').innerText = `${infEffect >= 0 ? '+' : ''}%${fmt(infEffect)}`;
         document.getElementById('resFuelRate').innerText = `%${fmt(fuelRate)}`;
-        document.getElementById('resAvgInf').innerText = `%${fmt(infRes.avg)} (TÜFE: %${fmt(infRes.cpi)} | ÜFE: %${fmt(infRes.ppi)})`;
+        document.getElementById('resAvgInf').innerText = `%${fmt(infRes.avg)}`;
 
-        document.getElementById('results').classList.add('active');
+        // Çubuk (Progress Bar) Genişliklerini Ayarla
+        const absFuel = Math.max(0, fuelEffect);
+        const absInf = Math.max(0, infEffect);
+        const totalAbs = absFuel + absInf;
+
+        let fuelPct = 50;
+        let infPct = 50;
+
+        if (totalAbs > 0) {
+            fuelPct = (absFuel / totalAbs) * 100;
+            infPct = (absInf / totalAbs) * 100;
+        }
+
+        document.getElementById('barFuel').style.width = `${fuelPct}%`;
+        document.getElementById('barInf').style.width = `${infPct}%`;
     }
+
+    // İlk açılışta hesapla
+    calculateEskalasyonSilent();
 </script>
 
 </body>
