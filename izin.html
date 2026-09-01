@@ -1,282 +1,483 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Etiketleri -->
-    <title>Yıllık İzin Hesaplama 2026 - Hak Edilen İzin Günü Hesabı</title>
-    <meta name="description" content="İşe başlama ve doğum tarihinize göre 4857 Sayılı İş Kanununa uygun olarak toplam hak ettiğiniz ve kalan yıllık izin gün sayınızı anında hesaplayın.">
-    <meta name="keywords" content="yıllık izin hesaplama, kaç gün izin hakkım var, iş kanunu yıllık izin, yıllık izin kıdem hesabı, izin hakkı sorgulama">
-    <meta name="author" content="Hesappoint">
-    <link rel="canonical" href="https://hesappoint.com/izin.html" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Open Graph (Sosyal Medya) -->
-    <meta property="og:title" content="Yıllık İzin Hesaplama - Hesappoint" />
-    <meta property="og:description" content="Kıdem sürenize ve yaşınıza göre yasal yıllık izin hakkınızı ve kalan izinlerinizi kolayca hesaplayın." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://hesappoint.com/izin.html" />
+<title>Yıllık İzin Hesaplama 2026 | hesappoint</title>
+<meta name="description" content="İşe başlama ve doğum tarihinize göre 4857 Sayılı İş Kanununa uygun olarak yıllık izin gün hakkınızı ve kalan izninizi hesaplayın.">
+<meta name="keywords" content="yıllık izin hesaplama, kaç gün izin hakkım var, iş kanunu yıllık izin, yıllık izin kıdem hesabı">
+<meta name="robots" content="index, follow">
 
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --success: #10b981;
-        }
+<style>
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+    --bg-body: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --success: #10b981;
+    --warning: #f59e0b;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
+}
 
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            padding: 24px;
-            border: 1px solid var(--border);
-        }
+header {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 32px;
+}
 
-        .header {
-            margin-bottom: 24px;
-            text-align: center;
-        }
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .header h1 {
-            font-size: 1.5rem;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
 
-        .header p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
+.logo span {
+    color: var(--text-main);
+}
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+.back {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
 
-        label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 6px;
-            color: var(--text);
-        }
+.back:hover {
+    color: var(--primary);
+}
 
-        .date-input-group {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr 1.2fr;
-            gap: 8px;
-        }
+.container {
+    max-width: 1100px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
 
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.95rem;
-            outline: none;
-            background-color: #fff;
-            transition: border-color 0.2s;
-        }
+.page-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
 
-        input:focus, select:focus {
-            border-color: var(--primary);
-        }
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
 
-        button {
-            width: 100%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 8px;
-        }
+.page-header p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
 
-        button:hover {
-            background-color: var(--primary-hover);
-        }
+/* 2 SÜTUNLU DASHBOARD DÜZENİ */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    gap: 28px;
+    align-items: start;
+}
 
-        .back-link {
-            display: inline-block;
-            margin-top: 16px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.875rem;
-            text-align: center;
-            width: 100%;
-            transition: color 0.2s;
-        }
+.panel {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
 
-        .back-link:hover {
-            color: var(--primary);
-        }
+.panel-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 14px;
+}
 
-        .results {
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            display: none;
-        }
+.form-group {
+    margin-bottom: 18px;
+}
 
-        .results.active {
-            display: block;
-        }
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
-        .result-card {
-            background-color: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-            text-align: center;
-        }
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
-        .result-card .number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
+.input-icon {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 14px;
+    pointer-events: none;
+}
 
-        .result-card .label {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
+input, select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    background: #fff;
+    outline: none;
+    transition: all 0.2s;
+}
 
-        .details-list {
-            list-style: none;
-        }
+.with-icon {
+    padding-left: 36px;
+}
 
-        .details-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed var(--border);
-            font-size: 0.9rem;
-        }
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3.5px rgba(79, 70, 229, 0.12);
+}
 
-        .details-list li:last-child {
-            border-bottom: none;
-        }
+.date-input-group {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1.1fr;
+    gap: 8px;
+}
 
-        .details-list .val {
-            font-weight: 600;
-        }
+.btn-calculate {
+    width: 100%;
+    padding: 13px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
 
-        .info-box {
-            margin-top: 20px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: #f1f5f9;
-            padding: 12px;
-            border-radius: 6px;
-            line-height: 1.4;
-        }
+.btn-calculate:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 16px;
-            }
-        }
-    </style>
+/* SAĞ TARAF: SONUÇ KARTLARI */
+.summary-card {
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 24px -4px rgba(79, 70, 229, 0.35);
+}
+
+.summary-card::after {
+    content: "🌴";
+    position: absolute;
+    right: -10px;
+    bottom: -15px;
+    font-size: 120px;
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.summary-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-bottom: 10px;
+}
+
+.summary-main {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.summary-main .val {
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.summary-main .unit {
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    padding-top: 20px;
+}
+
+.metric-box-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.metric-box-value {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.details-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.details-header {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-list {
+    list-style: none;
+}
+
+.details-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 14px;
+}
+
+.details-list li:last-child {
+    border-bottom: none;
+}
+
+.details-list .label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.details-list .val {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.badge {
+    background: #e0e7ff;
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.info-box {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.info-box strong {
+    color: var(--text-main);
+}
+
+footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    background: var(--card-bg);
+}
+
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
+
 <body>
 
+<header>
+    <div class="header-content">
+        <a href="index.html" class="logo">🧮 Hesap<span>Point</span></a>
+        <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+    </div>
+</header>
+
 <div class="container">
-    <div class="header">
-        <h1>Yıllık İzin Hesaplama</h1>
-        <p>İş Kanunu standartlarında hak kazandığınız gün sayısını öğrenin.</p>
+
+    <div class="page-header">
+        <h1>🌴 Yıllık İzin Hesaplama Simülatörü</h1>
+        <p>4857 Sayılı İş Kanununa uygun olarak hak kazandığınız ve kalan yıllık izin sürenizi hesaplayın.</p>
     </div>
 
-    <form id="permissionForm" onsubmit="calculateLeave(event)">
-        <!-- İşe Başlama Tarihi -->
-        <div class="form-group">
-            <label>İşe Başlama Tarihi</label>
-            <div class="date-input-group">
-                <input type="number" id="startDay" min="1" max="31" placeholder="Gün (1-31)" required>
-                <select id="startMonth" required></select>
-                <input type="number" id="startYear" min="1970" max="2026" placeholder="Yıl (2025)" required>
+    <div class="dashboard-grid">
+        
+        <!-- SOL PANEL: GİRDİ FORMU -->
+        <div class="panel">
+            <div class="panel-title">⚙️ Çalışma & Doğum Parametreleri</div>
+            
+            <form id="permissionForm" onsubmit="calculateLeave(event)">
+                
+                <!-- İşe Başlama Tarihi -->
+                <div class="form-group">
+                    <label>İşe Başlama Tarihi</label>
+                    <div class="date-input-group">
+                        <input type="number" id="startDay" min="1" max="31" placeholder="Gün" required>
+                        <select id="startMonth" required></select>
+                        <input type="number" id="startYear" min="1970" max="2026" placeholder="Yıl" required>
+                    </div>
+                </div>
+
+                <!-- Doğum Tarihi -->
+                <div class="form-group">
+                    <label>Doğum Tarihi (İsteğe Bağlı)</label>
+                    <div class="date-input-group">
+                        <input type="number" id="birthDay" min="1" max="31" placeholder="Gün">
+                        <select id="birthMonth">
+                            <option value="">Ay Seçin</option>
+                        </select>
+                        <input type="number" id="birthYear" min="1940" max="2026" placeholder="Yıl">
+                    </div>
+                </div>
+
+                <!-- Kullanılan İzin -->
+                <div class="form-group">
+                    <label>Kullanılan İzin Gün Sayısı</label>
+                    <div class="input-icon-wrapper">
+                        <span class="input-icon">🗓️</span>
+                        <input type="number" class="with-icon" id="usedDays" min="0" value="0" placeholder="Örn: 5" oninput="calculateLeave()">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-calculate">İzin Hakkını Hesapla</button>
+
+            </form>
+        </div>
+
+        <!-- SAĞ PANEL: DASHBOARD & SONUÇ KARTLARI -->
+        <div class="results-column">
+            
+            <div class="summary-card">
+                <div class="summary-title">KALAN KULLANILABİLİR İZİN HAKKINIZ</div>
+                
+                <div class="summary-main">
+                    <span class="val" id="resRemaining">0</span>
+                    <span class="unit">GÜN</span>
+                </div>
+
+                <div class="metrics-grid">
+                    <div>
+                        <div class="metric-box-title">Toplam Hak Edilen</div>
+                        <div class="metric-box-value" id="resTotalEarned">0 Gün</div>
+                    </div>
+                    <div>
+                        <div class="metric-box-title">Toplam Kıdem Süreniz</div>
+                        <div class="metric-box-value" id="resSeniority">-</div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Doğum Tarihi (Elle Yazılabilir veya Listeden Seçilebilir) -->
-        <div class="form-group">
-            <label>Doğum Tarihi (İsteğe Bağlı)</label>
-            <div class="date-input-group">
-                <input type="number" id="birthDay" min="1" max="31" placeholder="Gün">
-                <select id="birthMonth">
-                    <option value="">Ay Seçin</option>
-                </select>
-                <input type="number" id="birthYear" min="1940" max="2026" placeholder="Yıl (Örn: 1985)">
+            <div class="details-card">
+                <div class="details-header">
+                    <span>📊 Hakediş & İzin Detayları</span>
+                </div>
+
+                <ul class="details-list">
+                    <li>
+                        <span class="label">Mevcut İzin Skalanız:</span>
+                        <span class="badge" id="resScale">-</span>
+                    </li>
+                    <li>
+                        <span class="label">Bir Sonraki Kademeye Kalan:</span>
+                        <span class="val" id="resNextTier">-</span>
+                    </li>
+                    <li>
+                        <span class="label">Kullanılan İzin:</span>
+                        <span class="val" id="resUsedDisplay" style="color: var(--warning);">0 Gün</span>
+                    </li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>📌 Yasal Bilgilendirme:</strong> 4857 Sayılı İş Kanunu uyarınca 1-5 yıl kıdem için yılda 14 gün, 5-15 yıl için 20 gün, 15 yıl ve üzeri için 26 gün izin hakkı tanınır. 18 yaşından küçük ve 50 yaşından büyük çalışanlar için yıllık izin 20 günden az olamaz.
+                </div>
             </div>
+
         </div>
 
-        <div class="form-group">
-            <label for="usedDays">Kullanılan İzin Gün Sayısı</label>
-            <input type="number" id="usedDays" min="0" value="0" placeholder="Örn: 5">
-        </div>
-
-        <button type="submit">HESAPLA</button>
-        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
-    </form>
-
-    <div id="results" class="results">
-        <div class="result-card">
-            <div class="number" id="resRemaining">0 Gün</div>
-            <div class="label">Kalan İzin Hakkınız</div>
-        </div>
-
-        <ul class="details-list">
-            <li>
-                <span>Toplam Kıdem Süreniz:</span>
-                <span class="val" id="resSeniority">-</span>
-            </li>
-            <li>
-                <span>Toplam Hak Edilen İzin:</span>
-                <span class="val" id="resTotalEarned">0 Gün</span>
-            </li>
-            <li>
-                <span>Mevcut İzin Skalanız:</span>
-                <span class="val" id="resScale">-</span>
-            </li>
-            <li>
-                <span>Bir Sonraki Kademeye Kalan:</span>
-                <span class="val" id="resNextTier">-</span>
-            </li>
-        </ul>
-
-        <div class="info-box">
-            * 4857 Sayılı İş Kanunu uyarınca 1-5 yıl kıdem için yılda 14 gün, 5-15 yıl için 20 gün, 15 yıl ve üzeri için 26 gün izin hakkı tanınır. 18 yaşından küçük ve 50 yaşından büyük çalışanlara verilen izin 20 günden az olamaz.
-        </div>
     </div>
+
 </div>
+
+<footer>
+    © 2026 HesapPoint — Yıllık İzin Hesaplama Simülatörü
+</footer>
 
 <script>
     const monthsNames = [
@@ -284,7 +485,6 @@
         "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
     ];
 
-    // Ay Seçim Kutularını Doldur
     function initMonths() {
         const fill = (selectId) => {
             const sel = document.getElementById(selectId);
@@ -299,37 +499,34 @@
         fill('startMonth');
         fill('birthMonth');
         
-        // Varsayılan Değerler
         const currentYear = new Date().getFullYear();
         document.getElementById('startDay').value = 1;
         document.getElementById('startMonth').value = 0;
         document.getElementById('startYear').value = currentYear - 1;
+
+        // Sayfa yüklendiğinde otomatik ilk hesabı yap
+        calculateLeave();
     }
 
-    initMonths();
-
     function calculateLeave(e) {
-        e.preventDefault();
+        if (e) e.preventDefault();
 
         const sDay = parseInt(document.getElementById('startDay').value);
         const sMonth = parseInt(document.getElementById('startMonth').value);
         const sYear = parseInt(document.getElementById('startYear').value);
 
-        if (!sDay || sMonth === NaN || !sYear) {
-            alert("Lütfen işe başlama tarihini eksiksiz girin.");
-            return;
-        }
+        if (!sDay || isNaN(sMonth) || !sYear) return;
 
         const startDate = new Date(sYear, sMonth, sDay);
         const today = new Date();
 
         if (startDate > today) {
-            alert("İşe başlama tarihi bugünden ileriki bir tarih olamaz.");
+            document.getElementById('resRemaining').innerText = "0";
+            document.getElementById('resSeniority').innerText = "Gelecek Tarih";
             return;
         }
 
-        // Doğum Tarihi & Yaş Hesabı
-        let age = 30; // Varsayılan yetişkin
+        let age = 30;
         const bDay = parseInt(document.getElementById('birthDay').value);
         const bMonthVal = document.getElementById('birthMonth').value;
         const bYear = parseInt(document.getElementById('birthYear').value);
@@ -344,8 +541,8 @@
         }
 
         const usedDays = parseInt(document.getElementById('usedDays').value) || 0;
+        document.getElementById('resUsedDisplay').innerText = `${usedDays} Gün`;
 
-        // Tamamlanan Kıdem Yılı Hesabı
         let years = today.getFullYear() - startDate.getFullYear();
         let months = today.getMonth() - startDate.getMonth();
         let days = today.getDate() - startDate.getDate();
@@ -359,16 +556,14 @@
         const completedYears = years;
 
         if (completedYears < 1) {
-            document.getElementById('resRemaining').innerText = "0 Gün";
-            document.getElementById('resSeniority').innerText = `${months} Ay ${Math.max(0, days)} Gün`;
+            document.getElementById('resRemaining').innerText = "0";
+            document.getElementById('resSeniority').innerText = `${months} Ay ${Math.max(0, days)} G.`;
             document.getElementById('resTotalEarned').innerText = "0 Gün";
             document.getElementById('resScale').innerText = "Henüz 1 Yıl Dolmadı";
             document.getElementById('resNextTier').innerText = `${12 - months} Ay Sonra (14 Gün)`;
-            document.getElementById('results').classList.add('active');
             return;
         }
 
-        // İzin Günleri Hesabı
         let totalEarned = 0;
         let currentScale = "";
 
@@ -381,7 +576,6 @@
                 yearAllowance = 26;
             }
 
-            // 18 Yaş altı veya 50 Yaş üstü İstisnası
             if ((age < 18 || age >= 50) && yearAllowance < 20) {
                 yearAllowance = 20;
             }
@@ -409,15 +603,14 @@
 
         const remaining = totalEarned - usedDays;
 
-        // Sonuçları Yazdır
-        document.getElementById('resRemaining').innerText = `${remaining} Gün`;
+        document.getElementById('resRemaining').innerText = remaining;
         document.getElementById('resSeniority').innerText = `${completedYears} Yıl ${months} Ay`;
         document.getElementById('resTotalEarned').innerText = `${totalEarned} Gün`;
         document.getElementById('resScale').innerText = currentScale;
         document.getElementById('resNextTier').innerText = nextTierText;
-
-        document.getElementById('results').classList.add('active');
     }
+
+    document.addEventListener("DOMContentLoaded", initMonths);
 </script>
 
 </body>
