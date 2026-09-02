@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akıllı Araç Öneri & Seçim Asistanı | HesapPoint</title>
+    <meta name="description" content="Yük Ölçüleri ve ağırlığına göre en uygun ve ekonomik ticari araç tipini (Panelvan, Kamyonet, Kamyon, TIR) veya çoklu araç kombinasyonunu otomatik öneren akıllı asistan.">
+    <meta name="keywords" content="araç öneri, hangi araç uygun, kamyon seçimi, tır seçimi, araç kapasite önerisi, lojistik araç seçimi, çoklu araç yükleme">
+    <meta name="robots" content="index, follow">
+
+    <!-- Social Media / Open Graph -->
+    <meta property="og:title" content="Akıllı Araç Öneri & Seçim Asistanı | HesapPoint">
+    <meta property="og:description" content="Yük verilerinizi girin, en ideal araç tipini ve alternatiflerini anında bulun.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="truck" class="w-8 h-8 text-indigo-600"></i>
+                Akıllı Araç Öneri Asistanı
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Yüklerinizin ölçü ve ağırlık bilgilerini girin, sistem operasyonunuz için en ekonomik ve ideal tekil araç veya çoklu araç (filo) kombinasyonunu anında belirlesin.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Yük Bilgisi Girişi -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                            <i data-lucide="package" class="w-4 h-4 text-indigo-600"></i>
+                            <span>Yük & Parça Bilgileri</span>
+                        </label>
+                        
+                        <!-- İstiflenebilirlik -->
+                        <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-xl">
+                            <button type="button" id="btnNonStack" onclick="setStackable(false)" class="px-3 py-1 rounded-lg text-xs font-bold transition bg-white text-indigo-600 shadow-sm">Tek Kat</button>
+                            <button type="button" id="btnStack" onclick="setStackable(true)" class="px-3 py-1 rounded-lg text-xs font-bold transition text-slate-500 hover:text-slate-900">İstiflenebilir</button>
+                        </div>
+                    </div>
+
+                    <!-- Yük Listesi Container -->
+                    <div id="cargoContainer" class="space-y-4">
+                        <!-- JS ile doldurulacak -->
+                    </div>
+
+                    <button type="button" onclick="addCargoRow()" class="w-full py-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 border border-dashed border-indigo-200 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>Farklı Ölçüde Yük / Palet Grubu Ekle</span>
+                    </button>
+                </div>
+
+                <!-- Sabit Araç Kapasite Referansı -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="info" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Sistemdeki Standart Araç Parametreleri</span>
+                    </h2>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2">Araç Tipi</th>
+                                    <th class="p-2 text-right">Max Ölçü (E x B x Y)</th>
+                                    <th class="p-2 text-right">Max Tonaj</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
+                                <tr>
+                                    <td class="p-2 font-bold text-slate-900">Panelvan</td>
+                                    <td class="p-2 text-right">180 x 350 x 180 cm</td>
+                                    <td class="p-2 text-right">1.000 kg</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold text-slate-900">Kamyonet</td>
+                                    <td class="p-2 text-right">200 x 300 x 200 cm</td>
+                                    <td class="p-2 text-right">1.500 kg</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold text-slate-900">6 Teker Kamyon</td>
+                                    <td class="p-2 text-right">205 x 450 x 220 cm</td>
+                                    <td class="p-2 text-right">3.500 kg</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold text-slate-900">10 Teker Kamyon</td>
+                                    <td class="p-2 text-right">245 x 720 x 255 cm</td>
+                                    <td class="p-2 text-right">15.000 kg</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold text-slate-900">TIR (Tente/Optima)</td>
+                                    <td class="p-2 text-right">245 x 1360 x 270 cm</td>
+                                    <td class="p-2 text-right">24.000 kg</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Akıllı Öneri Sonuc Kartı -->
+            <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+                
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🚚</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>ANALİZ SONUCU & ARAÇ ÖNERİSİ</span>
+                        <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+                    </h2>
+
+                    <div id="resultBox" class="space-y-4 relative z-10">
+                        <!-- JS ile Dinamik Doldurulacak -->
+                    </div>
+
+                    <button onclick="copyRecommendation()" class="w-full py-3.5 px-4 bg-white hover:bg-slate-100 text-indigo-600 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-lg relative z-10">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Öneri Detayını Kopyala</span>
+                    </button>
+                </div>
+
+                <!-- Detaylı Özet Metrikleri -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">
+                        Toplam Yük İstatistikleri
+                    </span>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-slate-400 block font-medium">Toplam Kap/Adet</span>
+                            <span id="statQty" class="text-sm font-bold text-slate-800">0 Adet</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-slate-400 block font-medium">Toplam Ağırlık</span>
+                            <span id="statWeight" class="text-sm font-bold text-slate-800">0 kg</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-slate-400 block font-medium">Toplam Hacim (CBM)</span>
+                            <span id="statCbm" class="text-sm font-bold text-slate-800">0 m³</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-slate-400 block font-medium">Gerekli Taban Alanı</span>
+                            <span id="statArea" class="text-sm font-bold text-slate-800">0 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Akıllı Araç Öneri Asistanı
+    </footer>
+
+    <!-- JS Mantığı -->
+    <script>
+        const vehicles = [
+            { id: 'panelvan', name: 'Panelvan', width: 180, length: 350, height: 180, capacity: 1000 },
+            { id: 'kamyonet', name: 'Kamyonet', width: 200, length: 300, height: 200, capacity: 1500 },
+            { id: '6teker', name: '6 Teker Kamyon', width: 205, length: 450, height: 220, capacity: 3500 },
+            { id: '10teker', name: '10 Teker Kamyon', width: 245, length: 720, height: 255, capacity: 15000 },
+            { id: 'tir', name: 'TIR (Tente / Optima)', width: 245, length: 1360, height: 270, capacity: 24000 }
+        ];
+
+        let isStackable = false;
+        let cargoCounter = 0;
+
+        window.onload = function() {
+            addCargoRow(80, 120, 160, 500, 40);
+        };
+
+        function setStackable(val) {
+            isStackable = val;
+            const btnNon = document.getElementById('btnNonStack');
+            const btnStack = document.getElementById('btnStack');
+
+            if(val) {
+                btnStack.className = 'px-3 py-1 rounded-lg text-xs font-bold transition bg-white text-indigo-600 shadow-sm';
+                btnNon.className = 'px-3 py-1 rounded-lg text-xs font-bold transition text-slate-500 hover:text-slate-900';
+            } else {
+                btnNon.className = 'px-3 py-1 rounded-lg text-xs font-bold transition bg-white text-indigo-600 shadow-sm';
+                btnStack.className = 'px-3 py-1 rounded-lg text-xs font-bold transition text-slate-500 hover:text-slate-900';
+            }
+            calculate();
+        }
+
+        function addCargoRow(w = 80, l = 120, h = 120, weight = 250, qty = 5) {
+            cargoCounter++;
+            const container = document.getElementById('cargoContainer');
+            const div = document.createElement('div');
+            div.className = 'cargo-card bg-slate-50 p-4 rounded-xl border border-slate-200 relative space-y-3';
+            div.id = `cargoRow_${cargoCounter}`;
+
+            div.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-indigo-600">📦 Parça / Palet Grubu #${cargoCounter}</span>
+                    ${cargoCounter > 1 ? `<button type="button" onclick="removeCargoRow(${cargoCounter})" class="text-rose-500 font-bold text-xs hover:underline">Sil</button>` : ''}
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase">En (cm)</label>
+                        <input type="number" class="c-width w-full p-2 text-xs font-bold border border-slate-300 rounded-lg outline-none focus:border-indigo-600" value="${w}" oninput="calculate()">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase">Boy (cm)</label>
+                        <input type="number" class="c-length w-full p-2 text-xs font-bold border border-slate-300 rounded-lg outline-none focus:border-indigo-600" value="${l}" oninput="calculate()">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase">Yükseklik (cm)</label>
+                        <input type="number" class="c-height w-full p-2 text-xs font-bold border border-slate-300 rounded-lg outline-none focus:border-indigo-600" value="${h}" oninput="calculate()">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase">Birim Ağırlık (kg)</label>
+                        <input type="number" class="c-weight w-full p-2 text-xs font-bold border border-slate-300 rounded-lg outline-none focus:border-indigo-600" value="${weight}" oninput="calculate()">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase">Adet</label>
+                        <input type="number" class="c-qty w-full p-2 text-xs font-bold border border-slate-300 rounded-lg outline-none focus:border-indigo-600" value="${qty}" oninput="calculate()">
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+            lucide.createIcons();
+            calculate();
+        }
+
+        function removeCargoRow(id) {
+            const el = document.getElementById(`cargoRow_${id}`);
+            if(el) {
+                el.remove();
+                calculate();
+            }
+        }
+
+        function getCargoData() {
+            const rows = document.querySelectorAll('.cargo-card');
+            const list = [];
+            rows.forEach(r => {
+                list.push({
+                    w: parseFloat(r.querySelector('.c-width').value) || 0,
+                    l: parseFloat(r.querySelector('.c-length').value) || 0,
+                    h: parseFloat(r.querySelector('.c-height').value) || 0,
+                    weight: parseFloat(r.querySelector('.c-weight').value) || 0,
+                    qty: parseInt(r.querySelector('.c-qty').value) || 0
+                });
+            });
+            return list;
+        }
+
+        // Simülasyon Dizilim Motoru (Kaç adet sığdığını döner)
+        function packEngine(v, items) {
+            let currentX = 0;
+            let currentY = 0;
+            let rowMaxL = 0;
+            const gap = 1;
+            let placedQty = 0;
+
+            for (let c of items) {
+                const maxLayers = isStackable ? Math.max(1, Math.floor(v.height / c.h)) : 1;
+                let remainingQty = c.qty;
+
+                while (remainingQty > 0) {
+                    let useW = c.w;
+                    let useL = c.l;
+
+                    let canNormal = (currentX + useW <= v.width) && (currentY + useL <= v.length);
+                    let canRotated = (currentX + c.l <= v.width) && (currentY + c.w <= v.length);
+
+                    if (!canNormal && canRotated) {
+                        useW = c.l;
+                        useL = c.w;
+                    }
+
+                    if (currentX + useW <= v.width && currentY + useL <= v.length) {
+                        const stackHere = Math.min(remainingQty, maxLayers);
+                        remainingQty -= stackHere;
+                        placedQty += stackHere;
+                        currentX += useW + gap;
+                        if (useL > rowMaxL) rowMaxL = useL;
+                    } else {
+                        currentX = 0;
+                        currentY += rowMaxL + gap;
+                        rowMaxL = 0;
+
+                        useW = c.w;
+                        useL = c.l;
+                        canNormal = (currentX + useW <= v.width) && (currentY + useL <= v.length);
+                        canRotated = (currentX + c.l <= v.width) && (currentY + c.w <= v.length);
+
+                        if (!canNormal && canRotated) {
+                            useW = c.l;
+                            useL = c.w;
+                        }
+
+                        if (currentY + useL <= v.length && currentX + useW <= v.width) {
+                            const stackHere = Math.min(remainingQty, maxLayers);
+                            remainingQty -= stackHere;
+                            placedQty += stackHere;
+                            currentX += useW + gap;
+                            rowMaxL = useL;
+                        } else {
+                            break; // Kasa doldu
+                        }
+                    }
+                }
+            }
+            return placedQty;
+        }
+
+        function calculate() {
+            const cargos = getCargoData();
+            let totalQty = 0;
+            let totalWeight = 0;
+            let totalCbm = 0;
+            let totalArea = 0;
+
+            cargos.forEach(c => {
+                totalQty += c.qty;
+                totalWeight += (c.weight * c.qty);
+                totalCbm += ((c.w * c.l * c.h) / 1000000) * c.qty;
+                totalArea += ((c.w * c.l) / 10000) * c.qty;
+            });
+
+            document.getElementById('statQty').innerText = `${totalQty} Adet`;
+            document.getElementById('statWeight').innerText = `${totalWeight.toLocaleString('tr-TR')} kg`;
+            document.getElementById('statCbm').innerText = `${totalCbm.toFixed(2)} m³`;
+            document.getElementById('statArea').innerText = `${totalArea.toFixed(2)} m²`;
+
+            // Tekil Araç Kontrolü
+            const suitableSingleVehicles = [];
+
+            vehicles.forEach(v => {
+                let isDimensionOk = true;
+                for (let c of cargos) {
+                    if (c.h > v.height) { isDimensionOk = false; break; }
+                    const maxPartDim = Math.max(c.w, c.l);
+                    const minPartDim = Math.min(c.w, c.l);
+                    if (maxPartDim > Math.max(v.width, v.length) || minPartDim > Math.min(v.width, v.length)) {
+                        isDimensionOk = false;
+                        break;
+                    }
+                }
+
+                const isWeightOk = totalWeight <= v.capacity;
+                const placedQty = packEngine(v, cargos);
+                const isFitOk = placedQty === totalQty;
+
+                if (isDimensionOk && isWeightOk && isFitOk) {
+                    const areaCap = (v.width * v.length) / 10000;
+                    const volumeCap = (v.width * v.length * v.height) / 1000000;
+                    
+                    suitableSingleVehicles.push({
+                        ...v,
+                        weightUsage: Math.round((totalWeight / v.capacity) * 100),
+                        volumeUsage: Math.round((totalCbm / volumeCap) * 100),
+                        areaUsage: Math.round((totalArea / areaCap) * 100)
+                    });
+                }
+            });
+
+            if (suitableSingleVehicles.length > 0) {
+                renderSingleResult(suitableSingleVehicles);
+            } else {
+                // Çoklu Araç / Filo Algoritması
+                calculateMultiVehicle(cargos, totalQty, totalWeight, totalCbm, totalArea);
+            }
+        }
+
+        // Çoklu Araç / Split-Loading Hesaplama
+        function calculateMultiVehicle(cargos, totalQty, totalWeight, totalCbm, totalArea) {
+            const tir = vehicles.find(v => v.id === 'tir');
+            
+            // 1. TIR'ın ne kadar alabildiğini bulalım
+            let remainingCargos = JSON.parse(JSON.stringify(cargos));
+            let tirCount = 0;
+            let allocatedFleet = [];
+
+            // Ağırlık veya Kapasite Bittiği Sürece TIR Ekle
+            while (true) {
+                let currentRemQty = remainingCargos.reduce((a, b) => a + b.qty, 0);
+                if (currentRemQty === 0) break;
+
+                // Eğer kalan yük tek bir küçük araca sığıyorsa döngüden çık
+                if (tirCount > 0) {
+                    let fitInSmaller = false;
+                    let remWeight = remainingCargos.reduce((a, b) => a + (b.weight * b.qty), 0);
+                    for (let v of vehicles) {
+                        if (v.id === 'tir') continue;
+                        if (remWeight <= v.capacity && packEngine(v, remainingCargos) === currentRemQty) {
+                            fitInSmaller = true;
+                            break;
+                        }
+                    }
+                    if (fitInSmaller) break;
+                }
+
+                // TIR'a yük doldur
+                let maxTirQty = packEngine(tir, remainingCargos);
+                
+                // Ağırlık sınırı kontrolü
+                let currentTirWeight = 0;
+                let loadedToTir = [];
+
+                // Basitçe parçaları TIR'a böl
+                let tempQtyToTake = maxTirQty;
+                for (let c of remainingCargos) {
+                    if (c.qty > 0 && tempQtyToTake > 0) {
+                        let take = Math.min(c.qty, tempQtyToTake);
+                        // Ağırlık aşım kontrolü
+                        while (take > 0 && (currentTirWeight + (take * c.weight)) > tir.capacity) {
+                            take--;
+                        }
+                        c.qty -= take;
+                        tempQtyToTake -= take;
+                        currentTirWeight += (take * c.weight);
+                    }
+                }
+
+                tirCount++;
+                allocatedFleet.push({ vehicle: tir, weight: currentTirWeight });
+
+                // Eğer hiç yük eksilmediyse tıkanmayı önlemek için kır
+                let newRemQty = remainingCargos.reduce((a, b) => a + b.qty, 0);
+                if (newRemQty === currentRemQty) break;
+            }
+
+            // Kalan yük için en uygun 2. aracı seç
+            let remQty = remainingCargos.reduce((a, b) => a + b.qty, 0);
+            let remWeight = remainingCargos.reduce((a, b) => a + (b.weight * b.qty), 0);
+            let secondVehicle = null;
+
+            if (remQty > 0) {
+                for (let v of vehicles) {
+                    if (remWeight <= v.capacity && packEngine(v, remainingCargos) === remQty) {
+                        secondVehicle = v;
+                        break;
+                    }
+                }
+            }
+
+            renderMultiResult(tirCount, secondVehicle, remQty, remWeight, totalQty);
+        }
+
+        function renderSingleResult(suitable) {
+            const resBox = document.getElementById('resultBox');
+            const best = suitable[0];
+            const alt = suitable.length > 1 ? suitable[1] : null;
+
+            resBox.innerHTML = `
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-amber-300">🎯 EN UYGUN TEKİL ARAÇ</span>
+                        <span class="text-xs bg-emerald-400 text-slate-900 font-extrabold px-2 py-0.5 rounded-full">%100 Uyumlu</span>
+                    </div>
+                    <div class="text-2xl font-black text-white flex items-center gap-2">
+                        <i data-lucide="truck" class="w-6 h-6 text-amber-300"></i>
+                        <span>${best.name}</span>
+                    </div>
+                    <p class="text-xs text-indigo-100 leading-relaxed">
+                        Yükünüz bu aracın hacim, alan ve ağırlık limitlerine tam olarak sığmaktadır.
+                    </p>
+                    
+                    <!-- 3'lü Doluluk Barları (% Alan Dahil) -->
+                    <div class="space-y-2 pt-1">
+                        <div>
+                            <div class="flex justify-between text-[11px] font-semibold mb-1">
+                                <span>Taban Alan Doluluğu</span>
+                                <span>%${best.areaUsage}</span>
+                            </div>
+                            <div class="w-full bg-white/20 h-2 rounded-full overflow-hidden">
+                                <div class="bg-sky-300 h-full" style="width: ${best.areaUsage}%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] font-semibold mb-1">
+                                <span>Hacim Doluluğu</span>
+                                <span>%${best.volumeUsage}</span>
+                            </div>
+                            <div class="w-full bg-white/20 h-2 rounded-full overflow-hidden">
+                                <div class="bg-emerald-300 h-full" style="width: ${best.volumeUsage}%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] font-semibold mb-1">
+                                <span>Ağırlık Doluluğu</span>
+                                <span>%${best.weightUsage}</span>
+                            </div>
+                            <div class="w-full bg-white/20 h-2 rounded-full overflow-hidden">
+                                <div class="bg-amber-300 h-full" style="width: ${best.weightUsage}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                ${alt ? `
+                <div class="bg-slate-900/40 p-3.5 rounded-xl border border-white/10 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] uppercase font-bold text-indigo-200 block">🔄 ALTERNATİF SEÇENEK</span>
+                        <span class="text-sm font-bold text-white">${alt.name}</span>
+                    </div>
+                    <span class="text-xs text-indigo-200 font-semibold bg-white/10 px-2.5 py-1 rounded-lg">Daha Rahat Yükleme</span>
+                </div>
+                ` : ''}
+            `;
+            lucide.createIcons();
+        }
+
+        function renderMultiResult(tirCount, secondVehicle, remQty, remWeight, totalQty) {
+            const resBox = document.getElementById('resultBox');
+
+            resBox.innerHTML = `
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-amber-300">🚛 ÇOKLU ARAÇ / FİLO ÖNERİSİ</span>
+                        <span class="text-xs bg-amber-400 text-slate-900 font-extrabold px-2 py-0.5 rounded-full">Kapasite Aşımı</span>
+                    </div>
+                    <p class="text-xs text-indigo-100 leading-relaxed">
+                        Yük miktarı (${totalQty} Adet) tek bir TIR'ın kapasitesini aştığı için parçalı yükleme (kombinasyon) önerilmektedir:
+                    </p>
+
+                    <div class="space-y-2 pt-1">
+                        <div class="bg-white/15 p-3 rounded-lg flex items-center justify-between border border-white/10">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="truck" class="w-5 h-5 text-amber-300"></i>
+                                <span class="font-extrabold text-sm text-white">${tirCount} Adet TIR</span>
+                            </div>
+                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-950/50 px-2 py-0.5 rounded">Tam Dolu</span>
+                        </div>
+
+                        ${secondVehicle ? `
+                        <div class="bg-white/15 p-3 rounded-lg flex items-center justify-between border border-white/10">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="truck" class="w-5 h-5 text-sky-300"></i>
+                                <span class="font-extrabold text-sm text-white">1 Adet ${secondVehicle.name}</span>
+                            </div>
+                            <span class="text-xs font-semibold text-sky-200 bg-sky-950/50 px-2 py-0.5 rounded">${remQty} Palet / ${remWeight.toLocaleString('tr-TR')} kg</span>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function copyRecommendation() {
+            const statQty = document.getElementById('statQty').innerText;
+            const statWeight = document.getElementById('statWeight').innerText;
+            const statCbm = document.getElementById('statCbm').innerText;
+
+            const text = `🚚 *HesapPoint Akıllı Araç Öneri Sonucu*\n` +
+                         `------------------------------------\n` +
+                         `Toplam Yük: ${statQty} | ${statWeight} | ${statCbm}\n` +
+                         `Öneri Detayı: ${document.querySelector('#resultBox')?.innerText.replace(/\n+/g, ' ') || 'Öneri oluşturuldu'}\n` +
+                         `------------------------------------\n` +
+                         `Detaylı inceleme: https://hesappoint.com/arac-oneri.html`;
+
+            navigator.clipboard.writeText(text);
+            alert("Araç öneri sonucu panoya kopyalandı!");
+        }
+    </script>
+</body>
+</html>
