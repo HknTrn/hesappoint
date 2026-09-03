@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yıllık İzin Ücreti Hesaplama | HesapPoint</title>
+    <meta name="description" content="Kullanılmayan yıllık izin günlerinin brüt ve net nakit karşılığını, yasal kesintileriyle birlikte anında hesaplayın.">
+    <meta name="keywords" content="yıllık izin ücreti hesaplama, izin parası hesaplama, kullanılmayan izin ücreti, iş kanunu izin ücreti, net izin ücreti">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Yıllık İzin Ücreti Hesaplama | HesapPoint">
+    <meta property="og:description" content="Kullanılmayan yıllık izin günlerinin brüt ve net alacak tutarını kolayca hesaplayın.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="calendar-check" class="w-8 h-8 text-indigo-600"></i>
+                Yıllık İzin Ücreti Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                İşten ayrılma veya sözleşme feshi durumunda hak kazandığınız ancak kullanmadığınız yıllık izin günlerinin nakit brüt ve net karşılığını hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Giriş Formu -->
+            <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                
+                <div class="border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Maaş & İzin Bilgileri</span>
+                    </h2>
+                </div>
+
+                <!-- Maaş Tipi -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700">Maaş Türü</label>
+                    <select id="salaryType" onchange="calculateLeavePay()" class="w-full p-3 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                        <option value="gross" selected>Brüt Maaş</option>
+                        <option value="net">Net Maaş (Tahmini Brüt Hesaplanır)</option>
+                    </select>
+                </div>
+
+                <!-- Son Maaş Tutarı -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700">Son Aylık Maaş Tutarı (₺)</label>
+                    <div class="relative">
+                        <input type="number" id="monthlySalary" value="45000" oninput="calculateLeavePay()" class="w-full p-3 pl-4 pr-8 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                        <span class="absolute right-3 top-3.5 text-xs font-bold text-slate-400">₺</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 font-medium">İzin ücreti hesaplamasında işten ayrılış tarihindeki son giydirilmemiş son maaş esas alınır.</span>
+                </div>
+
+                <!-- Kullanılmayan İzin Gün Sayısı -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700">Kullanılmayan İzin Gün Sayısı</label>
+                    <div class="relative">
+                        <input type="number" id="unusedDays" value="14" min="1" max="365" oninput="calculateLeavePay()" class="w-full p-3 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                </div>
+
+                <!-- Vergi Dilimi -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700">Tahmini Gelir Vergisi Dilimi</label>
+                    <select id="taxBracket" onchange="calculateLeavePay()" class="w-full p-3 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                        <option value="0.15" selected>%15 (1. Dilim)</option>
+                        <option value="0.20">%20 (2. Dilim)</option>
+                        <option value="0.27">%27 (3. Dilim)</option>
+                        <option value="0.35">%35 (4. Dilim)</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Kartı -->
+            <div class="md:col-span-6 space-y-6">
+                
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🌴</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>NET ALACAK ÖZETİ</span>
+                        <i data-lucide="wallet" class="w-4 h-4 text-emerald-300"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <div>
+                            <span class="text-xs text-indigo-200 font-medium block">Net Ele Geçen İzin Ücreti</span>
+                            <span id="resNetPay" class="text-3xl font-black text-emerald-300">0 ₺</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-indigo-500/40">
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Brüt İzin Ücreti</span>
+                                <span id="resGrossPay" class="text-lg font-bold text-white">0 ₺</span>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Günlük Brüt Ücret</span>
+                                <span id="resDailyGross" class="text-lg font-bold text-amber-300">0 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detay Dökümü -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">
+                        Kesinti Dökümü
+                    </span>
+                    <div class="space-y-2 text-xs font-medium text-slate-600">
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>SGK İşçi Payı (%14)</span>
+                            <span id="resSgk" class="font-bold text-slate-800">0 ₺</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>İşsizlik Sigortası Prim (%1)</span>
+                            <span id="resUnemployment" class="font-bold text-slate-800">0 ₺</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Gelir Vergisi Kesintisi</span>
+                            <span id="resIncomeTax" class="font-bold text-slate-800">0 ₺</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Damga Vergisi (%0,759)</span>
+                            <span id="resStampTax" class="font-bold text-slate-800">0 ₺</span>
+                        </div>
+                        <div class="flex justify-between py-1.5 pt-2 font-bold text-slate-900 border-t border-slate-200">
+                            <span>Toplam Yasal Kesinti</span>
+                            <span id="resTotalDeduction" class="text-red-600">0 ₺</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Yıllık İzin Ücreti Hesaplama
+    </footer>
+
+    <script>
+        window.onload = function() {
+            calculateLeavePay();
+        };
+
+        function calculateLeavePay() {
+            const salaryType = document.getElementById('salaryType').value;
+            const salaryInput = parseFloat(document.getElementById('monthlySalary').value) || 0;
+            const unusedDays = parseFloat(document.getElementById('unusedDays').value) || 0;
+            const taxRate = parseFloat(document.getElementById('taxBracket').value) || 0.15;
+
+            let grossSalary = salaryInput;
+
+            // Net girildiyse tahmini brütleştirme (yaklaşık katsayı)
+            if (salaryType === 'net') {
+                grossSalary = salaryInput / (1 - (0.15 + taxRate * 0.85 + 0.00759));
+            }
+
+            const dailyGross = grossSalary / 30;
+            const grossLeavePay = dailyGross * unusedDays;
+
+            // Yasal Kesintiler
+            const sgkWorker = grossLeavePay * 0.14;
+            const unemployment = grossLeavePay * 0.01;
+            const taxBase = grossLeavePay - (sgkWorker + unemployment);
+            const incomeTax = taxBase * taxRate;
+            const stampTax = grossLeavePay * 0.00759;
+
+            const totalDeduction = sgkWorker + unemployment + incomeTax + stampTax;
+            const netLeavePay = Math.max(0, grossLeavePay - totalDeduction);
+
+            // Ekran Yazdırma
+            document.getElementById('resNetPay').innerText = netLeavePay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resGrossPay').innerText = grossLeavePay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resDailyGross').innerText = dailyGross.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+
+            document.getElementById('resSgk').innerText = sgkWorker.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resUnemployment').innerText = unemployment.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resIncomeTax').innerText = incomeTax.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resStampTax').innerText = stampTax.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resTotalDeduction').innerText = totalDeduction.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
