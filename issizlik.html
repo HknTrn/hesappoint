@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İşsizlik Maaşı Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="Son 4 aylık brüt maaşlarınız ve prim gün sayınıza göre alabileceğiniz net işsizlik maaşını ve alma sürenizi hesaplayın.">
+    <meta name="keywords" content="işsizlik maaşı hesaplama, işsizlik ödeneği, ne kadar işsizlik maaşı alırım, 2026 işsizlik maaşı tavanı, sgk işsizlik">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="İşsizlik Maaşı Hesaplama 2026 | HesapPoint">
+    <meta property="og:description" content="Net işsizlik maaşı tutarınızı ve kaç ay alabileceğinizi anında hesaplayın.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="shield-alert" class="w-8 h-8 text-indigo-600"></i>
+                İşsizlik Maaşı Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                İşten ayrılmadan önceki son 4 aylık brüt kazancınız ve son 3 yıldaki SGK prim gün sayınıza göre hakedişinizi hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Giriş Formu -->
+            <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                
+                <div class="border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="user-check" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Çalışma & Maaş Bilgileri</span>
+                    </h2>
+                </div>
+
+                <!-- Dönem ve Prim Gün Sayısı -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="space-y-1.5">
+                        <label class="block text-xs font-bold text-slate-700">Dönem</label>
+                        <select id="period" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none bg-slate-50">
+                            <option value="2026" selected>2026</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="block text-xs font-bold text-slate-700">Son 3 Yıl Prim Gün Sayısı</label>
+                        <select id="primDays" onchange="calculateUnemploymentPay()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="1080" selected>1080 Gün (10 Ay Ödenek)</option>
+                            <option value="900">900 - 1079 Gün (8 Ay Ödenek)</option>
+                            <option value="600">600 - 899 Gün (6 Ay Ödenek)</option>
+                            <option value="0">600 Günden Az (Hak Kazanılmaz)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Son 4 Ay Brüt Maaş Girdileri -->
+                <div class="space-y-3 pt-2 border-t border-slate-100">
+                    <label class="block text-xs font-bold text-slate-700">İşten Ayrılmadan Önceki Son 4 Ayın Brüt Maaşları (₺)</label>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">1. Ay Brüt Ücret</span>
+                            <input type="number" id="m1" value="40000" oninput="updateMonths()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">2. Ay Brüt Ücret</span>
+                            <input type="number" id="m2" value="40000" oninput="calculateUnemploymentPay()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">3. Ay Brüt Ücret</span>
+                            <input type="number" id="m3" value="40000" oninput="calculateUnemploymentPay()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">4. Ay Brüt Ücret</span>
+                            <input type="number" id="m4" value="40000" oninput="calculateUnemploymentPay()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asgari Ücret Parametresi -->
+                <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                    <label class="block text-xs font-bold text-slate-700">2026 Aylık Brüt Asgari Ücret (₺)</label>
+                    <input type="number" id="minGrossSalary" value="33030" oninput="calculateUnemploymentPay()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Kartı -->
+            <div class="md:col-span-6 space-y-6">
+                
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🛡️</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>İŞSİZLİK ÖDENEĞİ ÖZETİ</span>
+                        <i data-lucide="badge-check" class="w-4 h-4 text-emerald-300"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <div>
+                            <span class="text-xs text-indigo-200 font-medium block">Aylık İşsizlik Maaşı (Net)</span>
+                            <span id="resNetPay" class="text-3xl font-black text-emerald-300">0 ₺</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-indigo-500/40">
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Alınabilecek Süre</span>
+                                <span id="resDuration" class="text-lg font-bold text-white">0 Ay</span>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Toplam Ele Geçecek Tutar</span>
+                                <span id="resTotalPay" class="text-lg font-bold text-amber-300">0 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detay Dökümü -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">
+                        Ödeme & Limit Detayları
+                    </span>
+                    <div class="space-y-2 text-xs font-medium text-slate-600">
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Günlük İşsizlik Ödeneği (Brüt)</span>
+                            <span id="resDailyGross" class="font-bold text-slate-800">0 ₺</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Aylık İşsizlik Maaşı (Brüt)</span>
+                            <span id="resGrossPay" class="font-bold text-slate-800">0 ₺</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Damga Vergisi Kesintisi (%0,759)</span>
+                            <span id="resStampTax" class="font-bold text-red-600">0 ₺</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>2026 Taban Aylık İşsizlik Maaşı (Brüt)</span>
+                            <span id="resMinLimit" class="font-bold text-slate-500">0 ₺</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>2026 Tavan Aylık İşsizlik Maaşı (Brüt)</span>
+                            <span id="resMaxLimit" class="font-bold text-slate-500">0 ₺</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — İşsizlik Maaşı Hesaplama
+    </footer>
+
+    <script>
+        window.onload = function() {
+            calculateUnemploymentPay();
+        };
+
+        // 1. Aya yazılan tutarı 2, 3 ve 4. aylara otomatik aktarır
+        function updateMonths() {
+            const val = document.getElementById('m1').value;
+            document.getElementById('m2').value = val;
+            document.getElementById('m3').value = val;
+            document.getElementById('m4').value = val;
+            
+            calculateUnemploymentPay();
+        }
+
+        function calculateUnemploymentPay() {
+            const m1 = parseFloat(document.getElementById('m1').value) || 0;
+            const m2 = parseFloat(document.getElementById('m2').value) || 0;
+            const m3 = parseFloat(document.getElementById('m3').value) || 0;
+            const m4 = parseFloat(document.getElementById('m4').value) || 0;
+            
+            const minGross = parseFloat(document.getElementById('minGrossSalary').value) || 33030;
+            const primDays = parseInt(document.getElementById('primDays').value) || 0;
+
+            if (primDays === 0) {
+                document.getElementById('resNetPay').innerText = 'Hak Kazanılmadı';
+                document.getElementById('resDuration').innerText = '0 Ay';
+                document.getElementById('resTotalPay').innerText = '0 ₺';
+                document.getElementById('resDailyGross').innerText = '0 ₺';
+                document.getElementById('resGrossPay').innerText = '0 ₺';
+                document.getElementById('resStampTax').innerText = '0 ₺';
+                document.getElementById('resMinLimit').innerText = (minGross * 0.40).toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+                document.getElementById('resMaxLimit').innerText = (minGross * 0.80).toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+                return;
+            }
+
+            // Ödenek Süresi
+            let durationMonths = 10;
+            if (primDays === 900) durationMonths = 8;
+            if (primDays === 600) durationMonths = 6;
+
+            // Ortalaması (%40 hesabı)
+            const avgGross = (m1 + m2 + m3 + m4) / 4;
+            const rawGrossPay = avgGross * 0.40;
+
+            // Taban (%40) ve Tavan (%80) Hesapları
+            const minPayLimit = minGross * 0.40;
+            const maxPayLimit = minGross * 0.80;
+
+            // Uygulanacak Brüt Maaş
+            let appliedGrossPay = rawGrossPay;
+            if (appliedGrossPay > maxPayLimit) appliedGrossPay = maxPayLimit;
+            if (appliedGrossPay < minPayLimit) appliedGrossPay = minPayLimit;
+
+            const dailyGrossPay = appliedGrossPay / 30;
+
+            // Damga Vergisi Kesintisi (%0,759)
+            const stampTax = appliedGrossPay * 0.00759;
+            const netMonthlyPay = appliedGrossPay - stampTax;
+            const totalPay = netMonthlyPay * durationMonths;
+
+            // Ekran Yazdırma
+            document.getElementById('resNetPay').innerText = netMonthlyPay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resDuration').innerText = durationMonths + ' Ay';
+            document.getElementById('resTotalPay').innerText = totalPay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+
+            document.getElementById('resDailyGross').innerText = dailyGrossPay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resGrossPay').innerText = appliedGrossPay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resStampTax').innerText = stampTax.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resMinLimit').innerText = minPayLimit.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resMaxLimit').innerText = maxPayLimit.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
