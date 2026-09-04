@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Depo Palet Kapasitesi & 2D Layout Simülatörü | HesapPoint</title>
+    <meta name="description" content="Depo ölçüleri, tavan yüksekliği ve ekipman tipine (Reach Truck, VNA, Forklift) göre palet kapasitesini ve kat sayısını hesaplayın, 2D CAD layout simülasyonu ile inceleyin.">
+    <meta name="keywords" content="depo palet kapasitesi hesaplama, depo layout simülatörü, 2d depo simülasyonu, reach truck koridor hesaplama, vna koridor, raf kat sayısı hesaplama, depo alan kullanımı">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hesappoint.com/depo-palet-kapasite.html">
+
+    <!-- Social Media / Open Graph -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Depo Palet Kapasitesi & 2D Layout Simülatörü | HesapPoint">
+    <meta property="og:description" content="Depo boyutlarınızı veya toplam m² bilgisini girin, rafları, koridorları ve toplam palet kapasitesini 2D CAD üzerinde anında simüle edin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hesappoint.com/depo-palet-kapasite.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Depo Palet Kapasitesi & 2D Layout Simülatörü | HesapPoint">
+    <meta name="twitter:description" content="Depo boyutlarınızı veya toplam m² bilgisini girin, rafları, koridorları ve toplam palet kapasitesini 2D CAD üzerinde anında simüle edin.">
+
+    <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -280,7 +297,6 @@
             const clearHeightArea = parseFloat(document.getElementById('clearHeightArea').value) || 0;
             
             // Tipik Depo Oranı (1 : 1.6 Altın Oran Yaklaşımı)
-            // En * Boy = Area && Boy = 1.6 * En => 1.6 * En^2 = Area => En = sqrt(Area / 1.6)
             const estimatedWidth = Math.round(Math.sqrt(totalM2 / 1.67));
             const estimatedLength = Math.round(totalM2 / estimatedWidth);
 
@@ -442,7 +458,7 @@
             ctx.moveTo(startX, startY + storageL);
             ctx.lineTo(startX + drawW, startY + storageL);
             ctx.stroke();
-            ctx.setLineDash([]); // Reset dash
+            ctx.setLineDash([]);
 
             ctx.fillStyle = '#fda4af';
             ctx.font = '10px Inter, sans-serif';
@@ -450,7 +466,7 @@
 
             // 3. Raf Bloklarını Çiz
             const totalRackRows = 2 + (doubleBlocks * 2);
-            const totalCols = totalRackRows + doubleBlocks + 1; // Raflar + Koridorlar
+            const totalCols = totalRackRows + doubleBlocks + 1;
             const colWidth = drawW / totalCols;
 
             let currentX = startX + (colWidth * 0.5);
@@ -463,14 +479,10 @@
 
             // Çift Sıra Bloklar
             for (let i = 0; i < doubleBlocks; i++) {
-                // Çift sıra raf (2 adet yapışık)
                 ctx.fillStyle = '#f59e0b';
                 ctx.fillRect(currentX, startY + 10, colWidth * 0.8, storageL - 20);
                 ctx.fillRect(currentX + (colWidth * 0.9), startY + 10, colWidth * 0.8, storageL - 20);
 
-                // Ara Koridor İşareti (Çizgili)
-                ctx.fillStyle = '#334155';
-                
                 currentX += (colWidth * 2.8);
             }
 
