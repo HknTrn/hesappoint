@@ -70,7 +70,7 @@
     <loc>https://hesappoint.com/arac-oneri.html</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://hesappoint.com/amortisman.html</loc>
@@ -86,6 +86,12 @@
   </url>
   <url>
     <loc>https://hesappoint.com/issizlik.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hesappoint.com/depo-palet-kapasite.html</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

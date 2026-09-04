@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depo Palet Kapasitesi & 2D Layout Simülatörü | HesapPoint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Başlık -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-100">
+                <i data-lucide="warehouse" class="w-3.5 h-3.5"></i>
+                <span>2D CAD Layout & Kapasite Simülatörü</span>
+            </div>
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="boxes" class="w-8 h-8 text-blue-600"></i>
+                Geometrik Depo & Layout Simülasyonu
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Depo ölçülerinize göre rafları, koridorları ve operasyonel alanları anlık CAD şeması üzerinde simüle edin.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Form -->
+            <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-4 h-4 text-blue-600"></i>
+                        <span>Depo Ölçüleri & Parametreler</span>
+                    </h2>
+                    <button onclick="setExampleData()" class="text-[11px] font-bold text-blue-600 hover:bg-blue-50 px-2 py-1 rounded-lg transition">Örnek (72x120m)</button>
+                </div>
+
+                <!-- Mod Seçimi (Boyut vs Sadece m²) -->
+                <div class="bg-slate-100 p-1 rounded-xl flex text-xs font-bold">
+                    <button id="btnModeDim" onclick="switchInputMode('dim')" class="flex-1 py-1.5 rounded-lg bg-white shadow-sm text-blue-600 transition">En x Boy (Metre)</button>
+                    <button id="btnModeArea" onclick="switchInputMode('area')" class="flex-1 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition">Sadece Toplam m²</button>
+                </div>
+
+                <!-- 1. Depo Ölçü Alanı -->
+                <div class="space-y-3">
+                    
+                    <!-- Mod 1: En x Boy -->
+                    <div id="dimInputs" class="grid grid-cols-3 gap-2.5">
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">En (m)</span>
+                            <input type="number" id="warehouseWidth" value="72" oninput="calculateWarehouse()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition">
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">Boy (m)</span>
+                            <input type="number" id="warehouseLength" value="120" oninput="calculateWarehouse()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition">
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">Yükseklik (m)</span>
+                            <input type="number" step="0.1" id="clearHeight" value="13.0" oninput="calculateWarehouse()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition">
+                        </div>
+                    </div>
+
+                    <!-- Mod 2: Sadece m² -->
+                    <div id="areaInputs" class="hidden grid-cols-2 gap-2.5">
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">Toplam Kapalı Alan (m²)</span>
+                            <input type="number" id="totalAreaInput" value="8640" oninput="calculateFromArea()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition">
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">Tavan Yüksekliği (m)</span>
+                            <input type="number" step="0.1" id="clearHeightArea" value="13.0" oninput="calculateFromArea()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition">
+                        </div>
+                    </div>
+
+                    <!-- Brüt Hesap Alanı Göstergesi -->
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200 flex justify-between items-center text-xs">
+                        <span class="text-slate-500 font-medium">Hesaplanan Ölçü:</span>
+                        <span id="calculatedAreaLabel" class="font-bold text-blue-600 text-xs">72m x 120m (8.640 m²)</span>
+                    </div>
+
+                    <label class="flex items-center gap-2 cursor-pointer bg-slate-50 p-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 transition">
+                        <input type="checkbox" id="useSprinklerGap" checked onchange="calculateWarehouse()" class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
+                        <span class="text-xs font-semibold text-slate-700">Tavan Yangın / Sprinkler Payı (50 cm)</span>
+                    </label>
+                </div>
+
+                <!-- 2. Operasyonel Kayıp / Dışı Alan -->
+                <div class="space-y-3 pt-2 border-t border-slate-100">
+                    <span class="text-xs font-bold text-slate-800 block flex items-center gap-1.5">
+                        <i data-lucide="building-2" class="w-3.5 h-3.5 text-blue-500"></i>
+                        2. Operasyonel Kayıp / Dışı Alan (%)
+                    </span>
+                    <div>
+                        <div class="flex justify-between text-[11px] font-semibold text-slate-500 mb-1">
+                            <span>İdari, Şarj, Rampalar & Bulk Alan</span>
+                            <span id="nonStoragePercentLabel" class="font-bold text-blue-600">%15</span>
+                        </div>
+                        <input type="range" id="nonStoragePercent" min="5" max="35" value="15" oninput="calculateWarehouse()" class="w-full accent-blue-600 cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- 3. Ekipman & Koridor -->
+                <div class="space-y-3 pt-2 border-t border-slate-100">
+                    <span class="text-xs font-bold text-slate-800 block flex items-center gap-1.5">
+                        <i data-lucide="truck" class="w-3.5 h-3.5 text-blue-500"></i>
+                        3. Ekipman & Koridor Seçimi
+                    </span>
+                    <div class="grid grid-cols-3 gap-2.5">
+                        <div class="col-span-2">
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">Makine Tipi</span>
+                            <select id="equipmentType" onchange="handleEquipmentChange()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition bg-white">
+                                <option value="counterbalance">Dengeli Forklift (~3.8m Koridor)</option>
+                                <option value="reach" selected>Reach Truck (~3.0m Koridor)</option>
+                                <option value="vna">VNA Dar Koridor (~1.9m Koridor)</option>
+                                <option value="custom">Özel Koridor</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">Koridor (m)</span>
+                            <input type="number" step="0.1" id="customAisleWidth" value="3.0" disabled oninput="calculateWarehouse()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition bg-slate-100 text-slate-500 cursor-not-allowed">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Palet ve Yükseklik -->
+                <div class="space-y-3 pt-2 border-t border-slate-100">
+                    <span class="text-xs font-bold text-slate-800 block flex items-center gap-1.5">
+                        <i data-lucide="box" class="w-3.5 h-3.5 text-blue-500"></i>
+                        4. Palet Ayarları
+                    </span>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">Palet Tipi</span>
+                            <select id="palletType" onchange="calculateWarehouse()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition bg-white">
+                                <option value="euro">Euro Palet (80x120 cm)</option>
+                                <option value="iso">Sanayi Paleti (100x120 cm)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-semibold text-slate-500 block mb-1">Paletli Ürün Yüksekliği (m)</span>
+                            <input type="number" step="0.1" id="palletHeight" value="1.6" oninput="calculateWarehouse()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-blue-600 transition">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Simülasyon Görseli & Sonuçlar -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <!-- ÖZET SONUÇ KARTLARI -->
+                <div class="bg-gradient-to-br from-slate-900 to-blue-950 text-white p-6 rounded-2xl shadow-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <span class="text-xs font-bold text-blue-300 uppercase tracking-wider">KAPASİTE VE KAT ÖZETİ</span>
+                        <span id="resTotalPallets" class="text-2xl font-black text-emerald-400">0 Palet</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        <div class="bg-slate-800/50 p-2.5 rounded-xl border border-slate-700/50">
+                            <span class="text-[10px] text-slate-400 block font-medium">Kat Sayısı</span>
+                            <span id="resTierCount" class="text-lg font-black text-white">0 Kat</span>
+                        </div>
+                        <div class="bg-slate-800/50 p-2.5 rounded-xl border border-slate-700/50">
+                            <span class="text-[10px] text-slate-400 block font-medium">Zemin Kapasite</span>
+                            <span id="resGroundPallets" class="text-lg font-black text-slate-200">0 Palet</span>
+                        </div>
+                        <div class="bg-slate-800/50 p-2.5 rounded-xl border border-slate-700/50">
+                            <span class="text-[10px] text-slate-400 block font-medium">Max Tepe Yük.</span>
+                            <span id="resMaxPalletTop" class="text-lg font-black text-blue-300">0.00 m</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2D CAD/LAYOUT SIMÜLASYON CANVASI -->
+                <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-inner space-y-3">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-300 border-b border-slate-800 pb-2">
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="layout" class="w-4 h-4 text-blue-400"></i>
+                            2D CAD Layout Simülasyonu (Kuşbakışı)
+                        </span>
+                        <div class="flex items-center gap-3 text-[10px]">
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-amber-500 rounded-sm inline-block"></span> Raflar</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-slate-700 rounded-sm inline-block"></span> Koridorlar</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-rose-900/60 rounded-sm inline-block"></span> Operasyon/Rampa</span>
+                        </div>
+                    </div>
+
+                    <!-- Canvas -->
+                    <div class="w-full flex justify-center bg-slate-950 p-2 rounded-xl border border-slate-800/80 overflow-hidden">
+                        <canvas id="layoutCanvas" width="600" height="400" class="w-full max-w-full h-auto block rounded"></canvas>
+                    </div>
+                </div>
+
+                <!-- Detay Tablosu -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 text-xs font-medium text-slate-600">
+                    <div class="flex justify-between py-1 border-b border-slate-100">
+                        <span>İdari, Şarj & Rampa Ayrılan Alan</span>
+                        <span id="resNonStorageArea" class="font-bold text-rose-600">0 m²</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-slate-100">
+                        <span>Çift Sıralı Raf Blok Sayısı</span>
+                        <span id="resDoubleRacks" class="font-bold text-blue-600">0 Blok</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-slate-100">
+                        <span>Oluşan Çalışma Koridoru</span>
+                        <span id="resAisleCount" class="font-bold text-amber-600">0 Koridor</span>
+                    </div>
+                    <div class="flex justify-between py-1">
+                        <span>Sıra Başına Düşen Yan Yana Palet</span>
+                        <span id="resPalletsPerRow" class="font-bold text-indigo-600">0 Palet</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Geometrik Depo & CAD Simülatörü
+    </footer>
+
+    <script>
+        let currentMode = 'dim';
+
+        window.onload = function() {
+            calculateWarehouse();
+        };
+
+        function switchInputMode(mode) {
+            currentMode = mode;
+            const btnDim = document.getElementById('btnModeDim');
+            const btnArea = document.getElementById('btnModeArea');
+            const dimInputs = document.getElementById('dimInputs');
+            const areaInputs = document.getElementById('areaInputs');
+
+            if (mode === 'dim') {
+                btnDim.className = "flex-1 py-1.5 rounded-lg bg-white shadow-sm text-blue-600 transition";
+                btnArea.className = "flex-1 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition";
+                dimInputs.classList.remove('hidden');
+                dimInputs.classList.add('grid');
+                areaInputs.classList.add('hidden');
+                areaInputs.classList.remove('grid');
+                calculateWarehouse();
+            } else {
+                btnArea.className = "flex-1 py-1.5 rounded-lg bg-white shadow-sm text-blue-600 transition";
+                btnDim.className = "flex-1 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition";
+                areaInputs.classList.remove('hidden');
+                areaInputs.classList.add('grid');
+                dimInputs.classList.add('hidden');
+                dimInputs.classList.remove('grid');
+                calculateFromArea();
+            }
+        }
+
+        function calculateFromArea() {
+            const totalM2 = parseFloat(document.getElementById('totalAreaInput').value) || 0;
+            const clearHeightArea = parseFloat(document.getElementById('clearHeightArea').value) || 0;
+            
+            // Tipik Depo Oranı (1 : 1.6 Altın Oran Yaklaşımı)
+            // En * Boy = Area && Boy = 1.6 * En => 1.6 * En^2 = Area => En = sqrt(Area / 1.6)
+            const estimatedWidth = Math.round(Math.sqrt(totalM2 / 1.67));
+            const estimatedLength = Math.round(totalM2 / estimatedWidth);
+
+            document.getElementById('warehouseWidth').value = estimatedWidth;
+            document.getElementById('warehouseLength').value = estimatedLength;
+            document.getElementById('clearHeight').value = clearHeightArea;
+
+            calculateWarehouse();
+        }
+
+        function setExampleData() {
+            document.getElementById('warehouseWidth').value = 72;
+            document.getElementById('warehouseLength').value = 120;
+            document.getElementById('clearHeight').value = 13.0;
+            document.getElementById('useSprinklerGap').checked = true;
+            document.getElementById('nonStoragePercent').value = 15;
+            document.getElementById('equipmentType').value = 'reach';
+            document.getElementById('customAisleWidth').value = 3.0;
+            document.getElementById('palletType').value = 'euro';
+            document.getElementById('palletHeight').value = 1.6;
+            handleEquipmentChange();
+        }
+
+        function handleEquipmentChange() {
+            const equip = document.getElementById('equipmentType').value;
+            const aisleInput = document.getElementById('customAisleWidth');
+
+            if (equip === 'custom') {
+                aisleInput.disabled = false;
+                aisleInput.classList.remove('bg-slate-100', 'text-slate-500', 'cursor-not-allowed');
+                aisleInput.classList.add('bg-white', 'text-slate-900');
+            } else {
+                aisleInput.disabled = true;
+                aisleInput.classList.add('bg-slate-100', 'text-slate-500', 'cursor-not-allowed');
+                aisleInput.classList.remove('bg-white', 'text-slate-900');
+
+                if (equip === 'counterbalance') aisleInput.value = 3.8;
+                else if (equip === 'reach') aisleInput.value = 3.0;
+                else if (equip === 'vna') aisleInput.value = 1.9;
+            }
+
+            calculateWarehouse();
+        }
+
+        function calculateWarehouse() {
+            const width = parseFloat(document.getElementById('warehouseWidth').value) || 0;
+            const length = parseFloat(document.getElementById('warehouseLength').value) || 0;
+            const clearHeight = parseFloat(document.getElementById('clearHeight').value) || 0;
+            const useSprinkler = document.getElementById('useSprinklerGap').checked;
+            const nonStoragePercent = parseFloat(document.getElementById('nonStoragePercent').value) || 0;
+            const aisleWidth = parseFloat(document.getElementById('customAisleWidth').value) || 3.0;
+            const palletType = document.getElementById('palletType').value;
+            const palletHeight = parseFloat(document.getElementById('palletHeight').value) || 0;
+
+            document.getElementById('nonStoragePercentLabel').innerText = '%' + nonStoragePercent;
+
+            const totalArea = width * length;
+            document.getElementById('calculatedAreaLabel').innerText = `${width}m x ${length}m (${totalArea.toLocaleString('tr-TR')} m²)`;
+
+            if (width <= 0 || length <= 0 || clearHeight <= 0 || palletHeight <= 0) {
+                return;
+            }
+
+            // --- 1. ENESİNE HESAP ---
+            const singleRackDepth = 1.05;
+            const doubleRackDepth = 2.45;
+
+            const wallMargins = (2 * singleRackDepth) + (2 * aisleWidth);
+            const remainingWidth = width - wallMargins;
+
+            const doubleRackBlockWidth = doubleRackDepth + aisleWidth;
+            let doubleRackBlocks = Math.max(0, Math.floor(remainingWidth / doubleRackBlockWidth));
+            const totalAisles = doubleRackBlocks + 1;
+
+            // --- 2. BOYLAMASINA HESAP ---
+            const nonStorageArea = totalArea * (nonStoragePercent / 100);
+            const nonStorageLengthLoss = length * (nonStoragePercent / 100);
+
+            const crossAisleGap = 10.0; 
+            const usableLength = Math.max(0, length - nonStorageLengthLoss - crossAisleGap);
+
+            const palletWidth = palletType === 'euro' ? 0.85 : 1.05;
+            const palletsPerRow = Math.floor(usableLength / palletWidth);
+
+            const totalRackRows = 2 + (doubleRackBlocks * 2);
+            const groundPalletCapacity = totalRackRows * palletsPerRow;
+
+            // --- 3. DİKEY KAT ---
+            const sprinklerGap = useSprinkler ? 0.50 : 0.0;
+            const effectiveHeight = Math.max(0, clearHeight - sprinklerGap);
+
+            const opGap = 0.10;
+            const beamThick = 0.15;
+
+            let tierCount = 0;
+            if (effectiveHeight >= (palletHeight + opGap)) {
+                tierCount = 1 + Math.floor((effectiveHeight - (palletHeight + opGap)) / (palletHeight + opGap + beamThick));
+            }
+
+            let maxPalletTop = 0;
+            if (tierCount > 0) {
+                maxPalletTop = tierCount * palletHeight + (tierCount - 1) * (opGap + beamThick) + opGap;
+            }
+
+            const totalPalletCapacity = groundPalletCapacity * tierCount;
+
+            // DOM Güncelleme
+            document.getElementById('resTotalPallets').innerText = totalPalletCapacity.toLocaleString('tr-TR') + ' Palet';
+            document.getElementById('resTierCount').innerText = tierCount + ' Kat';
+            document.getElementById('resGroundPallets').innerText = groundPalletCapacity.toLocaleString('tr-TR') + ' Palet';
+            document.getElementById('resMaxPalletTop').innerText = maxPalletTop.toFixed(2) + ' m';
+
+            document.getElementById('resNonStorageArea').innerText = nonStorageArea.toLocaleString('tr-TR', { maximumFractionDigits: 0 }) + ' m²';
+            document.getElementById('resDoubleRacks').innerText = doubleRackBlocks + ' Blok (' + (doubleRackBlocks * 2) + ' Sıra)';
+            document.getElementById('resAisleCount').innerText = totalAisles + ' Koridor';
+            document.getElementById('resPalletsPerRow').innerText = palletsPerRow + ' Palet / Sıra';
+
+            // --- 4. CANVAS 2D DRAWING ---
+            draw2DLayout(width, length, doubleRackBlocks, nonStoragePercent);
+        }
+
+        function draw2DLayout(w, l, doubleBlocks, nonStoragePct) {
+            const canvas = document.getElementById('layoutCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Temizle
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Çizim Alanı Ölçeklendirme
+            const padding = 20;
+            const availableW = canvas.width - (padding * 2);
+            const availableH = canvas.height - (padding * 2);
+
+            const scale = Math.min(availableW / w, availableH / l);
+
+            const drawW = w * scale;
+            const drawL = l * scale;
+
+            const startX = (canvas.width - drawW) / 2;
+            const startY = (canvas.height - drawL) / 2;
+
+            // 1. Dış Depo Sınırları
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 2;
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(startX, startY, drawW, drawL);
+            ctx.strokeRect(startX, startY, drawW, drawL);
+
+            // 2. Operasyonel Kayıp / Rampa Alanı (Alt Kısım)
+            const opLength = drawL * (nonStoragePct / 100);
+            const storageL = drawL - opLength;
+
+            ctx.fillStyle = 'rgba(159, 18, 57, 0.25)';
+            ctx.fillRect(startX, startY + storageL, drawW, opLength);
+            
+            ctx.strokeStyle = '#f43f5e';
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(startX, startY + storageL);
+            ctx.lineTo(startX + drawW, startY + storageL);
+            ctx.stroke();
+            ctx.setLineDash([]); // Reset dash
+
+            ctx.fillStyle = '#fda4af';
+            ctx.font = '10px Inter, sans-serif';
+            ctx.fillText(`Operasyonel / Rampa / İdari Alan (%${nonStoragePct})`, startX + 10, startY + storageL + (opLength / 2) + 4);
+
+            // 3. Raf Bloklarını Çiz
+            const totalRackRows = 2 + (doubleBlocks * 2);
+            const totalCols = totalRackRows + doubleBlocks + 1; // Raflar + Koridorlar
+            const colWidth = drawW / totalCols;
+
+            let currentX = startX + (colWidth * 0.5);
+
+            // Sol Duvar Dibi Tek Sıra
+            ctx.fillStyle = '#f59e0b';
+            ctx.fillRect(currentX, startY + 10, colWidth * 0.8, storageL - 20);
+
+            currentX += colWidth * 1.5;
+
+            // Çift Sıra Bloklar
+            for (let i = 0; i < doubleBlocks; i++) {
+                // Çift sıra raf (2 adet yapışık)
+                ctx.fillStyle = '#f59e0b';
+                ctx.fillRect(currentX, startY + 10, colWidth * 0.8, storageL - 20);
+                ctx.fillRect(currentX + (colWidth * 0.9), startY + 10, colWidth * 0.8, storageL - 20);
+
+                // Ara Koridor İşareti (Çizgili)
+                ctx.fillStyle = '#334155';
+                
+                currentX += (colWidth * 2.8);
+            }
+
+            // Sağ Duvar Dibi Tek Sıra
+            ctx.fillStyle = '#f59e0b';
+            ctx.fillRect(startX + drawW - colWidth, startY + 10, colWidth * 0.8, storageL - 20);
+
+            // Ölçü Etiketleri
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '10px Inter, sans-serif';
+            ctx.fillText(`${w}m (Genişlik)`, startX + (drawW / 2) - 20, startY - 5);
+            ctx.fillText(`${l}m`, startX - 18, startY + (drawL / 2));
+        }
+    </script>
+</body>
+</html>
