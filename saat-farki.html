@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saat Farkı Hesaplama | HesapPoint</title>
+    <meta name="description" content="İki saat arasındaki süre ve saat farkını 24 saatlik zaman dilimine göre hesaplayın.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="clock" class="w-8 h-8 text-indigo-600"></i>
+                Saat Farkı Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Başlangıç ve bitiş saatleri arasındaki toplam süreyi ve saat farkını hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <!-- Form -->
+            <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                <div class="border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="clock" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Zaman Bilgileri (24 Saat Formatı)</span>
+                    </h2>
+                </div>
+
+                <!-- Başlangıç Saati -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700">Başlangıç Saati</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <select id="startHour" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white"></select>
+                        <select id="startMinute" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white"></select>
+                    </div>
+                </div>
+
+                <!-- Bitiş Saati -->
+                <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                    <label class="block text-xs font-bold text-slate-700">Bitiş Saati</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <select id="endHour" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white"></select>
+                        <select id="endMinute" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white"></select>
+                    </div>
+                </div>
+
+                <label class="flex items-center gap-2 cursor-pointer text-xs font-bold text-slate-700 pt-1">
+                    <input type="checkbox" id="nextDay" onchange="calculateTimeDifference()" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500">
+                    <span>Bitiş saati ertesi güne geçiyor (Gece devri)</span>
+                </label>
+            </div>
+
+            <!-- Sonuç -->
+            <div class="md:col-span-6 space-y-6">
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-4">
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>HESAPLAMA SONUCU</span>
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-300"></i>
+                    </h2>
+                    <div>
+                        <span id="resultLabel" class="text-xs text-indigo-200 font-medium block">Aradaki Zaman Farkı</span>
+                        <span id="primaryResult" class="text-4xl font-black text-white">0 Saat 0 Dakika</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 text-xs">
+                    <span class="font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">Kırılım Detayları</span>
+                    <div class="flex justify-between py-1 border-b border-slate-50">
+                        <span class="text-slate-600">Toplam Dakika</span>
+                        <span id="resTotalMinutes" class="font-bold text-slate-800">0 Dakika</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-slate-50">
+                        <span class="text-slate-600">Ondalık Saat Karşılığı</span>
+                        <span id="resDecimalHours" class="font-bold text-indigo-600">0.00 Saat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — 24 Saatlik Zaman Hesabı
+    </footer>
+
+    <script>
+        function populateTimeSelects() {
+            const sHour = document.getElementById('startHour');
+            const eHour = document.getElementById('endHour');
+            const sMin = document.getElementById('startMinute');
+            const eMin = document.getElementById('endMinute');
+
+            // 00 - 23 Saatler
+            for (let i = 0; i < 24; i++) {
+                const val = String(i).padStart(2, '0');
+                sHour.appendChild(new Option(`${val}:00`, i));
+                eHour.appendChild(new Option(`${val}:00`, i));
+            }
+
+            // 00 - 59 Dakikalar
+            for (let i = 0; i < 60; i += 5) { // 5'er dakikalık adımlar
+                const val = String(i).padStart(2, '0');
+                sMin.appendChild(new Option(`${val} dk`, i));
+                eMin.appendChild(new Option(`${val} dk`, i));
+            }
+
+            // Varsayılan zaman değerleri (08:00 - 17:00)
+            sHour.value = 8;
+            sMin.value = 0;
+            eHour.value = 17;
+            eMin.value = 0;
+
+            calculateTimeDifference();
+            lucide.createIcons();
+        }
+
+        function calculateTimeDifference() {
+            const h1 = parseInt(document.getElementById('startHour').value) || 0;
+            const m1 = parseInt(document.getElementById('startMinute').value) || 0;
+            const h2 = parseInt(document.getElementById('endHour').value) || 0;
+            const m2 = parseInt(document.getElementById('endMinute').value) || 0;
+            const isNextDay = document.getElementById('nextDay').checked;
+
+            let startTotal = (h1 * 60) + m1;
+            let endTotal = (h2 * 60) + m2;
+
+            if (isNextDay || endTotal < startTotal) {
+                endTotal += 24 * 60; // Ertesi güne sarktığında 24 saat ekle
+            }
+
+            let diffMinutes = endTotal - startTotal;
+            let hours = Math.floor(diffMinutes / 60);
+            let minutes = diffMinutes % 60;
+            let decimalHours = (diffMinutes / 60).toFixed(2);
+
+            document.getElementById('primaryResult').innerText = `${hours} Saat ${minutes} Dk`;
+            document.getElementById('resTotalMinutes').innerText = `${diffMinutes} Dakika`;
+            document.getElementById('resDecimalHours').innerText = `${decimalHours} Saat`;
+        }
+
+        document.addEventListener('DOMContentLoaded', populateTimeSelects);
+    </script>
+</body>
+</html>

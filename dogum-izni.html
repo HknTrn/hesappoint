@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doğum & Analık İzni Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="7578 Sayılı Kanun ile güncellenen 24 haftalık doğum öncesi ve sonrası analık izni sürelerinizi ve SGK iş göremezlik ödeneğinizi hesaplayın.">
+    <meta name="keywords" content="doğum izni hesaplama, analık izni süresi, 24 hafta doğum izni, 7578 sayılı kanun doğum izni, SGK doğum parası">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Doğum & Analık İzni Hesaplama 2026 | HesapPoint">
+    <meta property="og:description" content="Yeni mevzuata göre doğum izni takviminizi ve tahmini SGK rapor ödeneğinizi anında hesaplayın.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="baby" class="w-8 h-8 text-indigo-600"></i>
+                Doğum & Analık İzni Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                1 Mayıs 2026 Resmî Gazete (7578 S.K.) güncel mevzuatına uygun izin takvimi ve SGK analık ödeneği hesabı.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Giriş Formu -->
+            <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                
+                <div class="border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="calendar-heart" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Gebelik ve Tarih Bilgileri</span>
+                    </h2>
+                </div>
+
+                <!-- Beklenen Doğum Tarihi (TR Format) -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700">Muhtemel Doğum Tarihi (Gün / Ay / Yıl)</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <input type="number" id="birthDay" min="1" max="31" placeholder="Gün" oninput="calculateMaternityLeave()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                        <select id="birthMonth" onchange="calculateMaternityLeave()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white"></select>
+                        <input type="number" id="birthYear" min="2026" max="2099" placeholder="Yıl" oninput="calculateMaternityLeave()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                    </div>
+                </div>
+
+                <!-- Seçenekler -->
+                <div class="space-y-3 pt-2 border-t border-slate-100">
+                    <div class="space-y-1.5">
+                        <label class="block text-xs font-bold text-slate-700">Gebelik Türü</label>
+                        <select id="pregnancyType" onchange="calculateMaternityLeave()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="single" selected>Tekil Gebelik</option>
+                            <option value="multiple">Çoğul Gebelik (İkiz, Üçüz vb. +2 Hafta)</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="block text-xs font-bold text-slate-700">Çalışma Durumu (Rapor Esası)</label>
+                        <select id="workOption" onchange="calculateMaternityLeave()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="leave" selected>Doğuma 8 Hafta Kala İzne Ayrılacağım</option>
+                            <option value="transfer">Doğuma 2 Hafta Kalaya Kadar Çalışıp Süreyi Sonraya Aktaracağım</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-1.5 pt-2">
+                        <label class="block text-xs font-bold text-slate-700">Son 3 Aylık Ortalama Brüt Maaş (₺)</label>
+                        <input type="number" id="grossSalary" value="50000" oninput="calculateMaternityLeave()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                        <span class="text-[10px] text-slate-400 block">SGK geçici iş göremezlik ödeneği tahmini için gereklidir.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Kartı -->
+            <div class="md:col-span-6 space-y-6">
+                
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">👶</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>DOĞUM İZNİ VE İŞE BAŞLAMA TAKVİMİ</span>
+                        <i data-lucide="badge-check" class="w-4 h-4 text-emerald-300"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <div>
+                            <span class="text-xs text-indigo-200 font-medium block">İşe Başlama Tarihi</span>
+                            <span id="resReturnDate" class="text-3xl font-black text-emerald-300">--.--.----</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-indigo-500/40">
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">İzne Ayrılış Tarihi</span>
+                                <span id="resLeaveStartDate" class="text-base font-bold text-white">--.--.----</span>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Toplam İzin Süresi</span>
+                                <span id="resTotalDuration" class="text-base font-bold text-amber-300">24 Hafta (168 Gün)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detay Dökümü -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">
+                        Süreç ve SGK Ödenek Detayları
+                    </span>
+                    <div class="space-y-2 text-xs font-medium text-slate-600">
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Doğum Öncesi İzin Süresi</span>
+                            <span id="resPreLeaveDays" class="font-bold text-slate-800">8 Hafta (56 Gün)</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Doğum Sonrası İzin Süresi</span>
+                            <span id="resPostLeaveDays" class="font-bold text-slate-800">16 Hafta (112 Gün)</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Tahmini SGK Analık Ödeneği (2/3)</span>
+                            <span id="resSgkAllowance" class="font-bold text-emerald-600">0 ₺</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-amber-50/70 border border-amber-200/60 rounded-xl text-[11px] text-slate-600 space-y-1.5 mt-3">
+                        <p class="font-bold text-amber-900 flex items-center gap-1">
+                            <i data-lucide="scale" class="w-3.5 h-3.5 text-amber-600"></i>
+                            <span>7578 Sayılı Kanun Değişiklik Notu (Resmî Gazete: 01.05.2026):</span>
+                        </p>
+                        <p class="text-slate-700">
+                            • Toplam analık izni süresi <strong>24 haftaya (168 Gün)</strong> çıkarılmıştır (Doğum öncesi 8, doğum sonrası 16 hafta).
+                        </p>
+                        <p class="text-slate-700">
+                            • Tabip onayı ile doğuma <strong>2 hafta</strong> kalana kadar çalışılabilir; çalışılan süreler doğum sonrasına aktarılır.
+                        </p>
+                        <p class="text-slate-700">
+                            • Koruyucu aile olan çalışanlara da çocuğun teslim tarihinden itibaren <strong>10 gün</strong> izin imkanı tanınmıştır.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Güncel Doğum & Analık İzni Hesaplama
+    </footer>
+
+    <script>
+        const monthsNames = [
+            "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+            "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+        ];
+
+        function initDateSelectors() {
+            const sel = document.getElementById('birthMonth');
+            monthsNames.forEach((name, index) => {
+                const opt = document.createElement('option');
+                opt.value = index;
+                opt.textContent = name;
+                sel.appendChild(opt);
+            });
+
+            const today = new Date();
+            const futureDate = new Date();
+            futureDate.setMonth(today.getMonth() + 2);
+
+            document.getElementById('birthDay').value = futureDate.getDate();
+            document.getElementById('birthMonth').value = futureDate.getMonth();
+            document.getElementById('birthYear').value = futureDate.getFullYear();
+
+            calculateMaternityLeave();
+            lucide.createIcons();
+        }
+
+        function formatDateTR(date) {
+            const d = String(date.getDate()).padStart(2, '0');
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const y = date.getFullYear();
+            return `${d}.${m}.${y}`;
+        }
+
+        function calculateMaternityLeave() {
+            const day = parseInt(document.getElementById('birthDay').value);
+            const month = parseInt(document.getElementById('birthMonth').value);
+            const year = parseInt(document.getElementById('birthYear').value);
+
+            const pregType = document.getElementById('pregnancyType').value;
+            const workOption = document.getElementById('workOption').value;
+            const grossSalary = parseFloat(document.getElementById('grossSalary').value) || 0;
+
+            if (!day || isNaN(month) || !year) return;
+
+            const birthDate = new Date(year, month, day);
+
+            // 7578 Sayılı Kanun Esasları:
+            // Doğum öncesi: 8 Hafta (Çoğulsa 10 Hafta)
+            // Doğum sonrası: 16 Hafta
+            let preWeeks = (pregType === 'multiple') ? 10 : 8;
+            let postWeeks = 16; 
+
+            let actualPreWeeks = preWeeks;
+            let actualPostWeeks = postWeeks;
+
+            // Doğuma 2 hafta kalana kadar çalışma ve aktarma durumu
+            if (workOption === 'transfer') {
+                actualPreWeeks = 2; // Doğuma 2 hafta kala izne ayrılır
+                actualPostWeeks = postWeeks + (preWeeks - 2); // Kalan 6 hafta (veya çoğulda 8 hafta) sonraya aktarılır
+            }
+
+            const totalWeeks = actualPreWeeks + actualPostWeeks;
+            const totalDays = totalWeeks * 7;
+
+            // Tarih Hesaplama
+            const leaveStartDate = new Date(birthDate);
+            leaveStartDate.setDate(birthDate.getDate() - (actualPreWeeks * 7));
+
+            const returnDate = new Date(leaveStartDate);
+            returnDate.setDate(leaveStartDate.getDate() + totalDays);
+
+            // SGK İş Göremezlik Ödeneği (Günlük Brüt x 2/3 x Toplam Gün)
+            const dailyGross = grossSalary / 30;
+            const sgkAllowance = dailyGross * (2 / 3) * totalDays;
+
+            // Ekran Yazdırma
+            document.getElementById('resReturnDate').innerText = formatDateTR(returnDate);
+            document.getElementById('resLeaveStartDate').innerText = formatDateTR(leaveStartDate);
+            document.getElementById('resTotalDuration').innerText = `${totalWeeks} Hafta (${totalDays} Gün)`;
+
+            document.getElementById('resPreLeaveDays').innerText = `${actualPreWeeks} Hafta (${actualPreWeeks * 7} Gün)`;
+            document.getElementById('resPostLeaveDays').innerText = `${actualPostWeeks} Hafta (${actualPostWeeks * 7} Gün)`;
+            document.getElementById('resSgkAllowance').innerText = sgkAllowance.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+        }
+
+        document.addEventListener("DOMContentLoaded", initDateSelectors);
+    </script>
+</body>
+</html>
