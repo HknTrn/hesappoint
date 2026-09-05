@@ -3,15 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kredi Hesaplama & Ödeme Planı | HesapPoint</title>
-    <meta name="description" content="İhtiyaç, Taşıt, Konut ve Ticari krediler için aylık taksit, toplam geri ödeme, KKDF/BSMV vergileri ve detaylı ödeme planı hesaplama aracı.">
-    <meta name="keywords" content="kredi hesaplama, taksit hesaplama, aylık taksit, faiz oranı, kkdf bsmv hesaplama, kredi ödeme planı, ihtiyaç kredisi">
-    <meta name="robots" content="index, follow">
 
-    <!-- Social Media / Open Graph -->
-    <meta property="og:title" content="Kredi Hesaplama & Ödeme Planı | HesapPoint">
+    <title>Kredi Hesaplama 2026 | Aylık Taksit & Ödeme Planı | HesapPoint</title>
+    <meta name="description" content="İhtiyaç, taşıt, konut ve ticari krediler için aylık taksit tutarı, faiz oranları, KKDF ve BSMV yasal vergileri ile detaylı ödeme planı (amortisman tablosu) hesaplama aracı.">
+    <meta name="keywords" content="kredi hesaplama, taksit hesaplama, aylık taksit, faiz oranı, kkdf bsmv hesaplama, kredi ödeme planı, ihtiyaç kredisi, konut kredisi, ticari kredi">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/kredi.html">
+
+    <!-- Social Media / Open Graph Meta Etiketleri -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Kredi Hesaplama & Ödeme Planı Simülatörü | HesapPoint">
     <meta property="og:description" content="Kredi tutarı, faiz oranı ve vade bilgisiyle aylık taksit tutarını ve detaylı ödeme planını anında hesaplayın.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hesappoint.com/kredi.html">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kredi Hesaplama & Ödeme Planı Simülatörü | HesapPoint">
+    <meta name="twitter:description" content="Aylık taksit, faiz ve yasal vergi oranlarına göre kredi geri ödeme planınızı anında çıkartın.">
+
+    <!-- Schema.org Yapısal Veri (JSON-LD) - FinancialProduct & WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialProduct",
+      "name": "Kredi Hesaplama Simülatörü",
+      "url": "https://hesappoint.com/kredi.html",
+      "description": "Bireysel, konut ve ticari krediler için aylık taksit, toplam faiz, KKDF/BSMV vergileri ve amortisman ödeme tablosu hesaplayan online simülatör.",
+      "category": "Loan Calculator",
+      "provider": {
+        "@type": "Organization",
+        "name": "HesapPoint",
+        "url": "https://hesappoint.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TRY"
+      }
+    }
+    </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -166,7 +200,7 @@
                                 <span id="res-total" class="text-lg font-black text-amber-300">0,00 ₺</span>
                             </div>
                             <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
-                                <span class="text-[11px] text-indigo-100 block font-medium">Toplam Toplam Faiz</span>
+                                <span class="text-[11px] text-indigo-100 block font-medium">Toplam Faiz</span>
                                 <span id="res-interest" class="text-lg font-black text-emerald-300">0,00 ₺</span>
                             </div>
                         </div>
@@ -304,7 +338,7 @@
                          `Kredi Tutarı: ${parseFloat(amount).toLocaleString('tr-TR')} ₺\n` +
                          `Vade: ${term} Ay\n` +
                          `Aylık Taksit Tutarı: ${monthly}\n` +
-                         `Toplam Toplam Faiz: ${interest}\n` +
+                         `Toplam Faiz: ${interest}\n` +
                          `*Toplam Geri Ödeme: ${total}*\n` +
                          `------------------------------------\n` +
                          `https://hesappoint.com/kredi.html`;
