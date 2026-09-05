@@ -80,7 +80,7 @@
             </p>
         </div>
 
-        <!-- Form Alanı (Görseldeki Gibi Ayrı Gün, Ay, Yıl ve Elle Girilebilir Saat) -->
+        <!-- Form Alanı -->
         <div class="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm space-y-6">
             
             <!-- BAŞLANGIÇ TARİHİ VE SAATİ -->
@@ -93,7 +93,7 @@
                     <select id="startMonth" onchange="updateDays('start'); calculateDifference()" class="md:col-span-4 p-3 text-sm font-bold border border-slate-200 rounded-2xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white cursor-pointer"></select>
                     <!-- Yıl -->
                     <select id="startYear" onchange="updateDays('start'); calculateDifference()" class="md:col-span-3 p-3 text-sm font-bold border border-slate-200 rounded-2xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white cursor-pointer"></select>
-                    <!-- Saat (Elle yazılabilir + 24 Saatlik) -->
+                    <!-- Saat -->
                     <input type="time" id="startTime" value="00:00" oninput="calculateDifference()" class="md:col-span-3 p-3 text-sm font-bold border border-slate-200 rounded-2xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white">
                 </div>
             </div>
@@ -108,14 +108,14 @@
                     <select id="endMonth" onchange="updateDays('end'); calculateDifference()" class="md:col-span-4 p-3 text-sm font-bold border border-slate-200 rounded-2xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white cursor-pointer"></select>
                     <!-- Yıl -->
                     <select id="endYear" onchange="updateDays('end'); calculateDifference()" class="md:col-span-3 p-3 text-sm font-bold border border-slate-200 rounded-2xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white cursor-pointer"></select>
-                    <!-- Saat (Elle yazılabilir + 24 Saatlik) -->
+                    <!-- Saat -->
                     <input type="time" id="endTime" value="00:00" oninput="calculateDifference()" class="md:col-span-3 p-3 text-sm font-bold border border-slate-200 rounded-2xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white">
                 </div>
             </div>
 
         </div>
 
-        <!-- Görsel Çıktı Tasarımı (Özet ve Detay Kartları) -->
+        <!-- Görsel Çıktı Tasarımı -->
         <div class="space-y-5">
             <!-- Özet Fark Ana Kartı -->
             <div class="bg-indigo-700 text-white p-7 rounded-3xl shadow-xl shadow-indigo-700/20 space-y-3">
@@ -157,7 +157,7 @@
                     <span id="valMinutes" class="text-2xl font-black text-indigo-600 block">525.600</span>
                 </div>
 
-                <!-- TOPLAM SANİYE (Yeşil Renk Accent) -->
+                <!-- TOPLAM SANİYE -->
                 <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center space-y-1">
                     <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">TOPLAM SANİYE</span>
                     <span id="valSeconds" class="text-2xl font-black text-emerald-600 block">31.536.000</span>
@@ -173,7 +173,7 @@
     <script>
         const monthsTR = [
             "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", 
-            "Temmuz", "Ağustos", "Eylul", "Ekim", "Kasım", "Aralık"
+            "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
         ];
 
         function initForm() {
@@ -189,7 +189,6 @@
             });
 
             // Yıllar Doldur (2000 - 2040)
-            const currentYear = new Date().getFullYear();
             for (let y = 2000; y <= 2040; y++) {
                 startYearSel.appendChild(new Option(y, y));
                 endYearSel.appendChild(new Option(y, y));
@@ -214,7 +213,7 @@
             lucide.createIcons();
         }
 
-        // Seçilen Yıl ve Aya Göre Gün Sayısını Güncelleme (28, 30, 31 Çekme Durumu)
+        // Seçilen Yıl ve Aya Göre Gün Sayısını Güncelleme
         function updateDays(type) {
             const monthVal = parseInt(document.getElementById(`${type}Month`).value);
             const yearVal = parseInt(document.getElementById(`${type}Year`).value);
@@ -231,7 +230,7 @@
             daySel.value = Math.min(currentSelectedDay, daysInMonth);
         }
 
-        // TR Formatında Noktalı Sayı Gösterimi (8.760, 525.600)
+        // TR Formatında Noktalı Sayı Gösterimi
         function formatTRNumber(num, decimals = 0) {
             return num.toLocaleString('tr-TR', {
                 minimumFractionDigits: decimals,
