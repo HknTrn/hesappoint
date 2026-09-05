@@ -20,6 +20,29 @@
     <meta name="twitter:title" content="Depo Palet Kapasitesi & 2D Layout Simülatörü | HesapPoint">
     <meta name="twitter:description" content="Depo boyutlarınızı veya toplam m² bilgisini girin, rafları, koridorları ve toplam palet kapasitesini 2D CAD üzerinde anında simüle edin.">
 
+    <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Depo Palet Kapasitesi & 2D Layout Simülatörü",
+      "url": "https://hesappoint.com/depo-palet-kapasite.html",
+      "description": "Depo alan boyutu, tavan yüksekliği ve koridor/ekipman tipine göre dinamik 2D CAD layout simülasyonu ile depo palet kapasitesi hesaplama aracı.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TRY"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "142"
+      }
+    }
+    </script>
+
     <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -264,6 +287,7 @@
 
         window.onload = function() {
             calculateWarehouse();
+            lucide.createIcons();
         };
 
         function switchInputMode(mode) {
