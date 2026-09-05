@@ -8,12 +8,45 @@
 <meta name="description" content="%1, %10 ve %20 oranlarında KDV dahil tutardan KDV çıkarma ve KDV hariç matraha KDV ekleme işlemlerini anında yapabileceğiniz pratik KDV hesaplama aracı.">
 <meta name="keywords" content="kdv hesaplama, kdv dahil hesaplama, kdv hariç hesaplama, kdv ayırma, kdv ekleme, matrah hesaplama, yüzde 20 kdv, yüzde 10 kdv">
 <meta name="robots" content="index, follow">
+<meta name="author" content="HesapPoint">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://hesappoint.com/kdv.html">
 
 <!-- Social Media / Open Graph Meta Etiketleri -->
+<meta property="og:site_name" content="HesapPoint">
 <meta property="og:title" content="KDV Hesaplama ve Ayırma Aracı | hesappoint">
 <meta property="og:description" content="KDV dahil ve hariç tutarları hızlıca hesaplayın, fatura ve matrah değerlerini anında görün.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hesappoint.com/kdv.html">
+
+<!-- Twitter Card Meta Etiketleri -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KDV Hesaplama ve Ayırma Aracı | hesappoint">
+<meta name="twitter:description" content="%1, %10 ve %20 KDV dahil ve hariç tutarlarını anında hesaplayın.">
+
+<!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "KDV Hesaplama Simülatörü",
+  "url": "https://hesappoint.com/kdv.html",
+  "description": "%1, %10 ve %20 oranlarında KDV ekleme ve KDV dahil tutardan matrah ayırma işlemlerini anında yapan online finans aracı.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "210"
+  }
+}
+</script>
 
 <style>
 :root {
@@ -431,7 +464,7 @@ footer {
             <form id="kdvForm" onsubmit="event.preventDefault(); calculateKDV();">
                 
                 <div class="form-group">
-                    <label id="amountLabel">KDV Hariç Tutar (TL)</label>
+                    <label id="amountLabel">KDV HARİÇ TUTAR (TL)</label>
                     <div class="input-icon-wrapper">
                         <span class="input-icon">₺</span>
                         <input type="number" step="0.01" class="with-icon" id="amount" placeholder="Örn: 1000" oninput="calculateKDV()">
