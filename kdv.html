@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KDV Hesaplama 2026 | KDV Dahil ve Hariç Hesaplama | hesappoint</title>
-<meta name="description" content="%1, %10 ve %20 oranlarında KDV dahil tutardan KDV çıkarma ve KDV hariç matraha KDV ekleme işlemlerini anında yapabileceğiniz pratik KDV hesaplama aracı.">
-<meta name="keywords" content="kdv hesaplama, kdv dahil hesaplama, kdv hariç hesaplama, kdv ayırma, kdv ekleme, matrah hesaplama, yüzde 20 kdv, yüzde 10 kdv">
+<!-- SEO Meta Etiketleri -->
+<title>KDV Hesaplama 2026 | KDV Dahil, Hariç ve Matrah Hesaplama | hesappoint</title>
+<meta name="description" content="%1, %10, %20 ve özel KDV oranlarıyla KDV dahil tutardan KDV çıkarma, KDV hariç matraha KDV ekleme ve KDV tutarından matrah bulma işlemlerini anında yapın.">
+<meta name="keywords" content="kdv hesaplama, kdv dahil hesaplama, kdv hariç hesaplama, kdvden matrah bulma, kdv ayırma, kdv ekleme, matrah hesaplama, yüzde 20 kdv, yüzde 10 kdv">
 <meta name="robots" content="index, follow">
 <meta name="author" content="HesapPoint">
 
@@ -15,15 +16,15 @@
 
 <!-- Social Media / Open Graph Meta Etiketleri -->
 <meta property="og:site_name" content="HesapPoint">
-<meta property="og:title" content="KDV Hesaplama ve Ayırma Aracı | hesappoint">
-<meta property="og:description" content="KDV dahil ve hariç tutarları hızlıca hesaplayın, fatura ve matrah değerlerini anında görün.">
+<meta property="og:title" content="KDV Hesaplama, Ayırma ve Matrah Bulma Aracı | hesappoint">
+<meta property="og:description" content="KDV dahil, KDV hariç ve KDV tutarından matrah hesaplama işlemlerini anında yapın.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hesappoint.com/kdv.html">
 
 <!-- Twitter Card Meta Etiketleri -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="KDV Hesaplama ve Ayırma Aracı | hesappoint">
-<meta name="twitter:description" content="%1, %10 ve %20 KDV dahil ve hariç tutarlarını anında hesaplayın.">
+<meta name="twitter:description" content="%1, %10, %20 ve özel oranlarla KDV dahil ve hariç tutarları anında hesaplayın.">
 
 <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
 <script type="application/ld+json">
@@ -32,18 +33,13 @@
   "@type": "WebApplication",
   "name": "KDV Hesaplama Simülatörü",
   "url": "https://hesappoint.com/kdv.html",
-  "description": "%1, %10 ve %20 oranlarında KDV ekleme ve KDV dahil tutardan matrah ayırma işlemlerini anında yapan online finans aracı.",
+  "description": "KDV dahil, KDV hariç ve KDV tutarından matrah bulma işlemlerini anında yapan pratik finans aracı.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "TRY"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "210"
   }
 }
 </script>
@@ -69,10 +65,10 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--bg-body);
     color: var(--text-main);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 header {
@@ -82,7 +78,7 @@ header {
 }
 
 .header-content {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -156,8 +152,8 @@ header {
 /* TABS */
 .tabs {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
     margin-bottom: 20px;
     background: #f1f5f9;
     padding: 4px;
@@ -165,12 +161,12 @@ header {
 }
 
 .tab {
-    padding: 10px 8px;
+    padding: 9px 4px;
     border: none;
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
     color: var(--text-muted);
     text-align: center;
@@ -190,7 +186,7 @@ header {
 .panel-title {
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     color: var(--text-main);
 }
 
@@ -241,6 +237,7 @@ input, select {
     background: #fff;
     outline: none;
     transition: all 0.2s;
+    font-family: inherit;
 }
 
 .with-icon {
@@ -252,9 +249,40 @@ input:focus, select:focus {
     box-shadow: 0 0 0 3.5px rgba(79, 70, 229, 0.12);
 }
 
+.quick-buttons {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-quick {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: var(--text-main);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn-quick:hover, .btn-quick.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
 .btn-calculate {
-    width: 100%;
-    padding: 13px;
+    flex: 2;
+    padding: 12px;
     background: var(--primary);
     color: white;
     border: none;
@@ -263,13 +291,29 @@ input:focus, select:focus {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
-    margin-top: 8px;
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
 }
 
 .btn-calculate:hover {
     background: var(--primary-dark);
-    transform: translateY(-1px);
+}
+
+.btn-reset {
+    flex: 1;
+    padding: 12px;
+    background: #f1f5f9;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-reset:hover {
+    background: #e2e8f0;
+    color: var(--text-main);
 }
 
 /* SAĞ TARAF: SONUÇ KARTLARI */
@@ -294,13 +338,41 @@ input:focus, select:focus {
     pointer-events: none;
 }
 
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .summary-title {
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.85;
-    margin-bottom: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-action {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+.btn-action:hover {
+    background: rgba(255, 255, 255, 0.35);
 }
 
 .summary-main {
@@ -383,6 +455,30 @@ input:focus, select:focus {
     color: var(--text-main);
 }
 
+.formula-card {
+    margin-top: 18px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid var(--primary);
+    padding: 14px;
+    border-radius: 10px;
+}
+
+.formula-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.formula-body {
+    font-size: 13px;
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
 .badge {
     background: #e0e7ff;
     color: var(--primary);
@@ -392,19 +488,102 @@ input:focus, select:focus {
     font-weight: 700;
 }
 
-.info-box {
-    margin-top: 20px;
-    padding: 16px;
-    border-radius: 12px;
-    background: #f1f5f9;
-    border: 1px solid #e2e8f0;
-    color: var(--text-muted);
-    font-size: 12px;
+/* ÖZGÜN REHBER İÇERİK BÖLÜMÜ */
+.seo-content-section {
+    margin-top: 48px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    padding: 36px;
+    color: #1e293b;
+}
+
+.seo-content-section h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    margin-top: 28px;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.seo-content-section h2:first-child {
+    margin-top: 0;
+}
+
+.seo-content-section p {
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+.seo-card-example {
+    background: #f8fafc;
+    border-left: 4px solid #4f46e5;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #334155;
+}
+
+.seo-card-example strong {
+    color: #4f46e5;
+}
+
+.seo-list {
+    list-style: none;
+    margin: 16px 0;
+}
+
+.seo-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #475569;
     line-height: 1.6;
 }
 
-.info-box strong {
-    color: var(--text-main);
+.seo-list li::before {
+    content: "•";
+    color: #4f46e5;
+    font-size: 24px;
+    position: absolute;
+    left: 4px;
+    top: -4px;
+}
+
+/* TOAST BİLDİRİMİ */
+#toast {
+    visibility: hidden;
+    min-width: 220px;
+    background-color: #0f172a;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px 16px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s, bottom 0.3s;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 40px;
 }
 
 footer {
@@ -438,7 +617,7 @@ footer {
 
     <div class="page-header">
         <h1>💰 KDV Hesaplama Simülatörü</h1>
-        <p>KDV dahil ve KDV hariç tutarları hızlı ve kolay şekilde hesaplayın.</p>
+        <p>KDV dahil, KDV hariç ve matrah tutarlarını adım adım kolayca hesaplayın.</p>
     </div>
 
     <div class="dashboard-grid">
@@ -447,18 +626,14 @@ footer {
         <div class="panel">
             
             <div class="tabs">
-                <button class="tab active" id="tab1" onclick="switchMode('add')">KDV Ekle (Hariç → Dahil)</button>
-                <button class="tab" id="tab2" onclick="switchMode('sub')">KDV Çıkar (Dahil → Hariç)</button>
+                <button class="tab active" id="tab1" onclick="switchMode('add')">KDV Ekle</button>
+                <button class="tab" id="tab2" onclick="switchMode('sub')">KDV Çıkar</button>
+                <button class="tab" id="tab3" onclick="switchMode('matrah')">Matrah Bul</button>
             </div>
 
-            <div id="modeAddDescription">
-                <div class="panel-title">KDV Hariç Tutar Üzerinden Ekleme</div>
-                <div class="panel-description">Matrah (net) tutara KDV oranını ekleyerek toplam tutarı bulun.</div>
-            </div>
-
-            <div id="modeSubDescription" style="display: none;">
-                <div class="panel-title">KDV Dahil Tutardan KDV Ayırma</div>
-                <div class="panel-description">Toplam tutarın içerisindeki net matrahı ve KDV payını ayırın.</div>
+            <div id="modeDescription">
+                <div class="panel-title" id="panelTitle">KDV Hariç Fiyata KDV Ekleme</div>
+                <div class="panel-description" id="panelDesc">Net (matrah) tutara vergi ekleyerek fatura toplamını hesaplar.</div>
             </div>
 
             <form id="kdvForm" onsubmit="event.preventDefault(); calculateKDV();">
@@ -467,20 +642,29 @@ footer {
                     <label id="amountLabel">KDV HARİÇ TUTAR (TL)</label>
                     <div class="input-icon-wrapper">
                         <span class="input-icon">₺</span>
-                        <input type="number" step="0.01" class="with-icon" id="amount" placeholder="Örn: 1000" oninput="calculateKDV()">
+                        <input type="number" step="any" class="with-icon" id="amount" placeholder="Örn: 1000" oninput="calculateKDV()">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>KDV Oranı (%)</label>
-                    <select id="rate" onchange="calculateKDV()">
-                        <option value="20" selected>%20 (Standart Oran)</option>
-                        <option value="10">%10 (Gıda / Tekstil vb.)</option>
-                        <option value="1">%1 (Temel Gıda vb.)</option>
-                    </select>
+                    <label>KDV ORANI (%)</label>
+                    <div class="quick-buttons">
+                        <button type="button" class="btn-quick" onclick="setRate(1, this)">%1</button>
+                        <button type="button" class="btn-quick" onclick="setRate(8, this)">%8</button>
+                        <button type="button" class="btn-quick" onclick="setRate(10, this)">%10</button>
+                        <button type="button" class="btn-quick" onclick="setRate(18, this)">%18</button>
+                        <button type="button" class="btn-quick active" onclick="setRate(20, this)">%20</button>
+                        <button type="button" class="btn-quick" onclick="enableCustomRate(this)">Diğer</button>
+                    </div>
+                    <div id="customRateWrapper" style="display: none; margin-top: 10px;">
+                        <input type="number" step="any" id="customRateInput" placeholder="Özel KDV oranı girin (Örn: 12)" oninput="calculateKDV()">
+                    </div>
                 </div>
 
-                <button type="submit" class="btn-calculate">Tutar Hesapla</button>
+                <div class="button-group">
+                    <button type="button" class="btn-calculate" onclick="calculateKDV()">Hesapla</button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">Sıfırla</button>
+                </div>
 
             </form>
         </div>
@@ -489,7 +673,12 @@ footer {
         <div class="results-column">
             
             <div class="summary-card">
-                <div class="summary-title" id="summaryTitleDisplay">KDV DAHİL TOPLAM TUTAR</div>
+                <div class="summary-header">
+                    <div class="summary-title" id="summaryTitleDisplay">KDV DAHİL TOPLAM TUTAR</div>
+                    <div class="action-buttons">
+                        <button class="btn-action" onclick="copyResult()">📋 Kopyala</button>
+                    </div>
+                </div>
                 
                 <div class="summary-main">
                     <span class="val" id="resPrimaryTotal">0,00 TL</span>
@@ -527,8 +716,9 @@ footer {
                     </li>
                 </ul>
 
-                <div class="info-box">
-                    <strong>📌 KDV Oranları Hakkında:</strong> Türkiye'de genel standart KDV oranı <strong>%20</strong>'dir. Tekstil, konaklama ve bazı gıda hizmetlerinde <strong>%10</strong>; temel gıda maddeleri ile perakende teslimlerinde ise <strong>%1</strong> oranı uygulanmaktadır.
+                <div class="formula-card">
+                    <div class="formula-title">💡 NASIL HESAPLANDI?</div>
+                    <div class="formula-body" id="resFormulaStep">-</div>
                 </div>
             </div>
 
@@ -536,55 +726,128 @@ footer {
 
     </div>
 
+    <!-- ÖZGÜN & PAZARLAMA ODAKLI SEO REHBER ALANI -->
+    <div class="seo-content-section">
+        <h2>🛍️ Katma Değer Vergisi (KDV) Nedir?</h2>
+        <p>KDV; satın aldığımız mal veya hizmetlerin üretimden bize ulaşana kadarki her aşamasında eklenen esnek bir tüketim vergisidir. Ticari yaşamda ürünü nihai tüketen kişi vergiyi öder; işletmeler ise bu verginin aktarılmasına aracılık eder.</p>
+
+        <div class="seo-card-example">
+            <strong>💡 Basit Bir Fatura Örneği:</strong> Mağazadan 1.000 TL net değeri olan bir giysi aldığınızda %20 KDV eklenir. Kasada ödediğiniz 1.200 TL'nin 1.000 TL'si ürünün kendi bedeli (matrah), 200 TL'si ise devlete aktarılan KDV'dir.
+        </div>
+
+        <h2>🧮 KDV İşlemleri Nasıl Yapılır?</h2>
+        <p>Vergi hesaplarken karmaşık formüller yerine ihtiyacınıza uygun üç temel yöntem kullanılır:</p>
+        
+        <ul class="seo-list">
+            <li><strong>1. KDV Ekleme (Hariçten Dahile):</strong> Elinizdeki net fiyatı <code style="background:#e0e7ff; color:#4338ca; padding:2px 6px; border-radius:4px;">[ 1 + (KDV Oranı / 100) ]</code> katsayısıyla çarparak vergi dahil satış fiyatını bulursunuz.</li>
+            <li><strong>2. KDV Ayırma (Dahilden Hariçe):</strong> Faturadaki toplam tutarı <code style="background:#e0e7ff; color:#4338ca; padding:2px 6px; border-radius:4px;">[ 1 + (KDV Oranı / 100) ]</code> değerine bölerek ürünün vergisiz net matrahını ayırırsınız.</li>
+            <li><strong>3. KDV'den Matrah Bulma:</strong> Sadece ödenen KDV miktarını biliyorsanız, bu tutarı KDV oranına bölüp 100 ile çarparak ana ürün fiyatına ulaşırsınız.</li>
+        </ul>
+
+        <h2>📅 KDV Bildirimi ve Ödeme Dönemleri</h2>
+        <p>İşletmeler bir ay boyunca topladıkları KDV ile ödedikleri KDV'yi karşılaştırarak beyanname düzenler. Aylık KDV beyannameleri, ilgili ayı takip eden ayın <strong>28. günü akşamına kadar</strong> verilir ve aynı sürede ödemesi tamamlanır.</p>
+
+        <div class="seo-card-example">
+            <strong>💼 Muhasebede Hesaplanan ve İndirilecek KDV Farkı:</strong><br>
+            • <strong>Hesaplanan KDV:</strong> Müşterilerinize satış yaparken tahsil ettiğiniz vergidir.<br>
+            • <strong>İndirilecek KDV:</strong> İşletmeniz için mal veya hizmet satın alırken tedarikçilere ödediğiniz vergidir.
+        </div>
+    </div>
+
 </div>
+
+<div id="toast">Sonuç kopyalandı!</div>
 
 <footer>
     © 2026 HesapPoint — KDV Hesaplama Simülatörü
 </footer>
 
 <script>
-    let currentMode = 'add'; // 'add' = KDV Ekle, 'sub' = KDV Çıkar
+    let currentMode = 'add'; // 'add', 'sub', 'matrah'
+    let selectedRate = 20;
 
     function switchMode(mode) {
         currentMode = mode;
-        const tab1 = document.getElementById('tab1');
-        const tab2 = document.getElementById('tab2');
-        const descAdd = document.getElementById('modeAddDescription');
-        const descSub = document.getElementById('modeSubDescription');
-        const amountLabel = document.getElementById('amountLabel');
+        
+        document.getElementById('tab1').classList.remove('active');
+        document.getElementById('tab2').classList.remove('active');
+        document.getElementById('tab3').classList.remove('active');
+
+        const label = document.getElementById('amountLabel');
+        const title = document.getElementById('panelTitle');
+        const desc = document.getElementById('panelDesc');
+        const sumTitle = document.getElementById('summaryTitleDisplay');
 
         if (mode === 'add') {
-            tab1.classList.add('active');
-            tab2.classList.remove('active');
-            descAdd.style.display = 'block';
-            descSub.style.display = 'none';
-            amountLabel.innerText = 'KDV HARİÇ TUTAR (TL)';
-            document.getElementById('summaryTitleDisplay').innerText = 'KDV DAHİL TOPLAM TUTAR';
+            document.getElementById('tab1').classList.add('active');
+            label.innerText = 'KDV HARİÇ TUTAR (TL)';
+            title.innerText = 'KDV Hariç Fiyata KDV Ekleme';
+            desc.innerText = 'Net (matrah) tutara vergi ekleyerek fatura toplamını hesaplar.';
+            sumTitle.innerText = 'KDV DAHİL TOPLAM TUTAR';
             document.getElementById('resModeText').innerText = 'KDV Ekleme (Hariç → Dahil)';
-        } else {
-            tab2.classList.add('active');
-            tab1.classList.remove('active');
-            descSub.style.display = 'block';
-            descAdd.style.display = 'none';
-            amountLabel.innerText = 'KDV DAHİL TUTAR (TL)';
-            document.getElementById('summaryTitleDisplay').innerText = 'KDV DAHİL TOPLAM TUTAR';
+        } else if (mode === 'sub') {
+            document.getElementById('tab2').classList.add('active');
+            label.innerText = 'KDV DAHİL TUTAR (TL)';
+            title.innerText = 'KDV Dahil Tutardan KDV Ayırma';
+            desc.innerText = 'Fatura toplamından vergisiz net matrahı ve KDV tutarını ayırır.';
+            sumTitle.innerText = 'KDV DAHİL TOPLAM TUTAR';
             document.getElementById('resModeText').innerText = 'KDV Çıkarma (Dahil → Hariç)';
+        } else if (mode === 'matrah') {
+            document.getElementById('tab3').classList.add('active');
+            label.innerText = 'SADECE KDV TUTARI (TL)';
+            title.innerText = 'KDV Tutarından Matrah Bulma';
+            desc.innerText = 'Bilinen KDV miktarından ürünün net fiyatına ve toplamına ulaşır.';
+            sumTitle.innerText = 'HESAPLANAN NET MATRAH';
+            document.getElementById('resModeText').innerText = "KDV'den Matrah Bulma";
         }
 
         calculateKDV();
     }
 
+    function setRate(rate, btn) {
+        selectedRate = rate;
+        document.getElementById('customRateWrapper').style.display = 'none';
+        
+        document.querySelectorAll('.btn-quick').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+
+        calculateKDV();
+    }
+
+    function enableCustomRate(btn) {
+        document.querySelectorAll('.btn-quick').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        
+        const wrapper = document.getElementById('customRateWrapper');
+        wrapper.style.display = 'block';
+        document.getElementById('customRateInput').focus();
+        
+        calculateKDV();
+    }
+
+    function getActiveRate() {
+        const customWrapper = document.getElementById('customRateWrapper');
+        if (customWrapper.style.display !== 'none') {
+            const customVal = parseFloat(document.getElementById('customRateInput').value);
+            return isNaN(customVal) || customVal < 0 ? 0 : customVal;
+        }
+        return selectedRate;
+    }
+
+    function resetForm() {
+        document.getElementById('amount').value = '';
+        document.getElementById('customRateInput').value = '';
+        resetResults();
+    }
+
     function calculateKDV() {
         const val = parseFloat(document.getElementById('amount').value);
-        const rate = parseFloat(document.getElementById('rate').value);
+        const rate = getActiveRate();
 
         document.getElementById('resRateBadge').innerText = `%${rate}`;
 
         if (isNaN(val) || val <= 0) {
-            document.getElementById('resPrimaryTotal').innerText = '0,00 TL';
-            document.getElementById('resKdvAmount').innerText = '0,00 TL';
-            document.getElementById('resNetAmount').innerText = '0,00 TL';
-            document.getElementById('resNetDisplay').innerText = '0,00 TL';
+            resetResults();
             return;
         }
 
@@ -596,24 +859,76 @@ footer {
             net = val;
             kdv = net * (rate / 100);
             total = net + kdv;
-        } else {
+            
+            document.getElementById('resPrimaryTotal').innerText = formatCurrency(total);
+            document.getElementById('resKdvAmount').innerText = formatCurrency(kdv);
+            document.getElementById('resNetAmount').innerText = formatCurrency(net);
+            document.getElementById('resNetDisplay').innerText = formatCurrency(net);
+            document.getElementById('resFormulaStep').innerText = `${formatNum(net)} TL × (1 + ${rate}/100) = ${formatCurrency(total)}`;
+        } else if (currentMode === 'sub') {
             total = val;
             net = total / (1 + (rate / 100));
             kdv = total - net;
-        }
 
-        document.getElementById('resPrimaryTotal').innerText = formatCurrency(total);
-        document.getElementById('resKdvAmount').innerText = formatCurrency(kdv);
-        document.getElementById('resNetAmount').innerText = formatCurrency(net);
-        document.getElementById('resNetDisplay').innerText = formatCurrency(net);
+            document.getElementById('resPrimaryTotal').innerText = formatCurrency(total);
+            document.getElementById('resKdvAmount').innerText = formatCurrency(kdv);
+            document.getElementById('resNetAmount').innerText = formatCurrency(net);
+            document.getElementById('resNetDisplay').innerText = formatCurrency(net);
+            document.getElementById('resFormulaStep').innerText = `${formatNum(total)} TL ÷ (1 + ${rate}/100) = ${formatCurrency(net)}`;
+        } else if (currentMode === 'matrah') {
+            kdv = val;
+            if (rate > 0) {
+                net = (kdv / rate) * 100;
+                total = net + kdv;
+            }
+
+            document.getElementById('resPrimaryTotal').innerText = formatCurrency(net);
+            document.getElementById('resKdvAmount').innerText = formatCurrency(kdv);
+            document.getElementById('resNetAmount').innerText = formatCurrency(net);
+            document.getElementById('resNetDisplay').innerText = formatCurrency(net);
+            document.getElementById('resFormulaStep').innerText = `(${formatNum(kdv)} TL ÷ ${rate}) × 100 = ${formatCurrency(net)}`;
+        }
+    }
+
+    function resetResults() {
+        document.getElementById('resPrimaryTotal').innerText = "0,00 TL";
+        document.getElementById('resKdvAmount').innerText = "0,00 TL";
+        document.getElementById('resNetAmount').innerText = "0,00 TL";
+        document.getElementById('resNetDisplay').innerText = "0,00 TL";
+        document.getElementById('resFormulaStep').innerText = "-";
     }
 
     function formatCurrency(val) {
         return val.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
     }
 
+    function formatNum(num) {
+        return num.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+    }
+
+    function copyResult() {
+        const val = document.getElementById('resPrimaryTotal').innerText;
+        if (val === "0,00 TL") return;
+
+        const mode = document.getElementById('resModeText').innerText;
+        const kdv = document.getElementById('resKdvAmount').innerText;
+        const net = document.getElementById('resNetAmount').innerText;
+        
+        const textToCopy = `[hesappoint.com - KDV Hesaplama]\nİşlem: ${mode}\nSonuç: ${val}\nMatrah: ${net}\nKDV Tutarı: ${kdv}`;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            showToast("Sonuç panoya kopyalandı!");
+        });
+    }
+
+    function showToast(msg) {
+        const toast = document.getElementById("toast");
+        toast.innerText = msg;
+        toast.className = "show";
+        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-        // Varsayılan hesaplama
         calculateKDV();
     });
 </script>
