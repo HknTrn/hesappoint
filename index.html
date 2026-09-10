@@ -86,7 +86,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Mega Menu Transition Efektleri */
+        /* Masaüstü Mega Menu Efektleri */
         .group:hover .mega-menu {
             opacity: 1;
             visibility: visible;
@@ -102,7 +102,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
-    <!-- Header / Navbar & Büyütülmüş Mega Menu -->
+    <!-- Header / Navbar -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between relative">
             
@@ -115,7 +115,6 @@
             <!-- Navigasyon (Masaüstü) -->
             <nav class="hidden md:flex items-center gap-1 font-semibold text-sm text-slate-700 h-full">
                 
-                <!-- Tümü -->
                 <button onclick="filterCategory('all')" id="btn-all" class="cat-btn px-3 py-2 rounded-lg hover:bg-slate-100 text-indigo-600 font-bold transition">Tümü</button>
 
                 <!-- 1. İnsan Kaynakları -->
@@ -124,7 +123,6 @@
                         İnsan Kaynakları <i data-lucide="chevron-down" class="w-4 h-4 opacity-60 group-hover:rotate-180 transition-transform"></i>
                     </button>
                     
-                    <!-- Mega Panel -->
                     <div class="mega-menu absolute top-full left-0 w-full bg-white border border-slate-200 shadow-2xl rounded-b-2xl p-8 grid grid-cols-3 gap-8">
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-4 flex items-center gap-2 border-b border-slate-100 pb-2">
@@ -228,7 +226,6 @@
                         Lojistik & Depo <i data-lucide="chevron-down" class="w-4 h-4 opacity-60 group-hover:rotate-180 transition-transform"></i>
                     </button>
                     
-                    <!-- Mega Panel -->
                     <div class="mega-menu absolute top-full left-0 w-full bg-white border border-slate-200 shadow-2xl rounded-b-2xl p-8 grid grid-cols-3 gap-8">
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-4 flex items-center gap-2 border-b border-slate-100 pb-2">
@@ -318,7 +315,6 @@
                         Finans & Muhasebe <i data-lucide="chevron-down" class="w-4 h-4 opacity-60 group-hover:rotate-180 transition-transform"></i>
                     </button>
 
-                    <!-- Mega Panel -->
                     <div class="mega-menu absolute top-full left-0 w-full bg-white border border-slate-200 shadow-2xl rounded-b-2xl p-8 grid grid-cols-2 gap-8">
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-4 flex items-center gap-2 border-b border-slate-100 pb-2">
@@ -366,13 +362,12 @@
                     </div>
                 </div>
 
-                <!-- 4. Eğitim & Sınavlar (Yeni) -->
+                <!-- 4. Eğitim & Sınavlar -->
                 <div class="group h-full flex items-center">
                     <button onclick="filterCategory('egitim')" id="btn-egitim" class="cat-btn px-3.5 py-2 rounded-lg hover:bg-slate-100 transition flex items-center gap-1.5 font-medium text-slate-700">
                         Eğitim & Sınavlar <i data-lucide="chevron-down" class="w-4 h-4 opacity-60 group-hover:rotate-180 transition-transform"></i>
                     </button>
 
-                    <!-- Mega Panel -->
                     <div class="mega-menu absolute top-full left-0 w-full bg-white border border-slate-200 shadow-2xl rounded-b-2xl p-8 grid grid-cols-2 gap-8">
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-4 flex items-center gap-2 border-b border-slate-100 pb-2">
@@ -410,7 +405,6 @@
                         Zaman & Pratik <i data-lucide="chevron-down" class="w-4 h-4 opacity-60 group-hover:rotate-180 transition-transform"></i>
                     </button>
 
-                    <!-- Mega Panel -->
                     <div class="mega-menu absolute top-full left-0 w-full bg-white border border-slate-200 shadow-2xl rounded-b-2xl p-8 grid grid-cols-2 gap-8">
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-4 flex items-center gap-2 border-b border-slate-100 pb-2">
@@ -459,14 +453,93 @@
 
             </nav>
 
-            <!-- Mobil Kategori Butonları -->
-            <div class="flex md:hidden items-center gap-1 text-xs overflow-x-auto py-1">
-                <button onclick="filterCategory('all')" class="px-2 py-1 bg-slate-100 rounded shrink-0">Tümü</button>
-                <button onclick="filterCategory('ik')" class="px-2 py-1 bg-slate-100 rounded shrink-0">İK</button>
-                <button onclick="filterCategory('lojistik')" class="px-2 py-1 bg-slate-100 rounded shrink-0">Lojistik</button>
-                <button onclick="filterCategory('finans')" class="px-2 py-1 bg-slate-100 rounded shrink-0">Finans</button>
-                <button onclick="filterCategory('egitim')" class="px-2 py-1 bg-slate-100 rounded shrink-0">Eğitim</button>
-                <button onclick="filterCategory('zaman')" class="px-2 py-1 bg-slate-100 rounded shrink-0">Zaman</button>
+            <!-- Mobil Menü Butonu (Tüm Hesaplamalar) -->
+            <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden flex items-center gap-2 px-3 py-1.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-xl font-bold text-xs shadow-xs active:bg-indigo-100 transition">
+                <i data-lucide="layers" class="w-4 h-4 text-indigo-600"></i>
+                <span>Tüm Hesaplamalar</span>
+                <i id="mobileMenuIcon" data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200"></i>
+            </button>
+
+        </div>
+
+        <!-- Mobil Dropdown Açılır Menü (Akordiyon Katmanlı) -->
+        <div id="mobileDropdown" class="hidden md:hidden border-t border-slate-200 bg-white shadow-xl px-4 py-3 space-y-2 max-h-[80vh] overflow-y-auto">
+            
+            <!-- Mobil Kategori 1: İnsan Kaynakları -->
+            <div class="border-b border-slate-100 pb-2">
+                <button onclick="toggleMobileSub('mob-ik')" class="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800 hover:text-indigo-600">
+                    <span class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-indigo-600"></i> İnsan Kaynakları</span>
+                    <i id="icon-mob-ik" data-lucide="chevron-right" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                </button>
+                <div id="mob-ik" class="hidden pl-6 pr-2 py-1 space-y-2 text-xs">
+                    <a href="maas.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Maaş & Vergi Hesabı</a>
+                    <a href="toplu-personel-maliyeti.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Toplu Personel Maliyeti</a>
+                    <a href="tazminat.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Kıdem & İhbar Tazminatı</a>
+                    <a href="ihbar.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">İhbar Tazminatı Hesabı</a>
+                    <a href="izin.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Yıllık İzin Hesabı</a>
+                    <a href="izin-ucreti.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Yıllık İzin Ücreti</a>
+                    <a href="mesai.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Fazla Mesai Hesabı</a>
+                    <a href="issizlik.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">İşsizlik Maaşı</a>
+                    <a href="dogum-izni.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Doğum İzni Hesabı</a>
+                    <a href="is-gunu.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Net İş Günü Hesabı</a>
+                </div>
+            </div>
+
+            <!-- Mobil Kategori 2: Lojistik & Depo -->
+            <div class="border-b border-slate-100 pb-2">
+                <button onclick="toggleMobileSub('mob-lojistik')" class="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800 hover:text-indigo-600">
+                    <span class="flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4 text-indigo-600"></i> Lojistik & Depo</span>
+                    <i id="icon-mob-lojistik" data-lucide="chevron-right" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                </button>
+                <div id="mob-lojistik" class="hidden pl-6 pr-2 py-1 space-y-2 text-xs">
+                    <a href="yakit.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Yakıt & Yol Maliyeti</a>
+                    <a href="desi.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Desi, CBM & W/M Hesabı</a>
+                    <a href="arac.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Araç Kapasite Hesabı</a>
+                    <a href="arac-oneri.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Yüke Göre Araç Önerisi</a>
+                    <a href="depo-palet-kapasite.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Depo Palet Kapasitesi & CAD</a>
+                    <a href="palet.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Palet Koli Dizilimi & Kat</a>
+                    <a href="ladametre.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Ladametre (LDM) Hesabı</a>
+                    <a href="eskalasyon.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Navlun Eskalasyon Hesabı</a>
+                </div>
+            </div>
+
+            <!-- Mobil Kategori 3: Finans & Muhasebe -->
+            <div class="border-b border-slate-100 pb-2">
+                <button onclick="toggleMobileSub('mob-finans')" class="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800 hover:text-indigo-600">
+                    <span class="flex items-center gap-2"><i data-lucide="coins" class="w-4 h-4 text-indigo-600"></i> Finans & Muhasebe</span>
+                    <i id="icon-mob-finans" data-lucide="chevron-right" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                </button>
+                <div id="mob-finans" class="hidden pl-6 pr-2 py-1 space-y-2 text-xs">
+                    <a href="kdv.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">KDV Dahil/Hariç & Tevkifat</a>
+                    <a href="yuzde.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Yüzde & Oran Hesapları</a>
+                    <a href="kredi.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Kredi & Taksit Tablosu</a>
+                    <a href="amortisman.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Amortisman Hesaplama</a>
+                </div>
+            </div>
+
+            <!-- Mobil Kategori 4: Eğitim & Sınavlar -->
+            <div class="border-b border-slate-100 pb-2">
+                <button onclick="toggleMobileSub('mob-egitim')" class="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800 hover:text-indigo-600">
+                    <span class="flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-600"></i> Eğitim & Sınavlar</span>
+                    <i id="icon-mob-egitim" data-lucide="chevron-right" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                </button>
+                <div id="mob-egitim" class="hidden pl-6 pr-2 py-1 space-y-2 text-xs">
+                    <a href="kpss.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">KPSS Puan Hesaplama</a>
+                    <a href="yks.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">YKS (TYT - AYT) Puan Hesaplama</a>
+                </div>
+            </div>
+
+            <!-- Mobil Kategori 5: Zaman & Pratik -->
+            <div>
+                <button onclick="toggleMobileSub('mob-zaman')" class="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800 hover:text-indigo-600">
+                    <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-indigo-600"></i> Zaman & Pratik</span>
+                    <i id="icon-mob-zaman" data-lucide="chevron-right" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                </button>
+                <div id="mob-zaman" class="hidden pl-6 pr-2 py-1 space-y-2 text-xs">
+                    <a href="saat-farki.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Saat Farkı Hesaplama</a>
+                    <a href="tarih-farki.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Tarih Farkı Hesaplama</a>
+                    <a href="yas.html" class="block py-1.5 text-slate-600 font-medium hover:text-indigo-600">Yaş Hesaplama</a>
+                </div>
             </div>
 
         </div>
@@ -786,7 +859,7 @@
             </div>
         </div>
 
-        <!-- 4. EĞİTİM & SINAVLAR KATEGORİSİ (YENİ) -->
+        <!-- 4. EĞİTİM & SINAVLAR KATEGORİSİ -->
         <div class="category-group space-y-4" data-category="egitim">
             <h2 class="text-base font-bold text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
                 <i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-600"></i> Eğitim & Sınavlar
@@ -879,7 +952,35 @@
     <script>
         lucide.createIcons();
 
-        // Kategori Filtreleme
+        // Mobil Ana Menü Aç/Kapat
+        function toggleMobileMenu() {
+            const dropdown = document.getElementById('mobileDropdown');
+            const icon = document.getElementById('mobileMenuIcon');
+            
+            if (dropdown.classList.contains('hidden')) {
+                dropdown.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                dropdown.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Mobil Alt Kategorileri Aç/Kapat (Akordiyon)
+        function toggleMobileSub(id) {
+            const target = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id}`);
+
+            if (target.classList.contains('hidden')) {
+                target.classList.remove('hidden');
+                if(icon) icon.classList.add('rotate-90');
+            } else {
+                target.classList.add('hidden');
+                if(icon) icon.classList.remove('rotate-90');
+            }
+        }
+
+        // Kategori Filtreleme (Masaüstü/Genel)
         function filterCategory(cat) {
             const groups = document.querySelectorAll('.category-group');
             const buttons = document.querySelectorAll('.cat-btn');
