@@ -22,25 +22,57 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Depo Palet Kapasitesi & 2D Layout Simülatörü",
-      "url": "https://hesappoint.com/depo-palet-kapasite.html",
-      "description": "Depo alan boyutu, tavan yüksekliği ve koridor/ekipman tipine göre dinamik 2D CAD layout simülasyonu ile depo palet kapasitesi hesaplama aracı.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Depo Palet Kapasitesi & 2D Layout Simülatörü",
+        "url": "https://hesappoint.com/depo-palet-kapasite.html",
+        "description": "Depo alan boyutu, tavan yüksekliği ve koridor/ekipman tipine göre dinamik 2D CAD layout simülasyonu ile depo palet kapasitesi hesaplama aracı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "142"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "142"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Depo palet kapasitesi nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depo palet kapasitesi; kullanılabilir taban alanı, seçilen depolama rafı derinliği, kullanılan istifleme ekipmanının gerektirdiği çalışma koridoru genişliği ve net tavan yüksekliğine göre hesaplanan dikey kat sayısının çarpımıyla bulunur."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Reach Truck ve VNA ekipmanları arasında koridor farkı nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standart bir Reach Truck ortalama 2.9 - 3.1 metre çalışma koridoruna ihtiyaç duyarken, VNA (Very Narrow Aisle / Çok Dar Koridor) ekipmanları özel kılavuz raylar veya tel yönlendirme ile 1.7 - 2.0 metre koridor genişliğinde çalışarak depolama alanını önemli ölçüde artırır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Tavan yüksekliği hesaplanırken sprinkler payı neden düşülür?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yangın mevzuatları ve emniyet standartları gereği, en üst seviyedeki paletin üst yüzeyi ile yangın söndürme (sprinkler) başlıkları arasında en az 50 cm emniyet mesafesi bırakılmalıdır."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -276,6 +308,85 @@
 
         </div>
 
+        <!-- SEO Bilgilendirme ve Rehber Bölümü -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 space-y-8 shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="warehouse" class="w-5 h-5 text-blue-600"></i>
+                        Depo Palet Kapasitesi Nedir ve Nasıl Hesaplanır?
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Depo palet kapasitesi, bir lojistik tesis veya hammadde/ürün deposunun emniyetli standartlar çerçevesinde depolayabileceği maksimum palet adedini ifade eder.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Hesaplama; brüt kapalı alanın net depolama alanına dönüştürülmesi, seçilen istif makinesi türüne göre çalışma koridoru bırakılması, raf derinlikleri ve net tavan yüksekliğine göre dikey kat sayısının belirlenmesi adımlarıyla gerçekleştirilir.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5 text-blue-600"></i>
+                        İstif Ekipmanı ve Koridor Genişliği Seçimi
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Kullanılan ekipman türü depo verimliliğini doğrudan etkiler. Standart akülü forkliftler geniş manevra alanı (3.8m+) gerektirirken, Reach Truck makineleri 3.0m civarında koridorlar ile çalışabilir.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        VNA (Çok Dar Koridor) sistemleri ise koridor genişliğini 1.9m seviyelerine kadar düşürerek aynı alanda %30'a varan ekstra depolama kapasitesi kazanılmasını sağlar.
+                    </p>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- Sıkça Sorulan Sorular -->
+            <div class="space-y-4">
+                <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-blue-600"></i>
+                    Sıkça Sorulan Sorular
+                </h2>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Depo palet kapasitesi nasıl hesaplanır?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Depo palet kapasitesi; kullanılabilir taban alanı, seçilen depolama rafı derinliği, kullanılan istifleme ekipmanının gerektirdiği çalışma koridoru genişliği ve net tavan yüksekliğine göre hesaplanan dikey kat sayısının çarpımıyla bulunur.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Reach Truck ve VNA ekipmanları arasında koridor farkı nedir?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Standart bir Reach Truck ortalama 2.9 - 3.1 metre çalışma koridoruna ihtiyaç duyarken, VNA (Very Narrow Aisle / Çok Dar Koridor) ekipmanları özel kılavuz raylar veya tel yönlendirme ile 1.7 - 2.0 metre koridor genişliğinde çalışarak depolama alanını önemli ölçüde artırır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Tavan yüksekliği hesaplanırken sprinkler payı neden düşülür?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Yangın mevzuatları ve emniyet standartları gereği, en üst seviyedeki paletin üst yüzeyi ile yangın söndürme (sprinkler) başlıkları arasında en az 50 cm emniyet mesafesi bırakılmalıdır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
@@ -440,6 +551,7 @@
 
             // --- 4. CANVAS 2D DRAWING ---
             draw2DLayout(width, length, doubleRackBlocks, nonStoragePercent);
+            lucide.createIcons();
         }
 
         function draw2DLayout(w, l, doubleBlocks, nonStoragePct) {

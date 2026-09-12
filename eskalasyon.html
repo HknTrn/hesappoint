@@ -23,25 +23,57 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Navlun Eskalasyon & Fiyat Güncelleme Simülatörü",
-      "url": "https://hesappoint.com/eskalasyon.html",
-      "description": "Karayolu taşımacılığında motorin fiyatı ve TÜİK kümülatif enflasyon değişimlerine göre sözleşmeli navlun fiyatı güncelleme simülatörü.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Navlun Eskalasyon & Fiyat Güncelleme Simülatörü",
+        "url": "https://hesappoint.com/eskalasyon.html",
+        "description": "Karayolu taşımacılığında motorin fiyatı ve TÜİK kümülatif enflasyon değişimlerine göre sözleşmeli navlun fiyatı güncelleme simülatörü.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "128"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "128"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Navlun eskalasyon hesaplamasında hangi enflasyon endeksleri kullanılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lojistik sektör standartlarında ve kurumsal taşıma sözleşmelerinde genellikle TÜİK tarafından açıklanan Tüketici Fiyat Endeksi (TÜFE) ve Yurt İçi Üretici Fiyat Endeksi (Yİ-ÜFE) verilerinin aritmetik ortalaması esasa dahil edilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Navlun fiyat güncellemesinde yakıt ve enflasyon ağırlıkları (payları) nasıl belirlenir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sektör genelinde Komple TIR / FTH taşımalarında yakıt maliyeti payı %40, genel işletme ve sürücü giderleri (enflasyon) payı %60 kabul edilir. Şehir içi dağıtım ve parsiyel operasyonlarda ise bu oranlar %30 yakıt / %70 enflasyon şeklinde esnetilebilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Sözleşmeli lojistikte eskalasyon zam oranı nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Toplam Zam Oranı = (Motorin Değişim Oranı × Yakıt Ağırığı) + (((Kümülatif TÜFE + Kümülatif Yİ-ÜFE) / 2) × Enflasyon Ağırlığı) formülü uygulanarak hesaplanır."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <style>
@@ -499,6 +531,95 @@
             border: 1px solid var(--border);
         }
 
+        /* SEO Metin ve FAQ Stilleri */
+        .seo-section {
+            margin-top: 32px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 28px;
+        }
+
+        .seo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .seo-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .seo-text {
+            font-size: 0.825rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .seo-list {
+            list-style: disc;
+            padding-left: 18px;
+            font-size: 0.825rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .faq-section {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .faq-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: #f8fafc;
+            overflow: hidden;
+        }
+
+        .faq-item details {
+            padding: 12px 16px;
+        }
+
+        .faq-item summary {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+        }
+
         .back-link {
             display: inline-block;
             margin-top: 16px;
@@ -515,7 +636,7 @@
         }
 
         @media (max-width: 850px) {
-            .dashboard-grid {
+            .dashboard-grid, .seo-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -719,6 +840,72 @@
 
         </div>
     </form>
+
+    <!-- SEO Bilgilendirme ve Rehber Bölümü -->
+    <section class="seo-section">
+        <div class="seo-grid">
+            <div>
+                <div class="seo-card-title">📜 Navlun Eskalasyon Mekanizması Nedir?</div>
+                <p class="seo-text">
+                    Karayolu taşımacılığı ve lojistik sektöründe <strong>eskalasyon</strong>, sözleşme süresince değişen maliyet unsurlarını (motorin, işçilik, bakım, yedek parça) adil bir şekilde navlun fiyatlarına yansıtma yöntemidir.
+                </p>
+                <p class="seo-text">
+                    Akaryakıt dalgalanmaları ile genel ekonomik enflasyonun taşımacı ve yük sahibi üzerindeki finansal baskısını dengelemek amacıyla dönemsel fiyat güncellemeleri yapılır.
+                </p>
+            </div>
+
+            <div>
+                <div class="seo-card-title">📐 Hesaplama Yöntemi ve Formül Esasları</div>
+                <p class="seo-text">
+                    Sözleşmeli taşımacılıkta kabul gören standart eskalasyon modeli iki ana bileşene dayanır:
+                </p>
+                <ul class="seo-list">
+                    <li><strong>Yakıt Bileşeni:</strong> Sözleşme tarihindeki ve güncel tarihteki motorin pompalama fiyatı farkının ağırlıklı oranı.</li>
+                    <li><strong>Enflasyon Bileşeni:</strong> TÜİK tarafından açıklanan kümülatif TÜFE ve Yİ-ÜFE endekslerinin ortalaması.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-title">❓ Sıkça Sorulan Sorular</div>
+
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>Navlun eskalasyon hesaplamasında hangi enflasyon endeksleri kullanılır?</span>
+                        <span>▼</span>
+                    </summary>
+                    <p>
+                        Lojistik sektör standartlarında ve kurumsal taşıma sözleşmelerinde genellikle TÜİK tarafından açıklanan Tüketici Fiyat Endeksi (TÜFE) ve Yurt İçi Üretici Fiyat Endeksi (Yİ-ÜFE) verilerinin aritmetik ortalaması esasa dahil edilir.
+                    </p>
+                </details>
+            </div>
+
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>Navlun fiyat güncellemesinde yakıt ve enflasyon ağırlıkları nasıl belirlenir?</span>
+                        <span>▼</span>
+                    </summary>
+                    <p>
+                        Sektör genelinde Komple TIR / FTH taşımalarında yakıt maliyeti payı %40, genel işletme ve sürücü giderleri (enflasyon) payı %60 kabul edilir. Şehir içi dağıtım ve parsiyel operasyonlarda ise bu oranlar %30 yakıt / %70 enflasyon şeklinde esnetilebilir.
+                    </p>
+                </details>
+            </div>
+
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>Sözleşmeli lojistikte eskalasyon zam oranı nasıl hesaplanır?</span>
+                        <span>▼</span>
+                    </summary>
+                    <p>
+                        Toplam Zam Oranı = (Motorin Değişim Oranı × Yakıt Ağırlığı) + (((Kümülatif TÜFE + Kümülatif Yİ-ÜFE) / 2) × Enflasyon Ağırlığı) formülü uygulanarak hesaplanır.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
 </div>
 
 <script>

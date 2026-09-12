@@ -23,25 +23,65 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Doğum & Analık İzni Hesaplama",
-      "url": "https://hesappoint.com/dogum-izni.html",
-      "description": "7578 Sayılı Kanun ile güncellenen 24 haftalık doğum öncesi ve sonrası analık izni süreleri, aktarılabilir haftalar ve SGK iş göremezlik ödeneği hesaplama aracı.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Doğum & Analık İzni Hesaplama",
+        "url": "https://hesappoint.com/dogum-izni.html",
+        "description": "7578 Sayılı Kanun ile güncellenen 24 haftalık doğum öncesi ve sonrası analık izni süreleri, aktarılabilir haftalar ve SGK iş göremezlik ödeneği hesaplama aracı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "164"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "164"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "7578 Sayılı Kanun ile doğum izni kaç hafta olmuştur?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "1 Mayıs 2026 tarihinde yürürlüğe giren 7578 Sayılı Kanun düzenlemesiyle toplam analık izni süresi 16 haftadan 24 haftaya (168 gün) çıkarılmıştır. Bu sürenin 8 haftası doğum öncesi, 16 haftası ise doğum sonrası kullanılır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Doğuma kaç hafta kalana kadar çalışılabilir ve süre aktarılabilir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sağlık durumu uygun olan ve doktor onayı alan kadın çalışanlar, doğuma 2 hafta kalana kadar çalışmaya devam edebilirler. Bu durumda çalışılan doğum öncesi 6 haftalık süre doğum sonrası analık iznine eklenir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Çoğul gebelikte (ikiz, üçüz) doğum izni süresi uzar mı?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet. Çoğul gebelik durumunda doğum öncesi 8 haftalık izne 2 hafta daha eklenir. Böylece doğum öncesi izin süresi 10 haftaya, toplam analık izni süresi ise 26 haftaya ulaşır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "SGK analık iş göremezlik ödeneği (doğum parası) nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SGK analık ödeneği, anne adayının son 3 aylık ortalama brüt günlük kazancının 2/3'ü ile toplam analık izni gün sayısının (standart 168 gün) çarpılmasıyla hesaplanır."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -201,6 +241,99 @@
             </div>
 
         </div>
+
+        <!-- SEO Bilgilendirme ve Rehber Bölümü -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 space-y-8 shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="scroll" class="w-5 h-5 text-indigo-600"></i>
+                        7578 Sayılı Kanun ve Yeni Doğum İzni Hakları
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        2026 yılında İş Kanunu ve Devlet Memurları Kanunu'nda yapılan düzenlemeler çerçevesinde anne adaylarının analık izni hakları önemli ölçüde genişletilmiştir[cite: 7]. Yeni mevzuatla birlikte çalışan annelerin doğum öncesi ve sonrası toplam izin süresi 16 haftadan <strong>24 haftaya (168 gün)</strong> çıkarılmıştır[cite: 7].
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Bu düzenleme, doğum öncesinde 8 hafta ve doğum sonrasında 16 hafta olmak üzere planlanır[cite: 7]. Anne adayları tabip raporu alarak doğuma 2 hafta kalana kadar çalışabilir ve kullanmadıkları 6 haftalık süreyi doğum sonrasına aktararak bebekleriyle daha uzun süre vakit geçirebilirler[cite: 7].
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="coins" class="w-5 h-5 text-indigo-600"></i>
+                        SGK Analık Ödeneği (Doğum Parası) Hesaplama
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Analık izni süresince SGK tarafından çalışan anneye verilen geçici iş göremezlik ödeneği, annenin son 3 aylık brüt ücret ortalamasına göre belirlenir[cite: 7].
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li><strong>Günlük Brüt Kazanç:</strong> Son 3 ayın brüt maaş toplamı 90'a bölünerek bulunur[cite: 7].</li>
+                        <li><strong>Günlük Ödenek Tutarı:</strong> Günlük brüt kazancın <strong>2/3'ü</strong> (yaklaşık %66,6) esastır[cite: 7].</li>
+                        <li><strong>Toplam Ödenek:</strong> Günlük ödenek tutarı, izinli olunan toplam gün sayısı (168 gün) ile çarpılarak hesaplanır[cite: 7].</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- Sıkça Sorulan Sorular -->
+            <div class="space-y-4">
+                <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    Sıkça Sorulan Sorular
+                </h2>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>7578 Sayılı Kanun ile doğum izni kaç hafta olmuştur?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            1 Mayıs 2026 tarihinde yürürlüğe giren 7578 Sayılı Kanun düzenlemesiyle toplam analık izni süresi 16 haftadan 24 haftaya (168 gün) çıkarılmıştır[cite: 7]. Bu sürenin 8 haftası doğum öncesi, 16 haftası ise doğum sonrası kullanılır[cite: 7].
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Doğuma kaç hafta kalana kadar çalışılabilir ve süre aktarılabilir?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Sağlık durumu uygun olan ve doktor onayı alan kadın çalışanlar, doğuma 2 hafta kalana kadar çalışmaya devam edebilirler[cite: 7]. Bu durumda çalışılan doğum öncesi 6 haftalık süre doğum sonrası analık iznine eklenir[cite: 7].
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Çoğul gebelikte (ikiz, üçüz) doğum izni süresi uzar mı?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Evet. Çoğul gebelik durumunda doğum öncesi 8 haftalık izne 2 hafta daha eklenir[cite: 7]. Böylece doğum öncesi izin süresi 10 haftaya, toplam analık izni süresi ise 26 haftaya ulaşır[cite: 7].
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>SGK analık iş göremezlik ödeneği (doğum parası) nasıl hesaplanır?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            SGK analık ödeneği, anne adayının son 3 aylık ortalama brüt günlük kazancının 2/3'ü ile toplam analık izni gün sayısının (standart 168 gün) çarpılmasıyla hesaplanır[cite: 7].
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
 
     </main>
 

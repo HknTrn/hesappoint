@@ -22,25 +22,65 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Desi & CBM (m³) Hesaplama Aracı",
-      "url": "https://hesappoint.com/desi.html",
-      "description": "Koli ve palet ölçülerine göre karayolu, havayolu (IATA), yurtiçi kargo ve deniz yolu W/M faturalandırılabilir kargo ağırlığı ve hacim hesaplayıcı.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Desi & CBM (m³) Hesaplama Aracı",
+        "url": "https://hesappoint.com/desi.html",
+        "description": "Koli ve palet ölçülerine göre karayolu, havayolu (IATA), yurtiçi kargo ve deniz yolu W/M faturalandırılabilir kargo ağırlığı ve hacim hesaplayıcı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "186"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "186"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Kargo desi nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Desi hesaplanırken paketin En, Boy ve Yükseklik ölçüleri (cm cinsinden) birbiriyle çarpılır ve taşıma türüne göre belirlenen katsayıya bölünür. Yurtiçi kargoda bölen 3000, karayolunda 5000, havayolunda (IATA) ise 6000'dir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "CBM (m³) nedir ve nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CBM (Cubic Meter / Metreküp), kargonun kapladığı hacmi ifade eder. Metre cinsinden En x Boy x Yükseklik çarpımı ile veya Santimetre cinsinden (En x Boy x Yükseklik) / 1.000.000 formülü ile hesaplanır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Faturalandırılabilir ağırlık (Chargeable Weight) ne anlama gelir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lojistikte taşıma navlunu belirlenirken kargonun gerçek brüt ağırlığı ile hacimsel ağırlığı (Desi/CBM) karşılaştırılır. Lojistik firmaları bu iki değerden hangisi daha yüksekse navlunu o değer üzerinden faturalandırır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Deniz yolunda W/M (Weight/Measure) mantığı nasıl çalışır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Deniz yolu parsiyel (LCL) taşımalarında 1 CBM hacim, 1 Ton (1000 kg) ağırlığa eşit kabul edilir. Toplam CBM değeri ile toplam Tonaj karşılaştırılır ve yüksek olan değer esas alınarak navlun hesaplanır."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -187,6 +227,100 @@
             </div>
 
         </div>
+
+        <!-- SEO Bilgilendirme ve Rehber Bölümü -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 space-y-8 shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="scale" class="w-5 h-5 text-indigo-600"></i>
+                        Desi ve Hacimsel Ağırlık Nedir?
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Lojistik ve kargo sektöründe navlun (taşımacılık ücreti) hesaplanırken sadece paketlerin gerçek ağırlığı dikkate alınmaz. Hafif ancak geniş yer kaplayan gönderilerin nakliye araçlarında kapladığı hacmi adil bir şekilde ücretlendirmek amacıyla <strong>Desi (Hacimsel Ağırlık)</strong> kavramı kullanılır.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Kargo firmaları veya lojistik tedarikçileri, gönderinizin brüt ağırlığı ile hesaplanan desi değerini karşılaştırır. Taşımacılık ücreti, bu iki değer arasından hangisi daha yüksekse o miktar (Faturalandırılabilir Ağırlık) üzerinden tanzim edilir.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="truck" class="w-5 h-5 text-indigo-600"></i>
+                        Taşıma Modlarına Göre Desi Katsayıları
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Her nakliye modunun kapasite ve hacim kısıtları farklı olduğundan, kullanılan standart bölen katsayıları da değişkenlik gösterir:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li><strong>Yurtiçi Kargo:</strong> En x Boy x Yükseklik (cm) / 3.000</li>
+                        <li><strong>Uluslararası Karayolu:</strong> En x Boy x Yükseklik (cm) / 5.000</li>
+                        <li><strong>Havayolu (IATA):</strong> En x Boy x Yükseklik (cm) / 6.000</li>
+                        <li><strong>Deniz Yolu (W/M):</strong> 1 CBM (m³) = 1.000 kg kabul edilir.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- Sıkça Sorulan Sorular -->
+            <div class="space-y-4">
+                <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    Sıkça Sorulan Sorular
+                </h2>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Kargo desi nasıl hesaplanır?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Desi hesaplanırken paketin En, Boy ve Yükseklik ölçüleri (cm cinsinden) birbiriyle çarpılır ve taşıma türüne göre belirlenen katsayıya bölünür. Yurtiçi kargoda bölen 3000, karayolunda 5000, havayolunda (IATA) ise 6000'dir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>CBM (m³) nedir ve nasıl hesaplanır?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            CBM (Cubic Meter / Metreküp), kargonun kapladığı hacmi ifade eder. Metre cinsinden En x Boy x Yükseklik çarpımı ile veya Santimetre cinsinden (En x Boy x Yükseklik) / 1.000.000 formülü ile hesaplanır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Faturalandırılabilir ağırlık (Chargeable Weight) ne anlama gelir?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Lojistikte taşıma navlunu belirlenirken kargonun gerçek brüt ağırlığı ile hacimsel ağırlığı (Desi/CBM) karşılaştırılır. Lojistik firmaları bu iki değerden hangisi daha yüksekse navlunu o değer üzerinden faturalandırır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Deniz yolunda W/M (Weight/Measure) mantığı nasıl çalışır?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Deniz yolu parsiyel (LCL) taşımalarında 1 CBM hacim, 1 Ton (1000 kg) ağırlığa eşit kabul edilir. Toplam CBM değeri ile toplam Tonaj karşılaştırılır ve yüksek olan değer esas alınarak navlun hesaplanır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
 
     </main>
 

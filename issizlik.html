@@ -26,25 +26,57 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "İşsizlik Maaşı Hesaplama",
-      "url": "https://hesappoint.com/issizlik.html",
-      "description": "Son 4 aylık brüt maaş ortalaması ve SGK prim gün sayısına göre hak edilen net işsizlik maaşı tutarını ve ödenek süresini hesaplayan çevrim içi araç.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "İşsizlik Maaşı Hesaplama",
+        "url": "https://hesappoint.com/issizlik.html",
+        "description": "Son 4 aylık brüt maaş ortalaması ve SGK prim gün sayısına göre hak edilen net işsizlik maaşı tutarını ve ödenek süresini hesaplayan çevrim içi araç.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "108"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "108"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "İşsizlik maaşı ne kadar süreyle ödenir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Son 3 yıl içindeki SGK prim gün sayınıza göre ödeme süresi değişir: 600 gün primi olanlara 6 ay, 900 gün primi olanlara 8 ay, 1080 gün ve üzeri primi olanlara ise 10 ay boyunca işsizlik maaşı ödenir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İşsizlik maaşı nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "İşsizlik maaşı, işten ayrılmadan önceki son 4 aylık brüt maaş ortalamasının %40'ı olarak hesaplanır. Ancak bu tutar, aylık brüt asgari ücretin %80'ini (tavan sınırını) geçemez. Hesaplanan tutardan yalnızca %0,759 oranında damga vergisi kesilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İşsizlik maaşına ne zaman ve nasıl başvuru yapılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hizmet akdinin feshinden sonraki 30 gün içinde İŞKUR birimlerine şahsen veya e-Devlet / İŞKUR internet adresi üzerinden elektronik ortamda başvuru yapılması gerekmektedir."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -210,6 +242,99 @@
             </div>
 
         </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5 text-indigo-600"></i>
+                        <span>İşsizlik Maaşı Alma Şartları Nelerdir?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        İşsizlik ödeneğinden yararlanabilmek için 4447 sayılı Kanun uyarınca belirli şartların sağlanması gerekmektedir:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                        <li>Kendi istek ve kusuru dışında işsiz kalmış olmak (İstifa hariç).</li>
+                        <li>Hizmet akdinin feshinden önceki son 120 gün kesintisiz çalışmış olmak.</li>
+                        <li>Son 3 yıl içinde en az 600 gün işsizlik sigortası primi ödemiş olmak.</li>
+                        <li>İşten ayrıldıktan sonraki 30 gün içinde İŞKUR'a başvuruda bulunmak.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="pie-chart" class="w-5 h-5 text-indigo-600"></i>
+                        <span>İşsizlik Maaşı Nasıl Hesaplanır ve Tavan Tutar Nedir?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Aylık işsizlik ödeneği, sigortalının son 4 aylık brüt kazanç ortalamasının <strong>%40'ı</strong> olarak hesaplanır. 
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Ancak kanun gereği hesaplanan işsizlik maaşı miktarı, aylık brüt asgari ücretin <strong>%80'ini geçemez</strong>. İşsizlik ödemelerinden yalnızca %0,759 (binde 7,59) oranında damga vergisi kesilir.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="calculator" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Maaşınızın Net / Brüt Detaylarını Öğrenin</h4>
+                        <p class="text-[11px] text-slate-500">Çalışma döneminize ait brüt ve net maaş kırılımlarını detaylı hesaplamak için Maaş Hesaplama aracımızı kullanabilirsiniz.</p>
+                    </div>
+                </div>
+                <a href="maas.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Maaş Hesaplama</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İşsizlik maaşı ne kadar süreyle ödenir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Son 3 yıl içindeki SGK prim gün sayınıza göre ödeme süresi belirlenir: 600 gün primi olanlara 6 ay, 900 gün primi olanlara 8 ay, 1080 gün ve üzeri primi olanlara ise 10 ay boyunca işsizlik maaşı ödenir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Kendi isteğiyle (istifa) ayrılanlar işsizlik maaşı alabilir mi?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Kendi isteğiyle istifa eden çalışanlar genel kural olarak işsizlik maaşından yararlanamaz. Ancak haklı nedenle fesih durumlarında (maaşın ödenmemesi, mobbing vb.) hukuki süreç sonunda işsizlik maaşı hakkı doğabilir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İşsizlik maaşı başvurusu gecikirse ne olur?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            İşten ayrıldıktan sonraki 30 gün içinde başvuru yapılması esastır. 30 günü aşan başvurularda, gecikilen süre toplam hak edilen işsizlik maaşı süresinden düşülür.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
 
     </main>
 

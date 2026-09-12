@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İhbar Tazminatı Hesaplama 2026 | HesapPoint</title>
-    <meta name="description" content="Çalışma sürenize ve brüt ücretinize göre 4857 Sayılı İş Kanunu'na uygun net ihbar tazminatınızı ve ihbar sürenizi hesaplayın.">
-    <meta name="keywords" content="ihbar tazminatı hesaplama, ihbar süresi kaç gün, net ihbar tazminatı, 2026 ihbar hesabı">
+    <meta name="description" content="Çalışma sürenize ve giydirilmiş brüt ücretinize göre 4857 Sayılı İş Kanunu'na uygun net ihbar tazminatınızı ve ihbar öneli sürenizi anında hesaplayın.">
+    <meta name="keywords" content="ihbar tazminatı hesaplama, ihbar süresi kaç gün, net ihbar tazminatı, 2026 ihbar hesabı, ihbar öneli hesaplama, iş kanunu ihbar süreleri">
     <meta name="robots" content="index, follow">
     <meta name="author" content="HesapPoint">
 
@@ -26,25 +26,57 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "İhbar Tazminatı Hesaplama",
-      "url": "https://hesappoint.com/ihbar.html",
-      "description": "Çalışma süresine göre bildirim öneli (ihbar süresi) ve ihbar tazminatı tutarını net/brüt olarak hesaplayan çevrim içi araç.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "İhbar Tazminatı Hesaplama",
+        "url": "https://hesappoint.com/ihbar.html",
+        "description": "Çalışma süresine göre bildirim öneli (ihbar süresi) ve ihbar tazminatı tutarını net/brüt olarak hesaplayan çevrim içi araç.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "115"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "115"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "İhbar süresi (öneli) kaç gündür?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "4857 Sayılı İş Kanunu'na göre ihbar süreleri kıdeminize bağlıdır: 6 aydan az çalışanlar için 2 hafta (14 gün), 6 ay - 1.5 yıl arası 4 hafta (28 gün), 1.5 yıl - 3 yıl arası 6 hafta (42 gün) ve 3 yıldan fazla çalışanlar için 8 haftadır (56 gün)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İhbar tazminatından hangi kesintiler yapılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kıdem tazminatından farklı olarak ihbar tazminatından hem Gelir Vergisi (çalışanın bulunduğu vergi dilimine göre %15 - %40) hem de Damga Vergisi (%0,759) kesilmektedir. SGK primi kesintisi yapılmaz."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İstifa eden işçi ihbar tazminatı alabilir mi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kural olarak kendi isteğiyle istifa eden (haklı bir nedeni olmadan ayrılan) işçi ihbar tazminatı alamaz. Aksine, kanuni ihbar süresine uymadan işten ayrılırsa işverene ihbar tazminatı ödemek zorunda kalabilir."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -97,7 +129,7 @@
                     </h2>
                 </div>
 
-                <!-- İşe Başlama ve Ayrılma Tarihi (TR Formatı İçin Manuel Seçimler) -->
+                <!-- İşe Başlama ve Ayrılma Tarihi -->
                 <div class="space-y-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">İşe Başlama Tarihi (Gün / Ay / Yıl)</label>
@@ -210,6 +242,98 @@
             </div>
 
         </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>İhbar Tazminatı Nedir ve Nasıl Hesaplanır?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        İhbar tazminatı, 4857 Sayılı İş Kanunu'nun 17. maddesi uyarınca iş sözleşmesini feshetmek isteyen tarafın (işçi veya işveren), durumu karşı tarafa önceden haber vermemesi (ihbar öneline uymaması) durumunda ödemekle yükümlü olduğu tazminat türüdür.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        İhbar süresi, çalışanın iş yerindeki kıdemine (çalışma süresine) göre belirlenir. Hesaplamada esas alınan ücret, çalışanın son <strong>giydirilmiş brüt ücretidir</strong>. Giydirilmiş brüt ücrete düzenli olarak ödenen yemek, yol, ikramiye ve yakacak gibi yan haklar dâhil edilir.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5 text-indigo-600"></i>
+                        <span>İhbar Tazminatından Yapılan Kesintiler</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Kıdem tazminatından sadece Damga Vergisi kesilirken, <strong>ihbar tazminatı hem Gelir Vergisi hem de Damga Vergisine tabidir</strong>.
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li><strong>Gelir Vergisi:</strong> Çalışanın ilgili yıldaki kümülatif vergi matrahına göre %15 ile %40 arasında değişir.</li>
+                        <li><strong>Damga Vergisi:</strong> Brüt ihbar tazminatı tutarı üzerinden binde 7,59 (%0,759) oranında kesilir.</li>
+                        <li><strong>SGK Primi:</strong> İhbar tazminatından SGK ve işsizlik sigortası primi kesintisi yapılmaz.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="award" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Kıdem Tazminatınızı da Hesaplayın</h4>
+                        <p class="text-[11px] text-slate-500">İşten ayrılma durumunda alacağınız toplam kıdem tazminatını öğrenmek için simülatörümüzü kullanın.</p>
+                    </div>
+                </div>
+                <a href="kidem.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Kıdem Hesabı</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İhbar süresi (öneli) kaç gündür?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            4857 Sayılı İş Kanunu'na göre ihbar süreleri kıdeminize bağlıdır: 6 aydan az çalışanlar için 2 hafta (14 gün), 6 ay - 1.5 yıl arası 4 hafta (28 gün), 1.5 yıl - 3 yıl arası 6 hafta (42 gün) ve 3 yıldan fazla çalışanlar için 8 haftadır (56 gün).
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İhbar tazminatından hangi kesintiler yapılır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Kıdem tazminatından farklı olarak ihbar tazminatından hem Gelir Vergisi (çalışanın bulunduğu vergi dilimine göre %15 - %40) hem de Damga Vergisi (%0,759) kesilmektedir. SGK primi kesintisi yapılmaz.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İstifa eden işçi ihbar tazminatı alabilir mi?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Kural olarak kendi isteğiyle istifa eden (haklı bir nedeni olmadan ayrılan) işçi ihbar tazminatı alamaz. Aksine, kanuni ihbar süresine uymadan işten ayrılırsa işverene ihbar tazminatı ödemek zorunda kalabilir.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
 
     </main>
 
