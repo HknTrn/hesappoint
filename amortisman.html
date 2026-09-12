@@ -23,25 +23,65 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Amortisman Hesaplama",
-      "url": "https://hesappoint.com/amortisman.html",
-      "description": "Eşit tutarlı ve azalan bakiyeler yöntemiyle demirbaş ve sabit kıymet amortismanı, birikmiş amortisman ve net defter değeri hesaplama aracı.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Amortisman Hesaplama",
+        "url": "https://hesappoint.com/amortisman.html",
+        "description": "Eşit tutarlı ve azalan bakiyeler yöntemiyle demirbaş ve sabit kıymet amortismanı, birikmiş amortisman ve net defter değeri hesaplama aracı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "84"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "84"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Amortisman nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Amortisman, işletmelerin faaliyetlerinde kullanmak üzere satın aldıkları maddi duran varlıkların (demirbaş, araç, makine, bina vb.) aşınma, yıpranma veya demode olma payını temsil eden ve her yıl gider yazılan tutardır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Normal Amortisman ile Azalan Bakiyeler yöntemi arasındaki fark nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Normal amortismanda her yıl eşit tutarda amortisman ayrılır. Azalan bakiyeler (hızlandırılmış) yönteminde ise ilk yıllarda daha yüksek tutarda, ilerleyen yıllarda azalan tutarlarda amortisman ayrılır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hızlandırılmış amortisman oranı nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vergi Usul Kanununa (VUK) göre azalan bakiyeler yönteminde uygulanacak amortisman oranı, normal amortisman oranının 2 katıdır. Ancak bu oran %50'yi geçemez."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Net Defter Değeri ne anlama gelir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Varlığın kayıtlı alış bedelinden (fatura bedelinden), o güne kadar ayrılmış olan toplam birikmiş amortisman tutarının çıkarılmasıyla bulunan güncel muhasebe değeridir."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -187,6 +227,93 @@
             </div>
 
         </div>
+
+        <!-- SEO İçerik ve Rehber Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <!-- Amortisman Nedir ve Nasıl Hesaplanır -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-indigo-600">
+                        <i data-lucide="book-open" class="w-5 h-5"></i>
+                        <h2 class="text-lg font-bold text-slate-900">Amortisman Nedir?</h2>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Amortisman, işletmelerin faaliyetlerini sürdürmek amacıyla satın aldıkları ve bir yıldan uzun süre kullanılan maddi duran varlıkların (araçlar, binalar, makineler, demirbaşlar vb.) zamanla aşınması, yıpranması veya teknolojinin gerisinde kalması nedeniyle oluşan değer kaybının giderleştirilmesi işlemidir.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Vergi Usul Kanunu (VUK) hükümlerine göre işletmeler, satın aldıkları sabit kıymetlerin bedellerini doğrudan tek bir yılda gider yazmak yerine, Gelir İdaresi Başkanlığı (GİB) tarafından belirlenen faydalı ömür sürelerine yayarak her yıl belirli oranlarda amortisman gideri ayırırlar.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-indigo-600">
+                        <i data-lucide="calculator" class="w-5 h-5"></i>
+                        <h2 class="text-lg font-bold text-slate-900">Amortisman Nasıl Hesaplanır?</h2>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Amortisman hesaplamasında işletmenin tercihine bağlı olarak iki temel yöntem kullanılır:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+                        <li><strong>Normal Amortisman (Eşit Tutarlı):</strong> Varlığın tutarı faydalı ömür süresine eşit bölünür. Örneğin; 500.000 ₺ değerinde ve 5 yıl ömrü olan bir demirbaş için her yıl <span class="font-semibold text-slate-800">100.000 ₺</span> amortisman ayrılır.</li>
+                        <li><strong>Azalan Bakiyeler (Hızlandırılmış):</strong> Normal amortisman oranının 2 katı alınır (Maksimum %50). Hesaplama her yıl varlığın kalan net defter değeri üzerinden yapılır. Son yılda ise kalan net değerin tamamı gider yazılır.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- Sıkça Sorulan Sorular (SSS) -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 text-indigo-600">
+                    <i data-lucide="help-circle" class="w-5 h-5"></i>
+                    <h2 class="text-lg font-bold text-slate-900">Sıkça Sorulan Sorular</h2>
+                </div>
+
+                <div class="space-y-3">
+                    <details class="group border border-slate-200 rounded-xl p-4 bg-slate-50/50 [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all">
+                        <summary class="flex items-center justify-between text-xs font-bold text-slate-800">
+                            <span>Hangi durumlarda Hızlandırılmış (Azalan Bakiyeler) Amortisman tercih edilir?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-200/60 pt-3">
+                            Hızlandırılmış amortisman yöntemi, genellikle ilk yıllarda yüksek kâr elde eden ve vergi matrahını düşürmek isteyen işletmeler tarafından tercih edilir. Ayrıca ilk yıllarında daha hızlı değer kaybeden yüksek teknolojili cihazlar veya araçlar için de oldukça uygundur.
+                        </p>
+                    </details>
+
+                    <details class="group border border-slate-200 rounded-xl p-4 bg-slate-50/50 [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all">
+                        <summary class="flex items-center justify-between text-xs font-bold text-slate-800">
+                            <span>Net Defter Değeri nedir ve nasıl hesaplanır?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-200/60 pt-3">
+                            Net Defter Değeri, bir duran varlığın fatura alış bedelinden, o güne kadar ayrılmış toplam birikmiş amortisman tutarının çıkarılmasıyla elde edilen değerdir. Muhasebe kayıtlarında varlığın o anki güncel değerini temsil eder.
+                        </p>
+                    </details>
+
+                    <details class="group border border-slate-200 rounded-xl p-4 bg-slate-50/50 [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all">
+                        <summary class="flex items-center justify-between text-xs font-bold text-slate-800">
+                            <span>Amortisman ayırma sınırı (Demirbaş Amortisman Sınırı) nedir?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-200/60 pt-3">
+                            Vergi Usul Kanunu gereğince her yıl belirli bir demirbaş limiti belirlenir. Bu tutarın altında kalan demirbaş ve aletler amortismana tabi tutulmadan doğrudan satın alındığı yılda tek seferde direkt gider yazılabilir.
+                        </p>
+                    </details>
+
+                    <details class="group border border-slate-200 rounded-xl p-4 bg-slate-50/50 [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all">
+                        <summary class="flex items-center justify-between text-xs font-bold text-slate-800">
+                            <span>Faydalı ömür ve amortisman oranlarını nereden öğrenebilirim?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-200/60 pt-3">
+                            Faydalı ömür süreleri ve resmi amortisman oranları, Gelir İdaresi Başkanlığı (GİB) tarafından yayınlanan Amortisman Listesi Tebliğleri ile belirlenir. Sayfamızdaki yönlendirme bağlantısından güncel GİB listesine erişebilirsiniz.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
 
     </main>
 

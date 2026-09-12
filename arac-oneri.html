@@ -22,25 +22,57 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Akıllı Araç Öneri & Seçim Asistanı",
-      "url": "https://hesappoint.com/arac-oneri.html",
-      "description": "Yükün boyut ve ağırlık verilerine göre en uygun ticari araç veya filo kombinasyonunu belirleyen akıllı lojistik seçim asistanı.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Akıllı Araç Öneri & Seçim Asistanı",
+        "url": "https://hesappoint.com/arac-oneri.html",
+        "description": "Yükün boyut ve ağırlık verilerine göre en uygun ticari araç veya filo kombinasyonunu belirleyen akıllı lojistik seçim asistanı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "128"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "128"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Akıllı Araç Öneri Asistanı nasıl çalışır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Asistan; girdiğiniz palet/yük ölçüleri, toplam hacim (m³), gerekli taban alanı (m²) ve toplam ağırlığı veritabanındaki standart araç tipleriyle (Panelvan, Kamyonet, Kamyon, TIR) simüle eder. Tek bir araca sığmayan yükler için otomatik çoklu araç (filo) kombinasyonu oluşturur."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Yüküm tek bir TIR'a sığmadığında sistem nasıl bir yol izler?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sistem öncelikle yükü tam kapasite TIR'lara böler. Kalan artık yük miktarı ve ağırlığı için gereksiz navlun maliyetini önlemek amacıyla en küçük ve en ekonomik ikinci aracı (örn. 1 TIR + 1 Kamyonet) otomatik olarak hesaplayıp önerir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Tek kat ile istiflenebilir yük seçimi sonucu nasıl etkiler?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "İstiflenebilir mod seçildiğinde algoritma, palet yüksekliğini araç iç yüksekliği ile kıyaslayarak dikeyde üst üste kaç kat yük konulabileceğini hesaplar. Bu durum gerekli taban alanını düşürerek daha küçük bir araç önerilmesini sağlayabilir."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -209,6 +241,85 @@
             </div>
 
         </div>
+
+        <!-- SEO Bilgilendirme ve Rehber Bölümü -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 space-y-8 shadow-sm mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="cpu" class="w-5 h-5 text-indigo-600"></i>
+                        Akıllı Araç Öneri Algoritması Nasıl Çalışır?
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Akıllı asistan; girilen tüm parça ve palet gruplarını hibrit yerleşim simülasyonu ile analiz eder. Araçların iç en, boy, dikey yükseklik ve azami tonaj limitlerini kıyaslayarak yükünüze tam uyan en küçük bütçeli aracı tespit eder.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Aracın taban alan doluluğu, dikey hacim kullanımı ve yasal taşıma tonajı ayrı ayrı hesaplanarak doluluk yüzdeleri grafiksel olarak sunulur.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5 text-indigo-600"></i>
+                        Filo ve Parçalı Yükleme (Split-Loading)
+                    </h2>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Yük miktarı standart bir TIR'ın alabileceğinden fazla olduğunda sistem otomatik olarak çoklu araç modeline geçer.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Öncelikle yük ana gövdesi tam kapasite TIR'lara yerleştirilir. Artan parça yük için boşu boşuna ikinci bir TIR tutmak yerine, artan yüke tam sığan en ekonomik kamyonet veya kamyon seçeneği (örn. 1 TIR + 1 Panelvan) kombinasyon olarak sunulur.
+                    </p>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- Sıkça Sorulan Sorular -->
+            <div class="space-y-4">
+                <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    Sıkça Sorulan Sorular
+                </h2>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Akıllı Araç Öneri Asistanı nasıl çalışır?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Asistan; girdiğiniz palet/yük ölçüleri, toplam hacim (m³), gerekli taban alanı (m²) ve toplam ağırlığı veritabanındaki standart araç tipleriyle (Panelvan, Kamyonet, Kamyon, TIR) simüle eder. Tek bir araca sığmayan yükler için otomatik çoklu araç (filo) kombinasyonu oluşturur.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Yüküm tek bir TIR'a sığmadığında sistem nasıl bir yol izler?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            Sistem öncelikle yükü tam kapasite TIR'lara böler. Kalan artık yük miktarı ve ağırlığı için gereksiz navlun maliyetini önlemek amacıyla en küçük ve en ekonomik ikinci aracı (örn. 1 TIR + 1 Kamyonet) otomatik olarak hesaplayıp önerir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200 transition [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between font-bold text-xs text-slate-800 cursor-pointer">
+                            <span>Tek kat ile istiflenebilir yük seçimi sonucu nasıl etkiler?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+                            </span>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-200">
+                            İstiflenebilir mod seçildiğinde algoritma, palet yüksekliğini araç iç yüksekliği ile kıyaslayarak dikeyde üst üste kaç kat yük konulabileceğini hesaplar. Bu durum gerekli taban alanını düşürerek daha küçük bir araç önerilmesini sağlayabilir.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
 
     </main>
 

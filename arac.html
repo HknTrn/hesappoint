@@ -22,26 +22,69 @@
 
 <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Yüke Göre Araç Tipi & Kapasite Simülatörü",
-  "url": "https://hesappoint.com/arac.html",
-  "description": "Yükün boyut ve ağırlığına göre en uygun araç tipini belirleme, palet dizilimi ve 2D kapasite simülasyon aracı.",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "TRY"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Yüke Göre Araç Tipi & Kapasite Simülatörü",
+    "url": "https://hesappoint.com/arac.html",
+    "description": "Yükün boyut ve ağırlığına göre en uygun araç tipini belirleme, palet dizilimi ve 2D kapasite simülasyon aracı.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "142"
+    }
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "142"
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Araç yükleme ve kapasite simülasyonu nasıl çalışır?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simülatör; girilen palet veya yük ölçülerini (en, boy, yükseklik, ağırlık) seçilen aracın kasa boyutları ve taşıma kapasitesi ile kıyaslar. Hibrit dizilim algoritmasıyla paletleri en uygun pozisyonda yerleştirerek alan ve ağırlık doluluk oranlarını 2D grafik üzerinde sunar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Euro Palet (EUR) ölçüleri nedir ve bir TIR kaç palet alır?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standart Euro Palet ölçüleri 80x120 cm'dir. Standart bir tente dorseli TIR (13.60 m boy, 2.45 m en) tek kat dizilimde toplam 33 adet Euro Palet alır."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "İstiflenebilir (çoklu kat) ve istiflenemez yük ne anlama gelir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "İstiflenebilir yükler, üzerlerine kırılma veya ezilme riski olmadan başka bir palet konulabilen yüklerdir. İstiflenemez yüklerde ise dikey yükseklik ne olursa olsun paletler tek kat olarak yerleştirilir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Araç seçiminde tonaj mı yoksa hacim (dese/m³) mi önemlidir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Her ikisi de kritik önem taşır. Ağır sanayi ürünlerinde alan dolmadan tonaj sınırı dolabilir; köpük, plastik veya tekstil gibi hafif ürünlerde ise tonaj dolmadan aracın hacmi tükenebilir."
+        }
+      }
+    ]
   }
-}
+]
 </script>
+
+<!-- Lucide Icons Script -->
+<script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
 :root {
@@ -558,6 +601,114 @@ input:focus, select:focus {
     color: #92400e;
 }
 
+/* SEO & SSS Rehberi Stilleri */
+.info-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    margin-top: 32px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.info-block h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-block h2 i {
+    color: var(--primary);
+}
+
+.info-block p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.info-block ul {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 18px;
+}
+
+.info-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 32px 0;
+}
+
+.faq-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.faq-title i {
+    color: var(--primary);
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: #f8fafc;
+    padding: 16px;
+    transition: all 0.2s ease;
+}
+
+.faq-item[open] {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.faq-summary {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-answer {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
 footer {
     margin-top: 60px;
     padding: 24px;
@@ -570,6 +721,9 @@ footer {
 
 @media (max-width: 992px) {
     .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .info-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -760,6 +914,93 @@ footer {
         </div>
 
     </div>
+
+    <!-- SEO İçerik ve Rehber Bölümü -->
+    <section class="info-section">
+        
+        <!-- Nedir ve Nasıl Hesaplanır -->
+        <div class="info-grid">
+            <div class="info-block">
+                <h2>
+                    <i data-lucide="truck"></i>
+                    Yüke Göre Araç Seçimi ve Kapasite Planlama Nedir?
+                </h2>
+                <p>
+                    Lojistik ve sevkiyat süreçlerinde en doğru nakliye aracını seçmek; taşıma maliyetlerini düşürmek, araç doluluk oranını optimize etmek ve yük güvenliğini sağlamak için kritik öneme sahiptir.
+                </p>
+                <p>
+                    Kapasite simülatörümüz; Panelvan, Kamyonet, 6 Teker Kamyon, 10 Teker Kamyon ve TIR gibi farklı ticari araç tiplerinin taban alanı, iç yüksekliği ve azami yükleme tonajını dikkate alarak yüklerinize en uygun aracı belirlemenizi sağlar.
+                </p>
+            </div>
+
+            <div class="info-block">
+                <h2>
+                    <i data-lucide="calculator"></i>
+                    Palet Dizilimi ve Doluluk Oranı Nasıl Hesaplanır?
+                </h2>
+                <p>
+                    Araç yükleme algoritması, iki temel kısıtlamayı eş zamanlı olarak analiz eder:
+                </p>
+                <ul>
+                    <li><strong>Hacimsel (Alan & İstif) Limitler:</strong> Palet boyutları kasa ölçüleriyle eşleştirilir. Gerekli durumlarda paletler 90° döndürülerek hibrit dizilim planı oluşturulur. İstiflenebilir yüklerde kasa yüksekliği kullanılarak dikey kat sayısı hesaplanır.</li>
+                    <li><strong>Ağırlık (Tonaj) Limitleri:</strong> Yüklerin toplam ağırlığı, seçilen aracın yasal taşıma sınırıyla kıyaslanır ve tonaj aşımı anında uyarılır.</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="info-divider">
+
+        <!-- Sıkça Sorulan Sorular (SSS) -->
+        <div>
+            <h2 class="faq-title">
+                <i data-lucide="help-circle"></i>
+                Sıkça Sorulan Sorular
+            </h2>
+
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>Araç yükleme ve kapasite simülasyonu nasıl çalışır?</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Simülatör; girilen palet veya yük ölçülerini (en, boy, yükseklik, ağırlık) seçilen aracın kasa boyutları ve taşıma kapasitesi ile kıyaslar. Hibrit dizilim algoritmasıyla paletleri en uygun pozisyonda yerleştirerek alan ve ağırlık doluluk oranlarını 2D grafik üzerinde sunar.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>Euro Palet (EUR) ölçüleri nedir ve bir TIR kaç palet alır?</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Standart Euro Palet ölçüleri 80x120 cm'dir. Standart bir tente dorseli TIR (13.60 m boy, 2.45 m en) tek kat dizilimde toplam 33 adet Euro Palet alır.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>İstiflenebilir (çoklu kat) ve istiflenemez yük ne anlama gelir?</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        İstiflenebilir yükler, üzerlerine kırılma veya ezilme riski olmadan başka bir palet konulabilen yüklerdir. İstiflenemez yüklerde ise dikey yükseklik ne olursa olsun paletler tek kat olarak yerleştirilir.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>Araç seçiminde tonaj mı yoksa hacim (desi/m³) mi önemlidir?</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Her ikisi de kritik önem taşır. Ağır sanayi ürünlerinde alan dolmadan tonaj sınırı dolabilir; köpük, plastik veya tekstil gibi hafif ürünlerde ise tonaj dolmadan aracın hacmi tükenebilir.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+    </section>
 
 </div>
 
@@ -1095,6 +1336,9 @@ function drawVehicle(vW, vL, placements) {
 
 document.addEventListener("DOMContentLoaded", () => {
     addCargoItem(80, 120, 120, 400, 20);
+    if (window.lucide) {
+        lucide.createIcons();
+    }
 });
 </script>
 
