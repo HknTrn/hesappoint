@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yıllık İzin Ücreti Hesaplama 2026 | HesapPoint</title>
-    <meta name="description" content="Kullanılmayan yıllık izin günlerinin brüt ve net nakit karşılığını, yasal kesintileriyle birlikte anında hesaplayın.">
+    <meta name="description" content="Kullanılmayan yıllık izin günlerinin brüt ve net nakit karşılığını, yasal SGK, gelir ve damga vergisi kesintileriyle birlikte anında hesaplayın.">
     <meta name="keywords" content="yıllık izin ücreti hesaplama, izin parası hesaplama, kullanılmayan izin ücreti, iş kanunu izin ücreti, net izin ücreti">
     <meta name="robots" content="index, follow">
     <meta name="author" content="HesapPoint">
@@ -26,25 +26,57 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Yıllık İzin Ücreti Hesaplama",
-      "url": "https://hesappoint.com/izin-ucreti.html",
-      "description": "İşten ayrılma durumunda kullanılmayan yıllık izin günlerinin brüt ve net nakit karşılığını, SGK, işsizlik ve gelir vergisi kesintileriyle birlikte hesaplayan online simülatör.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Yıllık İzin Ücreti Hesaplama",
+        "url": "https://hesappoint.com/izin-ucreti.html",
+        "description": "İşten ayrılma durumunda kullanılmayan yıllık izin günlerinin brüt ve net nakit karşılığını, SGK, işsizlik ve gelir vergisi kesintileriyle birlikte hesaplayan online simülatör.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "118"
+        }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "118"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Kullanılmayan yıllık izin ücreti ne zaman ödenir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "İş sözleşmesinin herhangi bir nedenle (istifa, kovulma, emeklilik vb.) sona ermesi halinde, işçinin hak edip de kullanmadığı yıllık izin sürelerine ait ücret, son brüt maaşı üzerinden işten ayrılış tarihinde ödenir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Yıllık izin ücretinden hangi kesintiler yapılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yıllık izin ücreti tıpkı normal maaş gibi vergilendirilir. Brüt tutar üzerinden %14 SGK İşçi Payı, %1 İşsizlik Sigortası Prim Kesintisi, Gelir Vergisi ve %0,759 (binde 7,59) Damga Vergisi kesilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Yıllık izin ücretinde zaman aşımı süresi ne kadardır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "İş Kanunu uyarınca yıllık izin ücreti alacaklarında zaman aşımı süresi iş sözleşmesinin feshedildiği tarihten itibaren 5 yıldır."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -113,7 +145,7 @@
                         <input type="number" id="monthlySalary" value="45000" oninput="calculateLeavePay()" class="w-full p-3 pl-4 pr-8 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
                         <span class="absolute right-3 top-3.5 text-xs font-bold text-slate-400">₺</span>
                     </div>
-                    <span class="text-[10px] text-slate-400 font-medium">İzin ücreti hesaplamasında işten ayrılış tarihindeki son giydirilmemiş son maaş esas alınır.</span>
+                    <span class="text-[10px] text-slate-400 font-medium block">İzin ücreti hesaplamasında işten ayrılış tarihindeki son giydirilmemiş (çıplak) maaş esas alınır.</span>
                 </div>
 
                 <!-- Kullanılmayan İzin Gün Sayısı -->
@@ -200,6 +232,95 @@
 
         </div>
 
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="coins" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Yıllık İzin Ücreti Nasıl Hesaplanır?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Yıllık izin ücreti hesaplamasında esas alınan tutar, çalışanın iş sözleşmesinin sona erdiği tarihteki <strong>son giydirilmemiş (çıplak) brüt ücretidir</strong>.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Aylık brüt ücret 30 güne bölünerek <strong>günlük brüt ücret</strong> bulunur ve kullanılmayan izin gün sayısı ile çarpılır. Elde edilen tutardan SGK (%14), İşsizlik Primi (%1), Gelir Vergisi ve Damga Vergisi (%0,759) düşülerek net ödeme bulunur.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Önemli Hukuki Detaylar</span>
+                    </h3>
+                    <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+                        <li><strong>Çalışırken İzin Parası Ödenemez:</strong> Çalışma devam ederken izin hakkı paraya çevrilemez; mutlaka iş akdinin feshedilmiş olması gerekir.</li>
+                        <li><strong>Kıdem Tazminatından Farkı:</strong> İzin ücretinde yol, yemek ve prim gibi yan haklar hesaba katılmaz, yalnızca temel brüt maaş kullanılır.</li>
+                        <li><strong>Zaman Aşımı:</strong> İzin ücreti alacaklarında zaman aşımı süresi fesih tarihinden itibaren <strong>5 yıldır</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="palmtree" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Kaç Gün İzin Hakkınız Olduğunu Biliyor musunuz?</h4>
+                        <p class="text-[11px] text-slate-500">Kıdem sürenize ve yaşınıza göre toplam kaç gün yıllık izin hakkınız olduğunu öğrenmek için İzin Hesaplama aracımızı kullanabilirsiniz.</p>
+                    </div>
+                </div>
+                <a href="izin.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>İzin Gün Sayısı Hesapla</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Kullanılmayan yıllık izin ücreti ne zaman ödenir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            İş sözleşmesinin herhangi bir nedenle (istifa, kovulma, emeklilik vb.) sona ermesi halinde, işçinin hak edip de kullanmadığı yıllık izin sürelerine ait ücret, son brüt maaşı üzerinden işten ayrılış tarihinde ödenir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Yıllık izin ücretinden hangi kesintiler yapılır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Yıllık izin ücreti tıpkı normal maaş gibi vergilendirilir. Brüt tutar üzerinden %14 SGK İşçi Payı, %1 İşsizlik Sigortası Prim Kesintisi, Gelir Vergisi ve %0,759 (binde 7,59) Damga Vergisi kesilir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İstifa eden işçi izin ücretini alabilir mi?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Evet. İş sözleşmesinin kimin tarafından ve ne şekilde sonlandırıldığının önemi yoktur. İşçi istifa etse bile hak edip kullanmadığı izinlerin ücretini alma hakkına sahiptir.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -220,7 +341,7 @@
 
             let grossSalary = salaryInput;
 
-            // Net girildiyse tahmini brütleştirme (yaklaşık katsayı)
+            // Net girildiyse tahmini brütleştirme
             if (salaryType === 'net') {
                 grossSalary = salaryInput / (1 - (0.15 + taxRate * 0.85 + 0.00759));
             }
@@ -249,7 +370,9 @@
             document.getElementById('resStampTax').innerText = stampTax.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
             document.getElementById('resTotalDeduction').innerText = totalDeduction.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
 
-            lucide.createIcons();
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         }
     </script>
 </body>

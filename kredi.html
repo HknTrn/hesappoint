@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- SEO Meta Etiketleri -->
     <title>Kredi Hesaplama 2026 | Aylık Taksit & Ödeme Planı | HesapPoint</title>
     <meta name="description" content="İhtiyaç, taşıt, konut ve ticari krediler için aylık taksit tutarı, faiz oranları, KKDF ve BSMV yasal vergileri ile detaylı ödeme planı (amortisman tablosu) hesaplama aracı.">
     <meta name="keywords" content="kredi hesaplama, taksit hesaplama, aylık taksit, faiz oranı, kkdf bsmv hesaplama, kredi ödeme planı, ihtiyaç kredisi, konut kredisi, ticari kredi">
@@ -25,27 +26,54 @@
     <meta name="twitter:title" content="Kredi Hesaplama & Ödeme Planı Simülatörü | HesapPoint">
     <meta name="twitter:description" content="Aylık taksit, faiz ve yasal vergi oranlarına göre kredi geri ödeme planınızı anında çıkartın.">
 
-    <!-- Schema.org Yapısal Veri (JSON-LD) - Google Rich Results Uyumlu WebApplication -->
+    <!-- Schema.org Yapısal Veri (JSON-LD) - WebApplication & FAQPage -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Kredi Hesaplama Simülatörü",
-      "url": "https://hesappoint.com/kredi.html",
-      "description": "Bireysel, konut ve ticari krediler için aylık taksit, toplam faiz, KKDF/BSMV vergileri ve amortisman ödeme tablosu hesaplayan online simülatör.",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "author": {
-        "@type": "Organization",
-        "name": "HesapPoint",
-        "url": "https://hesappoint.com"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Kredi Hesaplama Simülatörü",
+        "url": "https://hesappoint.com/kredi.html",
+        "description": "Bireysel, konut ve ticari krediler için aylık taksit, toplam faiz, KKDF/BSMV vergileri ve amortisman ödeme tablosu hesaplayan online simülatör.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
       },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Kredi hesaplamasında KKDF ve BSMV oranları nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bireysel ihtiyaç kredilerinde faiz tutarı üzerinden %15 KKDF ve %15 BSMV uygulanır. Konut kredileri bu yasal vergilerden muaftır (%0). Ticari kredilerde ise KKDF %0, BSMV %5 olarak hesaplanır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Aylık kredi taksiti nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kredi taksitleri Annuitet (eşit taksitli ödeme) formülü kullanılarak hesaplanır. Brüt faiz oranı (akdi faiz + yasal vergiler) kullanılarak anapara ve faiz bileşeni her ay yeniden derecelendirilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Konut kredilerinde vergi muafiyeti var mıdır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet, mevzuat gereği bireysel konut kredileri Kaynak Kullanımını Destekleme Fonu (KKDF) ve Banka ve Sigorta Muameleleri Vergisi (BSMV)'nden tamamen muaftır."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -153,7 +181,7 @@
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                     <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
                         <i data-lucide="list-ordered" class="w-4 h-4 text-indigo-600"></i>
-                        <span>Ödeme Planı Tablosu</span>
+                        <span>Ödeme Planı Tablosu (Amortisman Cetveli)</span>
                     </h2>
 
                     <div class="overflow-x-auto max-h-80 overflow-y-auto border border-slate-100 rounded-xl">
@@ -223,13 +251,120 @@
 
                 <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs text-slate-500 space-y-1.5">
                     <p class="font-bold text-slate-700">📌 Bilgilendirme:</p>
-                    <p>Hesaplamalar bilgilendirme amaçlı olup dosya masrafı, sigorta ve tahsis ücretleri bankalara göre değişiklik gösterebilir.</p>
+                    <p>Hesaplamalar bilgilendirme amaçlı olup dosya masrafı, ekspertiz, sigorta ve tahsis ücretleri bankalara göre değişiklik gösterebilir.</p>
                 </div>
             </div>
 
         </div>
 
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Kredi Yasal Vergileri (KKDF ve BSMV) Nedir?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Kredi taksit tutarları hesaplanırken yalnızca akdi faiz değil, mevzuat gereği faiz tutarı üzerinden alınan yasal fon ve vergiler de dahil edilir. 
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>KKDF (Kaynak Kullanımını Destekleme Fonu):</strong> Bireysel ihtiyaç kredilerinde faizin %15'i oranında alınır.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>BSMV (Banka ve Sigorta Muameleleri Vergisi):</strong> Bireysel kredilerde faizin %15'i, ticari kredilerde ise %5'i oranında hesaplanır.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>Konut Kredisi Muafiyeti:</strong> Konut alımlarının desteklenmesi amacıyla konut kredileri KKDF ve BSMV'den tamamen muaftır (%0).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Kredi Taksiti Nasıl Hesaplanır? (Annuitet Formülü)</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Bankalar sabit taksitli kredilerde <strong>Annuitet formülünü</strong> kullanır. Her ay ödenen taksit miktarı sabit kalırken, ilk aylarda taksit içeriğindeki faiz payı yüksek, anapara payı düşüktür. Vade sonuna yaklaşıldıkça faiz payı azalır, anapara ödemesi artar.
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 font-mono text-[11px] text-slate-700">
+                        Brüt Faiz = Akdi Faiz Oranı × (1 + KKDF + BSMV)<br>
+                        Taksit = Kredi Tutarı × [Brüt Faiz × (1 + Brüt Faiz)^Vade] / [(1 + Brüt Faiz)^Vade - 1]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="receipt" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Ticari Faturalar ve KDV Hesaplamaları</h4>
+                        <p class="text-[11px] text-slate-500">Kredi kullanımının yanı sıra fatura matrahı ve KDV hesaplamaları için KDV Hesaplama Simülatörümüzü kullanabilirsiniz.</p>
+                    </div>
+                </div>
+                <a href="kdv.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>KDV Hesaplama Aracına Git</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Kredi hesaplamasında KKDF ve BSMV oranları nedir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Bireysel ihtiyaç ve taşıt kredilerinde faiz tutarı üzerinden %15 KKDF ve %15 BSMV uygulanır. Konut kredileri bu yasal vergilerden muaftır (%0). Ticari kredilerde ise KKDF %0, BSMV %5 olarak hesaplanır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Konut kredilerinde vergi muafiyeti var mıdır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Evet, mevzuat gereği bireysel konut kredileri Kaynak Kullanımını Destekleme Fonu (KKDF) ve Banka ve Sigorta Muameleleri Vergisi (BSMV)'nden tamamen muaftır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Kredi erken kapatıldığında veya ara ödeme yapıldığında ne olur?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Kredinizi erken kapattığınızda veya ara ödeme yaptığınızda kalan anapara borcunuz düşer. Gelecek dönemlere ait faiz ve yasal vergiler tahakkuk etmeyeceği için toplam geri ödeme tutarınız önemli ölçüde azalır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
     </main>
+
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Özet panoya kopyalandı!
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
@@ -247,7 +382,7 @@
         };
 
         window.onload = function() {
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
             calculate();
         };
 
@@ -344,8 +479,18 @@
                          `------------------------------------\n` +
                          `https://hesappoint.com/kredi.html`;
 
-            navigator.clipboard.writeText(text);
-            alert("Kredi hesaplama özeti panoya kopyalandı!");
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Kredi özet bilgisi panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
         }
     </script>
 </body>
