@@ -30,12 +30,7 @@
           "url": "https://hesappoint.com/",
           "name": "HesapPoint",
           "description": "Pratik Operasyonel ve Finansal Hesaplama Araçları",
-          "inLanguage": "tr-TR",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://hesappoint.com/?s={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
+          "inLanguage": "tr-TR"
         },
         {
           "@type": "Organization",
@@ -105,7 +100,7 @@
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between relative">
             
             <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight shrink-0">
+            <a href="/" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight shrink-0">
                 <i data-lucide="calculator" class="w-6 h-6"></i>
                 <span>Hesap<span class="text-slate-900">Point</span></span>
             </a>
@@ -415,7 +410,7 @@
             </nav>
 
             <!-- Mobil Menü Butonu (Tüm Hesaplamalar) -->
-            <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden flex items-center gap-2 px-3 py-1.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-xl font-bold text-xs shadow-xs active:bg-indigo-100 transition">
+            <button id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Mobil Menüyü Aç" aria-expanded="false" class="md:hidden flex items-center gap-2 px-3 py-1.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-xl font-bold text-xs shadow-xs active:bg-indigo-100 transition">
                 <i data-lucide="layers" class="w-4 h-4 text-indigo-600"></i>
                 <span>Tüm Hesaplamalar</span>
                 <i id="mobileMenuIcon" data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200"></i>
@@ -518,7 +513,7 @@
                 
                 <div class="relative flex items-center shadow-xl shadow-indigo-100/70 rounded-2xl bg-white border border-slate-200/90 focus-within:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-500/10 transition-all duration-200">
                     <i data-lucide="search" class="w-5 h-5 text-indigo-500 absolute left-4 pointer-events-none"></i>
-                    <input type="text" id="searchInput" placeholder="Hesaplama türü ara (Örn: Maaş, Yüzde, KDV, Desi, Yaş)..." class="w-full pl-12 pr-4 py-4 text-sm sm:text-base bg-transparent rounded-2xl outline-none font-medium text-slate-800 placeholder:text-slate-400">
+                    <input type="text" id="searchInput" aria-label="Hesaplama türü ara" placeholder="Hesaplama türü ara (Örn: Maaş, Yüzde, KDV, Desi, Yaş)..." class="w-full pl-12 pr-4 py-4 text-sm sm:text-base bg-transparent rounded-2xl outline-none font-medium text-slate-800 placeholder:text-slate-400">
                 </div>
 
                 <div class="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
@@ -869,13 +864,16 @@
         function toggleMobileMenu() {
             const dropdown = document.getElementById('mobileDropdown');
             const icon = document.getElementById('mobileMenuIcon');
+            const btn = document.getElementById('mobileMenuBtn');
             
             if (dropdown.classList.contains('hidden')) {
                 dropdown.classList.remove('hidden');
                 icon.classList.add('rotate-180');
+                btn.setAttribute('aria-expanded', 'true');
             } else {
                 dropdown.classList.add('hidden');
                 icon.classList.remove('rotate-180');
+                btn.setAttribute('aria-expanded', 'false');
             }
         }
 
@@ -897,6 +895,10 @@
         function filterCategory(cat) {
             const groups = document.querySelectorAll('.category-group');
             const buttons = document.querySelectorAll('.cat-btn');
+            const cards = document.querySelectorAll('.tool-card');
+
+            // Tüm kartların görünürlüğünü sıfırla
+            cards.forEach(card => card.style.display = 'flex');
 
             buttons.forEach(btn => {
                 btn.classList.remove('bg-slate-100', 'text-indigo-600', 'font-bold');
