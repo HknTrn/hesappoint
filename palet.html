@@ -3,47 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palet Kapasite ve Koli Dizilimi Hesaplama | HesapPoint</title>
-    <meta name="description" content="Koli ve palet ölçülerine göre kat başı koli sayısı, toplam palet kapasitesi, ağırlık ve hacimsel doluluk oranını hesaplayın. 2D koli dizilim simülasyonu.">
+    
+    <!-- SEO Meta Etiketleri -->
+    <title>Palet Kapasite ve Koli Dizilimi Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="Koli ve palet ölçülerine göre kat başı koli sayısı, toplam palet kapasitesi, ağırlık limiti ve hacimsel doluluk oranını hesaplayın. 2D koli dizilim simülasyonu.">
     <meta name="keywords" content="palet hesaplama, euro palet koli kapasitesi, koli istifleme, palet dizilim simülasyonu, cbm hesaplama, palet ağırlık hesabı">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://hesappoint.com/palet.html">
 
-    <!-- Open Graph / Facebook / LinkedIn -->
+    <!-- Open Graph / Social Media -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Palet Kapasite ve Koli Dizilimi Hesaplama 2026 | HesapPoint">
+    <meta property="og:description" content="Koli ölçülerine göre bir palete kaç koli sığacağını, kat sayısını ve hacimsel doluluğu saniyeler içinde hesaplayın.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hesappoint.com/palet.html">
-    <meta property="og:title" content="Palet Kapasite ve Koli Dizilimi Hesaplama | HesapPoint">
-    <meta property="og:description" content="Koli ölçülerine göre bir palete kaç koli sığacağını, kat sayısını ve hacimsel doluluğu saniyeler içinde hesaplayın.">
-    <meta property="og:site_name" content="HesapPoint">
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Palet Kapasite ve Koli Dizilimi Hesaplama | HesapPoint">
-    <meta name="twitter:description" content="Koli ölçülerine göre bir palete kaç koli sığacağını, kat sayısını ve hacimsel doluluğu saniyeler içinde hesaplayın.">
+    <meta name="twitter:title" content="Palet Kapasite ve Koli Dizilimi Hesaplama 2026 | HesapPoint">
+    <meta name="twitter:description" content="Koli ve palet boyutlarına göre maksimum koli kapasitesi, kat sayısı, ağırlık limiti ve hacimsel doluluk oranı hesaplama aracı.">
 
-    <!-- Schema.org Structured Data (JSON-LD) -->
+    <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Palet Kapasite ve Koli Dizilimi Hesaplama",
-      "url": "https://hesappoint.com/palet.html",
-      "description": "Koli ve palet boyutlarına göre maksimum koli kapasitesi, kat sayısı, ağırlık limiti ve hacimsel doluluk oranı hesaplama aracı.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript",
-      "publisher": {
-        "@type": "Organization",
-        "name": "HesapPoint",
-        "url": "https://hesappoint.com/"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Palet Kapasite ve Koli Dizilimi Hesaplama",
+        "url": "https://hesappoint.com/palet.html",
+        "description": "Koli ve palet boyutlarına göre maksimum koli kapasitesi, kat sayısı, ağırlık limiti ve hacimsel doluluk oranı hesaplama aracı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "publisher": {
+          "@type": "Organization",
+          "name": "HesapPoint",
+          "url": "https://hesappoint.com/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bir Euro palete ortalama kaç koli sığar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Euro palet boyutları 120x80 cm'dir. Sığacak koli sayısı koli en, boy ve yüksekliğine ek olarak maksimum yükseklik ve taşıma ağırlığı sınırına göre değişiklik gösterir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Palet yüksekliği hesaplanırken tahta yüksekliği dahil edilir mi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet, standart Euro palet tahta yüksekliği 15 cm'dir. Toplam palet yüksekliği belirlenirken kolilerin üst üste yüksekliğine 15 cm palet tabanı eklenir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Palet taşkın izni (Overhang) nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kolilerin palet sınırlarından dışarı taşmasına izin verilen mesayedir. Depo ve araç alanına göre 1-3 cm taşkın payı tanımlanarak daha fazla koli dizilimi sağlanabilir."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Numerik okları gizleme */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
 
     <!-- Header / Navbar -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
@@ -52,8 +99,9 @@
                 <i data-lucide="calculator" class="w-6 h-6"></i>
                 <span>Hesap<span class="text-slate-900">Point</span></span>
             </a>
-            <a href="index.html" class="text-xs font-semibold text-slate-600 hover:text-indigo-600 flex items-center gap-1 transition">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> Tüm Araçlar
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Tüm Araçlar</span>
             </a>
         </div>
     </header>
@@ -74,47 +122,47 @@
     </section>
 
     <!-- Ana İçerik -->
-    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <!-- Sol Form Alanı -->
             <div class="lg:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
                 
                 <!-- 1. Koli Ölçüleri -->
                 <div>
-                    <h2 class="text-sm font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-2 mb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2 border-b border-slate-100 pb-2 mb-3">
                         <i data-lucide="box" class="w-4 h-4 text-indigo-600"></i> Koli Ölçüleri ve Ağırlığı
                     </h2>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Koli Eni (cm)</label>
-                            <input type="number" id="boxWidth" value="40" min="1" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Koli Eni (cm)</label>
+                            <input type="number" id="boxWidth" value="40" min="1" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Koli Boyu (cm)</label>
-                            <input type="number" id="boxLength" value="30" min="1" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Koli Boyu (cm)</label>
+                            <input type="number" id="boxLength" value="30" min="1" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Koli Yüksekliği (cm)</label>
-                            <input type="number" id="boxHeight" value="20" min="1" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Koli Yüksekliği (cm)</label>
+                            <input type="number" id="boxHeight" value="20" min="1" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Koli Ağırlığı (kg)</label>
-                            <input type="number" id="boxWeight" value="5" min="0.1" step="0.1" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Koli Ağırlığı (kg)</label>
+                            <input type="number" id="boxWeight" value="5" min="0.1" step="0.1" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
                         </div>
                     </div>
                 </div>
 
                 <!-- 2. Palet Seçimi & Limitler -->
                 <div>
-                    <h2 class="text-sm font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-2 mb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2 border-b border-slate-100 pb-2 mb-3">
                         <i data-lucide="layers" class="w-4 h-4 text-indigo-600"></i> Palet Tipi ve Yükseklik Limitleri
                     </h2>
                     <div class="space-y-3">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Palet Tipi</label>
-                            <select id="palletType" onchange="toggleCustomPallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none bg-white">
-                                <option value="euro">Euro Palet (120 x 80 cm)</option>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Palet Tipi</label>
+                            <select id="palletType" onchange="toggleCustomPallet(); calculatePallet();" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none bg-white transition">
+                                <option value="euro" selected>Euro Palet (120 x 80 cm)</option>
                                 <option value="standard">Standart / Sanayi Paleti (120 x 100 cm)</option>
                                 <option value="custom">Özel Ölçü Palet</option>
                             </select>
@@ -123,38 +171,41 @@
                         <!-- Özel Ölçü Alanı (Varsayılan Gizli) -->
                         <div id="customPalletInputs" class="grid grid-cols-2 gap-3 hidden">
                             <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-1">Palet Eni (cm)</label>
-                                <input type="number" id="customPalletWidth" value="120" min="1" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Palet Eni (cm)</label>
+                                <input type="number" id="customPalletWidth" value="120" min="1" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-1">Palet Boyu (cm)</label>
-                                <input type="number" id="customPalletLength" value="80" min="1" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Palet Boyu (cm)</label>
+                                <input type="number" id="customPalletLength" value="80" min="1" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-1">Max. Palet Yüksekliği (cm)</label>
-                                <input type="number" id="maxHeight" value="180" min="1" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
-                                <span class="text-[10px] text-slate-400">Palet tahtası dahil (15 cm)</span>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Max. Palet Yüksekliği (cm)</label>
+                                <input type="number" id="maxHeight" value="180" min="1" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
+                                <span class="text-[10px] text-slate-400 block mt-0.5">Palet tahtası dahil (15 cm)</span>
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-1">Max. Taşıma Ağırlığı (kg)</label>
-                                <input type="number" id="maxWeight" value="1000" min="1" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Max. Taşıma Ağırlığı (kg)</label>
+                                <input type="number" id="maxWeight" value="1000" min="1" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Taşkın İzni (Overhang - cm)</label>
-                            <input type="number" id="overhang" value="0" min="0" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 outline-none">
-                            <span class="text-[10px] text-slate-400">Kolilerin palet kenarından dışarı taşma payı</span>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Taşkın İzni (Overhang - cm)</label>
+                            <input type="number" id="overhang" value="0" min="0" onfocus="this.select()" oninput="calculatePallet()" class="w-full p-2.5 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 outline-none transition">
+                            <span class="text-[10px] text-slate-400 block mt-0.5">Kolilerin palet kenarından dışarı taşma payı</span>
                         </div>
                     </div>
                 </div>
 
-                <button onclick="calculatePallet()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs shadow-md shadow-indigo-100 transition flex items-center justify-center gap-2">
-                    <i data-lucide="calculator" class="w-4 h-4"></i> Kapasiteyi Hesapla
-                </button>
+                <div class="pt-2">
+                    <button onclick="copySummary()" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition border border-slate-200">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Palet Özetini Kopyala</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Sağ Sonuç Alanı -->
@@ -162,13 +213,13 @@
                 
                 <!-- Özet Kartlar -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
-                    <h2 class="text-sm font-bold text-slate-900 flex items-center justify-between border-b border-slate-100 pb-2">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between border-b border-slate-100 pb-2">
                         <span class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Hesaplama Sonucu</span>
-                        <span id="resLimitReason" class="text-[10px] font-bold bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full">Yükseklik Sınırı</span>
+                        <span id="resLimitReason" class="text-[10px] font-bold bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full border border-indigo-100">Yükseklik Sınırı</span>
                     </h2>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        <div class="bg-indigo-50/50 p-3.5 rounded-xl border border-indigo-100 text-center">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="bg-indigo-50/70 p-3.5 rounded-xl border border-indigo-100 text-center">
                             <span class="block text-[11px] font-semibold text-indigo-600">Toplam Koli</span>
                             <span id="resTotalBoxes" class="text-2xl font-black text-indigo-900 mt-1 block">0</span>
                             <span class="text-[10px] text-slate-400">Adet</span>
@@ -205,7 +256,7 @@
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                     <h3 class="text-xs font-bold text-slate-900 flex items-center justify-between">
                         <span class="flex items-center gap-1.5"><i data-lucide="layout-grid" class="w-4 h-4 text-indigo-600"></i> Tek Kat Koli Dizilim Şeması (Üstten Görünüm)</span>
-                        <span id="resPatternName" class="text-[10px] text-slate-500 font-normal">Düz Dizilim</span>
+                        <span id="resPatternName" class="text-[10px] text-indigo-600 font-bold bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-100">Düz Dizilim</span>
                     </h3>
                     
                     <!-- Simülasyon Kutusu -->
@@ -217,17 +268,105 @@
 
             </div>
         </div>
+
+        <!-- SEO Rehber ve Akordeon SSS -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Standart Palet Boyutları ve Lojistik Esasları</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Lojistikte yaygın kullanılan Euro Palet (80x120 cm) ve Standart Sanayi Paleti (100x120 cm), depolama ve konteyner/TIR yüklemelerinde standart optimizasyon sağlar. Paletleme sürecinde taşkın olmaması ve yükseklik sınırlarına uyulması hasar riskini en aza indirir.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Ağırlık ve Istif Güvenliği</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Palet başına maksimum taşıma kapasitesi (genellikle 1000 - 1500 kg) aşıldığında alt kolilerde ezilme ve devrilme riski doğar. Hesaplayıcımız, yükseklik limitinin yanı sıra ağırlık sınırını da denetleyerek güvenli kat sayısını otomatik belirler.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg shrink-0">
+                        <i data-lucide="truck" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Paletlerinizin Araç Kapasitesini Hesaplamak İster misiniz?</h4>
+                        <p class="text-[11px] text-slate-500">Hazırladığınız paletlerin TIR, Kamyon veya Panelvan araçlarına kaç adet sığacağını 2D simülatör ile hesaplayın.</p>
+                    </div>
+                </div>
+                <a href="depo-palet-kapasite.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5 shrink-0">
+                    <span>Araç Yükleme Simülatörüne Git</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Bir Euro palete ortalama kaç koli sığar?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Euro palet boyutları 120x80 cm'dir. Sığacak koli sayısı koli en, boy ve yüksekliğine ek olarak maksimum yükseklik ve taşıma ağırlığı sınırına göre değişiklik gösterir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Palet yüksekliği hesaplanırken tahta yüksekliği dahil edilir mi?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Evet, standart Euro palet tahta yüksekliği 15 cm'dir. Toplam palet yüksekliği belirlenirken kolilerin üst üste yüksekliğine 15 cm palet tabanı eklenir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Palet taşkın izni (Overhang) nedir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Kolilerin palet sınırlarından dışarı taşmasına izin verilen mesafedir. Depo ve araç alanına göre 1-3 cm taşkın payı tanımlanarak daha fazla koli dizilimi sağlanabilir.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
     </main>
 
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Palet özet bilgisi panoya kopyalandı!
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
         © 2026 HesapPoint — Pratik Operasyonel Hesaplama Araçları
     </footer>
 
-    <!-- Scriptler -->
+    <!-- Scriptler - BİREBİR ORİJİNAL HESAPLAMA MANTIĞI VE ALGORİTMA -->
     <script>
-        lucide.createIcons();
-
         function toggleCustomPallet() {
             const type = document.getElementById('palletType').value;
             const customBox = document.getElementById('customPalletInputs');
@@ -359,9 +498,43 @@
             canvas.appendChild(gridContainer);
         }
 
-        // Sayfa Yüklendiğinde Otomatik Hesapla
+        function copySummary() {
+            const totalBoxes = document.getElementById('resTotalBoxes').innerText;
+            const boxesPerLayer = document.getElementById('resBoxesPerLayer').innerText;
+            const totalLayers = document.getElementById('resTotalLayers').innerText;
+            const totalHeight = document.getElementById('resTotalHeight').innerText;
+            const totalWeight = document.getElementById('resTotalWeight').innerText;
+            const volumeEfficiency = document.getElementById('resVolumeEfficiency').innerText;
+
+            const text = `📦 *HesapPoint Palet Dizilim & Kapasite Özeti*\n` +
+                         `------------------------------------\n` +
+                         `Toplam Koli Kapasitesi: ${totalBoxes} Adet\n` +
+                         `Kat Başı Koli Sayısı: ${boxesPerLayer} Adet/Kat\n` +
+                         `Toplam Kat Sayısı: ${totalLayers} Kat\n` +
+                         `Palet Yüksekliği (Tahta Dahil): ${totalHeight}\n` +
+                         `Toplam Yük Ağırlığı: ${totalWeight}\n` +
+                         `Hacimsel Doluluk Oranı: ${volumeEfficiency}\n` +
+                         `------------------------------------\n` +
+                         `https://hesappoint.com/palet.html`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Palet özet bilgisi panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
+        }
+
+        // Sayfa Yüklendiğinde Otomatik Hesapla ve İkonları Başlat
         window.onload = () => {
             calculatePallet();
+            if (window.lucide) lucide.createIcons();
         };
     </script>
 </body>

@@ -1,976 +1,592 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- SEO Meta Etiketleri -->
-<title>Yüzde Hesaplama 2026 | Yüzde Artış, Azalış, Oran ve Değişim | hesappoint</title>
-<meta name="description" content="Bir sayının yüzdesini bulma, iki sayı arasındaki yüzde oranını hesaplama, yüzde artış ve azalış miktarlarını anında hesaplayabileceğiniz pratik hesaplama aracı.">
-<meta name="keywords" content="yüzde hesaplama, yüzde artış hesaplama, yüzde azalış hesaplama, bir sayının yüzdesi, yüzde oranı bulma, yüzde kaç yapma">
-<meta name="robots" content="index, follow">
-<meta name="author" content="hesappoint">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://hesappoint.com/yuzde.html">
-
-<!-- Social Media / Open Graph Meta Etiketleri -->
-<meta property="og:site_name" content="hesappoint">
-<meta property="og:title" content="Pratik Yüzde Hesaplama Simülatörü | hesappoint">
-<meta property="og:description" content="Artış, azalış ve değişim oranlarını hesaplamak için pratik ve hızlı yüzde hesaplama simülatörü.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://hesappoint.com/yuzde.html">
-
-<!-- Twitter Card Meta Etiketleri -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Pratik Yüzde Hesaplama Simülatörü">
-<meta name="twitter:description" content="Yüzde artış, azalış, oran ve değer bulma işlemlerini anında pratik şekilde hesaplayın.">
-
-<!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Yüzde Hesaplama Simülatörü",
-  "url": "https://hesappoint.com/yuzde.html",
-  "description": "Bir sayının yüzdesini bulma, iki sayı arasındaki yüzde oranını hesaplama, yüzde artış ve azalış miktarlarını anında hesaplayabileceğiniz pratik hesaplama aracı.",
-  "applicationCategory": "EducationalApplication",
-  "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "TRY"
-  }
-}
-</script>
-
-<style>
-:root {
-    --primary: #4f46e5;
-    --primary-dark: #4338ca;
-    --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
-    --bg-body: #f8fafc;
-    --card-bg: #ffffff;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    --success: #10b981;
-    --warning: #f59e0b;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg-body);
-    color: var(--text-main);
-    line-height: 1.6;
-}
-
-header {
-    background: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
-    padding: 16px 32px;
-}
-
-.header-content {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--primary);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-}
-
-.logo span {
-    color: var(--text-main);
-}
-
-.back {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.back:hover {
-    color: var(--primary);
-}
-
-.container {
-    max-width: 1100px;
-    margin: 32px auto;
-    padding: 0 20px;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 32px;
-}
-
-.page-header h1 {
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--text-main);
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
-}
-
-.page-header p {
-    color: var(--text-muted);
-    font-size: 15px;
-}
-
-/* 2 SÜTUNLU DASHBOARD DÜZENİ */
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 460px 1fr;
-    gap: 28px;
-    align-items: start;
-}
-
-.panel {
-    background: var(--card-bg);
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
-    padding: 24px;
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
-}
-
-/* TABS */
-.tabs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-bottom: 20px;
-    background: #f1f5f9;
-    padding: 4px;
-    border-radius: 12px;
-}
-
-.tab {
-    padding: 8px 6px;
-    border: none;
-    background: transparent;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-align: center;
-    transition: all 0.2s;
-}
-
-.tab:hover {
-    color: var(--text-main);
-}
-
-.tab.active {
-    background: var(--card-bg);
-    color: var(--primary);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.panel-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    color: var(--text-main);
-}
-
-.panel-description {
-    color: var(--text-muted);
-    font-size: 13px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 14px;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-label {
-    display: block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.input-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-icon {
-    position: absolute;
-    left: 12px;
-    color: #94a3b8;
-    font-size: 14px;
-    pointer-events: none;
-}
-
-input, select {
-    width: 100%;
-    padding: 11px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-main);
-    background: #fff;
-    outline: none;
-    transition: all 0.2s;
-    font-family: inherit;
-}
-
-.with-icon {
-    padding-left: 36px;
-}
-
-input:focus, select:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3.5px rgba(79, 70, 229, 0.12);
-}
-
-.quick-buttons {
-    display: flex;
-    gap: 6px;
-    margin-top: 8px;
-    flex-wrap: wrap;
-}
-
-.btn-quick {
-    background: #f1f5f9;
-    border: 1px solid #cbd5e1;
-    color: var(--text-main);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.15s;
-}
-
-.btn-quick:hover {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-}
-
-.button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 12px;
-}
-
-.btn-calculate {
-    flex: 2;
-    padding: 12px;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-}
-
-.btn-calculate:hover {
-    background: var(--primary-dark);
-}
-
-.btn-reset {
-    flex: 1;
-    padding: 12px;
-    background: #f1f5f9;
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.btn-reset:hover {
-    background: #e2e8f0;
-    color: var(--text-main);
-}
-
-/* SAĞ TARAF: SONUÇ KARTLARI */
-.summary-card {
-    background: var(--primary-gradient);
-    color: white;
-    border-radius: 20px;
-    padding: 28px;
-    margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 12px 24px -4px rgba(79, 70, 229, 0.35);
-}
-
-.summary-card::after {
-    content: "%";
-    position: absolute;
-    right: 5px;
-    bottom: -25px;
-    font-size: 140px;
-    font-weight: 900;
-    opacity: 0.12;
-    pointer-events: none;
-}
-
-.summary-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.summary-title {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.85;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 6px;
-}
-
-.btn-action {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    backdrop-filter: blur(4px);
-}
-
-.btn-action:hover {
-    background: rgba(255, 255, 255, 0.35);
-}
-
-.summary-main {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-bottom: 24px;
-}
-
-.summary-main .val {
-    font-size: 40px;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -1px;
-}
-
-.metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-    padding-top: 20px;
-}
-
-.metric-box-title {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    opacity: 0.8;
-    margin-bottom: 4px;
-}
-
-.metric-box-value {
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.details-card {
-    background: var(--card-bg);
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
-    padding: 24px;
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
-}
-
-.details-header {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.details-list {
-    list-style: none;
-}
-
-.details-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px dashed var(--border-color);
-    font-size: 14px;
-}
-
-.details-list li:last-child {
-    border-bottom: none;
-}
-
-.details-list .label {
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-.details-list .val {
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-.formula-card {
-    margin-top: 18px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-left: 4px solid var(--primary);
-    padding: 14px;
-    border-radius: 10px;
-}
-
-.formula-title {
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--primary);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-}
-
-.formula-body {
-    font-size: 13px;
-    font-family: monospace;
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-.badge {
-    background: #e0e7ff;
-    color: var(--primary);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-/* ÖZGÜN & PAZARLAMA ODAKLI SEO REHBER ALANI */
-.seo-content-section {
-    margin-top: 48px;
-    background: var(--card-bg);
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
-    padding: 36px;
-    color: #1e293b;
-}
-
-.seo-content-section h2 {
-    font-size: 20px;
-    font-weight: 800;
-    color: #0f172a;
-    margin-bottom: 12px;
-    margin-top: 28px;
-    letter-spacing: -0.3px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.seo-content-section h2:first-child {
-    margin-top: 0;
-}
-
-.seo-content-section p {
-    color: #475569;
-    font-size: 15px;
-    line-height: 1.7;
-    margin-bottom: 16px;
-    font-weight: 400;
-}
-
-.seo-card-example {
-    background: #f8fafc;
-    border-left: 4px solid #4f46e5;
-    padding: 16px 20px;
-    border-radius: 8px;
-    margin: 16px 0;
-    font-size: 14px;
-    color: #334155;
-}
-
-.seo-card-example strong {
-    color: #4f46e5;
-}
-
-.seo-list {
-    list-style: none;
-    margin: 16px 0;
-}
-
-.seo-list li {
-    position: relative;
-    padding-left: 24px;
-    margin-bottom: 12px;
-    font-size: 15px;
-    color: #475569;
-    line-height: 1.6;
-}
-
-.seo-list li::before {
-    content: "•";
-    color: #4f46e5;
-    font-size: 24px;
-    position: absolute;
-    left: 4px;
-    top: -4px;
-}
-
-/* TOAST BİLDİRİMİ */
-#toast {
-    visibility: hidden;
-    min-width: 220px;
-    background-color: #0f172a;
-    color: #fff;
-    text-align: center;
-    border-radius: 8px;
-    padding: 10px 16px;
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    bottom: 30px;
-    transform: translateX(-50%);
-    font-size: 13px;
-    font-weight: 600;
-    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
-    opacity: 0;
-    transition: opacity 0.3s, bottom 0.3s;
-}
-
-#toast.show {
-    visibility: visible;
-    opacity: 1;
-    bottom: 40px;
-}
-
-footer {
-    margin-top: 60px;
-    padding: 24px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border-color);
-    background: var(--card-bg);
-}
-
-@media (max-width: 900px) {
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Etiketleri -->
+    <title>Yüzde Hesaplama ve Değişim Oranı Simülatörü 2026 | HesapPoint</title>
+    <meta name="description" content="Bir sayının yüzdesini bulma, iki sayı arasındaki yüzde oranını hesaplama, yüzde artış ve azalış miktarlarını anında hesaplayabileceğiniz pratik hesaplama aracı.">
+    <meta name="keywords" content="yüzde hesaplama, yüzde artış hesaplama, yüzde azalış hesaplama, bir sayının yüzdesi, yüzde oranı bulma, yüzde kaç yapma, değişim oranı">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/yuzde.html">
+
+    <!-- Social Media / Open Graph Meta Etiketleri -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Pratik Yüzde Hesaplama Simülatörü | HesapPoint">
+    <meta property="og:description" content="Artış, azalış ve değişim oranlarını hesaplamak için pratik ve hızlı yüzde hesaplama simülatörü.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hesappoint.com/yuzde.html">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pratik Yüzde Hesaplama Simülatörü | HesapPoint">
+    <meta name="twitter:description" content="Yüzde artış, azalış, oran ve değer bulma işlemlerini anında pratik şekilde hesaplayın.">
+
+    <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "HesapPoint Yüzde Hesaplama Simülatörü",
+        "url": "https://hesappoint.com/yuzde.html",
+        "description": "Bir sayının yüzdesini bulma, iki sayı arasındaki yüzde oranını hesaplama, yüzde artış ve azalış miktarlarını anında hesaplayabileceğiniz pratik hesaplama aracı.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bir sayının yüzdesi en kolay nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bir sayının yüzdesini bulmak için ana sayı önce 100'e bölünür, ardından çıkan sonuç istenen yüzde oranı ile çarpılır. Örneğin 200'ün %15'i için (200 ÷ 100) × 15 = 30 işlemi yapılır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Yüzde artış ve azalış formülü nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yüzde artış için: A + (A × B / 100) formülü kullanılır. Yüzde azalış için ise: A - (A × B / 100) formülü uygulanır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İki sayı arasındaki yüzde değişim nasıl bulunur?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yeni değerden eski değer çıkarılır, fark eski değere bölünür ve çıkan sonuç 100 ile çarpılır. Formül: ((Yeni - Eski) / Eski) × 100 şeklindedir."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
-<body>
+    <!-- Header / Navigasyon -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 font-black text-xl text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="text-xs font-semibold text-slate-500 hover:text-indigo-600 transition flex items-center gap-1.5">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Ana Sayfaya Dön
+            </a>
+        </div>
+    </header>
 
-<header>
-    <div class="header-content">
-        <a href="index.html" class="logo">🧮 Hesap<span>Point</span></a>
-        <a href="index.html" class="back">← Ana Sayfaya Dön</a>
-    </div>
-</header>
-
-<div class="container">
-
-    <div class="page-header">
-        <h1>% Yüzde Hesaplama Simülatörü</h1>
-        <p>Artış, azalış, oran ve yüzde değerlerini anında adım adım hesaplayın.</p>
-    </div>
-
-    <div class="dashboard-grid">
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-8 space-y-8">
         
-        <!-- SOL PANEL: GİRDİ FORMU & TABS -->
-        <div class="panel">
+        <!-- Başlık Kartı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl flex items-center justify-center gap-2.5">
+                <i data-lucide="percent" class="w-8 h-8 text-indigo-600"></i>
+                Yüzde Hesaplama Simülatörü
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Artış, azalış, oran ve yüzde değerlerini anında adım adım hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <div class="tabs">
-                <button class="tab active" id="tab1" onclick="switchTab(1)">Hızlı Seçim</button>
-                <button class="tab" id="tab2" onclick="switchTab(2)">Yüzde Kaçı?</button>
-                <button class="tab" id="tab3" onclick="switchTab(3)">Değişim Oranı</button>
+            <!-- GİRDİ FORMU & SEKMELER (Sol Kolon) -->
+            <div class="lg:col-span-6 space-y-5">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5">
+                    
+                    <!-- Sekme Butonları -->
+                    <div class="grid grid-cols-3 gap-1.5 bg-slate-100 p-1 rounded-xl text-center">
+                        <button id="tab1" onclick="switchTab(1)" class="py-2 px-1 text-xs font-bold rounded-lg transition text-indigo-600 bg-white shadow-sm">Hızlı Seçim</button>
+                        <button id="tab2" onclick="switchTab(2)" class="py-2 px-1 text-xs font-bold rounded-lg transition text-slate-500 hover:text-slate-800">Yüzde Kaçı?</button>
+                        <button id="tab3" onclick="switchTab(3)" class="py-2 px-1 text-xs font-bold rounded-lg transition text-slate-500 hover:text-slate-800">Değişim Oranı</button>
+                    </div>
+
+                    <!-- MOD 1: HIZLI SEÇİM (3 İŞLEM SERİSİ) -->
+                    <div id="panel1" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Yapılacak İşlem Türü</label>
+                            <select id="selectOp1" onchange="calculate()" class="w-full py-2.5 px-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 bg-white outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                <option value="pctOf">A sayısının %B'si kaçtır?</option>
+                                <option value="addPct">A sayısı, %B kadar artırılırsa kaç olur?</option>
+                                <option value="subPct">A sayısı, %B kadar azaltılırsa kaç olur?</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label id="lblA1" class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">A Sayısı</label>
+                            <div class="relative flex items-center">
+                                <i data-lucide="binary" class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"></i>
+                                <input type="number" step="any" id="numA1" placeholder="Örn: 500" oninput="calculate()" class="w-full py-2.5 pl-10 pr-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label id="lblB1" class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">B Sayısı (%)</label>
+                            <div class="relative flex items-center mb-2">
+                                <i data-lucide="percent" class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"></i>
+                                <input type="number" step="any" id="numB1" placeholder="Örn: 20" oninput="calculate()" class="w-full py-2.5 pl-10 pr-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                            </div>
+                            <!-- Hızlı Yüzde Butonları -->
+                            <div class="flex flex-wrap gap-1.5">
+                                <button type="button" onclick="setQuickPercent(5)" class="px-2.5 py-1 bg-slate-100 hover:bg-indigo-600 hover:text-white border border-slate-200 text-slate-700 text-[11px] font-bold rounded-lg transition">%5</button>
+                                <button type="button" onclick="setQuickPercent(10)" class="px-2.5 py-1 bg-slate-100 hover:bg-indigo-600 hover:text-white border border-slate-200 text-slate-700 text-[11px] font-bold rounded-lg transition">%10</button>
+                                <button type="button" onclick="setQuickPercent(18)" class="px-2.5 py-1 bg-slate-100 hover:bg-indigo-600 hover:text-white border border-slate-200 text-slate-700 text-[11px] font-bold rounded-lg transition">%18</button>
+                                <button type="button" onclick="setQuickPercent(20)" class="px-2.5 py-1 bg-slate-100 hover:bg-indigo-600 hover:text-white border border-slate-200 text-slate-700 text-[11px] font-bold rounded-lg transition">%20</button>
+                                <button type="button" onclick="setQuickPercent(25)" class="px-2.5 py-1 bg-slate-100 hover:bg-indigo-600 hover:text-white border border-slate-200 text-slate-700 text-[11px] font-bold rounded-lg transition">%25</button>
+                                <button type="button" onclick="setQuickPercent(50)" class="px-2.5 py-1 bg-slate-100 hover:bg-indigo-600 hover:text-white border border-slate-200 text-slate-700 text-[11px] font-bold rounded-lg transition">%50</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MOD 2: YÜZDE KAÇI -->
+                    <div id="panel2" class="space-y-4 hidden">
+                        <div class="border-b border-slate-100 pb-2">
+                            <h3 class="font-bold text-xs text-slate-800">A Sayısı, B Sayısının Yüzde Kaçıdır?</h3>
+                            <p class="text-[11px] text-slate-500">Bir değerin başka bir değere oranını hesaplar.</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">A Sayısı (Pay)</label>
+                            <div class="relative flex items-center">
+                                <i data-lucide="binary" class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"></i>
+                                <input type="number" step="any" id="numA2" placeholder="Örn: 100" oninput="calculate()" class="w-full py-2.5 pl-10 pr-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">B Sayısı (Payda / Toplam)</label>
+                            <div class="relative flex items-center">
+                                <i data-lucide="pie-chart" class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"></i>
+                                <input type="number" step="any" id="numB2" placeholder="Örn: 500" oninput="calculate()" class="w-full py-2.5 pl-10 pr-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MOD 3: DEĞİŞİM ORANI -->
+                    <div id="panel3" class="space-y-4 hidden">
+                        <div class="border-b border-slate-100 pb-2">
+                            <h3 class="font-bold text-xs text-slate-800">A Sayısından B Sayısına Yüzde Değişim</h3>
+                            <p class="text-[11px] text-slate-500">İki değer arasındaki yüzde artış veya azalış oranını bulur.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">A Sayısı (Eski Değer)</label>
+                            <div class="relative flex items-center">
+                                <i data-lucide="trending-down" class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"></i>
+                                <input type="number" step="any" id="numA3" placeholder="Örn: 500" oninput="calculate()" class="w-full py-2.5 pl-10 pr-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">B Sayısı (Yeni Değer)</label>
+                            <div class="relative flex items-center">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"></i>
+                                <input type="number" step="any" id="numB3" placeholder="Örn: 600" oninput="calculate()" class="w-full py-2.5 pl-10 pr-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Butonlar -->
+                    <div class="flex gap-2 pt-2">
+                        <button type="button" onclick="calculate()" class="flex-1 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-1.5">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            <span>Hesapla</span>
+                        </button>
+                        <button type="button" onclick="resetForm()" class="py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold rounded-xl text-xs transition">
+                            Sıfırla
+                        </button>
+                    </div>
+
+                </div>
             </div>
 
-            <!-- MOD 1: AÇILIR LİSTE İLE 5 SENARYO -->
-            <div id="panel1" class="panel-content">
-                <div class="form-group">
-                    <label>Yapılacak İşlem Türü</label>
-                    <select id="selectOp1" onchange="calculate()">
-                        <option value="pctOf">A sayısının %B'si kaçtır?</option>
-                        <option value="addPct">A sayısı, %B kadar artırılırsa kaç olur?</option>
-                        <option value="subPct">A sayısı, %B kadar azaltılırsa kaç olur?</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label id="lblA1">A Sayısı</label>
-                    <div class="input-icon-wrapper">
-                        <span class="input-icon">🔢</span>
-                        <input type="number" step="any" class="with-icon" id="numA1" placeholder="Örn: 500" oninput="calculate()">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label id="lblB1">B Sayısı (%)</label>
-                    <div class="input-icon-wrapper">
-                        <span class="input-icon">%</span>
-                        <input type="number" step="any" class="with-icon" id="numB1" placeholder="Örn: 20" oninput="calculate()">
-                    </div>
-                    <div class="quick-buttons">
-                        <button class="btn-quick" onclick="setQuickPercent(5)">%5</button>
-                        <button class="btn-quick" onclick="setQuickPercent(10)">%10</button>
-                        <button class="btn-quick" onclick="setQuickPercent(18)">%18</button>
-                        <button class="btn-quick" onclick="setQuickPercent(20)">%20</button>
-                        <button class="btn-quick" onclick="setQuickPercent(25)">%25</button>
-                        <button class="btn-quick" onclick="setQuickPercent(50)">%50</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MOD 2: YÜZDE KAÇI -->
-            <div id="panel2" class="panel-content" style="display: none;">
-                <div class="panel-title">A Sayısı, B Sayısının Yüzde Kaçıdır?</div>
-                <div class="panel-description">Bir değerin başka bir değere oranını hesaplar.</div>
+            <!-- SONUÇ PANELİ (Sağ Kolon) -->
+            <div class="lg:col-span-6 space-y-5 lg:sticky lg:top-24">
                 
-                <div class="form-group">
-                    <label>A Sayısı (Pay)</label>
-                    <div class="input-icon-wrapper">
-                        <span class="input-icon">🔢</span>
-                        <input type="number" step="any" class="with-icon" id="numA2" placeholder="Örn: 100" oninput="calculate()">
+                <!-- Ana Sonuç Kartı -->
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-4 relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-6 opacity-10 text-white font-black text-9xl pointer-events-none">
+                        %
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>B Sayısı (Payda / Toplam)</label>
-                    <div class="input-icon-wrapper">
-                        <span class="input-icon">📊</span>
-                        <input type="number" step="any" class="with-icon" id="numB2" placeholder="Örn: 500" oninput="calculate()">
-                    </div>
-                </div>
-            </div>
 
-            <!-- MOD 3: DEĞİŞİM ORANI -->
-            <div id="panel3" class="panel-content" style="display: none;">
-                <div class="panel-title">A Sayısından B Sayısına Yüzde Değişim</div>
-                <div class="panel-description">İki değer arasındaki yüzde artış veya azalış oranını bulur.</div>
-                
-                <div class="form-group">
-                    <label>A Sayısı (Eski Değer)</label>
-                    <div class="input-icon-wrapper">
-                        <span class="input-icon">📉</span>
-                        <input type="number" step="any" class="with-icon" id="numA3" placeholder="Örn: 500" oninput="calculate()">
+                    <div class="flex justify-between items-center relative z-10">
+                        <span class="text-indigo-200 text-xs font-bold uppercase tracking-wider" id="resSummaryTitle">HESAPLANAN SONUÇ</span>
+                        <button onclick="copyResult()" class="px-3 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-lg text-xs font-bold text-white transition flex items-center gap-1.5">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span>Kopyala</span>
+                        </button>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>B Sayısı (Yeni Değer)</label>
-                    <div class="input-icon-wrapper">
-                        <span class="input-icon">📈</span>
-                        <input type="number" step="any" class="with-icon" id="numB3" placeholder="Örn: 600" oninput="calculate()">
-                    </div>
-                </div>
-            </div>
 
-            <div class="button-group">
-                <button type="button" class="btn-calculate" onclick="calculate()">Hesapla</button>
-                <button type="button" class="btn-reset" onclick="resetForm()">Sıfırla</button>
+                    <div class="space-y-1 relative z-10">
+                        <div class="text-4xl font-black tracking-tight text-white leading-none" id="resPrimaryValue">0</div>
+                    </div>
+
+                    <!-- İki Kolonlu Metrik Kutusu -->
+                    <div class="grid grid-cols-2 gap-3 pt-3 border-t border-indigo-500/40 relative z-10">
+                        <div class="bg-white/10 backdrop-blur-md p-2.5 rounded-xl border border-white/10">
+                            <span class="text-indigo-200 text-[10px] font-bold uppercase block" id="resMetricLabel1">A Sayısı</span>
+                            <span class="text-base font-black text-white" id="resMetricVal1">-</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-2.5 rounded-xl border border-white/10">
+                            <span class="text-indigo-200 text-[10px] font-bold uppercase block" id="resMetricLabel2">B Sayısı</span>
+                            <span class="text-base font-black text-white" id="resMetricVal2">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detaylar ve Formül Adımı -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                    <h3 class="font-bold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center justify-between">
+                        <span>📊 Hesaplama Detayları</span>
+                        <i data-lucide="bar-chart-3" class="w-4 h-4 text-indigo-600"></i>
+                    </h3>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between items-center p-2 rounded-lg hover:bg-slate-50 transition">
+                            <span class="font-medium text-slate-500">İşlem Modu:</span>
+                            <span class="px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 font-bold" id="resModeBadge">Yüzde Değeri</span>
+                        </div>
+                        <div class="flex justify-between items-start p-2 rounded-lg hover:bg-slate-50 transition border-t border-slate-100/60">
+                            <span class="font-medium text-slate-500 shrink-0">Açıklama:</span>
+                            <span class="font-extrabold text-slate-900 text-right pl-4" id="resDetailText">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Adım Adım Nasıl Hesaplandı -->
+                    <div class="bg-slate-50 border-l-4 border-indigo-600 p-3.5 rounded-r-xl space-y-1">
+                        <div class="text-[11px] font-bold text-indigo-600 uppercase tracking-wider flex items-center gap-1.5">
+                            <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i>
+                            <span>Nasıl Hesaplandı?</span>
+                        </div>
+                        <div class="font-mono text-xs font-bold text-slate-800" id="resFormulaStep">-</div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
 
-        <!-- SAĞ PANEL: DASHBOARD & SONUÇ KARTLARI -->
-        <div class="results-column">
+        <!-- SEO Rehber ve Akordeon SSS -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>📌 Yüzde Mantığı Nedir?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        En basit tanımıyla yüzde; elimizdeki bir bütünü tam <strong>100 eşit parçaya böldüğümüzü</strong> varsaymaktır. Bu parçalardan kaç tanesini aldığımızı belirtmek için "%" sembolü kullanılır.
+                    </p>
+                    <div class="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-xs text-slate-700 leading-relaxed">
+                        <strong>💡 Günlük Hayattan Örnek:</strong> 100 dilimlik dev bir pizzanız olduğunu düşünün. Bu pizzanın 25 dilimini yerseniz, pizzanın <strong>%25'ini (çeyreğini)</strong> yemiş olursunuz.
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i>
+                        <span>📈 Yüzde Artış ve Azalış Hesaplama</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Bir sayının belirli bir oranda artırılması veya azaltılması finansal hesaplamalarda sıklıkla kullanılır:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+                        <li><strong>Yüzde Artış:</strong> İlk olarak sayının yüzdesi hesaplanır ve çıkan miktar orijinal sayıya eklenir. <code class="bg-slate-100 text-indigo-700 px-1.5 py-0.5 rounded border border-slate-200 font-mono">[ A + (A × B / 100) ]</code></li>
+                        <li><strong>Yüzde Azalış:</strong> Sayının yüzdesi hesaplanır ve çıkan miktar orijinal sayıdan çıkarılır. <code class="bg-slate-100 text-rose-700 px-1.5 py-0.5 rounded border border-slate-200 font-mono">[ A - (A × B / 100) ]</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ları -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-indigo-600 text-white rounded-xl shrink-0">
+                            <i data-lucide="calendar-range" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Tarih Farkı Hesaplama</h4>
+                            <p class="text-[11px] text-slate-500">İki tarih arasındaki gün, hafta ve ay farkını hesaplayın.</p>
+                        </div>
+                    </div>
+                    <a href="tarih-farki.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition text-nowrap flex items-center gap-1.5 shrink-0">
+                        <span>Tarih Farkı</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-indigo-600 text-white rounded-xl shrink-0">
+                            <i data-lucide="wallet" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Maaş & Bordro Hesaplama</h4>
+                            <p class="text-[11px] text-slate-500">Brütten nete maaş ve SGK kesintilerinizi simüle edin.</p>
+                        </div>
+                    </div>
+                    <a href="maas.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition text-nowrap flex items-center gap-1.5 shrink-0">
+                        <span>Maaş Aracı</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Bir sayının yüzdesi en kolay nasıl hesaplanır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Bir sayının yüzdesini bulmak için ana sayı önce 100'e bölünür, ardından çıkan sonuç istenen yüzde oranı ile çarpılır. Örneğin 200'ün %15'i için (200 ÷ 100) × 15 = 30 işlemi yapılır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Yüzde artış ve azalış formülü nedir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Yüzde artış için: <code>A + (A × B / 100)</code> formülü kullanılır. Yüzde azalış için ise: <code>A - (A × B / 100)</code> formülü uygulanır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İki sayı arasındaki yüzde değişim nasıl bulunur?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Yeni değerden eski değer çıkarılır, fark eski değere bölünür ve çıkan sonuç 100 ile çarpılır. Formül: <code>((Yeni - Eski) / Eski) × 100</code> şeklindedir.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Sonuç panoya kopyalandı!
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-6">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-slate-400">
+            © 2026 HesapPoint — Pratik Yüzde Hesaplama Simülatörü
+        </div>
+    </footer>
+
+    <!-- JS ALGORİTMASI -->
+    <script>
+        lucide.createIcons();
+
+        let activeTab = 1;
+
+        function switchTab(tabNum) {
+            activeTab = tabNum;
+
+            for (let i = 1; i <= 3; i++) {
+                const tabBtn = document.getElementById(`tab${i}`);
+                const panel = document.getElementById(`panel${i}`);
+                
+                tabBtn.classList.remove('bg-white', 'text-indigo-600', 'shadow-sm');
+                tabBtn.classList.add('text-slate-500');
+                panel.classList.add('hidden');
+            }
+
+            const activeBtn = document.getElementById(`tab${tabNum}`);
+            const activePanel = document.getElementById(`panel${tabNum}`);
             
-            <div class="summary-card">
-                <div class="summary-header">
-                    <div class="summary-title" id="resSummaryTitle">HESAPLANAN SONUÇ</div>
-                    <div class="action-buttons">
-                        <button class="btn-action" onclick="copyResult()">📋 Kopyala</button>
-                    </div>
-                </div>
-                
-                <div class="summary-main">
-                    <span class="val" id="resPrimaryValue">0</span>
-                </div>
+            activeBtn.classList.remove('text-slate-500');
+            activeBtn.classList.add('bg-white', 'text-indigo-600', 'shadow-sm');
+            activePanel.classList.remove('hidden');
 
-                <div class="metrics-grid">
-                    <div>
-                        <div class="metric-box-title" id="resMetricLabel1">A Sayısı</div>
-                        <div class="metric-box-value" id="resMetricVal1">-</div>
-                    </div>
-                    <div>
-                        <div class="metric-box-title" id="resMetricLabel2">B Sayısı</div>
-                        <div class="metric-box-value" id="resMetricVal2">-</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="details-card">
-                <div class="details-header">
-                    <span>📊 Hesaplama Detayları</span>
-                </div>
-
-                <ul class="details-list">
-                    <li>
-                        <span class="label">İşlem Modu:</span>
-                        <span class="badge" id="resModeBadge">Yüzde Değeri</span>
-                    </li>
-                    <li>
-                        <span class="label">Açıklama:</span>
-                        <span class="val" id="resDetailText" style="text-align: right; max-width: 240px;">-</span>
-                    </li>
-                </ul>
-
-                <div class="formula-card">
-                    <div class="formula-title">💡 NASIL HESAPLANDI?</div>
-                    <div class="formula-body" id="resFormulaStep">-</div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- SEO & REHBER İÇERİK BÖLÜMÜ (ÖZGÜN VE KOLAY ANLAŞILIR DİL) -->
-    <div class="seo-content-section">
-        <h2>📌 Yüzde Mantığı Nedir?</h2>
-        <p>En basit tanımıyla yüzde; elimizdeki bir bütünü tam <strong>100 eşit parçaya böldüğümüzü</strong> varsaymaktır. Bu parçalardan kaç tanesini aldığımızı söylemek için "%" sembolünü kullanırız.</p>
-        
-        <div class="seo-card-example">
-            <strong>💡 Günlük Hayattan Örnek:</strong> 100 dilimlik dev bir pizzanız olduğunu düşünün. Bu pizzanın 25 dilimini yerseniz, pizzanın <strong>%25'ini (çeyreğini)</strong> yemiş olursunuz.
-        </div>
-
-        <h2>📐 Bir Sayının Yüzdesi En Kolay Nasıl Bulunur?</h2>
-        <p>Karmaşık formüllerle kafanızı karıştırmanıza hiç gerek yok. Herhangi bir sayının yüzdesini bulmak için sadece iki basit adım atmanız yeterlidir:</p>
-        
-        <ul class="seo-list">
-            <li><strong>1. Adım:</strong> Hesaplamak istediğiniz ana sayıyı 100'e bölün. (Böylece 1 parçanın değerini bulursunuz)</li>
-            <li><strong>2. Adım:</strong> Çıkan bu değeri, almak istediğiniz yüzde oranı ile çarpın.</li>
-        </ul>
-
-        <div class="seo-card-example">
-            <strong>📝 Pratik Hesaplama:</strong> 200 TL'nin %15'ini bulmak istiyoruz.<br>
-            • Önce 200'ü 100'e bölüyoruz: <strong>200 ÷ 100 = 2</strong> (Bu her 1%'lik kısım)<br>
-            • Sonra 15 ile çarpıyoruz: <strong>2 × 15 = 30 TL.</strong>
-        </div>
-
-        <h2>📈 Yüzde Artış ve Azalış Nasıl Hesaplanır?</h2>
-        <p>Bir sayının %B kadar artırılması veya azaltılması işlemlerinde aşağıdaki adım sırası izlenir:</p>
-        
-        <ul class="seo-list">
-            <li><strong>Yüzde Artış:</strong> İlk olarak sayının yüzdesi hesaplanır ve çıkan miktar orijinal sayıya eklenir. <code style="background:#e0e7ff; color:#4338ca; padding:2px 6px; border-radius:4px;">[ A + (A × B / 100) ]</code></li>
-            <li><strong>Yüzde Azalış:</strong> Sayının yüzdesi hesaplanır ve çıkan miktar orijinal sayıdan çıkarılır. <code style="background:#fce7f3; color:#be185d; padding:2px 6px; border-radius:4px;">[ A - (A × B / 100) ]</code></li>
-        </ul>
-    </div>
-
-</div>
-
-<div id="toast">Sonuç kopyalandı!</div>
-
-<footer>
-    © 2026 HesapPoint — Yüzde Hesaplama Simülatörü
-</footer>
-
-<script>
-    let activeTab = 1;
-
-    function switchTab(tabNum) {
-        activeTab = tabNum;
-
-        for (let i = 1; i <= 3; i++) {
-            document.getElementById(`tab${i}`).classList.remove('active');
-            document.getElementById(`panel${i}`).style.display = 'none';
+            calculate();
         }
 
-        document.getElementById(`tab${tabNum}`).classList.add('active');
-        document.getElementById(`panel${tabNum}`).style.display = 'block';
-
-        calculate();
-    }
-
-    function setQuickPercent(val) {
-        document.getElementById('numB1').value = val;
-        calculate();
-    }
-
-    function resetForm() {
-        document.querySelectorAll('input').forEach(input => input.value = '');
-        resetResults();
-    }
-
-    function calculate() {
-        if (activeTab === 1) {
-            calculateOp1();
-        } else if (activeTab === 2) {
-            calculateOp2();
-        } else if (activeTab === 3) {
-            calculateOp3();
+        function setQuickPercent(val) {
+            document.getElementById('numB1').value = val;
+            calculate();
         }
-    }
 
-    function calculateOp1() {
-        const op = document.getElementById('selectOp1').value;
-        const a = parseFloat(document.getElementById('numA1').value);
-        const b = parseFloat(document.getElementById('numB1').value);
-
-        document.getElementById('resMetricLabel1').innerText = "A Sayısı";
-        document.getElementById('resMetricLabel2').innerText = "B Oranı";
-
-        if (isNaN(a) || isNaN(b)) {
+        function resetForm() {
+            document.querySelectorAll('input').forEach(input => input.value = '');
             resetResults();
-            return;
         }
 
-        let res = 0;
-        let pctVal = (a * b) / 100;
-
-        if (op === 'pctOf') {
-            res = pctVal;
-            document.getElementById('resSummaryTitle').innerText = "YÜZDE DEĞERİ";
-            document.getElementById('resModeBadge').innerText = "A'nın %B'si";
-            document.getElementById('resDetailText').innerText = `${formatNum(a)} sayısının %${formatNum(b)}'si = ${formatNum(res)}`;
-            document.getElementById('resFormulaStep').innerText = `(${formatNum(a)} × ${formatNum(b)}) ÷ 100 = ${formatNum(res)}`;
-        } else if (op === 'addPct') {
-            res = a + pctVal;
-            document.getElementById('resSummaryTitle').innerText = "YÜZDE ARTIRILMIŞ DEĞER";
-            document.getElementById('resModeBadge').innerText = "%B Artırılmış";
-            document.getElementById('resDetailText').innerText = `${formatNum(a)} sayısı %${formatNum(b)} artırılırsa = ${formatNum(res)}`;
-            document.getElementById('resFormulaStep').innerText = `${formatNum(a)} + (${formatNum(a)} × %${formatNum(b)}) = ${formatNum(res)}`;
-        } else if (op === 'subPct') {
-            res = a - pctVal;
-            document.getElementById('resSummaryTitle').innerText = "YÜZDE AZALTILMIŞ DEĞER";
-            document.getElementById('resModeBadge').innerText = "%B Azaltılmış";
-            document.getElementById('resDetailText').innerText = `${formatNum(a)} sayısı %${formatNum(b)} azaltılırsa = ${formatNum(res)}`;
-            document.getElementById('resFormulaStep').innerText = `${formatNum(a)} - (${formatNum(a)} × %${formatNum(b)}) = ${formatNum(res)}`;
+        function calculate() {
+            if (activeTab === 1) {
+                calculateOp1();
+            } else if (activeTab === 2) {
+                calculateOp2();
+            } else if (activeTab === 3) {
+                calculateOp3();
+            }
         }
 
-        document.getElementById('resPrimaryValue').innerText = formatNum(res);
-        document.getElementById('resMetricVal1').innerText = formatNum(a);
-        document.getElementById('resMetricVal2').innerText = `%${formatNum(b)}`;
-    }
+        function calculateOp1() {
+            const op = document.getElementById('selectOp1').value;
+            const a = parseFloat(document.getElementById('numA1').value);
+            const b = parseFloat(document.getElementById('numB1').value);
 
-    function calculateOp2() {
-        const a = parseFloat(document.getElementById('numA2').value);
-        const b = parseFloat(document.getElementById('numB2').value);
+            document.getElementById('resMetricLabel1').innerText = "A Sayısı";
+            document.getElementById('resMetricLabel2').innerText = "B Oranı";
 
-        document.getElementById('resSummaryTitle').innerText = "YÜZDE ORANI";
-        document.getElementById('resModeBadge').innerText = "Yüzde Kaçı";
-        document.getElementById('resMetricLabel1').innerText = "A (Pay)";
-        document.getElementById('resMetricLabel2').innerText = "B (Payda)";
+            if (isNaN(a) || isNaN(b)) {
+                resetResults();
+                return;
+            }
 
-        if (isNaN(a) || isNaN(b) || b === 0) {
-            resetResults();
-            return;
+            let res = 0;
+            let pctVal = (a * b) / 100;
+
+            if (op === 'pctOf') {
+                res = pctVal;
+                document.getElementById('resSummaryTitle').innerText = "YÜZDE DEĞERİ";
+                document.getElementById('resModeBadge').innerText = "A'nın %B'si";
+                document.getElementById('resDetailText').innerText = `${formatNum(a)} sayısının %${formatNum(b)}'si = ${formatNum(res)}`;
+                document.getElementById('resFormulaStep').innerText = `(${formatNum(a)} × ${formatNum(b)}) ÷ 100 = ${formatNum(res)}`;
+            } else if (op === 'addPct') {
+                res = a + pctVal;
+                document.getElementById('resSummaryTitle').innerText = "YÜZDE ARTIRILMIŞ DEĞER";
+                document.getElementById('resModeBadge').innerText = "%B Artırılmış";
+                document.getElementById('resDetailText').innerText = `${formatNum(a)} sayısı %${formatNum(b)} artırılırsa = ${formatNum(res)}`;
+                document.getElementById('resFormulaStep').innerText = `${formatNum(a)} + (${formatNum(a)} × %${formatNum(b)}) = ${formatNum(res)}`;
+            } else if (op === 'subPct') {
+                res = a - pctVal;
+                document.getElementById('resSummaryTitle').innerText = "YÜZDE AZALTILMIŞ DEĞER";
+                document.getElementById('resModeBadge').innerText = "%B Azaltılmış";
+                document.getElementById('resDetailText').innerText = `${formatNum(a)} sayısı %${formatNum(b)} azaltılırsa = ${formatNum(res)}`;
+                document.getElementById('resFormulaStep').innerText = `${formatNum(a)} - (${formatNum(a)} × %${formatNum(b)}) = ${formatNum(res)}`;
+            }
+
+            document.getElementById('resPrimaryValue').innerText = formatNum(res);
+            document.getElementById('resMetricVal1').innerText = formatNum(a);
+            document.getElementById('resMetricVal2').innerText = `%${formatNum(b)}`;
         }
 
-        const res = (a / b) * 100;
+        function calculateOp2() {
+            const a = parseFloat(document.getElementById('numA2').value);
+            const b = parseFloat(document.getElementById('numB2').value);
 
-        document.getElementById('resPrimaryValue').innerText = `%${formatNum(res)}`;
-        document.getElementById('resMetricVal1').innerText = formatNum(a);
-        document.getElementById('resMetricVal2').innerText = formatNum(b);
-        document.getElementById('resDetailText').innerText = `${formatNum(a)}, ${formatNum(b)} sayısının %${formatNum(res)}'sidir.`;
-        document.getElementById('resFormulaStep').innerText = `(${formatNum(a)} ÷ ${formatNum(b)}) × 100 = %${formatNum(res)}`;
-    }
+            document.getElementById('resSummaryTitle').innerText = "YÜZDE ORANI";
+            document.getElementById('resModeBadge').innerText = "Yüzde Kaçı";
+            document.getElementById('resMetricLabel1').innerText = "A (Pay)";
+            document.getElementById('resMetricLabel2').innerText = "B (Payda)";
 
-    function calculateOp3() {
-        const a = parseFloat(document.getElementById('numA3').value);
-        const b = parseFloat(document.getElementById('numB3').value);
+            if (isNaN(a) || isNaN(b) || b === 0) {
+                resetResults();
+                return;
+            }
 
-        document.getElementById('resSummaryTitle').innerText = "DEĞİŞİM ORANI";
-        document.getElementById('resModeBadge').innerText = "Yüzde Değişim";
-        document.getElementById('resMetricLabel1').innerText = "Eski Değer (A)";
-        document.getElementById('resMetricLabel2').innerText = "Yeni Değer (B)";
+            const res = (a / b) * 100;
 
-        if (isNaN(a) || isNaN(b) || a === 0) {
-            resetResults();
-            return;
+            document.getElementById('resPrimaryValue').innerText = `%${formatNum(res)}`;
+            document.getElementById('resMetricVal1').innerText = formatNum(a);
+            document.getElementById('resMetricVal2').innerText = formatNum(b);
+            document.getElementById('resDetailText').innerText = `${formatNum(a)}, ${formatNum(b)} sayısının %${formatNum(res)}'sidir.`;
+            document.getElementById('resFormulaStep').innerText = `(${formatNum(a)} ÷ ${formatNum(b)}) × 100 = %${formatNum(res)}`;
         }
 
-        const diff = b - a;
-        const res = (diff / Math.abs(a)) * 100;
+        function calculateOp3() {
+            const a = parseFloat(document.getElementById('numA3').value);
+            const b = parseFloat(document.getElementById('numB3').value);
 
-        document.getElementById('resPrimaryValue').innerText = `%${formatNum(res)}`;
-        document.getElementById('resMetricVal1').innerText = formatNum(a);
-        document.getElementById('resMetricVal2').innerText = formatNum(b);
-        document.getElementById('resDetailText').innerText = `${formatNum(a)} → ${formatNum(b)} (${diff >= 0 ? '+' : ''}${formatNum(diff)})`;
-        document.getElementById('resFormulaStep').innerText = `((${formatNum(b)} - ${formatNum(a)}) ÷ ${formatNum(a)}) × 100 = %${formatNum(res)}`;
-    }
+            document.getElementById('resSummaryTitle').innerText = "DEĞİŞİM ORANI";
+            document.getElementById('resModeBadge').innerText = "Yüzde Değişim";
+            document.getElementById('resMetricLabel1').innerText = "Eski Değer (A)";
+            document.getElementById('resMetricLabel2').innerText = "Yeni Değer (B)";
 
-    function resetResults() {
-        document.getElementById('resPrimaryValue').innerText = "0";
-        document.getElementById('resMetricVal1').innerText = "-";
-        document.getElementById('resMetricVal2').innerText = "-";
-        document.getElementById('resDetailText').innerText = "-";
-        document.getElementById('resFormulaStep').innerText = "-";
-    }
+            if (isNaN(a) || isNaN(b) || a === 0) {
+                resetResults();
+                return;
+            }
 
-    function formatNum(num) {
-        return num.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
-    }
+            const diff = b - a;
+            const res = (diff / Math.abs(a)) * 100;
 
-    function copyResult() {
-        const val = document.getElementById('resPrimaryValue').innerText;
-        if (val === "0" || val === "-") return;
+            document.getElementById('resPrimaryValue').innerText = `%${formatNum(res)}`;
+            document.getElementById('resMetricVal1').innerText = formatNum(a);
+            document.getElementById('resMetricVal2').innerText = formatNum(b);
+            document.getElementById('resDetailText').innerText = `${formatNum(a)} → ${formatNum(b)} (${diff >= 0 ? '+' : ''}${formatNum(diff)})`;
+            document.getElementById('resFormulaStep').innerText = `((${formatNum(b)} - ${formatNum(a)}) ÷ ${formatNum(a)}) × 100 = %${formatNum(res)}`;
+        }
 
-        const mode = document.getElementById('resModeBadge').innerText;
-        const detail = document.getElementById('resDetailText').innerText;
-        const textToCopy = `[hesappoint.com - Yüzde Hesaplama]\nSonuç (${mode}): ${val}\nDetay: ${detail}`;
+        function resetResults() {
+            document.getElementById('resPrimaryValue').innerText = "0";
+            document.getElementById('resMetricVal1').innerText = "-";
+            document.getElementById('resMetricVal2').innerText = "-";
+            document.getElementById('resDetailText').innerText = "-";
+            document.getElementById('resFormulaStep').innerText = "-";
+        }
 
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            showToast("Sonuç panoya kopyalandı!");
+        function formatNum(num) {
+            return num.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+        }
+
+        function copyResult() {
+            const val = document.getElementById('resPrimaryValue').innerText;
+            if (val === "0" || val === "-") return;
+
+            const mode = document.getElementById('resModeBadge').innerText;
+            const detail = document.getElementById('resDetailText').innerText;
+            const textToCopy = `[hesappoint.com - Yüzde Hesaplama]\nSonuç (${mode}): ${val}\nDetay: ${detail}`;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showToast("Sonuç panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            calculate();
         });
-    }
-
-    function showToast(msg) {
-        const toast = document.getElementById("toast");
-        toast.innerText = msg;
-        toast.className = "show";
-        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        calculate();
-    });
-</script>
-
+    </script>
 </body>
 </html>

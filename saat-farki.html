@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Etiketleri -->
-    <title>Saat Farkı Hesaplama | HesapPoint</title>
+    <title>Saat Farkı Hesaplama 2026 | HesapPoint</title>
     <meta name="description" content="İki saat arasındaki süre ve saat farkını 24 saatlik zaman dilimine göre hesaplayın. Gece devri seçeneği ile dakik ve ondalık saat sonucunu anında görün.">
     <meta name="keywords" content="saat farkı hesaplama, iki saat arasındaki fark, zaman hesaplayıcı, çalışma süresi hesaplama, ondalık saat hesaplama">
     <meta name="robots" content="index, follow">
@@ -16,32 +16,64 @@
 
     <!-- Open Graph / Social Media -->
     <meta property="og:site_name" content="HesapPoint">
-    <meta property="og:title" content="Saat Farkı Hesaplama | HesapPoint">
+    <meta property="og:title" content="Saat Farkı Hesaplama 2026 | HesapPoint">
     <meta property="og:description" content="İki saat arasındaki süre ve saat farkını 24 saatlik zaman dilimine göre pratik ve kolay şekilde hesaplayın.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hesappoint.com/saat-farki.html">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Saat Farkı Hesaplama | HesapPoint">
+    <meta name="twitter:title" content="Saat Farkı Hesaplama 2026 | HesapPoint">
     <meta name="twitter:description" content="Başlangıç ve bitiş saatleri arasındaki zaman farkını, toplam dakikayı ve ondalık saat değerini hesaplayan pratik araç.">
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Saat Farkı Hesaplama",
-      "url": "https://hesappoint.com/saat-farki.html",
-      "description": "İki zaman dilimi arasındaki saat ve dakika farkını 24 saatlik formata ve gece devrine uygun hesaplayan çevrimiçi araç.",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Saat Farkı Hesaplama",
+        "url": "https://hesappoint.com/saat-farki.html",
+        "description": "İki zaman dilimi arasındaki saat ve dakika farkını 24 saatlik formata ve gece devrine uygun hesaplayan çevrimiçi araç.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "İki saat arasındaki fark nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Başlangıç ve bitiş saatleri dakikaya çevrilir. Bitiş dakikasından başlangıç dakikası çıkarılarak toplam fark bulunur. Gece devrinde 24 saat (1440 dakika) ekleme yapılır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ondalık saat ne işe yarar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ondalık saat (örneğin 7.5 saat), bordro ve fazla mesai ücret hesaplamalarında saatlik ücretle doğrudan çarpım yapabilmek için kullanılır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Gece vardiyası süresi nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ertesi güne sarkan mesailerde 'Bitiş saati ertesi güne geçiyor' kutucuğu işaretlenerek gece yarısı devri (00:00) otomatik hesaba katılır."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -50,11 +82,16 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
+
+        /* Numerik okları gizleme */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
 
-    <!-- Header -->
+    <!-- Header / Navbar -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
@@ -70,6 +107,8 @@
 
     <!-- Main -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+        
+        <!-- Sayfa Başlığı -->
         <div class="text-center space-y-2 max-w-2xl mx-auto">
             <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
                 <i data-lucide="clock" class="w-8 h-8 text-indigo-600"></i>
@@ -81,7 +120,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-            <!-- Form -->
+            
+            <!-- Sol Form Alanı -->
             <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
                 <div class="border-b border-slate-100 pb-3">
                     <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
@@ -94,8 +134,8 @@
                 <div class="space-y-1.5">
                     <label class="block text-xs font-bold text-slate-700">Başlangıç Saati</label>
                     <div class="grid grid-cols-2 gap-2">
-                        <select id="startHour" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white"></select>
-                        <select id="startMinute" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white"></select>
+                        <select id="startHour" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white transition"></select>
+                        <select id="startMinute" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white transition"></select>
                     </div>
                 </div>
 
@@ -103,25 +143,34 @@
                 <div class="space-y-1.5 pt-2 border-t border-slate-100">
                     <label class="block text-xs font-bold text-slate-700">Bitiş Saati</label>
                     <div class="grid grid-cols-2 gap-2">
-                        <select id="endHour" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white"></select>
-                        <select id="endMinute" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white"></select>
+                        <select id="endHour" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white transition"></select>
+                        <select id="endMinute" onchange="calculateTimeDifference()" class="p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 bg-white transition"></select>
                     </div>
                 </div>
 
                 <label class="flex items-center gap-2 cursor-pointer text-xs font-bold text-slate-700 pt-1">
-                    <input type="checkbox" id="nextDay" onchange="calculateTimeDifference()" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500">
+                    <input type="checkbox" id="nextDay" onchange="calculateTimeDifference()" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 w-4 h-4">
                     <span>Bitiş saati ertesi güne geçiyor (Gece devri)</span>
                 </label>
+
+                <div class="pt-2">
+                    <button onclick="copySummary()" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition border border-slate-200">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Saat Farkı Özetini Kopyala</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- Sonuç -->
+            <!-- Sağ Sonuç Alanı -->
             <div class="md:col-span-6 space-y-6">
-                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-4">
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-4 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">⏱️</div>
+
                     <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
                         <span>HESAPLAMA SONUCU</span>
                         <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-300"></i>
                     </h2>
-                    <div>
+                    <div class="relative z-10">
                         <span id="resultLabel" class="text-xs text-indigo-200 font-medium block">Aradaki Zaman Farkı</span>
                         <span id="primaryResult" class="text-4xl font-black text-white">0 Saat 0 Dakika</span>
                     </div>
@@ -130,22 +179,115 @@
                 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 text-xs">
                     <span class="font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">Kırılım Detayları</span>
                     <div class="flex justify-between py-1 border-b border-slate-50">
-                        <span class="text-slate-600">Toplam Dakika</span>
+                        <span class="text-slate-600 font-medium">Toplam Dakika</span>
                         <span id="resTotalMinutes" class="font-bold text-slate-800">0 Dakika</span>
                     </div>
                     <div class="flex justify-between py-1 border-b border-slate-50">
-                        <span class="text-slate-600">Ondalık Saat Karşılığı</span>
+                        <span class="text-slate-600 font-medium">Ondalık Saat Karşılığı</span>
                         <span id="resDecimalHours" class="font-bold text-indigo-600">0.00 Saat</span>
                     </div>
                 </div>
             </div>
+
         </div>
+
+        <!-- SEO Rehber ve Akordeon SSS -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>24 Saatlik Zaman Hesabı ve Gece Vardiyaları</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Çalışma saatleri ve mesai hesaplarında en yaygın hata gece yarısını aşan (örneğin 22:00 - 06:00) zaman dilimlerinde yaşanır. Aracımız gece devri seçeneği ile 24 saatlik süre farkını eksiksiz hesaplar.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Ondalık Saat Dönüşümü Nedir?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Bordro ve zaman takip yazılımlarında 7 saat 30 dakika, 7.50 saat olarak ifade edilir. Toplam dakikanın 60'a bölünmesiyle elde edilen ondalık değer, puantaj ve mesai ücreti hesaplamasını kolaylaştırır.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg shrink-0">
+                        <i data-lucide="calendar-days" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Gün ve Tarihler Arasındaki Farkı Hesaplamak İster misiniz?</h4>
+                        <p class="text-[11px] text-slate-500">İki tarih arasındaki gün, hafta, ay ve iş günü farkını detaylı görmek için Tarih Farkı Hesaplayıcıyı kullanabilirsiniz.</p>
+                    </div>
+                </div>
+                <a href="tarih-farki.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5 shrink-0">
+                    <span>Tarih Farkı Aracı</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İki saat arasındaki fark nasıl hesaplanır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Başlangıç ve bitiş saatleri dakikaya çevrilir. Bitiş dakikasından başlangıç dakikası çıkarılarak toplam fark bulunur. Gece devrinde 24 saat (1440 dakika) ekleme yapılır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Ondalık saat ne işe yarar?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Ondalık saat (örneğin 7.5 saat), bordro ve fazla mesai ücret hesaplamalarında saatlik ücretle doğrudan çarpım yapabilmek için kullanılır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Gece vardiyası süresi nasıl hesaplanır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Ertesi güne sarkan mesailerde 'Bitiş saati ertesi güne geçiyor' kutucuğu işaretlenerek gece yarısı devri (00:00) otomatik hesaba katılır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
     </main>
 
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Saat farkı özeti panoya kopyalandı!
+    </div>
+
+    <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
         © 2026 HesapPoint — 24 Saatlik Zaman Hesabı
     </footer>
 
+    <!-- Scriptler - BİREBİR ORİJİNAL HESAPLAMA MANTIĞI VE DİNAMİK SEÇİCİLER -->
     <script>
         function populateTimeSelects() {
             const sHour = document.getElementById('startHour');
@@ -174,7 +316,7 @@
             eMin.value = 0;
 
             calculateTimeDifference();
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }
 
         function calculateTimeDifference() {
@@ -199,6 +341,40 @@
             document.getElementById('primaryResult').innerText = `${hours} Saat ${minutes} Dk`;
             document.getElementById('resTotalMinutes').innerText = `${diffMinutes} Dakika`;
             document.getElementById('resDecimalHours').innerText = `${decimalHours} Saat`;
+        }
+
+        function copySummary() {
+            const h1 = String(document.getElementById('startHour').value).padStart(2, '0');
+            const m1 = String(document.getElementById('startMinute').value).padStart(2, '0');
+            const h2 = String(document.getElementById('endHour').value).padStart(2, '0');
+            const m2 = String(document.getElementById('endMinute').value).padStart(2, '0');
+            const primaryResult = document.getElementById('primaryResult').innerText;
+            const totalMinutes = document.getElementById('resTotalMinutes').innerText;
+            const decimalHours = document.getElementById('resDecimalHours').innerText;
+            const isNextDay = document.getElementById('nextDay').checked ? " (Ertesi Gün)" : "";
+
+            const text = `⏱️ *HesapPoint Saat Farkı Özeti*\n` +
+                         `------------------------------------\n` +
+                         `Başlangıç Saati: ${h1}:${m1}\n` +
+                         `Bitiş Saati: ${h2}:${m2}${isNextDay}\n` +
+                         `Zaman Farkı: ${primaryResult}\n` +
+                         `Toplam Dakika: ${totalMinutes}\n` +
+                         `Ondalık Saat: ${decimalHours}\n` +
+                         `------------------------------------\n` +
+                         `https://hesappoint.com/saat-farki.html`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Saat farkı özeti panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
         }
 
         document.addEventListener('DOMContentLoaded', populateTimeSelects);

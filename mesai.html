@@ -28,20 +28,52 @@
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Fazla Mesai Ücreti Hesaplama 2026",
-      "url": "https://hesappoint.com/mesai.html",
-      "description": "Maaş ve mesai saatlerine göre 4857 Sayılı İş Kanunu'na uygun fazla çalışma ücreti hesaplama aracı.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Fazla Mesai Ücreti Hesaplama 2026",
+        "url": "https://hesappoint.com/mesai.html",
+        "description": "Maaş ve mesai saatlerine göre 4857 Sayılı İş Kanunu'na uygun fazla çalışma ücreti hesaplama aracı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Fazla mesai saatlik ücreti nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aylık maaş yasal çalışma süresi olan 225 saate bölünerek saatlik çıplak ücret bulunur. Haftalık 45 saati aşan mesailer için %50 zamlı (1.5 katı) ödeme yapılır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Pazar ve resmi tatil mesaisi kaç katı ödenir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pazar hafta tatili ile Ulusal Bayram ve Genel Tatil (UBGT) günlerinde yapılan çalışmalar %100 zamlı (2 katı) olarak hesaplanır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Fazla mesai ücretinden vergi kesintisi yapılır mı?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet, hesaplanan brüt fazla çalışma ücreti aylık brüt maaşa eklenerek Gelir Vergisi, Damga Vergisi ve SGK kesintilerine tabi tutulur."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -50,6 +82,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
+
+        /* Numerik okları gizleme */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
@@ -105,7 +142,7 @@
                     </div>
                     <div class="space-y-1.5">
                         <label class="block text-xs font-bold text-slate-700">Aylık Maaş Tutarı (₺)</label>
-                        <input type="number" id="monthlySalary" value="45000" oninput="calculateOvertime()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                        <input type="number" id="monthlySalary" value="45000" onfocus="this.select()" oninput="calculateOvertime()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
                     </div>
                 </div>
 
@@ -119,7 +156,7 @@
                                 <span>Haftalık 45 Saati Aşan / Cumartesi Mesaisi (%50 Zamlı)</span>
                                 <span class="text-indigo-600 font-bold">Saat</span>
                             </div>
-                            <input type="number" id="hoursOvertime" value="10" min="0" oninput="calculateOvertime()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                            <input type="number" id="hoursOvertime" value="10" min="0" onfocus="this.select()" oninput="calculateOvertime()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
                         </div>
 
                         <div>
@@ -127,7 +164,7 @@
                                 <span>Pazar Hafta Tatili Çalışması (%100 Zamlı / 2 Katı)</span>
                                 <span class="text-indigo-600 font-bold">Saat</span>
                             </div>
-                            <input type="number" id="hoursSunday" value="0" min="0" oninput="calculateOvertime()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                            <input type="number" id="hoursSunday" value="0" min="0" onfocus="this.select()" oninput="calculateOvertime()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
                         </div>
 
                         <div>
@@ -135,9 +172,16 @@
                                 <span>Dini & Resmi Bayram Çalışması (UBGT - %100 Zamlı)</span>
                                 <span class="text-indigo-600 font-bold">Saat</span>
                             </div>
-                            <input type="number" id="hoursHoliday" value="0" min="0" oninput="calculateOvertime()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                            <input type="number" id="hoursHoliday" value="0" min="0" onfocus="this.select()" oninput="calculateOvertime()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
                         </div>
                     </div>
+                </div>
+
+                <div class="pt-2">
+                    <button onclick="copySummary()" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition border border-slate-200">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Mesai Özeti Kopyala</span>
+                    </button>
                 </div>
 
             </div>
@@ -219,17 +263,107 @@
 
         </div>
 
+        <!-- SEO Rehber ve Akordeon SSS -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>4857 Sayılı İş Kanunu Fazla Mesai Esasları</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        İş Kanunu'na göre haftalık normal çalışma süresi en fazla 45 saattir. Bu süreyi aşan çalışmalar fazla çalışma olarak adlandırılır. Saatlik fazla çalışma ücreti, normal çalışma saat ücretinin %50 artırılmasıyla hesaplanır.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Hafta Tatili ve UBGT Çalışma Hakları</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        İşçinin 7 günlük zaman diliminde kesintisiz 24 saat dinlenme hakkı vardır. Hafta tatili veya Ulusal Bayram ve Genel Tatil (UBGT) günlerinde yapılan çalışmalar %100 zamlı (%200 / 2 katı) olarak ödenir.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="file-spreadsheet" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Mesailerin Net Maaşınıza ve Vergi Diliminize Etkisini Görmek İster misiniz?</h4>
+                        <p class="text-[11px] text-slate-500">Aylık mesailerinizi doğrudan bordroya ekleyip yıllık net maaş simülasyonu yapmak için Maaş Hesaplama aracını kullanın.</p>
+                    </div>
+                </div>
+                <a href="maas.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Maaş Simülatörüne Git</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Fazla mesai saatlik ücreti nasıl hesaplanır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Aylık maaş yasal çalışma süresi olan 225 saate bölünerek saatlik çıplak ücret bulunur. Haftalık 45 saati aşan mesailer için %50 zamlı (1.5 katı) ödeme yapılır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Pazar ve resmi tatil mesaisi kaç katı ödenir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Pazar hafta tatili ile Ulusal Bayram ve Genel Tatil (UBGT) günlerinde yapılan çalışmalar %100 zamlı (2 katı) olarak hesaplanır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Fazla mesai ücretinden vergi kesintisi yapılır mı?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Evet, hesaplanan brüt fazla çalışma ücreti aylık brüt maaşa eklenerek Gelir Vergisi, Damga Vergisi ve SGK kesintilerine tabi tutulur.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
     </main>
+
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Mesai özeti panoya kopyalandı!
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
         © 2026 HesapPoint — Fazla Mesai Ücreti Hesaplama
     </footer>
 
+    <!-- JavaScript - BİREBİR ORİJİNAL HESAPLAMA MANTIĞI VE KATSAYILAR -->
     <script>
         window.onload = function() {
             calculateOvertime();
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         };
 
         function calculateOvertime() {
@@ -263,14 +397,43 @@
             document.getElementById('resTotalGrossSalaryLabel').innerText = labelText;
 
             // Ekran Yazdırma
-            document.getElementById('resTotalOvertimePay').innerText = totalOvertimePay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
-            document.getElementById('resTotalGrossSalary').innerText = totalGrossSalaryPlusOvertime.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
-            document.getElementById('resHourlyRate').innerText = hourlyRate.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resTotalOvertimePay').innerText = totalOvertimePay.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resTotalGrossSalary').innerText = totalGrossSalaryPlusOvertime.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resHourlyRate').innerText = hourlyRate.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
             document.getElementById('resTotalHours').innerText = totalHours + ' Saat';
 
-            document.getElementById('resNormalPay').innerText = normalPay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
-            document.getElementById('resSundayPay').innerText = sundayPay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
-            document.getElementById('resHolidayPay').innerText = holidayPay.toLocaleString('tr-TR', { maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resNormalPay').innerText = normalPay.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resSundayPay').innerText = sundayPay.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+            document.getElementById('resHolidayPay').innerText = holidayPay.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+        }
+
+        function copySummary() {
+            const salary = document.getElementById('monthlySalary').value;
+            const totalOvertimePay = document.getElementById('resTotalOvertimePay').innerText;
+            const totalGrossSalary = document.getElementById('resTotalGrossSalary').innerText;
+            const totalHours = document.getElementById('resTotalHours').innerText;
+            
+            const text = `⏰ *HesapPoint Fazla Mesai Hesaplama Özet Bilgisi*\n` +
+                         `------------------------------------\n` +
+                         `Maaş Tutarı: ${salary} TL\n` +
+                         `Toplam Mesai Süresi: ${totalHours}\n` +
+                         `Hesaplanan Mesai Ücreti: ${totalOvertimePay}\n` +
+                         `Toplam Hakediş: ${totalGrossSalary}\n` +
+                         `------------------------------------\n` +
+                         `https://hesappoint.com/mesai.html`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Mesai özeti panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
         }
     </script>
 </body>

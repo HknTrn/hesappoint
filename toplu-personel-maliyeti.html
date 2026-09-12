@@ -21,20 +21,52 @@
 
     <!-- Schema.org (JSON-LD) Yapısı -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Çoklu Personel Şirket Maliyeti Hesaplama 2026",
-      "url": "https://hesappoint.com/toplu-personel-maliyeti.html",
-      "description": "2026 yılı vergi dilimleri ve SGK kesintilerine uygun toplu personel maaş ve şirket maliyeti hesaplama aracı.",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TRY"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Çoklu Personel Şirket Maliyeti Hesaplama 2026",
+        "url": "https://hesappoint.com/toplu-personel-maliyeti.html",
+        "description": "2026 yılı vergi dilimleri ve SGK kesintilerine uygun toplu personel maaş ve şirket maliyeti hesaplama aracı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Çoklu personel maliyeti hesaplanırken hangi unsurlar dikkate alınır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Brüt/net maaşlar, SGK işveren payı (%16.75, %19.75 veya %21.75), SGDP oranları (emekliler için %24.5), 12 aylık kümülatif vergi dilimleri, asgari ücret vergi istisnaları ile ek ödenek ve yan haklar dikkate alınır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Net maaş üzerinden toplu maliyet hesabı nasıl yapılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Netten brüte hesaplamalarda, artan oranlı vergi dilimleri ve istisnalar göz önünde bulundurularak ikili arama (binary search solver) algoritması ile tam brüt tutar tespit edilip maliyet simüle edilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "2026 SGK teşvik indirimi maliyete nasıl etki eder?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "İmalat veya diğer sektörlere özel sağlanan 5 veya 2 puanlık SGK prim indirimleri, işveren SGK payını düşürerek doğrudan toplam şirket bütçesinde tasarruf sağlar."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <!-- Tailwind CSS & Lucide Icons -->
@@ -173,7 +205,113 @@
 
         </div>
 
+        <!-- SEO Rehber ve Akordeon SSS -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="pie-chart" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Şirket Personel Maliyeti Nelerden Oluşur?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Bir çalışanın şirkete toplam maliyeti sadece brüt ücret ile sınırlı değildir. Brüt ücrete ek olarak işverenin ödemekle yükümlü olduğu SGK İşveren Payı, İşsizlik Sigortası İşveren Payı, yemek/yol yardımları ve yan haklar maliyete dahil edilir. 2026 teşvik oranları ve asgari ücret vergi istisnaları bu bütçeyi doğrudan etkiler.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-indigo-600"></i>
+                        <span>12 Aylık Projeksiyon Bütçe Analizi</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Gelir vergisi tarifesinde yıl içerisinde kümülatif matrahın artmasıyla %15'ten başlayan vergi dilimleri %20, %27, %35 ve %40'a kadar yükselebilir. Aracımız 12 aylık projeksiyonda tüm personellerinizin kümülatif vergi geçişlerini aydan aya simüle ederek gerçekçi bir yıllık bütçe sunar.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ları -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-indigo-600 text-white rounded-xl shrink-0">
+                            <i data-lucide="calculator" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Tekil Maaş Hesaplama Aracımız</h4>
+                            <p class="text-[11px] text-slate-500">Bireysel olarak brütten nete / netten brüte detaylı bordro çıkarın.</p>
+                        </div>
+                    </div>
+                    <a href="maas.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition text-nowrap flex items-center gap-1.5 shrink-0">
+                        <span>Maaş Aracı</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-indigo-600 text-white rounded-xl shrink-0">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Kıdem & İhbar Tazminatı Simülatörü</h4>
+                            <p class="text-[11px] text-slate-500">İşten ayrılma süreçlerindeki toplam maliyet ve tazminat yükünü hesaplayın.</p>
+                        </div>
+                    </div>
+                    <a href="tazminat.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition text-nowrap flex items-center gap-1.5 shrink-0">
+                        <span>Tazminat Aracı</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Çoklu personel maliyeti hesaplanırken hangi unsurlar dikkate alınır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Brüt/net maaşlar, SGK işveren payı (%16.75, %19.75 veya %21.75), SGDP oranları (emekliler için %24.5), 12 aylık kümülatif vergi dilimleri, asgari ücret vergi istisnaları ile ek ödenek ve yan haklar dikkate alınır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Net maaş üzerinden toplu maliyet hesabı nasıl yapılır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Netten brüte hesaplamalarda, artan oranlı vergi dilimleri ve istisnalar göz önünde bulundurularak ikili arama (binary search solver) algoritması ile tam brüt tutar tespit edilip maliyet simüle edilir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>2026 SGK teşvik indirimi maliyete nasıl etki eder?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            İmalat veya diğer sektörlere özel sağlanan 5 veya 2 puanlık SGK prim indirimleri, işveren SGK payını düşürerek doğrudan toplam şirket bütçesinde tasarruf sağlar.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
     </main>
+
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        2026 Bütçe raporu panoya kopyalandı!
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
@@ -484,8 +622,18 @@
                          `------------------------------------\n` +
                          `https://hesappoint.com/toplu-personel-maliyeti.html`;
 
-            navigator.clipboard.writeText(text);
-            alert("2026 Bütçe raporu panoya kopyalandı!");
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("2026 Bütçe raporu panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
         }
     </script>
 </body>
