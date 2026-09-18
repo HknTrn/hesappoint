@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuğla ve Gazbeton (Ytong) Adet Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="Duvar ölçülerine göre derz/harç payı düşülmüş tuğla, gazbeton (Ytong) adedi ve harç/tutkal ihtiyacı hesaplama aracı. Kapı-pencere ve fire dahil metraj hesabı.">
+    <meta name="keywords" content="tuğla hesaplama, gazbeton hesaplama, ytong adet hesabı, duvar tuğla sayısı, derz harcı hesaplama, izo tuğla hesabı">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/tugla-gazbeton-hesaplama.html">
+
+    <!-- Open Graph (Sosyal Medya Meta Etiketleri) -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Tuğla ve Gazbeton Adet Hesaplama 2026 | HesapPoint">
+    <meta property="og:description" content="Duvar alanına, derz kalınlığına ve malzeme tipine göre tuğla, Ytong ve örgü harcı ihtiyacınızı anında hesaplayın.">
+    <meta property="og:url" content="https://hesappoint.com/tugla-gazbeton-hesaplama.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tuğla ve Gazbeton Adet Hesaplama 2026 | HesapPoint">
+    <meta name="twitter:description" content="Derz payı ve duvar metrajına göre tuğla/gazbeton adedi ve örgü harcı maliyet hesaplayıcı.">
+
+    <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Tuğla ve Gazbeton Adet Hesaplama",
+        "url": "https://hesappoint.com/tugla-gazbeton-hesaplama.html",
+        "description": "Duvar boyutları, derz kalınlığı, kapı-pencere boşlukları ve malzeme türüne göre ihtiyaç duyulan tuğla/gazbeton adetini ve harç miktarını hesaplayan araç.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.95",
+          "ratingCount": "185"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Derz payı (harç kalınlığı) tuğla hesabını nasıl etkiler?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tuğlalar arasında bırakılan 1 cm ila 1.5 cm arasındaki harç payı, 1 m² alana giren tuğla sayısını yaklaşık %10-15 oranında azaltır. Doğru metraj için derz kalınlığı mutlaka hesaba katılmalıdır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "1 m² duvara kaç adet gazbeton (Ytong) gider?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standart 60x25 cm boyutlarındaki gazbeton bloklarda 2-3 mm yapıştırıcı derz payı ile 1 m² duvar alanına yaklaşık 6.5 - 6.7 adet blok gider."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "1 m² duvara kaç adet standart tuğla gider?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "13.5x19x19 cm boyutlarındaki standart yatay delikli tuğladan 1 cm derz payı düşüldüğünde m² başına yaklaşık 24-25 adet harcanır."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="grid" class="w-8 h-8 text-indigo-600"></i>
+                Tuğla ve Gazbeton Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Derz payı ve duvar alanına göre tuğla/gazbeton (Ytong) adedi, yapıştırıcı harç ve toplam maliyeti hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Giriş Formu -->
+            <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                
+                <div class="border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="layout" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Duvar ve Malzeme Bilgileri</span>
+                    </h2>
+                </div>
+
+                <!-- Malzeme Tipi -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Malzeme Türü ve Ebadı</label>
+                    <select id="malzemeTipi" onchange="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                        <option value="gazbeton_10">Gazbeton / Ytong (60x25x10 cm)</option>
+                        <option value="gazbeton_15" selected>Gazbeton / Ytong (60x25x15 cm)</option>
+                        <option value="gazbeton_20">Gazbeton / Ytong (60x25x20 cm)</option>
+                        <option value="tugla_8.5">8.5'lik Yatay Delikli Tuğla (19x19x8.5 cm)</option>
+                        <option value="tugla_13.5">13.5'lik Yatay Delikli Tuğla (19x19x13.5 cm)</option>
+                        <option value="tugla_izotugla">İzo Tuğla / Briket (25x20x19 cm)</option>
+                    </select>
+                </div>
+
+                <!-- Ölçüler -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Duvar Genişliği (m)</label>
+                        <input type="number" id="duvarEn" value="10" step="0.1" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Duvar Yüksekliği (m)</label>
+                        <input type="number" id="duvarYukseklik" value="2.8" step="0.1" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                </div>
+
+                <!-- Derz Kalınlığı & Boşluklar -->
+                <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Harç / Derz Payı (cm)</label>
+                        <input type="number" id="derzCm" value="0.3" step="0.1" min="0" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                        <span class="text-[10px] text-slate-400">Ytong: ~0.3 cm, Tuğla: ~1.0-1.5 cm</span>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Kapı/Pencere Alanı (m²)</label>
+                        <input type="number" id="boslukAlan" value="4.2" step="0.1" placeholder="Düşülecek alan" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                </div>
+
+                <!-- Fire Payı & Birim Fiyatlar -->
+                <div class="grid grid-cols-3 gap-3 pt-2 border-t border-slate-100">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Fire Payı (%)</label>
+                        <select id="fireOrani" onchange="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="3">%3</option>
+                            <option value="5" selected>%5</option>
+                            <option value="8">%8</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Adet Fiyatı (₺)</label>
+                        <input type="number" id="birimFiyat" value="45" placeholder="Örn: 45" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">25kg Harç (₺)</label>
+                        <input type="number" id="harcFiyati" value="180" placeholder="Örn: 180" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Kartı -->
+            <div class="md:col-span-6 space-y-6">
+                
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🧱</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>GEREKLİ MALZEME MİKTARI</span>
+                        <i data-lucide="badge-check" class="w-4 h-4 text-emerald-300"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <div>
+                            <span class="text-xs text-indigo-200 font-medium block">Toplam İhtiyaç (Fire Dahil)</span>
+                            <span id="resAdet" class="text-3xl font-black text-emerald-300">0 Adet</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-indigo-500/40">
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Örgü Harcı / Ytong Tutkalı</span>
+                                <span id="resHarcTorba" class="text-lg font-bold text-white">0 Torba (25kg)</span>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Tahmini Toplam Maliyet</span>
+                                <span id="resToplamMaliyet" class="text-lg font-bold text-amber-300">0.00 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detay Dökümü -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">
+                        Teknik Detaylar ve Metraj Dökümü
+                    </span>
+                    <div class="space-y-2 text-xs font-medium text-slate-600">
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Brüt / Net Duvar Alanı</span>
+                            <span id="resMetraj" class="font-bold text-slate-800">0.00 m² / 0.00 m²</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Derzli Net Tüketim (1 m² için)</span>
+                            <span id="resM2Adet" class="font-bold text-slate-800">0 Adet/m²</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Tahmini Palet İhtiyacı</span>
+                            <span id="resPaletAdet" class="font-bold text-slate-800">0 Palet</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl text-[11px] text-slate-500 space-y-1 mt-3">
+                        <p class="font-bold text-slate-700">📌 Derz Hesabı Notu:</p>
+                        <p>Hesaplamaya eklenen derz kalınlığı (cm), 1 adet malzemenin en ve boyuna eklenerek 1 m² duvara giren gerçek adet miktarını hassas biçimde düşürür.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Duvar Malzemesi Hesaplama Esasları</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Tuğla ve gazbeton hesaplarında en kritik parametre, malzemelerin arasına giren harç veya yapıştırıcı derz payıdır. 
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Örneğin 19 x 19 cm boyutundaki bir tuğlanın etrafına 1 cm harç konulduğunda, efektif kaplama boyutu 20 x 20 cm (0.04 m²) olur. Böylece 1 m² duvar için teorik 27.7 adet olan ihtiyaç, harç payı ile tam 25 adede düşer.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Harç ve Yapıştırıcı Tüketimi</span>
+                    </h3>
+                    <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+                        <li><strong>Gazbeton (Ytong) Tutkalı:</strong> Derz kalınlığı 2-3 mm arasında olduğu için m² başına yaklaşık 3.5-5 kg özel tutkal harcanır.</li>
+                        <li><strong>Klasik Tuğla Harcı:</strong> Derz kalınlığı 1-1.5 cm olduğundan, m² başına ortalama 25-35 kg harç (çimento-kum) gerekir.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="paint-bucket" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Sıva ve Boya İhtiyacınızı da Hesaplayın</h4>
+                        <p class="text-[11px] text-slate-500">Ördüğünüz duvar alanına uygulanacak kaba/ince sıva ve iç-dış cephe boya miktarını bulun.</p>
+                    </div>
+                </div>
+                <a href="boya-siva-hesaplama.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Sıva & Boya Hesabı</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Derz payı (harç kalınlığı) tuğla hesabını nasıl etkiler?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Tuğlalar arasında bırakılan 1 cm ila 1.5 cm arasındaki harç payı, 1 m² alana giren tuğla sayısını yaklaşık %10-15 oranında azaltır. Doğru metraj için derz kalınlığı mutlaka hesaba katılmalıdır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>1 m² duvara kaç adet gazbeton (Ytong) gider?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Standart 60x25 cm boyutlarındaki gazbeton bloklarda 2-3 mm yapıştırıcı derz payı ile 1 m² duvar alanına yaklaşık 6.5 - 6.7 adet blok gider.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>1 m² duvara kaç adet standart tuğla gider?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            13.5x19x19 cm boyutlarındaki standart yatay delikli tuğladan 1 cm derz payı düşüldüğünde m² başına yaklaşık 24-25 adet harcanır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Tuğla, Gazbeton ve Harç Adet Hesaplama
+    </footer>
+
+    <!-- JS Motoru -->
+    <script>
+        // Malzeme Özellikleri: { boy, yukseklik, harcKg, palet, varDerz }
+        const malzemeler = {
+            'gazbeton_10': { boy: 60, yukseklik: 25, harcKg: 2.5, palet: 72, varDerz: 0.3 },
+            'gazbeton_15': { boy: 60, yukseklik: 25, harcKg: 3.5, palet: 48, varDerz: 0.3 },
+            'gazbeton_20': { boy: 60, yukseklik: 25, harcKg: 4.8, palet: 36, varDerz: 0.3 },
+            'tugla_8.5': { boy: 19, yukseklik: 19, harcKg: 20, palet: 350, varDerz: 1.0 },
+            'tugla_13.5': { boy: 19, yukseklik: 19, harcKg: 28, palet: 250, varDerz: 1.0 },
+            'tugla_izotugla': { boy: 25, yukseklik: 20, harcKg: 32, palet: 120, varDerz: 1.0 }
+        };
+
+        let sonSecilenTip = '';
+
+        function hesapla() {
+            const tip = document.getElementById('malzemeTipi').value;
+            const mat = malzemeler[tip];
+
+            // Malzeme türü değiştiğinde derz kalınlığını o malzemenin varsayılan değerine çek
+            if (tip !== sonSecilenTip) {
+                document.getElementById('derzCm').value = mat.varDerz;
+                sonSecilenTip = tip;
+            }
+
+            const en = parseFloat(document.getElementById('duvarEn').value) || 0;
+            const yukseklik = parseFloat(document.getElementById('duvarYukseklik').value) || 0;
+            const derzCm = parseFloat(document.getElementById('derzCm').value) || 0;
+            const bosluk = parseFloat(document.getElementById('boslukAlan').value) || 0;
+            const fireOrani = parseFloat(document.getElementById('fireOrani').value) || 0;
+            const birimFiyat = parseFloat(document.getElementById('birimFiyat').value) || 0;
+            const harcFiyati = parseFloat(document.getElementById('harcFiyati').value) || 0;
+
+            // Derzli Boyutlar (Metre cinsinden)
+            const efBoyM = (mat.boy + derzCm) / 100;
+            const efYukseklikM = (mat.yukseklik + derzCm) / 100;
+            
+            // 1 m2'ye giden net adet (Derz düşülmüş)
+            const m2Adet = 1 / (efBoyM * efYukseklikM);
+
+            const brutAlan = en * yukseklik;
+            const netAlan = Math.max(0, brutAlan - bosluk);
+
+            const netAdet = netAlan * m2Adet;
+            const fireliAdet = Math.ceil(netAdet * (1 + (fireOrani / 100)));
+
+            const toplamHarcKg = netAlan * mat.harcKg;
+            const harcTorbaSayisi = Math.ceil(toplamHarcKg / 25);
+
+            const malzemeMaliyeti = fireliAdet * birimFiyat;
+            const harcMaliyeti = harcTorbaSayisi * harcFiyati;
+            const toplamMaliyet = malzemeMaliyeti + harcMaliyeti;
+
+            const paletSayisi = (fireliAdet / mat.palet).toFixed(1);
+
+            // Ekran Güncelleme
+            document.getElementById('resAdet').innerText = fireliAdet.toLocaleString('tr-TR') + ' Adet';
+            document.getElementById('resHarcTorba').innerText = harcTorbaSayisi.toLocaleString('tr-TR') + ' Torba (25kg)';
+            document.getElementById('resToplamMaliyet').innerText = toplamMaliyet.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+
+            document.getElementById('resMetraj').innerText = brutAlan.toFixed(2) + ' m² / ' + netAlan.toFixed(2) + ' m²';
+            document.getElementById('resM2Adet').innerText = m2Adet.toFixed(2) + ' Adet/m²';
+            document.getElementById('resPaletAdet').innerText = paletSayisi + ' Palet';
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            hesapla();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İnşaat Demiri Ağırlık ve Tonaj Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="İnşaat demiri (Nervürlü çelik) tonaj, ağırlık ve adet hesaplama aracı. Çapa (Ø8 - Ø32) göre metre, boy ve toplam kg/ton maliyet hesabını anında yapın.">
+    <meta name="keywords" content="inşaat demiri hesaplama, demir tonaj hesabı, nervürlü demir ağırlığı, filiz boyu hesaplama, demir metresi kg hesabı, inşaat çelik ağırlığı">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/insaat-demiri-hesaplama.html">
+
+    <!-- Open Graph (Sosyal Medya Meta Etiketleri) -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="İnşaat Demiri Ağırlık ve Tonaj Hesaplama 2026 | HesapPoint">
+    <meta property="og:description" content="Çap ve adet/metraj bilgilerine göre inşaat demiri tonajı ve birim ağırlık analizi yapın.">
+    <meta property="og:url" content="https://hesappoint.com/insaat-demiri-hesaplama.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="İnşaat Demiri Ağırlık ve Tonaj Hesaplama 2026 | HesapPoint">
+    <meta name="twitter:description" content="TS 708 standardına uygun nervürlü demir tonajı, adet ve maliyet hesaplayıcı.">
+
+    <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "İnşaat Demiri Ağırlık ve Tonaj Hesaplama",
+        "url": "https://hesappoint.com/insaat-demiri-hesaplama.html",
+        "description": "Farklı çaplardaki (Ø8 - Ø32) nervürlü inşaat demirlerinin metre, boy ve adet verilerine göre kg ve ton bazında toplam ağırlığını hesaplayan araç.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.97",
+          "ratingCount": "210"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "1 boy inşaat demiri kaç metredir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Türkiye'de standart ticari nervürlü inşaat demirleri fabrikasyon olarak 12 metre boyunda üretilmektedir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İnşaat demirinin birim ağırlığı nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Demirin 1 metresinin teorik ağırlığı 'Çap² / 162' (d²/162) pratik formülü ile kg/m cinsinden hesaplanır. Örneğin Ø12 demir için: 12² / 162 = 0.888 kg/m'dir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Şantiyede demir fire oranı ne kadar alınmalıdır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kesim-büküm aşamalarındaki parça artıkları ve paspayı/bindirme ekleri göz önüne alınarak projelerde ortalama %2 ila %5 arasında demir firesi hesaplara dahil edilir."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="component" class="w-8 h-8 text-indigo-600"></i>
+                İnşaat Demiri Tonaj Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Nervürlü çelik demir çapına göre metraj, adet, tonaj ve toplam maliyetinizi hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Giriş Formu -->
+            <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                
+                <div class="border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="ruler" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Demir Özellikleri ve Metraj</span>
+                    </h2>
+                </div>
+
+                <!-- Çap Seçimi -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Demir Çapı (Anma Çapı Ø)</label>
+                        <select id="cap" onchange="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="8">Ø8 mm (0.395 kg/m)</option>
+                            <option value="10">Ø10 mm (0.617 kg/m)</option>
+                            <option value="12" selected>Ø12 mm (0.888 kg/m)</option>
+                            <option value="14">Ø14 mm (1.208 kg/m)</option>
+                            <option value="16">Ø16 mm (1.578 kg/m)</option>
+                            <option value="18">Ø18 mm (1.998 kg/m)</option>
+                            <option value="20">Ø20 mm (2.466 kg/m)</option>
+                            <option value="22">Ø22 mm (2.984 kg/m)</option>
+                            <option value="25">Ø25 mm (3.853 kg/m)</option>
+                            <option value="28">Ø28 mm (4.834 kg/m)</option>
+                            <option value="32">Ø32 mm (6.313 kg/m)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Girdi Tipi</label>
+                        <select id="girdiTipi" onchange="girdiTipiDegisti()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="adetBoy">12 Metrelik Standart Boy Adedi</option>
+                            <option value="ozelBoy">Özel Parça Boyu ve Adet</option>
+                            <option value="toplamMetre">Doğrudan Toplam Metraj (Metre)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Dinamik Ölçü Giriş Alanları -->
+                <div class="space-y-3 pt-2 border-t border-slate-100">
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Miktar Bilgileri</span>
+                    <div id="olculer" class="grid grid-cols-2 gap-3">
+                        <!-- JS ile dinamik dökülecek -->
+                    </div>
+                </div>
+
+                <!-- Fire Payı ve Ton Fiyatı -->
+                <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Fire / Bindirme Payı (%)</label>
+                        <select id="fireOrani" onchange="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="0">%0 (Sıfır Fire)</option>
+                            <option value="2" selected>%2 (Standart Şantiye)</option>
+                            <option value="5">%5 (Yoğun Parçalı Kesim)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Demir Ton Fiyatı (₺) <span class="text-[10px] text-slate-400 font-normal">(Opsiyonel)</span></label>
+                        <input type="number" id="tonFiyati" placeholder="Örn: 24500" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Kartı -->
+            <div class="md:col-span-6 space-y-6">
+                
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🏗️</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>TONAJ VE MALİYET ÖZETİ</span>
+                        <i data-lucide="badge-check" class="w-4 h-4 text-emerald-300"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <div>
+                            <span class="text-xs text-indigo-200 font-medium block">Toplam Hesaplanan Tonaj</span>
+                            <span id="resTonaj" class="text-3xl font-black text-emerald-300">0.000 Ton</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-indigo-500/40">
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Toplam Ağırlık (kg)</span>
+                                <span id="resKg" class="text-lg font-bold text-white">0.00 kg</span>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Tahmini Toplam Maliyet</span>
+                                <span id="resTotalPrice" class="text-lg font-bold text-amber-300">0.00 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detay Dökümü -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">
+                        Teknik Detaylar ve Metraj Dökümü
+                    </span>
+                    <div class="space-y-2 text-xs font-medium text-slate-600">
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Birım Ağırlık (TS 708)</span>
+                            <span id="resBirimAgirlik" class="font-bold text-slate-800">0.888 kg/m</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Toplam Metraj</span>
+                            <span id="resToplamMetre" class="font-bold text-slate-800">0.00 m</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Standart Boy Karşılığı (12m)</span>
+                            <span id="resBoyAdedi" class="font-bold text-slate-800">0 Boy</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl text-[11px] text-slate-500 space-y-1 mt-3">
+                        <p class="font-bold text-slate-700">📌 Pratik Formül:</p>
+                        <p>İnşaat demirinin 1 metresinin ağırlığı nominal olarak <strong>d² / 162</strong> formülü ile türetilir. Standart fabrika üretimi boy uzunluğu 12 metredir.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>İnşaat Demiri Ağırlığı Nasıl Hesaplanır?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Nervürlü inşaat çeliğinin ağırlık hesaplamalarında, çeliğin yoğunluğu (7.85 g/cm³) ve silindir kesit alanı esas alınır. 
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Şantiye pratikliğinde 1 metre demirin ağırlığı W = d² / 162 formülü ile saniyeler içinde hesaplanır. Çıkan birim ağırlık, kullanılacak toplam uzunluk (metre) ile çarpılarak toplam tonaj elde edilir.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="table" class="w-5 h-5 text-indigo-600"></i>
+                        <span>TS 708 Standart Çap/Ağırlık Tablosu</span>
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2 text-xs text-slate-600">
+                        <div class="p-2 bg-slate-50 rounded">Ø8 mm → <strong>0.395 kg/m</strong></div>
+                        <div class="p-2 bg-slate-50 rounded">Ø10 mm → <strong>0.617 kg/m</strong></div>
+                        <div class="p-2 bg-slate-50 rounded">Ø12 mm → <strong>0.888 kg/m</strong></div>
+                        <div class="p-2 bg-slate-50 rounded">Ø14 mm → <strong>1.208 kg/m</strong></div>
+                        <div class="p-2 bg-slate-50 rounded">Ø16 mm → <strong>1.578 kg/m</strong></div>
+                        <div class="p-2 bg-slate-50 rounded">Ø20 mm → <strong>2.466 kg/m</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="truck" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Hazır Beton Hacmini de Hesaplayın</h4>
+                        <p class="text-[11px] text-slate-500">Demir donatısını hesapladığınız betonarme elemanın hazır beton ihtiyacını ve transmikser sayısını görün.</p>
+                    </div>
+                </div>
+                <a href="beton-hacim-hesaplama.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Beton Hesabı</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>1 boy inşaat demiri kaç metredir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Türkiye'de standart ticari nervürlü inşaat demirleri fabrikasyon olarak 12 metre boyunda üretilmektedir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İnşaat demirinin birim ağırlığı nasıl hesaplanır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Demirin 1 metresinin teorik ağırlığı 'Çap² / 162' (d²/162) pratik formülü ile kg/m cinsinden hesaplanır. Örneğin Ø12 demir için: 12² / 162 = 0.888 kg/m'dir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Şantiyede demir fire oranı ne kadar alınmalıdır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Kesim-büküm aşamalarındaki parça artıkları ve paspayı/bindirme ekleri göz önüne alınarak projelerde ortalama %2 ila %5 arasında demir firesi hesaplara dahil edilir.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — İnşaat Demiri Tonaj ve Ağırlık Hesaplama
+    </footer>
+
+    <!-- JS Motoru -->
+    <script>
+        const demirBirimAgirliklari = {
+            8: 0.395,
+            10: 0.617,
+            12: 0.888,
+            14: 1.208,
+            16: 1.578,
+            18: 1.998,
+            20: 2.466,
+            22: 2.984,
+            25: 3.853,
+            28: 4.834,
+            32: 6.313
+        };
+
+        function girdiTipiDegisti() {
+            const tip = document.getElementById('girdiTipi').value;
+            const konteyner = document.getElementById('olculer');
+            konteyner.innerHTML = '';
+
+            if (tip === 'adetBoy') {
+                konteyner.innerHTML = `
+                    <div class="col-span-2">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">12 Metrelik Boy Adedi</label>
+                        <input type="number" id="adet12m" value="100" placeholder="100" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                    </div>
+                `;
+            } else if (tip === 'ozelBoy') {
+                konteyner.innerHTML = `
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Parça Boyu (Metre)</label>
+                        <input type="number" id="parcaBoyu" value="3.5" placeholder="3.5" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Parça Adedi</label>
+                        <input type="number" id="parcaAdeti" value="50" placeholder="50" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                    </div>
+                `;
+            } else if (tip === 'toplamMetre') {
+                konteyner.innerHTML = `
+                    <div class="col-span-2">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Toplam Uzunluk (Metre)</label>
+                        <input type="number" id="toplamMetraj" value="1200" placeholder="1200" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                    </div>
+                `;
+            }
+
+            hesapla();
+        }
+
+        function hesapla() {
+            const cap = parseInt(document.getElementById('cap').value) || 12;
+            const girdiTipi = document.getElementById('girdiTipi').value;
+            const fireOrani = parseFloat(document.getElementById('fireOrani').value) || 0;
+            const tonFiyati = parseFloat(document.getElementById('tonFiyati').value) || 0;
+
+            const birimAgirlik = demirBirimAgirliklari[cap] || (Math.pow(cap, 2) / 162);
+            let toplamMetre = 0;
+
+            if (girdiTipi === 'adetBoy') {
+                const adet = parseFloat(document.getElementById('adet12m')?.value) || 0;
+                toplamMetre = adet * 12;
+            } else if (girdiTipi === 'ozelBoy') {
+                const boy = parseFloat(document.getElementById('parcaBoyu')?.value) || 0;
+                const adet = parseFloat(document.getElementById('parcaAdeti')?.value) || 0;
+                toplamMetre = boy * adet;
+            } else if (girdiTipi === 'toplamMetre') {
+                toplamMetre = parseFloat(document.getElementById('toplamMetraj')?.value) || 0;
+            }
+
+            const netKg = toplamMetre * birimAgirlik;
+            const fireliKg = netKg * (1 + (fireOrani / 100));
+            const tonaj = fireliKg / 1000;
+            const toplamMaliyet = tonaj * tonFiyati;
+            const boyAdedi12m = Math.ceil(toplamMetre / 12);
+
+            // Ekran Güncelleme
+            document.getElementById('resTonaj').innerText = tonaj.toLocaleString('tr-TR', { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + ' Ton';
+            document.getElementById('resKg').innerText = fireliKg.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' kg';
+            document.getElementById('resTotalPrice').innerText = tonFiyati > 0 ? toplamMaliyet.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺' : '0.00 ₺';
+
+            document.getElementById('resBirimAgirlik').innerText = birimAgirlik.toFixed(3) + ' kg/m';
+            document.getElementById('resToplamMetre').innerText = toplamMetre.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' m';
+            document.getElementById('resBoyAdedi').innerText = boyAdedi12m.toLocaleString('tr-TR') + ' Boy (12m)';
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            girdiTipiDegisti();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

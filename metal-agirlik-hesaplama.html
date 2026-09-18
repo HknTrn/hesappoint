@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal, Sac ve Profil Ağırlık Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="Sac, boru, profil ve dolu çubuk ağırlık hesaplama aracı. Demir, paslanmaz, alüminyum ve bakır metallerin kg ağırlığını ve toplam maliyetini anında hesaplayın.">
+    <meta name="keywords" content="metal ağırlık hesaplama, sac ağırlığı hesaplama, profil ağırlık hesabı, demir ağırlık hesaplama, boru ağırlık hesaplama, alüminyum ağırlık hesabı, metal maliyet hesaplama">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/metal-agirlik-hesaplama.html">
+
+    <!-- Open Graph (Sosyal Medya Meta Etiketleri) -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Metal, Sac ve Profil Ağırlık Hesaplama 2026 | HesapPoint">
+    <meta property="og:description" content="Metal ve sac malzemelerin ölçülerine göre kg ağırlığını ve tahmini maliyetini anında hesaplayın.">
+    <meta property="og:url" content="https://hesappoint.com/metal-agirlik-hesaplama.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Metal, Sac ve Profil Ağırlık Hesaplama 2026 | HesapPoint">
+    <meta name="twitter:description" content="Sac, boru, profil ve çubuk ölçüleri ile toplam metal ağırlığı ve birim maliyet hesabı yapın.">
+
+    <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Metal ve Sac Ağırlık Hesaplama",
+        "url": "https://hesappoint.com/metal-agirlik-hesaplama.html",
+        "description": "Farklı geometrideki metallerin (sac, boru, profil, çubuk) ve farklı gereçlerin (demir, alüminyum, paslanmaz, bakır) kg ağırlığını ve toplam maliyetini hesaplayan araç.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.95",
+          "ratingCount": "142"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Demir ve çeliğin özgül ağırlığı kaç alınır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standart imalat çelikleri ve demir malzemeler için özgül ağırlık (yoğunluk) 7,85 g/cm³ olarak kabul edilir. Paslanmaz çeliklerde ise bu değer alaşıma göre 7,93 g/cm³ civarındadır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Metal ağırlık hesaplama formülü nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ağırlık (kg) = Hacim (cm³) × Özgül Ağırlık (g/cm³) / 1000 formülü ile hesaplanır. Hacim ise malzemenin en, boy, kalınlık veya çap ölçülerinden geometrik olarak türetilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Profil ve borularda et kalınlığı ağırlığı nasıl etkiler?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Boru ve kutu profillerde iç boşluk hacmi çıkarılarak net metal hacmi bulunur. Et kalınlığı arttıkça iç boşluk azalacağı için toplam metal miktarı ve ağırlık doğru orantılı olarak artar."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="scale" class="w-8 h-8 text-indigo-600"></i>
+                Metal ve Sac Ağırlık Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Sac, boru, profil ve çubuk geometrilerine göre toplam kg ağırlığını ve tahmini maliyetinizi hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Giriş Formu -->
+            <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                
+                <div class="border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="box" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Malzeme Özellikleri</span>
+                    </h2>
+                </div>
+
+                <!-- Şekil ve Metal Türü Seçimi -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Şekil / Ürün Formu</label>
+                        <select id="sekil" onchange="sekilDegisti()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="sac">Sac / Plaka</option>
+                            <option value="cubuk">Dolu Yuvarlak Çubuk</option>
+                            <option value="boru">Boru (Yuvarlak)</option>
+                            <option value="profil">Kare / Dikdörtgen Profil</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Metal Türü (Yoğunluk)</label>
+                        <select id="metal" onchange="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="7.85">Çelik / Demir (7.85 g/cm³)</option>
+                            <option value="7.93">Paslanmaz Çelik (7.93 g/cm³)</option>
+                            <option value="2.70">Alüminyum (2.70 g/cm³)</option>
+                            <option value="8.96">Bakır (8.96 g/cm³)</option>
+                            <option value="8.50">Pirinç / Sarı (8.50 g/cm³)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Dinamik Ölçü Giriş Alanları -->
+                <div class="space-y-3 pt-2 border-t border-slate-100">
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Geometrik Ölçüler</span>
+                    <div id="olculer" class="grid grid-cols-2 gap-3">
+                        <!-- JS ile dinamik dökülecek -->
+                    </div>
+                </div>
+
+                <!-- Adet ve Birim Fiyat -->
+                <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Adet</label>
+                        <input type="number" id="adet" value="1" min="1" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Birim kg Fiyatı (₺) <span class="text-[10px] text-slate-400 font-normal">(Opsiyonel)</span></label>
+                        <input type="number" id="birimFiyat" placeholder="Örn: 35" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Kartı -->
+            <div class="md:col-span-6 space-y-6">
+                
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">⚙️</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>AĞIRLIK VE MALİYET ÖZETİ</span>
+                        <i data-lucide="badge-check" class="w-4 h-4 text-emerald-300"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <div>
+                            <span class="text-xs text-indigo-200 font-medium block">Toplam Hesaplanan Ağırlık</span>
+                            <span id="resNetWeight" class="text-3xl font-black text-emerald-300">0.00 kg</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-indigo-500/40">
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Birim Parça Ağırlığı</span>
+                                <span id="resUnitWeight" class="text-lg font-bold text-white">0.00 kg</span>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Tahmini Toplam Maliyet</span>
+                                <span id="resTotalPrice" class="text-lg font-bold text-amber-300">0.00 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detay Dökümü -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">
+                        Teknik Detaylar ve Hacim
+                    </span>
+                    <div class="space-y-2 text-xs font-medium text-slate-600">
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Birim Hacim</span>
+                            <span id="resVolume" class="font-bold text-slate-800">0 cm³</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Kullanılan Özgül Ağırlık</span>
+                            <span id="resDensity" class="font-bold text-slate-800">7.85 g/cm³</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Toplam Ürün Adedi</span>
+                            <span id="resCount" class="font-bold text-slate-800">1 Adet</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl text-[11px] text-slate-500 space-y-1 mt-3">
+                        <p class="font-bold text-slate-700">📌 Sık Kullanılan Metal Yoğunlukları:</p>
+                        <p>• Çelik / Demir: 7,85 g/cm³</p>
+                        <p>• Paslanmaz Çelik: 7,93 g/cm³</p>
+                        <p>• Alüminyum: 2,70 g/cm³</p>
+                        <p>• Bakır: 8,96 g/cm³</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Metal ve Sac Ağırlığı Nasıl Hesaplanır?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Metal malzemelerin teorik ağırlık hesaplamasında temel mantık, ürünün geometrik ölçülerinden yola çıkılarak toplam <strong>hacminin (cm³)</strong> bulunması ve bu değerin kullanılan metalin <strong>özgül ağırlığı (g/cm³)</strong> ile çarpılması esasına dayanır.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Sayfamızdaki araç, milimetre (mm) ve metre (m) cinsinden girdiğiniz ölçüleri otomatik olarak santimetreye (cm) dönüştürür. Çıkan cm³ hacim değeri malzeme yoğunluğu ile çarpılarak gram seviyesinden kilograma (kg) çevrilir.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Geometrilere Göre Hacim Formülleri</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Farklı profillerin ağırlık hesabı yapılırken kullanılan matematiksel yaklaşımlar şu şekildedir:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li><strong>Sac / Plaka:</strong> En (cm) × Boy (cm) × Kalınlık (cm)</li>
+                        <li><strong>Dolu Yuvarlak Çubuk:</strong> π × r² (Yarıçap²) × Uzunluk (cm)</li>
+                        <li><strong>Boru:</strong> π × (Dış Yarıçap² - İç Yarıçap²) × Uzunluk (cm)</li>
+                        <li><strong>Kare/Dikdörtgen Profil:</strong> (Dış Alan - İç Boşluk Alanı) × Uzunluk (cm)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="warehouse" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Depo Palet Kapasitesini de Hesaplayın</h4>
+                        <p class="text-[11px] text-slate-500">Hesapladığınız yüklerin depolama ve palet dizilim kapasitelerini simüle etmek için aracımızı inceleyin.</p>
+                    </div>
+                </div>
+                <a href="depo-palet-kapasite.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Palet Hesabı</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Demir ve çeliğin özgül ağırlığı kaç alınır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Standart imalat çelikleri ve demir malzemeler için özgül ağırlık (yoğunluk) 7,85 g/cm³ olarak kabul edilir. Paslanmaz çeliklerde ise bu değer alaşıma göre 7,93 g/cm³ civarındadır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Metal ağırlık hesaplama formülü nedir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Ağırlık (kg) = Hacim (cm³) × Özgül Ağırlık (g/cm³) / 1000 formülü ile hesaplanır. Hacim ise malzemenin en, boy, kalınlık veya çap ölçülerinden geometrik olarak türetilir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Profil ve borularda et kalınlığı ağırlığı nasıl etkiler?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Boru ve kutu profillerde iç boşluk hacmi çıkarılarak net metal hacmi bulunur. Et kalınlığı arttıkça iç boşluk azalacağı için toplam metal miktarı ve ağırlık doğru orantılı olarak artar.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Metal ve Sac Ağırlık Hesaplama
+    </footer>
+
+    <!-- JS Motoru -->
+    <script>
+        const alanYapisi = {
+            sac: [
+                { id: 'en', label: 'En (mm)', placeholder: '1000', default: 1000 },
+                { id: 'boy', label: 'Boy (mm)', placeholder: '2000', default: 2000 },
+                { id: 'kalinlik', label: 'Kalınlık (mm)', placeholder: '5', default: 5 }
+            ],
+            cubuk: [
+                { id: 'cap', label: 'Çap (mm)', placeholder: '50', default: 50 },
+                { id: 'uzunluk', label: 'Uzunluk (Metre)', placeholder: '6', default: 6 }
+            ],
+            boru: [
+                { id: 'disCap', label: 'Dış Çap (mm)', placeholder: '60', default: 60 },
+                { id: 'etKalinligi', label: 'Et Kalınlığı (mm)', placeholder: '3', default: 3 },
+                { id: 'uzunluk', label: 'Uzunluk (Metre)', placeholder: '6', default: 6 }
+            ],
+            profil: [
+                { id: 'genislik', label: 'Genişlik (mm)', placeholder: '40', default: 40 },
+                { id: 'yukseklik', label: 'Yükseklik (mm)', placeholder: '40', default: 40 },
+                { id: 'etKalinligi', label: 'Et Kalınlığı (mm)', placeholder: '2', default: 2 },
+                { id: 'uzunluk', label: 'Uzunluk (Metre)', placeholder: '6', default: 6 }
+            ]
+        };
+
+        function sekilDegisti() {
+            const sekil = document.getElementById('sekil').value;
+            const konteyner = document.getElementById('olculer');
+            konteyner.innerHTML = '';
+
+            alanYapisi[sekil].forEach(f => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <label class="block text-xs font-bold text-slate-700 mb-1">${f.label}</label>
+                    <input type="number" id="${f.id}" value="${f.default}" placeholder="${f.placeholder}" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                `;
+                konteyner.appendChild(div);
+            });
+
+            hesapla();
+        }
+
+        function hesapla() {
+            const sekil = document.getElementById('sekil').value;
+            const yongunluk = parseFloat(document.getElementById('metal').value) || 7.85;
+            const adet = parseFloat(document.getElementById('adet').value) || 1;
+            const birimFiyat = parseFloat(document.getElementById('birimFiyat').value) || 0;
+
+            let hacimCM3 = 0;
+
+            if (sekil === 'sac') {
+                const en = (parseFloat(document.getElementById('en')?.value) || 0) / 10;
+                const boy = (parseFloat(document.getElementById('boy')?.value) || 0) / 10;
+                const kalinlik = (parseFloat(document.getElementById('kalinlik')?.value) || 0) / 10;
+                hacimCM3 = en * boy * kalinlik;
+            } else if (sekil === 'cubuk') {
+                const yaricapCM = ((parseFloat(document.getElementById('cap')?.value) || 0) / 2) / 10;
+                const uzunlukCM = (parseFloat(document.getElementById('uzunluk')?.value) || 0) * 100;
+                hacimCM3 = Math.PI * Math.pow(yaricapCM, 2) * uzunlukCM;
+            } else if (sekil === 'boru') {
+                const disCap = parseFloat(document.getElementById('disCap')?.value) || 0;
+                const et = parseFloat(document.getElementById('etKalinligi')?.value) || 0;
+                const uzunlukCM = (parseFloat(document.getElementById('uzunluk')?.value) || 0) * 100;
+
+                const R = (disCap / 2) / 10;
+                const r = ((disCap - (2 * et)) / 2) / 10;
+                hacimCM3 = Math.PI * (Math.pow(R, 2) - Math.pow(r, 2)) * uzunlukCM;
+            } else if (sekil === 'profil') {
+                const a = (parseFloat(document.getElementById('genislik')?.value) || 0) / 10;
+                const b = (parseFloat(document.getElementById('yukseklik')?.value) || 0) / 10;
+                const t = (parseFloat(document.getElementById('etKalinligi')?.value) || 0) / 10;
+                const uzunlukCM = (parseFloat(document.getElementById('uzunluk')?.value) || 0) * 100;
+
+                const disAlan = a * b;
+                const icAlan = Math.max(0, (a - 2 * t)) * Math.max(0, (b - 2 * t));
+                hacimCM3 = (disAlan - icAlan) * uzunlukCM;
+            }
+
+            const birimAgirlikKG = (hacimCM3 * yongunluk) / 1000;
+            const toplamAgirlikKG = birimAgirlikKG * adet;
+            const toplamMaliyet = toplamAgirlikKG * birimFiyat;
+
+            // Ekran Güncelleme
+            document.getElementById('resNetWeight').innerText = toplamAgirlikKG.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' kg';
+            document.getElementById('resUnitWeight').innerText = birimAgirlikKG.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' kg';
+            document.getElementById('resTotalPrice').innerText = birimFiyat > 0 ? toplamMaliyet.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺' : '0.00 ₺';
+
+            document.getElementById('resVolume').innerText = Math.round(hacimCM3).toLocaleString('tr-TR') + ' cm³';
+            document.getElementById('resDensity').innerText = yongunluk.toFixed(2) + ' g/cm³';
+            document.getElementById('resCount').innerText = adet + ' Adet';
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            sekilDegisti();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

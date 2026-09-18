@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hesappoint.com/</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -129,6 +129,36 @@
   <url>
     <loc>https://hesappoint.com/yas.html</loc>
     <lastmod>2026-09-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hesappoint.com/beton-hacim-hesaplama.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hesappoint.com/insaat-demiri-hesaplama.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hesappoint.com/tugla-gazbeton-hesaplama.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hesappoint.com/sap-siva-hesaplama.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hesappoint.com/parke-seramik-hesaplama.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hesappoint.com/metal-agirlik-hesaplama.html</loc>
+    <lastmod>2026-09-18</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>

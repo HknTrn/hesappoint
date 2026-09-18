@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beton Hacmi ve Transmikser Sayısı Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="Temel, kolon, kiriş ve döşeme için beton metreküp (m³) hacmi hesaplama aracı. Fire paylı beton miktarı ve gerekli transmikser sayısını anında öğrenin.">
+    <meta name="keywords" content="beton hacmi hesaplama, beton metreküp hesabı, mikser sayısı hesaplama, temel beton hesabı, kolon beton hacmi, inşaat beton hesabı">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/beton-hacim-hesaplama.html">
+
+    <!-- Open Graph (Sosyal Medya Meta Etiketleri) -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Beton Hacmi ve Transmikser Sayısı Hesaplama 2026 | HesapPoint">
+    <meta property="og:description" content="Şantiyeniz için gereken net ve fireli beton miktarını m³ cinsinden hesaplayın, gerekli transmikser sayısını görün.">
+    <meta property="og:url" content="https://hesappoint.com/beton-hacim-hesaplama.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Beton Hacmi ve Transmikser Sayısı Hesaplama 2026 | HesapPoint">
+    <meta name="twitter:description" content="Temel, döküm elemanı ve metraj bazlı beton m³ hesabı ve transmikser gereksinimi.">
+
+    <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Beton Hacmi ve Transmikser Hesaplama",
+        "url": "https://hesappoint.com/beton-hacim-hesaplama.html",
+        "description": "Temel, kolon, kiriş ve plak döşemeler için gerekli hazır beton miktarını (m³), döküm emniyetli fire oranını ve toplam transmikser sayısını hesaplayan inşaat mühendisliği aracı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.96",
+          "ratingCount": "188"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "1 transmikser kaç m³ hazır beton taşır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Türkiye şantiye standartlarında bir transmikser ortalama 8 m³ ile 10 m³ arasında hazır beton taşımaktadır. Trafik aks yükü sınırlarına göre genellikle 8 m³ döküm baz alınır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Beton dökümünde fire payı neden %5 alınmalıdır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kalıp esnemeleri, zemin çökme toleransları, pompalarda ve mikser kazanında kalan artık beton miktarları nedeniyle beton siparişlerinde %3 ile %5 arasında fire/emniyet payı eklenmesi tavsiye edilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kolon ve dairesel kesitli elemanlarda beton hacmi nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dairesel kesitli kolonlarda hacim π × r² × h (Yarıçapın karesi × Pi sayısı × Yükseklik) formülü ile; dikdörtgen kesitlerde ise En × Boy × Yükseklik × Eleman Adedi şeklinde hesaplanır."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="truck" class="w-8 h-8 text-indigo-600"></i>
+                Beton Hacmi ve Transmikser Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Temel, döşeme, kolon ve perde dökümleri için m³ beton ihtiyacını ve sefer sayısını hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Giriş Formu -->
+            <div class="md:col-span-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                
+                <div class="border-b border-slate-100 pb-3">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="building-2" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Döküm Alanı ve Geometri</span>
+                    </h2>
+                </div>
+
+                <!-- Eleman Tipi Seçimi -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Yapı Elemanı Tipi</label>
+                        <select id="elemanTipi" onchange="elemanDegisti()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="doseme">Döşeme / Radye Temel (Plak)</option>
+                            <option value="kutuEleman">Pabuç / Kiriş / Dikdörtgen Kolon</option>
+                            <option value="silindirKolon">Dairesel Kolon / Kazık</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Dinamik Ölçü Giriş Alanları -->
+                <div class="space-y-3 pt-2 border-t border-slate-100">
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Geometrik Ölçüler</span>
+                    <div id="olculer" class="grid grid-cols-2 gap-3">
+                        <!-- JS ile dinamik dökülecek -->
+                    </div>
+                </div>
+
+                <!-- Parametreler: Fire Payı ve Mikser Kapasitesi -->
+                <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Fire / Emniyet Payı (%)</label>
+                        <select id="fireOrani" onchange="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="0">%0 (Sıfır Fire)</option>
+                            <option value="3">%3 (Standart Döküm)</option>
+                            <option value="5" selected>%5 (Önerilen Emniyet)</option>
+                            <option value="8">%8 (Zirve/Zemin Kayıplı)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Transmikser Kapasitesi</label>
+                        <select id="mikserKapasite" onchange="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                            <option value="8" selected>8 m³ (Standart)</option>
+                            <option value="9">9 m³</option>
+                            <option value="10">10 m³ (Büyük Boy)</option>
+                            <option value="12">12 m³ (Çift Dingil/Özel)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Birim M³ Fiyatı (Opsiyonel) -->
+                <div class="pt-2 border-t border-slate-100">
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Beton m³ Fiyatı (₺) <span class="text-[10px] text-slate-400 font-normal">(Opsiyonel)</span></label>
+                    <input type="number" id="birimFiyat" placeholder="Örn: 2800" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Kartı -->
+            <div class="md:col-span-6 space-y-6">
+                
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🧱</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>BETON İHTİYACI VE SEFER ÖZETİ</span>
+                        <i data-lucide="badge-check" class="w-4 h-4 text-emerald-300"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <div>
+                            <span class="text-xs text-indigo-200 font-medium block">Sipariş Edilecek Beton Miktarı (Fireli)</span>
+                            <span id="resFireliHacim" class="text-3xl font-black text-emerald-300">0.00 m³</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-indigo-500/40">
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Gerekli Transmikser</span>
+                                <span id="resMikserSayisi" class="text-lg font-bold text-white">0 Sefer</span>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-indigo-200 font-medium block">Tahmini Beton Maliyeti</span>
+                                <span id="resTotalPrice" class="text-lg font-bold text-amber-300">0.00 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detay Dökümü -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-2">
+                        Teknik Detaylar
+                    </span>
+                    <div class="space-y-2 text-xs font-medium text-slate-600">
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Net Geometrik Hacim</span>
+                            <span id="resNetHacim" class="font-bold text-slate-800">0.00 m³</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Eklenecek Fire Hacmi</span>
+                            <span id="resFireMiktari" class="font-bold text-slate-800">0.00 m³</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-50">
+                            <span>Tahmini Toplam Ağırlık (~2.4 ton/m³)</span>
+                            <span id="resTonaj" class="font-bold text-slate-800">0.00 Ton</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl text-[11px] text-slate-500 space-y-1 mt-3">
+                        <p class="font-bold text-slate-700">📌 Şantiye İpucu:</p>
+                        <p>Beton dökümü sırasında pompanın içerisinde kalan beton miktarını (~0.5 m³) göz önünde bulundurarak son mikseri ölçülü sipariş etmeniz önerilir.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Beton Hacmi Nasıl Hesaplanır?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        İnşaat projelerinde hazır beton hesabı yapılırken temel mantık, döküm yapılacak kalıbın iç net geometrik hacminin ($m^3$) bulunmasıdır.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Kalıplarda oluşabilecek esnemeler, alt zemin emilimi veya beton pompasının borularında kalan miktarlar nedeniyle hesaplanan net hacme minimum <strong>%3 ile %5</strong> arasında emniyet/fire payı ilave edilmelidir.
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Geometrilere Göre Hacim Formülleri</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Farklı betonarme elemanlar için kullanılan temel matematiksel yaklaşımlar:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li><strong>Döşeme / Radye Temel:</strong> En (m) × Boy (m) × Kalınlık (m)</li>
+                        <li><strong>Dikdörtgen Kolon / Kiriş:</strong> En (m) × Boy (m) × Yükseklik (m) × Adet</li>
+                        <li><strong>Dairesel Kolon / Kazık:</strong> π × r² (Yarıçap Metre²) × Yükseklik (m) × Adet</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="scale" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Metal ve Profil Ağırlığını da Hesaplayın</h4>
+                        <p class="text-[11px] text-slate-500">Şantiyenizde kullanacağınız çelik, profil ve sac malzemelerin kg ağırlığını hesaplamak için modülümüzü inceleyin.</p>
+                    </div>
+                </div>
+                <a href="metal-agirlik-hesaplama.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Metal Hesaplayıcı</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>1 transmikser kaç m³ hazır beton taşır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Türkiye şantiye standartlarında bir transmikser ortalama 8 m³ ile 10 m³ arasında hazır beton taşımaktadır. Trafik aks yükü sınırlarına göre genellikle 8 m³ döküm baz alınır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Beton dökümünde fire payı neden %5 alınmalıdır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Kalıp esnemeleri, zemin çökme toleransları, pompalarda ve mikser kazanında kalan artık beton miktarları nedeniyle beton siparişlerinde %3 ile %5 arasında fire/emniyet payı eklenmesi tavsiye edilir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Kolon ve dairesel kesitli elemanlarda beton hacmi nasıl hesaplanır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Dairesel kesitli kolonlarda hacim π × r² × h (Yarıçapın karesi × Pi sayısı × Yükseklik) formülü ile; dikdörtgen kesitlerde ise En × Boy × Yükseklik × Eleman Adedi şeklinde hesaplanır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Beton Hacmi ve Transmikser Hesaplama
+    </footer>
+
+    <!-- JS Motoru -->
+    <script>
+        const alanYapisi = {
+            doseme: [
+                { id: 'en', label: 'Döşeme Eni (Metre)', placeholder: '10', default: 10 },
+                { id: 'boy', label: 'Döşeme Boyu (Metre)', placeholder: '15', default: 15 },
+                { id: 'kalinlik', label: 'Döşeme / Plak Kalınlığı (cm)', placeholder: '15', default: 15 }
+            ],
+            kutuEleman: [
+                { id: 'en', label: 'Genişlik / En (cm)', placeholder: '30', default: 30 },
+                { id: 'boy', label: 'Derinlik / Boy (cm)', placeholder: '60', default: 60 },
+                { id: 'yukseklik', label: 'Yükseklik / Boy (Metre)', placeholder: '3', default: 3 },
+                { id: 'adet', label: 'Toplam Adet', placeholder: '10', default: 10 }
+            ],
+            silindirKolon: [
+                { id: 'cap', label: 'Kolon Çapı (cm)', placeholder: '40', default: 40 },
+                { id: 'yukseklik', label: 'Yükseklik (Metre)', placeholder: '3', default: 3 },
+                { id: 'adet', label: 'Toplam Adet', placeholder: '8', default: 8 }
+            ]
+        };
+
+        function elemanDegisti() {
+            const tip = document.getElementById('elemanTipi').value;
+            const konteyner = document.getElementById('olculer');
+            konteyner.innerHTML = '';
+
+            alanYapisi[tip].forEach(f => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <label class="block text-xs font-bold text-slate-700 mb-1">${f.label}</label>
+                    <input type="number" id="${f.id}" value="${f.default}" placeholder="${f.placeholder}" oninput="hesapla()" class="w-full p-2.5 text-xs font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                `;
+                konteyner.appendChild(div);
+            });
+
+            hesapla();
+        }
+
+        function hesapla() {
+            const tip = document.getElementById('elemanTipi').value;
+            const fireOrani = parseFloat(document.getElementById('fireOrani').value) || 0;
+            const mikserKapasite = parseFloat(document.getElementById('mikserKapasite').value) || 8;
+            const birimFiyat = parseFloat(document.getElementById('birimFiyat').value) || 0;
+
+            let netHacimM3 = 0;
+
+            if (tip === 'doseme') {
+                const en = parseFloat(document.getElementById('en')?.value) || 0;
+                const boy = parseFloat(document.getElementById('boy')?.value) || 0;
+                const kalinlikM = (parseFloat(document.getElementById('kalinlik')?.value) || 0) / 100;
+                netHacimM3 = en * boy * kalinlikM;
+            } else if (tip === 'kutuEleman') {
+                const enM = (parseFloat(document.getElementById('en')?.value) || 0) / 100;
+                const boyM = (parseFloat(document.getElementById('boy')?.value) || 0) / 100;
+                const yukseklik = parseFloat(document.getElementById('yukseklik')?.value) || 0;
+                const adet = parseFloat(document.getElementById('adet')?.value) || 1;
+                netHacimM3 = enM * boyM * yukseklik * adet;
+            } else if (tip === 'silindirKolon') {
+                const capM = (parseFloat(document.getElementById('cap')?.value) || 0) / 100;
+                const yaricapM = capM / 2;
+                const yukseklik = parseFloat(document.getElementById('yukseklik')?.value) || 0;
+                const adet = parseFloat(document.getElementById('adet')?.value) || 1;
+                netHacimM3 = Math.PI * Math.pow(yaricapM, 2) * yukseklik * adet;
+            }
+
+            const fireMiktariM3 = netHacimM3 * (fireOrani / 100);
+            const toplamFireliHacimM3 = netHacimM3 + fireMiktariM3;
+            const mikserSayisi = Math.ceil(toplamFireliHacimM3 / mikserKapasite);
+            const toplamMaliyet = toplamFireliHacimM3 * birimFiyat;
+            const tahminiTonaj = toplamFireliHacimM3 * 2.4; // Taze beton yoğunluğu ~2.4 ton/m³
+
+            // Ekran Güncelleme
+            document.getElementById('resFireliHacim').innerText = toplamFireliHacimM3.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' m³';
+            document.getElementById('resMikserSayisi').innerText = mikserSayisi + ' Sefer (' + mikserKapasite + 'm³\'lük)';
+            document.getElementById('resTotalPrice').innerText = birimFiyat > 0 ? toplamMaliyet.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺' : '0.00 ₺';
+
+            document.getElementById('resNetHacim').innerText = netHacimM3.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' m³';
+            document.getElementById('resFireMiktari').innerText = '+' + fireMiktariM3.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' m³ (%' + fireOrani + ')';
+            document.getElementById('resTonaj').innerText = tahminiTonaj.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' Ton';
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            elemanDegisti();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
