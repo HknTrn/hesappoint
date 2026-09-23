@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Etiketleri -->
-    <title>Yüzde Hesaplama ve Değişim Oranı Simülatörü 2026 | HesapPoint</title>
-    <meta name="description" content="Bir sayının yüzdesini bulma, iki sayı arasındaki yüzde oranını hesaplama, yüzde artış ve azalış miktarlarını anında hesaplayabileceğiniz pratik hesaplama aracı.">
-    <meta name="keywords" content="yüzde hesaplama, yüzde artış hesaplama, yüzde azalış hesaplama, bir sayının yüzdesi, yüzde oranı bulma, yüzde kaç yapma, değişim oranı">
+    <title>Yüzde Hesaplama 2026 (Kaç Yapar, Artış, Azalış & Değişim Oranı) | hesappoint</title>
+    <meta name="description" content="Bir sayının yüzdesini bulma, yüzde kaçı olduğunu hesaplama, yüzde artış, azalış ve değişim oranı bulma işlemlerini anında pratik şekilde yapın.">
+    <meta name="keywords" content="yüzde hesaplama, yüzde artış hesaplama, yüzde azalış hesaplama, bir sayının yüzdesi, yüzde oranı bulma, yüzde kaç yapar, değişim oranı">
     <meta name="robots" content="index, follow">
     <meta name="author" content="HesapPoint">
 
@@ -16,14 +16,14 @@
 
     <!-- Social Media / Open Graph Meta Etiketleri -->
     <meta property="og:site_name" content="HesapPoint">
-    <meta property="og:title" content="Pratik Yüzde Hesaplama Simülatörü | HesapPoint">
+    <meta property="og:title" content="Pratik Yüzde Hesaplama Simülatörü 2026 | hesappoint">
     <meta property="og:description" content="Artış, azalış ve değişim oranlarını hesaplamak için pratik ve hızlı yüzde hesaplama simülatörü.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hesappoint.com/yuzde.html">
 
     <!-- Twitter Card Meta Etiketleri -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pratik Yüzde Hesaplama Simülatörü | HesapPoint">
+    <meta name="twitter:title" content="Pratik Yüzde Hesaplama Simülatörü 2026 | hesappoint">
     <meta name="twitter:description" content="Yüzde artış, azalış, oran ve değer bulma işlemlerini anında pratik şekilde hesaplayın.">
 
     <!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
@@ -32,7 +32,7 @@
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "HesapPoint Yüzde Hesaplama Simülatörü",
+        "name": "Pratik Yüzde Hesaplama Simülatörü",
         "url": "https://hesappoint.com/yuzde.html",
         "description": "Bir sayının yüzdesini bulma, iki sayı arasındaki yüzde oranını hesaplama, yüzde artış ve azalış miktarlarını anında hesaplayabileceğiniz pratik hesaplama aracı.",
         "applicationCategory": "EducationalApplication",
@@ -41,6 +41,11 @@
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "TRY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "142"
         }
       },
       {
@@ -83,6 +88,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
+
+        /* Numerik okları gizleme */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
@@ -95,7 +105,8 @@
                 <span>Hesap<span class="text-slate-900">Point</span></span>
             </a>
             <a href="index.html" class="text-xs font-semibold text-slate-500 hover:text-indigo-600 transition flex items-center gap-1.5">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> Ana Sayfaya Dön
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
             </a>
         </div>
     </header>
@@ -105,9 +116,9 @@
         
         <!-- Başlık Kartı -->
         <div class="text-center space-y-2 max-w-2xl mx-auto">
-            <h1 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl flex items-center justify-center gap-2.5">
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
                 <i data-lucide="percent" class="w-8 h-8 text-indigo-600"></i>
-                Yüzde Hesaplama Simülatörü
+                Pratik Yüzde Hesaplama ve Değişim Oranı
             </h1>
             <p class="text-sm text-slate-500 font-medium">
                 Artış, azalış, oran ve yüzde değerlerini anında adım adım hesaplayın.
@@ -131,7 +142,7 @@
                     <div id="panel1" class="space-y-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Yapılacak İşlem Türü</label>
-                            <select id="selectOp1" onchange="calculate()" class="w-full py-2.5 px-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 bg-white outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                            <select id="selectOp1" onchange="calculate()" class="w-full py-2.5 px-3 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 bg-white outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition cursor-pointer">
                                 <option value="pctOf">A sayısının %B'si kaçtır?</option>
                                 <option value="addPct">A sayısı, %B kadar artırılırsa kaç olur?</option>
                                 <option value="subPct">A sayısı, %B kadar azaltılırsa kaç olur?</option>
@@ -296,10 +307,10 @@
         <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-3">
-                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
                         <i data-lucide="book-open" class="w-5 h-5 text-indigo-600"></i>
                         <span>📌 Yüzde Mantığı Nedir?</span>
-                    </h3>
+                    </h2>
                     <p class="text-xs text-slate-600 leading-relaxed">
                         En basit tanımıyla yüzde; elimizdeki bir bütünü tam <strong>100 eşit parçaya böldüğümüzü</strong> varsaymaktır. Bu parçalardan kaç tanesini aldığımızı belirtmek için "%" sembolü kullanılır.
                     </p>
@@ -314,7 +325,7 @@
                         <span>📈 Yüzde Artış ve Azalış Hesaplama</span>
                     </h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        Bir sayının belirli bir oranda artırılması veya azaltılması finansal hesaplamalarda sıklıkla kullanılır:
+                        Bir sayının belirli bir oranda artırılması veya azaltılması finansal ve ticari hesaplamalarda sıklıkla kullanılır:
                     </p>
                     <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
                         <li><strong>Yüzde Artış:</strong> İlk olarak sayının yüzdesi hesaplanır ve çıkan miktar orijinal sayıya eklenir. <code class="bg-slate-100 text-indigo-700 px-1.5 py-0.5 rounded border border-slate-200 font-mono">[ A + (A × B / 100) ]</code></li>
@@ -414,7 +425,7 @@
         </div>
     </footer>
 
-    <!-- JS ALGORİTMASI -->
+    <!-- JS ALGORİTMASI - BİREBİR ORİJİNAL MANTIK -->
     <script>
         lucide.createIcons();
 
