@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Etiketleri -->
+    <title>İhbar Süresi ve İşten Çıkış Tarihi Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="Kıdem sürenize göre kanuni ihbar sürenizi, ihbar öneli bitiş tarihini ve ihbar tazminatı tutarını güncel İş Kanunu standartlarına göre anında hesaplayın.">
+    <meta name="keywords" content="ihbar süresi hesaplama, ihbar süresi kaç hafta, işten çıkış tarihi hesaplama, ihbar tazminatı hesaplama, ihbar öneli hesaplama, iş kanunu ihbar süreleri">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/ihbar-suresi.html">
+
+    <!-- Social Media / Open Graph Meta Etiketleri -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="İhbar Süresi ve İşten Çıkış Tarihi Hesaplayıcı | HesapPoint">
+    <meta property="og:description" content="İşe başlama ve bildirim tarihinize göre tam işten çıkış gününüzü ve ihbar süresi haklarınızı kolayca öğrenin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hesappoint.com/ihbar-suresi.html">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="İhbar Süresi ve Çıkış Tarihi Hesaplama | HesapPoint">
+    <meta name="twitter:description" content="Çalışma sürenize göre kanuni ihbar süresi ve takvimsel işten ayrılış günü hesaplama aracı.">
+
+    <!-- Schema.org Yapısal Veri (JSON-LD) - WebApplication & FAQPage -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "İhbar Süresi ve İşten Çıkış Tarihi Hesaplama Aracı",
+        "url": "https://hesappoint.com/ihbar-suresi.html",
+        "description": "Çalışanların kıdem sürelerine göre kanuni ihbar bildirim sürelerini ve takvimsel son çalışma gününü hesaplayan online araç.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "4857 Sayılı İş Kanununa göre ihbar süreleri kaç haftadır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "6 aydan az kıdem için 2 hafta (14 gün), 6 ay - 1.5 yıl arası için 4 hafta (28 gün), 1.5 yıl - 3 yıl arası için 6 hafta (42 gün), 3 yıldan fazla kıdem için ise 8 hafta (56 gün) ihbar süresi uygulanır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İhbar süresi bildirimin yapıldığı gün başlar mı?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hayır. İhbar öneli (süresi), fesih bildiriminin karşı tarafa tebliğ edildiği günü takip eden ertesi gün işlemeye başlar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "İhbar süresi içinde yeni iş arama izni ne kadardır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "İhbar süresi boyunca işveren, işçiye çalışma saatleri içinde günde en az 2 saat yeni iş arama izni vermek zorundadır. İşçi isterse bu süreleri birleştirerek toplu halde de kullanabilir."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="calendar-clock" class="w-8 h-8 text-indigo-600"></i>
+                İhbar Süresi & Tarih Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Kıdem sürenize göre kanuni ihbar sürenizi, istifa/bildirim tarihinize göre tam işten çıkış gününüzü ve günlük iş arama izinlerinizi hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Hesaplama Formu -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">1. Çalışma ve Bildirim Bilgileri</label>
+
+                    <div class="space-y-4">
+                        
+                        <!-- İşe Başlama Tarihi (3 Seçimli) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">İşe Başlama Tarihi</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <select id="startDay" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                                <select id="startMonth" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                                <select id="startYear" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Bildirim / İstifa Tarihi (3 Seçimli) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Bildirim (İstifa/Fesih) Tarihi</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <select id="noticeDay" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                                <select id="noticeMonth" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                                <select id="noticeYear" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Manuel Çalışma Süresi Alternatifi -->
+                        <div class="pt-2 border-t border-slate-100">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Veya Doğrudan Çalışma Süresi Seçin</label>
+                            <select id="tenureSelect" onchange="handleTenureSelect()" class="w-full px-3 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                                <option value="auto" selected>Tarihlere Göre Otomatik Hesapla</option>
+                                <option value="0-6">6 Aydan Az (2 Hafta / 14 Gün)</option>
+                                <option value="6-18">6 Ay - 1.5 Yıl Arası (4 Hafta / 28 Gün)</option>
+                                <option value="18-36">1.5 Yıl - 3 Yıl Arası (6 Hafta / 42 Gün)</option>
+                                <option value="36+">3 Yıldan Fazla (8 Hafta / 56 Gün)</option>
+                            </select>
+                        </div>
+
+                        <!-- Opsiyonel: İhbar Tazminatı Hesabı için Brüt Maaş -->
+                        <div class="pt-2 border-t border-slate-100">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Aylık Brüt Ücret (İhbar Tazminatı Hesabı İçin - Opsiyonel)</label>
+                            <div class="relative">
+                                <input type="number" id="grossSalary" placeholder="Örn: 30000" min="0" step="500" oninput="calculate()" class="w-full pl-3 pr-10 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400">₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detaylı Takvim & İzin Kırılımı -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="list-checks" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Süreç Ve Yasal Haklar Dökümü</span>
+                    </h2>
+
+                    <div class="overflow-x-auto border border-slate-100 rounded-xl">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 text-slate-500 uppercase font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2.5">Parametre</th>
+                                    <th class="p-2.5 text-right">Detay / Değer</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdown-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                                <!-- JS ile Doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Özet Kartı -->
+            <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-700 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">📅</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>İŞTEN ÇIKIŞ VE SÜRE ÖZETİ</span>
+                        <i data-lucide="calendar-check" class="w-4 h-4 text-indigo-200"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <!-- Son Çalışma Günü -->
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-center">
+                            <span class="text-xs text-indigo-100 block font-medium mb-1">Resmi Son Çalışma Günü (Çıkış Tarihi)</span>
+                            <span id="res-exit-date" class="text-2xl font-black text-emerald-300">--.--.----</span>
+                            <span id="res-exit-day" class="text-xs block text-indigo-100/90 font-medium mt-0.5">----</span>
+                        </div>
+
+                        <!-- İhbar Süresi Gücü -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">İhbar Süresi</span>
+                                <span id="res-notice-weeks" class="text-lg font-black text-white">0 Hafta</span>
+                                <span id="res-notice-days" class="text-[11px] text-indigo-200 block">(0 Gün)</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Toplam Çalışma</span>
+                                <span id="res-total-tenure" class="text-sm font-bold text-white leading-tight block mt-1">0 Ay 0 Gün</span>
+                            </div>
+                        </div>
+
+                        <!-- İhbar Tazminatı ve İş Arama İzni -->
+                        <div class="p-4 rounded-xl bg-slate-900/40 border border-white/10 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[11px] font-bold text-indigo-200 uppercase tracking-wider">Toplu İş Arama İzni</span>
+                                <span id="res-job-search-hours" class="text-xs font-black text-amber-300">0 Saat</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-white/10 pt-2">
+                                <span class="text-[11px] font-bold text-indigo-200 uppercase tracking-wider">Brüt İhbar Tazminatı</span>
+                                <span id="res-notice-pay" class="text-sm font-black text-white">0,00 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kopyalama Butonu -->
+                    <button onclick="copySummary()" class="w-full py-3.5 px-4 bg-white hover:bg-slate-100 text-indigo-600 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-lg relative z-10">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>İhbar Özetini Kopyala (WhatsApp / Notlar)</span>
+                    </button>
+                </div>
+
+                <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs text-slate-500 space-y-1.5">
+                    <p class="font-bold text-slate-700">📌 İhbar Süresi Başlangıç Kuralı:</p>
+                    <p>İhbar süresi, istifa veya fesih bildiriminin yapıldığı günü takip eden ilk takvim günü başlar.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-indigo-600"></i>
+                        <span>4857 Sayılı İş Kanununa Göre İhbar Süreleri</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        İş sözleşmelerinin feshinden önce durumun diğer tarafa bildirilmesi gerekir. Çalışma süresine (kıdem) göre kanuni ihbar süreleri şöyledir:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>6 aydan az çalışanlar:</strong> 2 Hafta (14 Gün)</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>6 ay - 1.5 yıl arası çalışanlar:</strong> 4 Hafta (28 Gün)</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>1.5 yıl - 3 yıl arası çalışanlar:</strong> 6 Hafta (42 Gün)</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>3 yıldan fazla çalışanlar:</strong> 8 Hafta (56 Gün)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="clock" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Yeni İş Arama İzni Hakları</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        İhbar süresi boyunca işveren, işçiye mesai saatleri içerisinde günde **en az 2 saat** yeni iş arama izni vermek zorundadır.
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1.5">
+                        <p class="font-bold">Toplu İş Arama İzni Kullanımı:</p>
+                        <p class="text-[11px] leading-relaxed">İşçi isterse iş arama izin saatlerini birleştirerek ihbar süresinin sonuna denk gelecek şekilde toplu olarak kullanabilir. Toplu kullanımda haftalık çalışılmayan günler (örneğin pazar) hesaba dahil edilmez.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="award" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Kıdem ve Tam İhbar Tazminatı Hesaplama</h4>
+                        <p class="text-[11px] text-slate-500">Tazminat tavanı, damga vergisi ve gelir vergisi kesintileriyle net tazminatınızı detaylı hesaplayın.</p>
+                    </div>
+                </div>
+                <a href="tazminat.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Tazminat Aracına Git</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>4857 Sayılı İş Kanununa göre ihbar süreleri kaç haftadır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            6 aydan az kıdem için 2 hafta (14 gün), 6 ay - 1.5 yıl arası için 4 hafta (28 gün), 1.5 yıl - 3 yıl arası için 6 hafta (42 gün), 3 yıldan fazla kıdem için ise 8 hafta (56 gün) ihbar süresi uygulanır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İhbar süresi bildirimin yapıldığı gün başlar mı?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Hayır. İhbar öneli (süresi), fesih bildiriminin karşı tarafa tebliğ edildiği günü takip eden ertesi gün işlemeye başlar.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>İhbar süresi içinde yeni iş arama izni ne kadardır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            İhbar süresi boyunca işveren, işçiye çalışma saatleri içinde günde en az 2 saat yeni iş arama izni vermek zorundadır. İşçi isterse bu süreleri birleştirerek toplu halde de kullanabilir.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Özet panoya kopyalandı!
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Pratik Lojistik ve Finans Hesaplama Araçları
+    </footer>
+
+    <!-- JS Mantığı -->
+    <script>
+        const monthsTR = [
+            "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", 
+            "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+        ];
+        const daysOfWeek = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+
+        window.onload = function() {
+            initDateDropdowns();
+
+            // Varsayılan Değerler: Bildirim = Bugün, İşe Başlama = 1 Yıl Önce
+            const today = new Date();
+            const oneYearAgo = new Date();
+            oneYearAgo.setFullYear(today.getFullYear() - 1);
+
+            setDateValues('start', oneYearAgo);
+            setDateValues('notice', today);
+
+            if (window.lucide) lucide.createIcons();
+            calculate();
+        };
+
+        // Gün, Ay, Yıl Select Seçeneklerini Doldurma
+        function initDateDropdowns() {
+            const currentYear = new Date().getFullYear();
+            
+            // Günler (1-31)
+            let dayOptions = '';
+            for (let i = 1; i <= 31; i++) {
+                dayOptions += `<option value="${i}">${i}</option>`;
+            }
+            document.getElementById('startDay').innerHTML = dayOptions;
+            document.getElementById('noticeDay').innerHTML = dayOptions;
+
+            // Aylar (Ocak-Aralık)
+            let monthOptions = '';
+            monthsTR.forEach((month, index) => {
+                monthOptions += `<option value="${index}">${month}</option>`;
+            });
+            document.getElementById('startMonth').innerHTML = monthOptions;
+            document.getElementById('noticeMonth').innerHTML = monthOptions;
+
+            // Yıllar (2000 - CurrentYear + 2)
+            let yearOptions = '';
+            for (let y = currentYear + 2; y >= 2000; y--) {
+                yearOptions += `<option value="${y}">${y}</option>`;
+            }
+            document.getElementById('startYear').innerHTML = yearOptions;
+            document.getElementById('noticeYear').innerHTML = yearOptions;
+        }
+
+        function setDateValues(prefix, dateObj) {
+            document.getElementById(`${prefix}Day`).value = dateObj.getDate();
+            document.getElementById(`${prefix}Month`).value = dateObj.getMonth();
+            document.getElementById(`${prefix}Year`).value = dateObj.getFullYear();
+        }
+
+        function getDateFromDropdowns(prefix) {
+            const day = parseInt(document.getElementById(`${prefix}Day`).value);
+            const month = parseInt(document.getElementById(`${prefix}Month`).value);
+            const year = parseInt(document.getElementById(`${prefix}Year`).value);
+            return new Date(year, month, day);
+        }
+
+        function formatDateTR(d) {
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = monthsTR[d.getMonth()];
+            const year = d.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+
+        function formatTL(val) {
+            return new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val) + ' ₺';
+        }
+
+        function handleTenureSelect() {
+            const selectVal = document.getElementById('tenureSelect').value;
+            const startDay = document.getElementById('startDay');
+            const startMonth = document.getElementById('startMonth');
+            const startYear = document.getElementById('startYear');
+
+            const isDisabled = selectVal !== 'auto';
+            startDay.disabled = isDisabled;
+            startMonth.disabled = isDisabled;
+            startYear.disabled = isDisabled;
+
+            [startDay, startMonth, startYear].forEach(el => {
+                if (isDisabled) {
+                    el.classList.add('bg-slate-100', 'text-slate-400');
+                } else {
+                    el.classList.remove('bg-slate-100', 'text-slate-400');
+                }
+            });
+
+            calculate();
+        }
+
+        function calculate() {
+            const noticeDate = getDateFromDropdowns('notice');
+            const startDate = getDateFromDropdowns('start');
+            const tenureSelect = document.getElementById('tenureSelect').value;
+            const grossSalary = parseFloat(document.getElementById('grossSalary').value) || 0;
+
+            let noticeWeeks = 2;
+            let noticeDays = 14;
+            let totalTenureText = "Manuel Seçim Yapıldı";
+
+            if (tenureSelect === 'auto') {
+                if (startDate <= noticeDate) {
+                    const diffTime = Math.abs(noticeDate - startDate);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    
+                    const years = Math.floor(diffDays / 365);
+                    const months = Math.floor((diffDays % 365) / 30);
+                    const days = (diffDays % 365) % 30;
+
+                    totalTenureText = `${years > 0 ? years + ' Yıl ' : ''}${months} Ay ${days} Gün`;
+
+                    // Kanuni İhbar Süresi Tespiti
+                    if (diffDays < 180) { // 6 aydan az
+                        noticeWeeks = 2;
+                    } else if (diffDays < 540) { // 6 ay - 1.5 yıl
+                        noticeWeeks = 4;
+                    } else if (diffDays < 1080) { // 1.5 yıl - 3 yıl
+                        noticeWeeks = 6;
+                    } else { // 3 yıldan fazla
+                        noticeWeeks = 8;
+                    }
+                    noticeDays = noticeWeeks * 7;
+                }
+            } else {
+                if (tenureSelect === '0-6') { noticeWeeks = 2; }
+                else if (tenureSelect === '6-18') { noticeWeeks = 4; }
+                else if (tenureSelect === '18-36') { noticeWeeks = 6; }
+                else if (tenureSelect === '36+') { noticeWeeks = 8; }
+                noticeDays = noticeWeeks * 7;
+            }
+
+            // Çıkış Tarihi Hesaplama (İhbar bildirimin ertesi günü başlar)
+            const exitDate = new Date(noticeDate);
+            exitDate.setDate(exitDate.getDate() + noticeDays);
+
+            const exitDayName = daysOfWeek[exitDate.getDay()];
+
+            // İş Arama İzni (Günde 2 saat)
+            const jobSearchHours = noticeDays * 2;
+
+            // İhbar Tazminatı Hesabı (Günlük Brüt * İhbar Günü)
+            const dailyGross = grossSalary / 30;
+            const noticePayGross = dailyGross * noticeDays;
+
+            // Arayüz Güncellemeleri
+            document.getElementById('res-exit-date').innerText = formatDateTR(exitDate);
+            document.getElementById('res-exit-day').innerText = `${exitDayName} günü son çalışma günüdür.`;
+            document.getElementById('res-notice-weeks').innerText = `${noticeWeeks} Hafta`;
+            document.getElementById('res-notice-days').innerText = `(${noticeDays} Takvim Günü)`;
+            document.getElementById('res-total-tenure').innerText = totalTenureText;
+            document.getElementById('res-job-search-hours').innerText = `${jobSearchHours} Saat`;
+            document.getElementById('res-notice-pay').innerText = formatTL(noticePayGross);
+
+            // Tablo Doldurulması
+            const tbody = document.getElementById('breakdown-body');
+            const nextDay = new Date(noticeDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+
+            tbody.innerHTML = `
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Bildirim (İstifa) Tarihi</td>
+                    <td class="p-2.5 text-right font-bold text-slate-700">${formatDateTR(noticeDate)}</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">İhbar Süresi Başlangıcı</td>
+                    <td class="p-2.5 text-right font-medium text-slate-600">${formatDateTR(nextDay)} (Ertesi Gün)</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Kanuni İhbar Süresi</td>
+                    <td class="p-2.5 text-right font-bold text-indigo-600">${noticeWeeks} Hafta (${noticeDays} Gün)</td>
+                </tr>
+                <tr class="bg-emerald-50/50">
+                    <td class="p-2.5 font-bold text-emerald-800">Resmi İşten Çıkış Tarihi</td>
+                    <td class="p-2.5 text-right font-black text-emerald-600">${formatDateTR(exitDate)} (${exitDayName})</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Günde 2 Saat İş Arama İzni</td>
+                    <td class="p-2.5 text-right font-bold text-amber-600">Toplam ${jobSearchHours} Saat</td>
+                </tr>
+                ${grossSalary > 0 ? `
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Hesaplanan Brüt İhbar Tazminatı</td>
+                    <td class="p-2.5 text-right font-bold text-slate-900">${formatTL(noticePayGross)}</td>
+                </tr>
+                ` : ''}
+            `;
+        }
+
+        function copySummary() {
+            const exitDate = document.getElementById('res-exit-date').innerText;
+            const exitDay = document.getElementById('res-exit-day').innerText;
+            const weeks = document.getElementById('res-notice-weeks').innerText;
+            const days = document.getElementById('res-notice-days').innerText;
+            const hours = document.getElementById('res-job-search-hours').innerText;
+            const noticePay = document.getElementById('res-notice-pay').innerText;
+
+            const text = `📅 *HesapPoint İhbar Süresi Özeti*\n` +
+                         `------------------------------------\n` +
+                         `İhbar Süresi: ${weeks} ${days}\n` +
+                         `*Resmi Son Çalışma Günü: ${exitDate}*\n` +
+                         `(${exitDay})\n` +
+                         `Toplu İş Arama İzni: ${hours}\n` +
+                         `Brüt İhbar Tazminatı: ${noticePay}\n` +
+                         `------------------------------------\n` +
+                         `https://hesappoint.com/ihbar-suresi.html`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("İhbar süresi özeti panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
+        }
+    </script>
+</body>
+</html>

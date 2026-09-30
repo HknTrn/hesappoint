@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Etiketleri -->
+    <title>Trendyol & Pazaryeri Komisyon Hesaplama 2026 | Net Kar & Kargo | HesapPoint</title>
+    <meta name="description" content="Trendyol, Hepsiburada, Amazon ve Çiçeksepeti satıcıları için alış fiyatı, komisyon oranı, kargo ve KDV dahil net kar, kar marjı ve başa baş (minimum) satış fiyatı hesaplama aracı.">
+    <meta name="keywords" content="trendyol komisyon hesaplama, pazaryeri kar hesaplama, trendyol kar marjı, hepsiburada komisyon, amazon komisyon hesaplama, e-ticaret kargo kdv hesaplama, başa baş satış fiyatı">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/trendyol-komisyon.html">
+
+    <!-- Social Media / Open Graph Meta Etiketleri -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Trendyol & E-Ticaret Komisyon ve Kar Hesaplama Simülatörü | HesapPoint">
+    <meta property="og:description" content="Satış fiyatı, komisyon oranı, kargo maliyeti ve KDV oranlarıyla net karınızı, kar marjınızı ve zararsız başa baş fiyatınızı anında hesaplayın.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hesappoint.com/trendyol-komisyon.html">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trendyol & Pazaryeri Kar ve Komisyon Hesaplama | HesapPoint">
+    <meta name="twitter:description" content="E-ticaret pazaryeri satışlarınız için net kazanç, pazaryeri kesintisi ve kar marjı simülatörü.">
+
+    <!-- Schema.org Yapısal Veri (JSON-LD) - WebApplication & FAQPage -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Pazaryeri Komisyon ve Net Kar Hesaplama Simülatörü",
+        "url": "https://hesappoint.com/trendyol-komisyon.html",
+        "description": "Trendyol, Hepsiburada, Amazon gibi e-ticaret pazaryerlerinde satılan ürünler için komisyon kesintisi, kargo maliyeti, KDV dökümü ve net kar marjı hesaplayan online simülatör.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Trendyol komisyonu nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Trendyol komisyonu, ürünün KDV dahil nihai satış fiyatı üzerinden kategoriye özel belirlenen komisyon yüzdesi çarpılarak hesaplanır. Oluşan komisyon tutarına ayrıca %20 KDV eklenerek satıcı hak edişinden kesilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "E-Ticarette başa baş (başa baş) satış fiyatı nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Başa baş satış fiyatı, ürün maliyeti, kargo ücreti, pazaryeri komisyonu ve KDV farkları düşüldüğünde satıcının ne kar ne de zarar ettiği (0 TL kar) minimum satış fiyatıdır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kargo ücretlerinde KDV dahil midir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pazaryerlerinin sunduğu kargo anlaşma fiyatları genellikle KDV hariç olarak listelenir veya fatura aşamasında %20 KDV eklenir. Hesaplama aracımız kargo bedelini KDV dahil toplam gider olarak dikkate alır."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="shopping-bag" class="w-8 h-8 text-indigo-600"></i>
+                Trendyol & Pazaryeri Kar Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Alış ve satış fiyatı, komisyon oranı, kargo ve KDV giderlerinizi girerek net kârınızı ve başa baş fiyatınızı anında öğrenin.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Hesaplama Formu -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">1. Platform Seçimi</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-semibold">
+                        <button type="button" onclick="setPlatform('trendyol')" id="plat-trendyol" class="plat-btn p-3 rounded-xl border-2 border-indigo-600 bg-indigo-50/50 text-indigo-600 flex flex-col items-center gap-1 transition">
+                            <i data-lucide="store" class="w-4 h-4"></i>
+                            <span class="font-bold">Trendyol</span>
+                        </button>
+                        <button type="button" onclick="setPlatform('hepsiburada')" id="plat-hepsiburada" class="plat-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1 transition">
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                            <span class="font-bold">Hepsiburada</span>
+                        </button>
+                        <button type="button" onclick="setPlatform('amazon')" id="plat-amazon" class="plat-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1 transition">
+                            <i data-lucide="globe" class="w-4 h-4"></i>
+                            <span class="font-bold">Amazon TR</span>
+                        </button>
+                        <button type="button" onclick="setPlatform('other')" id="plat-other" class="plat-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1 transition">
+                            <i data-lucide="tag" class="w-4 h-4"></i>
+                            <span class="font-bold">Diğer / Özel</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Alış Fiyatı -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Ürün Alış / Maliyet Fiyatı (KDV Dahil)</label>
+                                <div class="relative">
+                                    <input type="number" id="buyPrice" value="150" min="0" step="1" oninput="calculate()" class="w-full pl-3 pr-10 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400">₺</span>
+                                </div>
+                            </div>
+
+                            <!-- Satış Fiyatı -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Pazaryeri Satış Fiyatı (KDV Dahil)</label>
+                                <div class="relative">
+                                    <input type="number" id="sellPrice" value="350" min="0" step="1" oninput="calculate()" class="w-full pl-3 pr-10 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400">₺</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <!-- Komisyon Oranı -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Komisyon Oranı (%)</label>
+                                <div class="relative">
+                                    <input type="number" id="commissionRate" value="18" step="0.5" min="0" max="100" oninput="calculate()" class="w-full pl-3 pr-10 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400">%</span>
+                                </div>
+                            </div>
+
+                            <!-- Kargo Ücreti -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Kargo Ücreti (TL)</label>
+                                <div class="relative">
+                                    <input type="number" id="shippingCost" value="45" step="1" min="0" oninput="calculate()" class="w-full pl-3 pr-10 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400">₺</span>
+                                </div>
+                            </div>
+
+                            <!-- Ürün KDV Oranı -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Ürün KDV Oranı (%)</label>
+                                <select id="vatRate" onchange="calculate()" class="w-full px-3 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                                    <option value="20" selected>%20 (Genel Standard)</option>
+                                    <option value="10">%10 (Gıda/Giyim vb.)</option>
+                                    <option value="1">%1 (Temel Temizlik/Tarım vb.)</option>
+                                    <option value="0">%0 (KDV Muaf)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Ekstra Maliyetler (Paketleme, Hizmet vb.) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Ekstra Giderler / Paketleme & İade Payı (TL)</label>
+                            <div class="relative">
+                                <input type="number" id="extraCost" value="10" min="0" step="1" oninput="calculate()" class="w-full pl-3 pr-10 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400">₺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detaylı Gider Kırılımı Tablosu -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="receipt" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Maliyet ve Kesinti Kırılım Tablosu</span>
+                    </h2>
+
+                    <div class="overflow-x-auto border border-slate-100 rounded-xl">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 text-slate-500 uppercase font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2.5">Maliyet / Kesinti Kalemi</th>
+                                    <th class="p-2.5 text-right">Tutar (KDV Hariç)</th>
+                                    <th class="p-2.5 text-right">KDV Tutarı</th>
+                                    <th class="p-2.5 text-right">Toplam Gider</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdown-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                                <!-- JS ile Doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Özet Kartı -->
+            <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-700 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🛍️</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>KAR / ZARAR ÖZETİ</span>
+                        <i data-lucide="pie-chart" class="w-4 h-4 text-indigo-200"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <!-- Net Kar Tutarı -->
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-center">
+                            <span class="text-xs text-indigo-100 block font-medium mb-1">Satış Başına Net Kâr</span>
+                            <span id="res-net-profit" class="text-3xl font-black text-emerald-300">0,00 ₺</span>
+                        </div>
+
+                        <!-- Kar Marjı ve ROI -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Net Kâr Marjı (Ciro)</span>
+                                <span id="res-margin" class="text-lg font-black text-amber-300">%0,0</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Sermaye Karlılığı (ROI)</span>
+                                <span id="res-roi" class="text-lg font-black text-white">%0,0</span>
+                            </div>
+                        </div>
+
+                        <!-- Başa Baş (Minimum) Satış Fiyatı -->
+                        <div class="p-4 rounded-xl bg-slate-900/40 border border-white/10 space-y-1">
+                            <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-200">Başa Baş Satış Fiyatı (Zararsız Min. Fiyat)</span>
+                            <div id="res-breakeven" class="text-xl font-black text-amber-300">0,00 ₺</div>
+                            <p class="text-[11px] text-indigo-100/80 leading-tight">Sıfır kar/zarar için ürünü satmanız gereken minimum fiyattır.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kopyalama Butonu -->
+                    <button onclick="copySummary()" class="w-full py-3.5 px-4 bg-white hover:bg-slate-100 text-indigo-600 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-lg relative z-10">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Kar Özetini Kopyala (WhatsApp / Notlar)</span>
+                    </button>
+                </div>
+
+                <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs text-slate-500 space-y-1.5">
+                    <p class="font-bold text-slate-700">📌 İpucu & Bilgilendirme:</p>
+                    <p>Pazaryerleri komisyon ve kargo faturalarını KDV dahil hak edişinizden keser. Vergi matrahınız, beyanname döneminde alım KDV'leriniz düşüldükten sonra netleşir.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Trendyol Komisyon Kesintileri Nasıl Çalışır?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Trendyol ve diğer pazaryerleri, ürün satış bedeli üzerinden ürün kategorisine göre değişen oranlarda (%5 ila %30 arası) komisyon alır. 
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>Komisyon KDV'si:</strong> Pazaryerinin kestiği komisyon tutarına %20 KDV eklenerek satıcıya komisyon faturası kesilir.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>Kargo Maliyeti:</strong> Desi miktarına ve pazaryerinin kargo anlaşma skalasına göre satıcı bakiyesinden düşülür.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>Hizmet & İşlem Bedelleri:</strong> Sipariş başına uygulanan sabit paketleme veya platform kullanım bedelleri de gider olarak eklenmelidir.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="percent" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Başa Baş Satış Fiyatı Nasıl Hesaplanır?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Ürününüzün maliyeti, kargo ücreti, sabit giderleri ve pazaryerinin komisyon oranı göz önüne alınarak <strong>zarar etmeyeceğiniz en düşük satış fiyatı</strong> aşağıdaki formülle bulunur:
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 font-mono text-[11px] text-slate-700">
+                        Toplam Sabit Gider = Alış Maliyeti + Kargo Bedeli + Ek Giderler<br>
+                        Başa Baş Fiyat = Toplam Sabit Gider / [1 - (Komisyon Oranı × 1.20)]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="package" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Kargo Desi ve Hacim Hesaplamaları</h4>
+                        <p class="text-[11px] text-slate-500">Pazaryeri kargo maliyetlerinizi doğru belirlemek için Desi Hesaplama aracımızı kullanabilirsiniz.</p>
+                    </div>
+                </div>
+                <a href="desi.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Desi Hesaplama Aracına Git</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Trendyol komisyonu nasıl hesaplanır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Trendyol komisyonu, ürünün KDV dahil nihai satış fiyatı üzerinden kategoriye özel belirlenen komisyon yüzdesi çarpılarak hesaplanır. Oluşan komisyon tutarına ayrıca %20 KDV eklenerek satıcı hak edişinden kesilir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>E-Ticarette başa baş (başa baş) satış fiyatı nedir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Başa baş satış fiyatı, ürün maliyeti, kargo ücreti, pazaryeri komisyonu ve KDV farkları düşüldüğünde satıcının ne kar ne de zarar ettiği (0 TL kar) minimum satış fiyatıdır.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Kargo ücretlerinde KDV dahil midir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Pazaryerlerinin sunduğu kargo anlaşma fiyatları genellikle KDV hariç olarak listelenir veya fatura aşamasında %20 KDV eklenir. Hesaplama aracımız kargo bedelini KDV dahil toplam gider olarak dikkate alır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Özet panoya kopyalandı!
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Pratik Lojistik ve Finans Hesaplama Araçları
+    </footer>
+
+    <!-- JS Mantığı -->
+    <script>
+        let currentPlatform = 'trendyol';
+
+        window.onload = function() {
+            if (window.lucide) lucide.createIcons();
+            calculate();
+        };
+
+        function setPlatform(plat) {
+            currentPlatform = plat;
+            document.querySelectorAll('.plat-btn').forEach(btn => {
+                btn.classList.remove('border-2', 'border-indigo-600', 'bg-indigo-50/50', 'text-indigo-600');
+                btn.classList.add('border', 'border-slate-200', 'bg-white', 'text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`plat-${plat}`);
+            activeBtn.classList.add('border-2', 'border-indigo-600', 'bg-indigo-50/50', 'text-indigo-600');
+            activeBtn.classList.remove('border', 'border-slate-200', 'bg-white', 'text-slate-600');
+
+            // Varsayılan komisyon ve kargo önerileri
+            if (plat === 'trendyol') {
+                document.getElementById('commissionRate').value = 18;
+                document.getElementById('shippingCost').value = 45;
+            } else if (plat === 'hepsiburada') {
+                document.getElementById('commissionRate').value = 17.5;
+                document.getElementById('shippingCost').value = 42;
+            } else if (plat === 'amazon') {
+                document.getElementById('commissionRate').value = 15;
+                document.getElementById('shippingCost').value = 38;
+            }
+
+            calculate();
+        }
+
+        function formatTL(val) {
+            return new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val) + ' ₺';
+        }
+
+        function calculate() {
+            const buyPrice = parseFloat(document.getElementById('buyPrice').value) || 0;
+            const sellPrice = parseFloat(document.getElementById('sellPrice').value) || 0;
+            const commissionRate = parseFloat(document.getElementById('commissionRate').value) || 0;
+            const shippingCost = parseFloat(document.getElementById('shippingCost').value) || 0;
+            const productVatRate = parseFloat(document.getElementById('vatRate').value) || 0;
+            const extraCost = parseFloat(document.getElementById('extraCost').value) || 0;
+
+            // 1. Komisyon Tutar Hesabı (Satış Fiyatı x Komisyon Oranı x %20 KDV dahil)
+            const rawCommission = sellPrice * (commissionRate / 100);
+            const commissionVat = rawCommission * 0.20;
+            const totalCommission = rawCommission + commissionVat;
+
+            // 2. Kargo ve Ekstra Giderler
+            const shippingNet = shippingCost / 1.20;
+            const shippingVat = shippingCost - shippingNet;
+
+            // 3. Ürün Alış KDV ve Satış KDV Dengesi
+            const buyNet = buyPrice / (1 + productVatRate / 100);
+            const buyVat = buyPrice - buyNet;
+
+            const sellNet = sellPrice / (1 + productVatRate / 100);
+            const sellVat = sellPrice - sellNet;
+
+            // Hesaplanan Ödenecek / İndirilecek Net KDV
+            // Ödenecek KDV = Satış KDV - (Alış KDV + Komisyon KDV + Kargo KDV)
+            const netPayableVat = sellVat - (buyVat + commissionVat + shippingVat);
+
+            // 4. Net Kar Hesabı
+            // Net Kar = Satış Fiyatı - Alış Fiyatı - Komisyon - Kargo - Ekstra - Ödenecek KDV (Eğer pozitifse)
+            const totalExpenses = buyPrice + totalCommission + shippingCost + extraCost;
+            let netProfit = sellPrice - totalExpenses;
+
+            // 5. Kar Marjı ve ROI
+            const margin = sellPrice > 0 ? (netProfit / sellPrice) * 100 : 0;
+            const roi = totalExpenses > 0 ? (netProfit / totalExpenses) * 100 : 0;
+
+            // 6. Başa Baş (Break-even) Fiyat Hesabı
+            // Satış = Alış + Kargo + Ekstra + (Satış * Komisyon * 1.20)
+            // Satış * (1 - Komisyon * 1.20) = Alış + Kargo + Ekstra
+            const commMultiplier = (commissionRate / 100) * 1.20;
+            let breakevenPrice = 0;
+            if (commMultiplier < 1) {
+                breakevenPrice = (buyPrice + shippingCost + extraCost) / (1 - commMultiplier);
+            }
+
+            // Arayüz Güncellemeleri
+            const resProfit = document.getElementById('res-net-profit');
+            resProfit.innerText = formatTL(netProfit);
+            if (netProfit < 0) {
+                resProfit.className = "text-3xl font-black text-rose-300";
+            } else {
+                resProfit.className = "text-3xl font-black text-emerald-300";
+            }
+
+            document.getElementById('res-margin').innerText = `%${margin.toFixed(1)}`;
+            document.getElementById('res-roi').innerText = `%${roi.toFixed(1)}`;
+            document.getElementById('res-breakeven').innerText = formatTL(breakevenPrice);
+
+            // Tablonu Doldurulması
+            const tbody = document.getElementById('breakdown-body');
+            tbody.innerHTML = `
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Ürün Maliyeti (Alış)</td>
+                    <td class="p-2.5 text-right">${formatTL(buyNet)}</td>
+                    <td class="p-2.5 text-right text-slate-500">${formatTL(buyVat)}</td>
+                    <td class="p-2.5 text-right font-bold">${formatTL(buyPrice)}</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Pazaryeri Komisyonu (%${commissionRate})</td>
+                    <td class="p-2.5 text-right">${formatTL(rawCommission)}</td>
+                    <td class="p-2.5 text-right text-slate-500">${formatTL(commissionVat)}</td>
+                    <td class="p-2.5 text-right font-bold text-rose-600">${formatTL(totalCommission)}</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Kargo Ücreti</td>
+                    <td class="p-2.5 text-right">${formatTL(shippingNet)}</td>
+                    <td class="p-2.5 text-right text-slate-500">${formatTL(shippingVat)}</td>
+                    <td class="p-2.5 text-right font-bold text-rose-600">${formatTL(shippingCost)}</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Ekstra Gider / Paketleme</td>
+                    <td class="p-2.5 text-right">${formatTL(extraCost)}</td>
+                    <td class="p-2.5 text-right text-slate-500">0,00 ₺</td>
+                    <td class="p-2.5 text-right font-bold text-rose-600">${formatTL(extraCost)}</td>
+                </tr>
+            `;
+        }
+
+        function copySummary() {
+            const sellPrice = document.getElementById('sellPrice').value;
+            const buyPrice = document.getElementById('buyPrice').value;
+            const netProfit = document.getElementById('res-net-profit').innerText;
+            const margin = document.getElementById('res-margin').innerText;
+            const breakeven = document.getElementById('res-breakeven').innerText;
+
+            const text = `🛍️️ *HesapPoint Pazaryeri Kar Hesaplama Özeti*\n` +
+                         `------------------------------------\n` +
+                         `Satış Fiyatı: ${parseFloat(sellPrice).toLocaleString('tr-TR')} ₺\n` +
+                         `Ürün Alış Maliyeti: ${parseFloat(buyPrice).toLocaleString('tr-TR')} ₺\n` +
+                         `Net Kâr: ${netProfit}\n` +
+                         `Kâr Marjı: ${margin}\n` +
+                         `*Başa Baş (Min) Fiyat: ${breakeven}*\n` +
+                         `------------------------------------\n` +
+                         `https://hesappoint.com/trendyol-komisyon.html`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Kar özet bilgisi panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
+        }
+    </script>
+</body>
+</html>

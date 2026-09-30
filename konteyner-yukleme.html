@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Etiketleri -->
+    <title>Konteyner Yükleme Hesaplama (20' / 40' / 40' HC) | HesapPoint</title>
+    <meta name="description" content="Koli ve palet ölçülerinize göre 20' DC, 40' DC ve 40' High Cube deniz konteynerlerine kaç adet ürün sığacağını, hacimsel ve ağırlık doluluk oranlarını hesaplayın.">
+    <meta name="keywords" content="konteyner yükleme hesaplama, 20lik konteyner kaç koli alır, 40lik hc konteyner kapasitesi, konteyner koli hesaplama, konteyner palet kapasitesi, cbm hesaplama">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/konteyner-yukleme.html">
+
+    <!-- Social Media / Open Graph Meta Etiketleri -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Konteyner Yükleme & Hacim Hesaplama Aracı | HesapPoint">
+    <meta property="og:description" content="Koli boyutları ve ağırlığına göre konteyner doluluk oranını, maksimum yükleme adedini ve CBM değerini anında görün.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hesappoint.com/konteyner-yukleme.html">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Konteyner Hacim ve Yük Kapasitesi Hesaplama | HesapPoint">
+    <meta name="twitter:description" content="Denizyolu taşımacılığında konteyner optimizasyonu ve yükleme adedi hesaplama aracı.">
+
+    <!-- Schema.org Yapısal Veri (JSON-LD) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Konteyner Yükleme ve Hacim Hesaplama Aracı",
+        "url": "https://hesappoint.com/konteyner-yukleme.html",
+        "description": "Koli ve palet boyutlarına göre 20', 40' ve 40' HC konteynerlerin maksimum yük kapasitesini hesaplayan lojistik aracı.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "20 feet konteyner kaç CBM hacme sahiptir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standart bir 20 feet (20' DC) konteyner yaklaşık 33.2 m³ (CBM) iç hacme sahiptir ve pratik kullanımda ortalama 28-30 m³ yük alabilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "40 HC konteyner ile 40 DC arasındaki fark nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "40' High Cube (HC) konteyner, standart 40' DC konteynere göre yaklaşık 30 cm daha yüksektir. Yüksekliği 2.69 m olduğu için iç hacmi 76.2 m³ seviyesine ulaşır."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="box" class="w-8 h-8 text-indigo-600"></i>
+                Konteyner Yükleme Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                Koli veya yük ölçülerinize göre 20', 40' ve 40' HC deniz konteynerlerinin doluluk ve yükleme kapasitesini hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Hesaplama Formu -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">1. Yükleme ve Konteyner Seçimi</label>
+
+                    <div class="space-y-4">
+                        
+                        <!-- Sevkiyat / Yükleme Tarihi (3 Seçimli) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Sevkiyat / Yükleme Tarihi</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <select id="shipDay" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                                <select id="shipMonth" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                                <select id="shipYear" onchange="calculate()" class="px-3 py-2 text-sm font-semibold text-slate-800 bg-white border border-slate-200 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <!-- JS dolduracak -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Konteyner Tipi Seçimi -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Konteyner Tipi</label>
+                            <select id="containerType" onchange="calculate()" class="w-full px-3 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                                <option value="20DC" selected>20' Standard Dry (20' DC) — 33.2 m³ / 21.7 Ton</option>
+                                <option value="40DC">40' Standard Dry (40' DC) — 67.7 m³ / 26.5 Ton</option>
+                                <option value="40HC">40' High Cube (40' HC) — 76.2 m³ / 26.5 Ton</option>
+                            </select>
+                        </div>
+
+                        <!-- Koli Boyutları -->
+                        <div class="grid grid-cols-3 gap-3 pt-2">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">En (cm)</label>
+                                <input type="number" id="boxWidth" value="40" min="1" oninput="calculate()" class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Boy (cm)</label>
+                                <input type="number" id="boxLength" value="60" min="1" oninput="calculate()" class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Yükseklik (cm)</label>
+                                <input type="number" id="boxHeight" value="40" min="1" oninput="calculate()" class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                            </div>
+                        </div>
+
+                        <!-- Koli Ağırlığı ve Toplam Hedef Koli Adedi -->
+                        <div class="grid grid-cols-2 gap-3 pt-1">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Tek Koli Ağırlığı (kg)</label>
+                                <input type="number" id="boxWeight" value="15" min="0" step="0.5" oninput="calculate()" class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Planlanan Koli Adedi (Opsiyonel)</label>
+                                <input type="number" id="targetCount" placeholder="Sınırı test edin..." min="1" oninput="calculate()" class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Yükleme Detay Tablosu -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="list-checks" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Konteyner ve Yükleme Parametreleri</span>
+                    </h2>
+
+                    <div class="overflow-x-auto border border-slate-100 rounded-xl">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 text-slate-500 uppercase font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2.5">Parametre</th>
+                                    <th class="p-2.5 text-right">Değer</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdown-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                                <!-- JS ile Doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Özet Kartı -->
+            <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-700 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🚢</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>YÜKLEME VE KAPASİTE ÖZETİ</span>
+                        <i data-lucide="ship" class="w-4 h-4 text-indigo-200"></i>
+                    </h2>
+
+                    <!-- Kapasite Aşımı Uyarı Banner'ı -->
+                    <div id="capacity-warning" class="hidden bg-rose-500/20 border border-rose-400/50 p-3 rounded-xl flex items-start gap-2.5 text-white animate-pulse">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-rose-300 shrink-0 mt-0.5"></i>
+                        <div class="text-xs space-y-0.5">
+                            <p class="font-bold text-rose-200" id="warning-title">Kapasite Aşımı Uyarısı!</p>
+                            <p class="text-rose-100 text-[11px] leading-tight" id="warning-desc">Girilen koli adedi konteyner kapasitesini aşıyor.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 relative z-10">
+                        <!-- Yüklenecek / Sığabilecek Koli Adedi -->
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-center">
+                            <span class="text-xs text-indigo-100 block font-medium mb-1">Hesaplanan / Planlanan Koli Adedi</span>
+                            <span id="res-max-boxes" class="text-3xl font-black text-emerald-300">0 Adet</span>
+                            <span id="res-limit-reason" class="text-xs block text-indigo-100/90 font-medium mt-1">Hacim limitine göre hesaplandı.</span>
+                        </div>
+
+                        <!-- Hacim ve Ağırlık Doluluk Oranları -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Hacim Doluluğu (CBM)</span>
+                                <span id="res-vol-percent" class="text-lg font-black text-white">%0</span>
+                                <span id="res-vol-cbm" class="text-[11px] text-indigo-200 block">(0.00 / 0.00 m³)</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Ağırlık Doluluğu</span>
+                                <span id="res-weight-percent" class="text-lg font-black text-white">%0</span>
+                                <span id="res-weight-total" class="text-[11px] text-indigo-200 block">(0.00 / 0.00 Ton)</span>
+                            </div>
+                        </div>
+
+                        <!-- Tek Koli CBM & Tarih -->
+                        <div class="p-4 rounded-xl bg-slate-900/40 border border-white/10 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[11px] font-bold text-indigo-200 uppercase tracking-wider">Tek Koli Hacmi</span>
+                                <span id="res-single-cbm" class="text-xs font-black text-amber-300">0.000 m³</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-white/10 pt-2">
+                                <span class="text-[11px] font-bold text-indigo-200 uppercase tracking-wider">Planlanan Yükleme Tarihi</span>
+                                <span id="res-ship-date" class="text-xs font-bold text-white">--.--.----</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kopyalama Butonu -->
+                    <button onclick="copySummary()" class="w-full py-3.5 px-4 bg-white hover:bg-slate-100 text-indigo-600 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-lg relative z-10">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Yükleme Özeti Kopyala (WhatsApp / E-Posta)</span>
+                    </button>
+                </div>
+
+                <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs text-slate-500 space-y-1.5">
+                    <p class="font-bold text-slate-700">📌 Konteyner Pratik Yükleme Payı:</p>
+                    <p>Pratik yüklemelerde kapı eşiği boşlukları ve koli esnemeleri nedeniyle teorik hacmin %85-%90'ı kadar yükleme tavsiye edilir.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="truck" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Standart Deniz Konteyneri İç Ölçüleri</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Deniz taşımacılığında en yaygın kullanılan konteyner tiplerinin iç ölçüleri ve taşıma kapasiteleri:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>20' DC Konteyner:</strong> 5.90 m x 2.35 m x 2.39 m (Hacim: ~33.2 m³, Max Yük: ~21.7 Ton)</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>40' DC Konteyner:</strong> 12.03 m x 2.35 m x 2.39 m (Hacim: ~67.7 m³, Max Yük: ~26.5 Ton)</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>40' High Cube (HC):</strong> 12.03 m x 2.35 m x 2.69 m (Hacim: ~76.2 m³, Max Yük: ~26.5 Ton)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i>
+                        <span>CBM (Metreküp) Hesaplama Mantığı</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        CBM (Cubic Meter), bir paketin kapladığı hacmi metreküp cinsinden ifade eder. 
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1.5">
+                        <p class="font-bold">Formül:</p>
+                        <p class="font-mono text-indigo-600 font-bold">CBM = [En (cm) x Boy (cm) x Yükseklik (cm)] / 1.000.000</p>
+                        <p class="text-[11px] leading-relaxed">Örneğin; 40x60x40 cm boyutundaki bir koli $0.096 \text{ m}^3$ hacme sahiptir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Depo ve Palet Kapasitesi Hesaplayıcı</h4>
+                        <p class="text-[11px] text-slate-500">Euro ve ISO paletlerinize göre depo raf alanlarınızı ve stok kapasitenizi optimize edin.</p>
+                    </div>
+                </div>
+                <a href="depo-palet-kapasite.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>Palet Aracına Git</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>20 feet konteyner kaç CBM hacme sahiptir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Standart bir 20 feet (20' DC) konteyner yaklaşık 33.2 m³ (CBM) iç hacme sahiptir ve pratik kullanımda ortalama 28-30 m³ yük alabilir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>40 HC konteyner ile 40 DC arasındaki fark nedir?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            40' High Cube (HC) konteyner, standart 40' DC konteynere göre yaklaşık 30 cm daha yüksektir. Yüksekliği 2.69 m olduğu için iç hacmi 76.2 m³ seviyesine ulaşır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Özet panoya kopyalandı!
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Pratik Lojistik ve Finans Hesaplama Araçları
+    </footer>
+
+    <!-- JS Mantığı -->
+    <script>
+        const monthsTR = [
+            "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", 
+            "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+        ];
+
+        // Konteyner Tipleri İç Ölçüleri (cm) ve Max Yük (kg)
+        const containers = {
+            '20DC': { name: "20' Standard Dry", length: 590, width: 235, height: 239, maxVolume: 33.2, maxWeight: 21700 },
+            '40DC': { name: "40' Standard Dry", length: 1203, width: 235, height: 239, maxVolume: 67.7, maxWeight: 26500 },
+            '40HC': { name: "40' High Cube", length: 1203, width: 235, height: 269, maxVolume: 76.2, maxWeight: 26500 }
+        };
+
+        window.onload = function() {
+            initDateDropdowns();
+            
+            // Varsayılan Yükleme Tarihi = Bugün
+            const today = new Date();
+            setDateValues('ship', today);
+
+            if (window.lucide) lucide.createIcons();
+            calculate();
+        };
+
+        // Gün, Ay, Yıl Select Seçeneklerini Doldurma
+        function initDateDropdowns() {
+            const currentYear = new Date().getFullYear();
+            
+            // Günler (1-31)
+            let dayOptions = '';
+            for (let i = 1; i <= 31; i++) {
+                dayOptions += `<option value="${i}">${i}</option>`;
+            }
+            document.getElementById('shipDay').innerHTML = dayOptions;
+
+            // Aylar (Ocak-Aralık)
+            let monthOptions = '';
+            monthsTR.forEach((month, index) => {
+                monthOptions += `<option value="${index}">${month}</option>`;
+            });
+            document.getElementById('shipMonth').innerHTML = monthOptions;
+
+            // Yıllar (2024 - 2028)
+            let yearOptions = '';
+            for (let y = currentYear + 2; y >= currentYear - 2; y--) {
+                yearOptions += `<option value="${y}">${y}</option>`;
+            }
+            document.getElementById('shipYear').innerHTML = yearOptions;
+        }
+
+        function setDateValues(prefix, dateObj) {
+            document.getElementById(`${prefix}Day`).value = dateObj.getDate();
+            document.getElementById(`${prefix}Month`).value = dateObj.getMonth();
+            document.getElementById(`${prefix}Year`).value = dateObj.getFullYear();
+        }
+
+        function getDateFromDropdowns(prefix) {
+            const day = parseInt(document.getElementById(`${prefix}Day`).value);
+            const month = parseInt(document.getElementById(`${prefix}Month`).value);
+            const year = parseInt(document.getElementById(`${prefix}Year`).value);
+            return new Date(year, month, day);
+        }
+
+        function formatDateTR(d) {
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = monthsTR[d.getMonth()];
+            const year = d.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+
+        function calculate() {
+            const shipDate = getDateFromDropdowns('ship');
+            const selectedType = document.getElementById('containerType').value;
+            const container = containers[selectedType];
+
+            const w = parseFloat(document.getElementById('boxWidth').value) || 0;
+            const l = parseFloat(document.getElementById('boxLength').value) || 0;
+            const h = parseFloat(document.getElementById('boxHeight').value) || 0;
+            const boxWeight = parseFloat(document.getElementById('boxWeight').value) || 0;
+            const targetCountInput = parseInt(document.getElementById('targetCount').value) || 0;
+
+            if (w <= 0 || l <= 0 || h <= 0) return;
+
+            // Tek Koli CBM Hesabı
+            const boxCBM = (w * l * h) / 1000000;
+
+            // Konteyner Maksimum Yerleşim Adedi (Hacimsel)
+            const countOrient1 = Math.floor(container.length / l) * Math.floor(container.width / w) * Math.floor(container.height / h);
+            const countOrient2 = Math.floor(container.length / w) * Math.floor(container.width / l) * Math.floor(container.height / h);
+            const maxVolumetricBoxes = Math.max(countOrient1, countOrient2);
+
+            // Ağırlık Limitine Göre Maksimum Koli
+            const maxWeightBoxes = boxWeight > 0 ? Math.floor(container.maxWeight / boxWeight) : Infinity;
+
+            // Fiziksel Limit (Hacim veya Ağırlıktan Hangisi Küçükse)
+            const physicalMaxBoxes = Math.min(maxVolumetricBoxes, maxWeightBoxes);
+
+            // İşlenecek Koli Adedi
+            let actualBoxes = targetCountInput > 0 ? targetCountInput : physicalMaxBoxes;
+
+            const totalVolumeUsed = actualBoxes * boxCBM;
+            const totalWeightUsed = (actualBoxes * boxWeight) / 1000; // Ton
+
+            const volumePercentVal = ((totalVolumeUsed / container.maxVolume) * 100);
+            const weightPercentVal = ((totalWeightUsed / (container.maxWeight / 1000)) * 100);
+
+            // Uyarı Kontrolleri
+            const isVolOver = totalVolumeUsed > container.maxVolume || actualBoxes > maxVolumetricBoxes;
+            const isWeightOver = totalWeightUsed > (container.maxWeight / 1000);
+            const isOverCapacity = isVolOver || isWeightOver;
+
+            // UI Elemanları
+            const warningBox = document.getElementById('capacity-warning');
+            const warningTitle = document.getElementById('warning-title');
+            const warningDesc = document.getElementById('warning-desc');
+            const resMaxBoxes = document.getElementById('res-max-boxes');
+            const resLimitReason = document.getElementById('res-limit-reason');
+
+            if (isOverCapacity) {
+                warningBox.classList.remove('hidden');
+                resMaxBoxes.classList.remove('text-emerald-300');
+                resMaxBoxes.classList.add('text-rose-300');
+
+                let reasons = [];
+                if (isVolOver) reasons.push(`Hacim limiti ${totalVolumeUsed.toFixed(2)} m³ ile aşıldı.`);
+                if (isWeightOver) reasons.push(`Ağırlık limiti ${totalWeightUsed.toFixed(2)} Ton ile aşıldı.`);
+
+                warningTitle.innerText = "Kapasite Aşımı Uyarısı!";
+                warningDesc.innerText = `Planlanan ${actualBoxes.toLocaleString('tr-TR')} koli konteyner sınırlarını geçiyor: ` + reasons.join(" ");
+                resLimitReason.innerText = `⚠️ Maksimum önerilen kapasite: ${physicalMaxBoxes.toLocaleString('tr-TR')} Adet`;
+            } else {
+                warningBox.classList.add('hidden');
+                resMaxBoxes.classList.remove('text-rose-300');
+                resMaxBoxes.classList.add('text-emerald-300');
+
+                if (targetCountInput > 0) {
+                    resLimitReason.innerText = `Planlanan koli adedi konteyner kapasitesine uygundur.`;
+                } else {
+                    resLimitReason.innerText = maxVolumetricBoxes <= maxWeightBoxes 
+                        ? "Hacim limitine göre hesaplandı." 
+                        : "Ağırlık limitine göre hesaplandı.";
+                }
+            }
+
+            // Arayüz Değerlerini Güncelle
+            resMaxBoxes.innerText = `${actualBoxes.toLocaleString('tr-TR')} Adet`;
+            document.getElementById('res-vol-percent').innerText = `%${volumePercentVal.toFixed(1)}`;
+            document.getElementById('res-vol-cbm').innerText = `(${totalVolumeUsed.toFixed(2)} / ${container.maxVolume} m³)`;
+            document.getElementById('res-weight-percent').innerText = `%${weightPercentVal.toFixed(1)}`;
+            document.getElementById('res-weight-total').innerText = `(${totalWeightUsed.toFixed(2)} / ${(container.maxWeight / 1000).toFixed(1)} Ton)`;
+            document.getElementById('res-single-cbm').innerText = `${boxCBM.toFixed(4)} m³`;
+            document.getElementById('res-ship-date').innerText = formatDateTR(shipDate);
+
+            // Tablo Güncelleme
+            const tbody = document.getElementById('breakdown-body');
+            tbody.innerHTML = `
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Seçilen Konteyner Tipi</td>
+                    <td class="p-2.5 text-right font-bold text-indigo-600">${container.name}</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Konteyner İç Ölçüleri</td>
+                    <td class="p-2.5 text-right font-medium text-slate-600">${(container.length/100).toFixed(2)}m x ${(container.width/100).toFixed(2)}m x ${(container.height/100).toFixed(2)}m</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Koli Ölçüleri (En x Boy x Yük.)</td>
+                    <td class="p-2.5 text-right font-medium text-slate-600">${w} cm x ${l} cm x ${h} cm</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Birim Koli Hacmi & Ağırlığı</td>
+                    <td class="p-2.5 text-right font-medium text-slate-600">${boxCBM.toFixed(4)} m³ / ${boxWeight} kg</td>
+                </tr>
+                <tr class="${isVolOver ? 'bg-rose-50' : 'bg-indigo-50/50'}">
+                    <td class="p-2.5 font-bold ${isVolOver ? 'text-rose-900' : 'text-indigo-900'}">Toplam Yükleme Hacmi</td>
+                    <td class="p-2.5 text-right font-black ${isVolOver ? 'text-rose-600' : 'text-indigo-600'}">${totalVolumeUsed.toFixed(2)} CBM ${isVolOver ? '⚠️' : ''}</td>
+                </tr>
+                <tr class="${isWeightOver ? 'bg-rose-50' : 'bg-emerald-50/50'}">
+                    <td class="p-2.5 font-bold ${isWeightOver ? 'text-rose-900' : 'text-emerald-900'}">Toplam Brüt Yük Ağırlığı</td>
+                    <td class="p-2.5 text-right font-black ${isWeightOver ? 'text-rose-600' : 'text-emerald-600'}">${totalWeightUsed.toFixed(2)} Ton ${isWeightOver ? '⚠️' : ''}</td>
+                </tr>
+            `;
+        }
+
+        function copySummary() {
+            const boxes = document.getElementById('res-max-boxes').innerText;
+            const volPercent = document.getElementById('res-vol-percent').innerText;
+            const volCBM = document.getElementById('res-vol-cbm').innerText;
+            const weightPercent = document.getElementById('res-weight-percent').innerText;
+            const shipDate = document.getElementById('res-ship-date').innerText;
+            const containerName = containers[document.getElementById('containerType').value].name;
+            const isWarning = !document.getElementById('capacity-warning').classList.contains('hidden');
+
+            let text = `🚢 *HesapPoint Konteyner Yükleme Özeti*\n` +
+                         `------------------------------------\n` +
+                         `Konteyner Tipi: ${containerName}\n` +
+                         `Planlanan Tarih: ${shipDate}\n` +
+                         `*Planlanan Yükleme: ${boxes}*\n` +
+                         `Hacim Doluluğu: ${volPercent} ${volCBM}\n` +
+                         `Ağırlık Doluluğu: ${weightPercent}\n`;
+
+            if (isWarning) {
+                text += `⚠️ *DİKKAT: Girilen miktar konteyner kapasitesini aşmaktadır!*\n`;
+            }
+
+            text += `------------------------------------\n` +
+                    `https://hesappoint.com/konteyner-yukleme.html`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Yükleme özeti panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
+        }
+    </script>
+</body>
+</html>

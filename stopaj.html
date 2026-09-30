@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Etiketleri -->
+    <title>Kira & Serbest Meslek Stopaj Hesaplama 2026 | HesapPoint</title>
+    <meta name="description" content="İş yeri kira ödemeleri ve serbest meslek makbuzları (SMM) için Brüt'ten Net'e ve Net'ten Brüt'e stopaj kesintisi ve KDV hesaplama aracı.">
+    <meta name="keywords" content="stopaj hesaplama, kira stopajı hesaplama, serbest meslek stopajı, netten brüte stopaj, brütten nete stopaj, %20 stopaj hesaplama, smm stopaj kdv">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HesapPoint">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hesappoint.com/stopaj.html">
+
+    <!-- Social Media / Open Graph Meta Etiketleri -->
+    <meta property="og:site_name" content="HesapPoint">
+    <meta property="og:title" content="Kira & Serbest Meslek Stopaj Hesaplama Simülatörü | HesapPoint">
+    <meta property="og:description" content="Net veya brüt tutar üzerinden kira stopajı, serbest meslek makbuzu kesintileri ve KDV hesaplamasını anında gerçekleştirin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hesappoint.com/stopaj.html">
+
+    <!-- Twitter Card Meta Etiketleri -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stopaj Kesintisi Hesaplama | HesapPoint">
+    <meta name="twitter:description" content="İş yeri kirası ve serbest meslek ödemeleriniz için net ve brüt stopaj hesaplama simülatörü.">
+
+    <!-- Schema.org Yapısal Veri (JSON-LD) - WebApplication & FAQPage -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Kira ve Serbest Meslek Stopaj Hesaplama Simülatörü",
+        "url": "https://hesappoint.com/stopaj.html",
+        "description": "İş yeri kira ödemeleri ve serbest meslek ödemeleri için brütten nete veya netten brüte stopaj vergisi ve KDV tutarlarını hesaplayan online simülatör.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Kira stopaj oranı yüzde kaçtır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gelir Vergisi Kanununa göre şahıslardan kiralanan ticari gayrimenkuller için standart kira stopaj oranı %20'dir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Net tutardan brüt kira ve stopaj nasıl hesaplanır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Net kira tutarı 0.80'e bölünerek brüt tutar bulunur. Brüt tutar ile net tutar arasındaki fark ödenmesi gereken stopaj vergisidir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Konut kiralarında stopaj ödenir mi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hayır, konut olarak kiralanan gayrimenkullerde stopaj kesintisi uygulanmaz. Stopaj sadece iş yeri / ticari olarak kiralanan gayrimenkullerde kiracı şirket veya vergi mükellefi ise uygulanır."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-black text-indigo-600 tracking-tight">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+                <span>Hesap<span class="text-slate-900">Point</span></span>
+            </a>
+            <a href="index.html" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 space-y-8">
+
+        <!-- Sayfa Başlığı -->
+        <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2.5">
+                <i data-lucide="receipt" class="w-8 h-8 text-indigo-600"></i>
+                Stopaj Vergisi Hesaplama
+            </h1>
+            <p class="text-sm text-slate-500 font-medium">
+                İş yeri kirası veya serbest meslek ödemeleriniz için Brüt veya Net tutar üzerinden stopaj ve KDV dökümünü anında hesaplayın.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- Sol Taraf: Hesaplama Formu -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">1. İşlem Türü</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-semibold">
+                        <button type="button" onclick="setCategory('rent')" id="cat-rent" class="cat-btn p-3 rounded-xl border-2 border-indigo-600 bg-indigo-50/50 text-indigo-600 flex flex-col items-center gap-1 transition">
+                            <i data-lucide="building-2" class="w-4 h-4"></i>
+                            <span class="font-bold">İş Yeri Kirası</span>
+                        </button>
+                        <button type="button" onclick="setCategory('smm')" id="cat-smm" class="cat-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1 transition">
+                            <i data-lucide="file-badge" class="w-4 h-4"></i>
+                            <span class="font-bold">Serbest Meslek (SMM)</span>
+                        </button>
+                        <button type="button" onclick="setCategory('other')" id="cat-other" class="cat-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex flex-col items-center gap-1 transition col-span-2 sm:col-span-1">
+                            <i data-lucide="percent" class="w-4 h-4"></i>
+                            <span class="font-bold">Özel Stopaj Oranı</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-4 pt-2">
+                        <!-- Yön Seçimi (Net'ten Brüt'e / Brüt'ten Net'e) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Hesaplama Yönü</label>
+                            <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+                                <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition">
+                                    <input type="radio" name="calcDirection" value="netToGross" checked onchange="calculate()" class="text-indigo-600 focus:ring-indigo-500">
+                                    <span>Net Tutar'dan Brüt Hesapla</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition">
+                                    <input type="radio" name="calcDirection" value="grossToNet" onchange="calculate()" class="text-indigo-600 focus:ring-indigo-500">
+                                    <span>Brüt Tutar'dan Net Hesapla</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Tutar Girişi -->
+                            <div>
+                                <label id="amountLabel" class="block text-xs font-bold text-slate-700 mb-1">Ele Geçen Net Tutar</label>
+                                <div class="relative">
+                                    <input type="number" id="inputAmount" value="20000" min="0" step="100" oninput="calculate()" class="w-full pl-3 pr-10 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400">₺</span>
+                                </div>
+                            </div>
+
+                            <!-- Stopaj Oranı (%) -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Stopaj Oranı (%)</label>
+                                <div class="relative">
+                                    <input type="number" id="stopajRate" value="20" step="1" min="0" max="100" oninput="calculate()" class="w-full pl-3 pr-10 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition">
+                                    <span class="absolute right-3 top-2.5 text-xs font-bold text-slate-400">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KDV Oranı (Kira için varsayılan 0, SMM için 20) -->
+                        <div id="vatContainer" class="hidden">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">KDV Oranı (%)</label>
+                            <select id="vatRate" onchange="calculate()" class="w-full px-3 py-2.5 text-sm font-bold border border-slate-300 rounded-xl outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition bg-white">
+                                <option value="20" selected>%20 (Genel Standart)</option>
+                                <option value="10">%10 (İndirimli Oran)</option>
+                                <option value="0">%0 (KDV Muaf)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detaylı Ödeme Kırılım Tablosu -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="list-checks" class="w-4 h-4 text-indigo-600"></i>
+                        <span>Ödeme & Vergi Kırılım Tablosu</span>
+                    </h2>
+
+                    <div class="overflow-x-auto border border-slate-100 rounded-xl">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-slate-50 text-slate-500 uppercase font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2.5">Kalem Adı</th>
+                                    <th class="p-2.5 text-right">Oran / Açıklama</th>
+                                    <th class="p-2.5 text-right">Tutar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdown-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                                <!-- JS ile Doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sağ Taraf: Sonuç Özet Kartı -->
+            <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-700 text-white p-6 rounded-2xl shadow-xl shadow-indigo-600/20 space-y-5 relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-8 opacity-10 text-white font-black text-9xl pointer-events-none">🏢</div>
+
+                    <h2 class="text-xs font-bold text-indigo-200 uppercase tracking-wider border-b border-indigo-500/40 pb-3 flex items-center justify-between">
+                        <span>HESAPLAMA ÖZETİ</span>
+                        <i data-lucide="pie-chart" class="w-4 h-4 text-indigo-200"></i>
+                    </h2>
+
+                    <div class="space-y-4 relative z-10">
+                        <!-- Ödenecek Stopaj Tutarı -->
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-center">
+                            <span class="text-xs text-indigo-100 block font-medium mb-1">Ödenecek Stopaj Vergisi (Muhtasar)</span>
+                            <span id="res-stopaj-amount" class="text-3xl font-black text-amber-300">0,00 ₺</span>
+                        </div>
+
+                        <!-- Brüt ve Net Tutarlar -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Brüt Tutar</span>
+                                <span id="res-gross" class="text-lg font-black text-white">0,00 ₺</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
+                                <span class="text-[11px] text-indigo-100 block font-medium">Ele Geçen Net Tutar</span>
+                                <span id="res-net" class="text-lg font-black text-emerald-300">0,00 ₺</span>
+                            </div>
+                        </div>
+
+                        <!-- Toplam Maliyet / Tahsilat -->
+                        <div class="p-4 rounded-xl bg-slate-900/40 border border-white/10 space-y-1">
+                            <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-200">Kiracı / Ödeyen Toplam Maliyeti</span>
+                            <div id="res-total-cost" class="text-xl font-black text-white">0,00 ₺</div>
+                            <p id="res-total-desc" class="text-[11px] text-indigo-100/80 leading-tight">Net Kira + Muhtasar Vergisi toplamıdır.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kopyalama Butonu -->
+                    <button onclick="copySummary()" class="w-full py-3.5 px-4 bg-white hover:bg-slate-100 text-indigo-600 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-lg relative z-10">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Stopaj Özetini Kopyala (WhatsApp / Notlar)</span>
+                    </button>
+                </div>
+
+                <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs text-slate-500 space-y-1.5">
+                    <p class="font-bold text-slate-700">📌 İpucu & Bilgilendirme:</p>
+                    <p>Stopaj vergisi, mülk sahibi veya hizmet veren adına kiracı / hizmet alan mükellef tarafından Muhtasar Beyanname ile vergi dairesine ödenir.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEO Rehber ve Bilgilendirme Bölümü -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8 mt-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Kira Stopajı Nedir ve Nasıl Ödenir?</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Kira stopajı, ticari gayrimenkullerin şahıslardan kiralanması durumunda kiranın brüt tutarı üzerinden %20 oranında kesilen kaynakta vergilendirme sistemidir.
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>Vergi Sorumlusu:</strong> Stopaj vergisini ödeme yükümlülüğü mülk sahibine değil, kiracı olan işletmeye aittir.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>Beyanname Dönemi:</strong> Aylık veya 3 aylık Muhtasar ve Prim Hizmet Beyannamesi ile vergi dairesine yatırılır.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="font-bold text-indigo-600">•</span>
+                            <span><strong>Şirket Mülkiyetinde Durum:</strong> Eğer dükkan/ofis bir şirkete aitse fatura kesileceğinden stopaj değil KDV uygulanır.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i>
+                        <span>Net Kiradan Brüt Kira Hesaplama Formülü</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Kira sözleşmeleri genellikle "Ele Geçen Net Tutar" üzerinden yapılır. %20 stopaj oranında net tutardan brüt tutarı bulmak için aşağıdaki formül uygulanır:
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 font-mono text-[11px] text-slate-700">
+                        Brüt Kira = Net Kira / (1 - Stopaj Oranı)<br>
+                        Örnek (%20 için): 20.000 TL / 0.80 = 25.000 TL Brüt Kira<br>
+                        Stopaj Vergisi = 25.000 TL - 20.000 TL = 5.000 TL
+                    </div>
+                </div>
+            </div>
+
+            <!-- Çapraz Bağlantı Banner'ı -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-indigo-600 text-white rounded-lg">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">KDV Dahil / Hariç ve Tevkifat Hesaplama</h4>
+                        <p class="text-[11px] text-slate-500">Faturalarınızdaki KDV ve Tevkifat kesintilerini hesaplamak için KDV Hesaplama aracımızı kullanabilirsiniz.</p>
+                    </div>
+                </div>
+                <a href="fatura-kdv.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition text-nowrap flex items-center gap-1.5">
+                    <span>KDV Hesaplama Aracına Git</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular (FAQ) -->
+            <div class="border-t border-slate-100 pt-6 space-y-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+                    <span>Sıkça Sorulan Sorular</span>
+                </h3>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Kira stopaj oranı yüzde kaçtır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Gelir Vergisi Kanununa göre şahıslardan kiralanan ticari gayrimenkuller için standart kira stopaj oranı %20'dir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Net tutardan brüt kira ve stopaj nasıl hesaplanır?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Net kira tutarı 0.80'e bölünerek brüt tutar bulunur. Brüt tutar ile net tutar arasındaki fark ödenmesi gereken stopaj vergisidir.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-50 p-3.5 rounded-xl border border-slate-200 transition">
+                        <summary class="text-xs font-bold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                            <span>Konut kiralarında stopaj ödenir mi?</span>
+                            <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="text-xs text-slate-600 mt-2 pt-2 border-t border-slate-200/60 leading-relaxed">
+                            Hayır, konut olarak kiralanan gayrimenkullerde stopaj kesintisi uygulanmaz. Stopaj sadece iş yeri / ticari olarak kiralanan gayrimenkullerde kiracı şirket veya vergi mükellefi ise uygulanır.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Toast Bildirimi -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl opacity-0 transition-all pointer-events-none z-50">
+        Özet panoya kopyalandı!
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        © 2026 HesapPoint — Pratik Lojistik ve Finans Hesaplama Araçları
+    </footer>
+
+    <!-- JS Mantığı -->
+    <script>
+        let currentCategory = 'rent';
+
+        window.onload = function() {
+            if (window.lucide) lucide.createIcons();
+            calculate();
+        };
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('border-2', 'border-indigo-600', 'bg-indigo-50/50', 'text-indigo-600');
+                btn.classList.add('border', 'border-slate-200', 'bg-white', 'text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`cat-${cat}`);
+            activeBtn.classList.add('border-2', 'border-indigo-600', 'bg-indigo-50/50', 'text-indigo-600');
+            activeBtn.classList.remove('border', 'border-slate-200', 'bg-white', 'text-slate-600');
+
+            const vatContainer = document.getElementById('vatContainer');
+            const stopajInput = document.getElementById('stopajRate');
+
+            if (cat === 'rent') {
+                stopajInput.value = 20;
+                vatContainer.classList.add('hidden');
+            } else if (cat === 'smm') {
+                stopajInput.value = 20;
+                vatContainer.classList.remove('hidden');
+            } else if (cat === 'other') {
+                vatContainer.classList.add('hidden');
+            }
+
+            calculate();
+        }
+
+        function formatTL(val) {
+            return new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val) + ' ₺';
+        }
+
+        function calculate() {
+            const direction = document.querySelector('input[name="calcDirection"]:checked').value;
+            const inputVal = parseFloat(document.getElementById('inputAmount').value) || 0;
+            const stopajRate = parseFloat(document.getElementById('stopajRate').value) || 0;
+            const vatRate = currentCategory === 'smm' ? (parseFloat(document.getElementById('vatRate').value) || 0) : 0;
+
+            const amountLabel = document.getElementById('amountLabel');
+            amountLabel.innerText = direction === 'netToGross' ? 'Ele Geçen Net Tutar' : 'Brüt Tutar';
+
+            let gross = 0;
+            let net = 0;
+            let stopaj = 0;
+            let vatAmount = 0;
+            let totalCost = 0;
+
+            if (direction === 'netToGross') {
+                net = inputVal;
+                const stopajFactor = (1 - (stopajRate / 100));
+                gross = stopajFactor > 0 ? net / stopajFactor : 0;
+                stopaj = gross - net;
+            } else {
+                gross = inputVal;
+                stopaj = gross * (stopajRate / 100);
+                net = gross - stopaj;
+            }
+
+            if (currentCategory === 'smm') {
+                vatAmount = gross * (vatRate / 100);
+                totalCost = net + stopaj + vatAmount; // veya Gross + KDV
+            } else {
+                vatAmount = 0;
+                totalCost = gross; // Kiracı maliyeti = Net Kira + Stopaj Vergisi
+            }
+
+            // Arayüz Güncellemeleri
+            document.getElementById('res-stopaj-amount').innerText = formatTL(stopaj);
+            document.getElementById('res-gross').innerText = formatTL(gross);
+            document.getElementById('res-net').innerText = formatTL(net);
+            document.getElementById('res-total-cost').innerText = formatTL(totalCost);
+
+            const desc = document.getElementById('res-total-desc');
+            if (currentCategory === 'smm') {
+                desc.innerText = "Tahsil Edilecek Toplam Tutar (Net + Stopaj + KDV)";
+            } else {
+                desc.innerText = "Kiracı / Ödeyen Toplam Maliyeti (Net Kira + Muhtasar Vergisi)";
+            }
+
+            // Tablo Doldurulması
+            const tbody = document.getElementById('breakdown-body');
+            let tableHTML = `
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Brüt Tutar</td>
+                    <td class="p-2.5 text-right text-slate-500">Matrah</td>
+                    <td class="p-2.5 text-right font-bold">${formatTL(gross)}</td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">Stopaj Kesintisi</td>
+                    <td class="p-2.5 text-right text-slate-500">%${stopajRate} Muhtasar</td>
+                    <td class="p-2.5 text-right font-bold text-amber-600">-${formatTL(stopaj)}</td>
+                </tr>
+            `;
+
+            if (currentCategory === 'smm' && vatRate > 0) {
+                tableHTML += `
+                <tr>
+                    <td class="p-2.5 font-bold text-slate-800">KDV Tutarı</td>
+                    <td class="p-2.5 text-right text-slate-500">%${vatRate} KDV</td>
+                    <td class="p-2.5 text-right font-bold text-indigo-600">+${formatTL(vatAmount)}</td>
+                </tr>
+                `;
+            }
+
+            tableHTML += `
+                <tr class="bg-slate-50/80">
+                    <td class="p-2.5 font-bold text-emerald-700">Ele Geçen Net Tutar</td>
+                    <td class="p-2.5 text-right text-slate-500">Ödenecek / Tahsil Edilecek</td>
+                    <td class="p-2.5 text-right font-black text-emerald-600">${formatTL(net)}</td>
+                </tr>
+            `;
+
+            tbody.innerHTML = tableHTML;
+        }
+
+        function copySummary() {
+            const gross = document.getElementById('res-gross').innerText;
+            const net = document.getElementById('res-net').innerText;
+            const stopaj = document.getElementById('res-stopaj-amount').innerText;
+            const total = document.getElementById('res-total-cost').innerText;
+
+            const text = `🏢 *HesapPoint Stopaj Hesaplama Özeti*\n` +
+                         `------------------------------------\n` +
+                         `İşlem Türü: ${currentCategory === 'rent' ? 'İş Yeri Kirası' : 'Serbest Meslek (SMM)'}\n` +
+                         `Brüt Tutar: ${gross}\n` +
+                         `Ele Geçen Net Tutar: ${net}\n` +
+                         `*Ödenecek Stopaj Vergisi: ${stopaj}*\n` +
+                         `Toplam Maliyet / Tahsilat: ${total}\n` +
+                         `------------------------------------\n` +
+                         `https://hesappoint.com/stopaj.html`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Stopaj özet bilgisi panoya kopyalandı!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
