@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO & Başlık Optimizasyonu -->
+<title>Yol Maliyeti ve Otoyol Ücreti Hesaplama - HesapPoint</title>
+<meta name="description" content="Mesafe, yakıt tüketimi, köprü ve otoyol gişe ücretlerini hesaplayın. Ücretsiz D-Yolu ile paralı otoyol rotalarını karşılaştırın.">
+<meta name="keywords" content="yol maliyeti hesaplama, otoyol ücreti hesaplama, köprü gişe ücretleri, yakıt masrafı hesaplama, rota maliyet karşılaştırma">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hesappoint.com/yol-maliyeti.html">
+
+<!-- Social Media / Open Graph -->
+<meta property="og:site_name" content="HesapPoint">
+<meta property="og:title" content="Yol Maliyeti ve Otoyol Ücreti Hesaplama">
+<meta property="og:description" content="Güzergahınızdaki yakıt masrafını ve otoyol/köprü geçiş ücretlerini anında hesaplayın ve karşılaştırın.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hesappoint.com/yol-maliyeti.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yol Maliyeti ve Otoyol Ücreti Hesaplama">
+<meta name="twitter:description" content="Güzergahınızdaki yakıt masrafını ve otoyol/köprü geçiş ücretlerini anında hesaplayın ve karşılaştırın.">
+
+<!-- Google Rich Results / Schema.org Yapısal Verisi (JSON-LD) -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Yol Maliyeti ve Otoyol Ücreti Hesaplama",
+    "url": "https://hesappoint.com/yol-maliyeti.html",
+    "description": "Güzergah bazlı yakıt tüketimi ve otoyol/köprü geçiş ücreti hesaplama aracı.",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Yol maliyeti ve otoyol hesabı nasıl yapılır?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Başlangıç ve varış noktalarınız arasındaki mesafe belirlenir. Aracınızın ortalama yakıt tüketimi ve güncel yakıt fiyatı ile toplam yakıt tutarı bulunur. Rota üzerindeki köprü ve otoyol gişe ücretleri araç sınıfınıza göre eklenerek toplam seyahat maliyeti çıkarılır."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Köprü ve otoyollarda araç sınıfları nasıl belirlenir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "1. Sınıf aks mesafesi 3.20m altında olan binek otomobillerdir. 2. Sınıf hafif ticari ve SUV'ları, 3. Sınıf 3 akslı otobüs ve kamyonları, 4. ve 5. Sınıf ise çok akslı TIR ve büyük araçları temsil eder."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<!-- Lucide Icons Script -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-body: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+header {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 32px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--text-main);
+}
+
+.back {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.back:hover {
+    color: var(--primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.page-header h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 440px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.panel {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.panel-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.panel-title i {
+    color: var(--primary);
+}
+
+.form-group {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-main);
+    background: #fff;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    max-height: 160px;
+    overflow-y: auto;
+    z-index: 2000;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.suggestion-item:hover {
+    background-color: #f1f5f9;
+}
+
+.calc-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.calc-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* Rota Seçim Kartları */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.route-card {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    position: relative;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+.route-card.selected {
+    border-color: var(--primary);
+    background: #eff6ff;
+}
+
+.badge {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    background: var(--primary);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.card-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.card-tag {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.tag-free { color: var(--success); }
+.tag-toll { color: var(--warning); }
+
+/* Detay Kartları */
+.summary-card {
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+.summary-title {
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.summary-main {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.summary-main .val {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.breakdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.breakdown-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.breakdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.breakdown-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.breakdown-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.toll-details-list {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    padding-left: 18px;
+    line-height: 1.6;
+}
+
+/* SEO & SSS Stilleri */
+.info-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    margin-top: 32px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.info-block h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-block h2 i { color: var(--primary); }
+
+.info-block p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.info-block ul {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 18px;
+}
+
+.info-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 32px 0;
+}
+
+.faq-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.faq-title i { color: var(--primary); }
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: #f8fafc;
+    padding: 16px;
+}
+
+.faq-item[open] {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.faq-summary {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-summary::-webkit-details-marker { display: none; }
+
+.faq-answer {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    background: var(--card-bg);
+}
+
+@media (max-width: 992px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <a href="index.html" class="logo">Hesap<span>Point</span></a>
+        <a href="index.html" class="back"><i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Ana Sayfaya Dön</a>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Yol Maliyeti ve Otoyol Ücreti Hesaplayıcı</h1>
+        <p>Gideceğiniz rotayı girin; yakıt tüketimi, köprü ve otoyol gişe ücretlerinizi anında hesaplayıp karşılaştırın.</p>
+    </div>
+
+    <div class="dashboard-grid">
+        
+        <!-- Sol Girdi Paneli -->
+        <div class="panel">
+            <div class="panel-title">
+                <span>Güzergah ve Araç Bilgileri</span>
+                <i data-lucide="navigation" style="width: 18px; height: 18px;"></i>
+            </div>
+
+            <div class="form-group">
+                <label>Başlangıç Noktası</label>
+                <input type="text" id="start" placeholder="Örn: Beşiktaş, İstanbul" autocomplete="off" oninput="searchLocation('start')">
+                <div id="start-suggestions" class="suggestions" style="display:none;"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Hedef Nokta</label>
+                <input type="text" id="end" placeholder="Örn: Ankara" autocomplete="off" oninput="searchLocation('end')">
+                <div id="end-suggestions" class="suggestions" style="display:none;"></div>
+            </div>
+
+            <!-- Geçiş Noktası / Köprü Tercihi -->
+            <div class="form-group">
+                <label>Boğaz / Geçiş Noktası Tercihi</label>
+                <select id="bridgePreference" onchange="recalculateIfReady()">
+                    <option value="auto">Otomatik (En Uygun / Varsayılan Rota)</option>
+                    <option value="bosphorus_15">15 Temmuz Şehitler Köprüsü (1. Köprü)</option>
+                    <option value="fsm">Fatih Sultan Mehmet Köprüsü (2. Köprü)</option>
+                    <option value="yssk">Yavuz Sultan Selim Köprüsü (3. Köprü)</option>
+                    <option value="avrasya">Avrasya Tüneli</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Araç Sınıfı</label>
+                <select id="vehicleClass" onchange="recalculateIfReady()">
+                    <option value="1">1. Sınıf (Binek Otomobil / Aks Mesafesi &lt; 3.20m)</option>
+                    <option value="2">2. Sınıf (Hafif Ticari / SUV / Van)</option>
+                    <option value="3">3. Sınıf (3 Akslı Otobüs / Kamyon)</option>
+                    <option value="4">4. Sınıf (4-5 Akslı TIR / Kamyon)</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Tüketim (L/100km)</label>
+                    <input type="number" id="consumption" value="7.5" step="0.1" oninput="recalculateIfReady()">
+                </div>
+                <div class="form-group">
+                    <label>Yakıt Fiyatı (TL/L)</label>
+                    <input type="number" id="fuelPrice" value="43.50" step="0.1" oninput="recalculateIfReady()">
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="calculateRoute()">
+                <i data-lucide="calculator" style="width: 16px; height: 16px;"></i> Rotaları Hesapla ve Karşılaştır
+            </button>
+        </div>
+
+        <!-- Sağ Sonuç Paneli -->
+        <div class="results-column">
+            
+            <div id="results-panel" style="display:none;">
+                
+                <div class="cards-grid">
+                    <!-- Ücretsiz D-Yolu Kartı -->
+                    <div class="route-card" id="card-cheapest" onclick="selectRoute(0)">
+                        <div class="card-title">
+                            <i data-lucide="map-pin" style="width: 14px; height: 14px; color: var(--success);"></i> Ücretsiz D-Yolu
+                        </div>
+                        <div class="card-price" id="cheapest-price">0 TRY</div>
+                        <div class="card-meta" id="cheapest-meta">0s 0dk • 0 km</div>
+                        <div class="card-tag tag-free">Geçiş ücreti yok</div>
+                    </div>
+
+                    <!-- Paralı Otoyol Kartı -->
+                    <div class="route-card selected" id="card-fastest" onclick="selectRoute(1)">
+                        <div class="badge" id="fastest-badge">SEÇİLDİ</div>
+                        <div class="card-title">
+                            <i data-lucide="zap" style="width: 14px; height: 14px; color: var(--primary);"></i> Paralı Otoyol
+                        </div>
+                        <div class="card-price" id="fastest-price">0 TRY</div>
+                        <div class="card-meta" id="fastest-meta">0s 0dk • 0 km</div>
+                        <div class="card-tag tag-toll">Geçiş ücreti dahil</div>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-title">SEÇİLEN ROTA TOPLAM MALİYETİ</div>
+                    <div class="summary-main">
+                        <span class="val" id="total-cost">0 TRY</span>
+                    </div>
+                </div>
+
+                <div class="breakdown-list">
+                    <div class="breakdown-card">
+                        <div class="breakdown-header">
+                            <div class="breakdown-label">
+                                <i data-lucide="fuel" style="width: 16px; height: 16px; color: var(--primary);"></i> Yakıt Masrafı
+                            </div>
+                            <div class="breakdown-val" id="fuel-cost">0 TRY</div>
+                        </div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;" id="fuel-liters">0 Litre harcanır</div>
+                    </div>
+
+                    <div class="breakdown-card">
+                        <div class="breakdown-header">
+                            <div class="breakdown-label">
+                                <i data-lucide="receipt" style="width: 16px; height: 16px; color: var(--primary);"></i> Otoyol / Köprü Geçiş Ücreti
+                            </div>
+                            <div class="breakdown-val" id="toll-cost">0 TRY</div>
+                        </div>
+                        <ul class="toll-details-list" id="toll-details-list">
+                            <li>Geçiş ücreti yok</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- İlk Açılış İpucu Paneli -->
+            <div id="placeholder-panel" class="panel" style="text-align: center; padding: 48px 24px;">
+                <i data-lucide="map" style="width: 48px; height: 48px; color: var(--text-muted); margin-bottom: 12px;"></i>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Henüz Rota Hesaplaması Yapılmadı</h3>
+                <p style="font-size: 13px; color: var(--text-muted);">Sol taraftaki formdan başlangıç ve hedef noktalarını seçerek hesaplamayı başlatın.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SEO İçerik ve Rehber Bölümü -->
+    <section class="info-section">
+        
+        <div class="info-grid">
+            <div class="info-block">
+                <h2>
+                    <i data-lucide="route"></i>
+                    Yol Maliyeti Hesaplama Nasıl Çalışır?
+                </h2>
+                <p>
+                    Yol maliyeti hesaplama aracı; seyahat edeceğiniz iki nokta arasındaki sürüş mesafesini belirler. Aracınızın 100 kilometredeki ortalama litre tüketimi ve güncel yakıt fiyatı kullanılarak toplam yakıt gideriniz çıkarılır.
+                </p>
+                <p>
+                    Ayrıca, seçtiğiniz güzergahtaki otoyol, köprü ve tünel gişe ücretleri araç sınıfınıza göre hesaplanarak yakıt maliyetine eklenir. Böylece sürpriz harcamalarla karşılaşmadan en ekonomik rotayı belirleyebilirsiniz.
+                </p>
+            </div>
+
+            <div class="info-block">
+                <h2>
+                    <i data-lucide="layers"></i>
+                    Otoyol Araç Sınıfları Nelerdir?
+                </h2>
+                <p>
+                    Köprü ve otoyol geçiş ücretleri aracın aks (dingil) sayısı ve aks mesafesine göre değişiklik gösterir:
+                </p>
+                <ul>
+                    <li><strong>1. Sınıf Araçlar:</strong> Aks mesafesi 3.20 metre altında olan binek otomobiller.</li>
+                    <li><strong>2. Sınıf Araçlar:</strong> Aks mesafesi 3.20 metre ve üzerinde olan hafif ticari, SUV ve minibüsler.</li>
+                    <li><strong>3. Sınıf Araçlar:</strong> 3 akslı otobüs ve kamyonlar.</li>
+                    <li><strong>4. ve 5. Sınıf Araçlar:</strong> 4, 5 ve üzeri aksa sahip TIR ve ağır vasıtalar.</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="info-divider">
+
+        <!-- Sıkça Sorulan Sorular (SSS) -->
+        <div>
+            <h2 class="faq-title">
+                <i data-lucide="help-circle"></i>
+                Sıkça Sorulan Sorular
+            </h2>
+
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>Ücretsiz D-Yolu ile Paralı Otoyol arasındaki fark nedir?</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Paralı otoyollar genellikle daha yüksek hız limitine, daha az şehir içi trafiğine sahiptir ve varış sürenizi kısaltır; ancak köprü/otoyol gişe ücreti gerektirir. Devlet yolları (D-Yolu) ücretsizdir fakat yerleşim yerlerinden geçtiği için seyahat süreniz uzayabilir ve dur-kalk trafiğinden dolayı yakıt tüketiminiz artabilir.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-summary">
+                        <span>Araç sınıfımı yanlış seçersem ne olur?</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        HGS/OGS gişelerinden geçerken sistem aracınızın plakasını ve aks sayısını otomatik okur. Hesaplayıcıda yanlış araç sınıfı seçmeniz sadece tahmini maliyeti etkiler; gişede otomatik olarak doğru sınıf üzerinden ücretlendirme yapılır.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    © 2026 HesapPoint — Yol Maliyeti ve Otoyol Ücreti Hesaplayıcı
+</footer>
+
+<script>
+const TOLL_DATABASE = {
+    osmangazi:    { name: "Osmangazi Köprüsü", rates: { 1: 555, 2: 888, 3: 1055, 4: 1400 } },
+    avrasya:      { name: "Avrasya Tüneli", rates: { 1: 156, 2: 234, 3: 0, 4: 0 } },
+    bosphorus_15: { name: "15 Temmuz Şehitler Köprüsü", rates: { 1: 33, 2: 42, 3: 93, 4: 185 } },
+    fsm:          { name: "Fatih Sultan Mehmet Köprüsü", rates: { 1: 33, 2: 42, 3: 93, 4: 185 } },
+    yssk:         { name: "Yavuz Sultan Selim Köprüsü", rates: { 1: 70, 2: 93, 3: 175, 4: 445 } },
+    canakkale1915:{ name: "1915 Çanakkale Köprüsü", rates: { 1: 585, 2: 730, 3: 1315, 4: 1460 } },
+    o5_ist_izmir: { name: "O-5 İstanbul - İzmir Otoyolu (Tam Boy)", rates: { 1: 825, 2: 1320, 3: 1565, 4: 2075 } },
+    o4_ist_ankara:{ name: "O-4 Anadolu Otoyolu (Anadolu Feneri - Akıncı)", rates: { 1: 185, 2: 240, 3: 310, 4: 410 } },
+    o21_nigde_mer:{ name: "O-21 Ankara - Niğde Otoyolu", rates: { 1: 395, 2: 520, 3: 650, 4: 830 } }
+};
+
+// Avrupa yakası ilçe/semt kalıpları
+const EUROPEAN_SIDE_KEYWORDS = [
+    "besiktas", "beşiktaş", "bakirkoy", "bakırköy", "sisli", "şişli", "beyoglu", "beyoğlu",
+    "fatih", "sariyer", "sarıyer", "zeytinburnu", "eyupsultan", "eyüpsultan", "gaziosmanpasa",
+    "kucukcekmece", "küçükçekmece", "buyukcekmece", "büyükçekmece", "avcilar", "avcılar",
+    "esenyurt", "bagcilar", "bağcılar", "bahcelievler", "bahçelievler", "basaksehir", "başakşehir",
+    "sultangazi", "arnavutkoy", "arnavutköy", "silivri", "catalca", "çatalca", "beylikduzu", "beylikdüzü"
+];
+
+var startCoords = null;
+var endCoords = null;
+var searchTimeout = null;
+var calculatedRoutes = []; // [0]: Ücretsiz, [1]: Otoyollu
+var selectedRouteIndex = 1;
+
+function searchLocation(type) {
+    clearTimeout(searchTimeout);
+    var query = document.getElementById(type).value;
+    var suggestionsBox = document.getElementById(type + '-suggestions');
+
+    if (query.length < 3) {
+        suggestionsBox.style.display = 'none';
+        return;
+    }
+
+    searchTimeout = setTimeout(function() {
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=tr`)
+            .then(r => r.json())
+            .then(data => {
+                suggestionsBox.innerHTML = '';
+                if (data.length > 0) {
+                    suggestionsBox.style.display = 'block';
+                    data.forEach(item => {
+                        var div = document.createElement('div');
+                        div.className = 'suggestion-item';
+                        div.innerText = item.display_name;
+                        div.onclick = function() {
+                            document.getElementById(type).value = item.display_name.split(',')[0];
+                            if (type === 'start') startCoords = [item.lat, item.lon];
+                            if (type === 'end') endCoords = [item.lat, item.lon];
+                            suggestionsBox.style.display = 'none';
+                        };
+                        suggestionsBox.appendChild(div);
+                    });
+                }
+            });
+    }, 300);
+}
+
+async function calculateRoute() {
+    if (!startCoords || !endCoords) {
+        alert("Lütfen geçerli bir başlangıç ve hedef nokta seçin.");
+        return;
+    }
+
+    var urlToll = `https://router.project-osrm.org/route/v1/driving/${startCoords[1]},${startCoords[0]};${endCoords[1]},${endCoords[0]}?overview=full&geometries=geojson`;
+    var urlFree = `https://router.project-osrm.org/route/v1/driving/${startCoords[1]},${startCoords[0]};${endCoords[1]},${endCoords[0]}?overview=full&geometries=geojson&exclude=toll`;
+
+    try {
+        const [resFree, resToll] = await Promise.all([
+            fetch(urlFree).then(r => r.json()),
+            fetch(urlToll).then(r => r.json())
+        ]);
+
+        var routeFree = (resFree.routes && resFree.routes.length > 0) ? resFree.routes[0] : null;
+        var routeToll = (resToll.routes && resToll.routes.length > 0) ? resToll.routes[0] : null;
+
+        if (!routeFree || routeFree.distance === routeToll.distance) {
+            routeFree = JSON.parse(JSON.stringify(routeToll));
+            routeFree.duration = routeToll.duration * 1.25; 
+            routeFree.distance = routeToll.distance * 1.06; 
+        }
+
+        calculatedRoutes = [routeFree, routeToll];
+
+        document.getElementById('placeholder-panel').style.display = 'none';
+        document.getElementById('results-panel').style.display = 'block';
+        
+        renderUI();
+    } catch (err) {
+        alert("Rota hesaplanırken bir hata oluştu.");
+    }
+}
+
+function recalculateIfReady() {
+    if (calculatedRoutes.length > 0) {
+        renderUI();
+    }
+}
+
+function isEuropeanSide(text) {
+    var lower = text.toLowerCase();
+    if (lower.includes("avrupa")) return true;
+    return EUROPEAN_SIDE_KEYWORDS.some(k => lower.includes(k));
+}
+
+function detectTollsForRoute(route, isTollFreeOption) {
+    if (isTollFreeOption) return { totalToll: 0, items: ["Ücretsiz Devlet Yolu (D-Yolu) kullanılıyor."] };
+
+    var vClass = parseInt(document.getElementById('vehicleClass').value);
+    var bridgePref = document.getElementById('bridgePreference').value;
+    var detected = [];
+    var totalToll = 0;
+
+    var startName = document.getElementById('start').value.toLowerCase();
+    var endName = document.getElementById('end').value.toLowerCase();
+
+    // İstanbul içi veya İstanbul çıkışlı Boğaz Geçişi tespiti
+    var startsAvrupa = isEuropeanSide(startName);
+    var endsAnadoluOrEast = endName.includes("ankara") || endName.includes("kocaeli") || endName.includes("sakarya") || endName.includes("izmir") || endName.includes("bursa") || endName.includes("kadikoy") || endName.includes("üsküdar") || endName.includes("ümraniye");
+
+    if (startsAvrupa && endsAnadoluOrEast) {
+        if (bridgePref !== "auto" && TOLL_DATABASE[bridgePref]) {
+            var selectedBridge = TOLL_DATABASE[bridgePref];
+            var fee = selectedBridge.rates[vClass] || 0;
+            if (fee > 0) {
+                detected.push({ name: selectedBridge.name, cost: fee });
+                totalToll += fee;
+            } else {
+                detected.push({ name: selectedBridge.name + " (Bu araç sınıfına kapalı)", cost: 0 });
+            }
+        } else {
+            // Otomatik seçim: FSM varsayılan geçiş
+            var feeFsm = TOLL_DATABASE.fsm.rates[vClass];
+            detected.push({ name: TOLL_DATABASE.fsm.name, cost: feeFsm });
+            totalToll += feeFsm;
+        }
+    }
+
+    // Ana Otoyol Rotaları
+    if ((startName.includes("istanbul") && endName.includes("izmir")) || (startName.includes("izmir") && endName.includes("istanbul"))) {
+        var fee1 = TOLL_DATABASE.osmangazi.rates[vClass];
+        var fee2 = TOLL_DATABASE.o5_ist_izmir.rates[vClass];
+        detected.push({ name: TOLL_DATABASE.osmangazi.name, cost: fee1 });
+        detected.push({ name: TOLL_DATABASE.o5_ist_izmir.name, cost: fee2 });
+        totalToll += fee1 + fee2;
+    } else if ((startName.includes("istanbul") && endName.includes("ankara")) || (startName.includes("ankara") && endName.includes("istanbul"))) {
+        var feeAnkara = TOLL_DATABASE.o4_ist_ankara.rates[vClass];
+        detected.push({ name: TOLL_DATABASE.o4_ist_ankara.name, cost: feeAnkara });
+        totalToll += feeAnkara;
+    } else if (startName.includes("ankara") && (endName.includes("nigde") || endName.includes("niğde") || endName.includes("mersin") || endName.includes("adana"))) {
+        var feeNigde = TOLL_DATABASE.o21_nigde_mer.rates[vClass];
+        detected.push({ name: TOLL_DATABASE.o21_nigde_mer.name, cost: feeNigde });
+        totalToll += feeNigde;
+    } else if (detected.length === 0) {
+        var distKm = route.distance / 1000;
+        var estimatedToll = Math.round(distKm * 0.65);
+        if (estimatedToll > 0) {
+            detected.push({ name: "Tahmini Otoyol Gişe Ücreti", cost: estimatedToll });
+            totalToll += estimatedToll;
+        }
+    }
+
+    var itemsText = detected.map(d => `${d.name}: ${d.cost} TRY`);
+    return { totalToll: totalToll, items: itemsText };
+}
+
+function renderUI() {
+    var consumption = parseFloat(document.getElementById('consumption').value) || 0;
+    var price = parseFloat(document.getElementById('fuelPrice').value) || 0;
+
+    // Rota 0: Ücretsiz D-Yolu
+    var r0 = calculatedRoutes[0];
+    var dist0 = r0.distance / 1000;
+    var duration0 = formatTime(r0.duration);
+    var fuelLiters0 = (dist0 / 100) * consumption;
+    var fuelCost0 = fuelLiters0 * price;
+
+    document.getElementById('cheapest-price').innerText = Math.round(fuelCost0).toLocaleString('tr-TR') + " TRY";
+    document.getElementById('cheapest-meta').innerText = `${duration0} • ${Math.round(dist0)} km`;
+
+    // Rota 1: Paralı Otoyol
+    var r1 = calculatedRoutes[1];
+    var dist1 = r1.distance / 1000;
+    var duration1 = formatTime(r1.duration);
+    var fuelLiters1 = (dist1 / 100) * consumption;
+    var fuelCost1 = fuelLiters1 * price;
+    var tollData1 = detectTollsForRoute(r1, false);
+    var totalCost1 = fuelCost1 + tollData1.totalToll;
+
+    document.getElementById('fastest-price').innerText = Math.round(totalCost1).toLocaleString('tr-TR') + " TRY";
+    document.getElementById('fastest-meta').innerText = `${duration1} • ${Math.round(dist1)} km`;
+
+    selectRoute(selectedRouteIndex);
+}
+
+function selectRoute(index) {
+    selectedRouteIndex = index;
+    var route = calculatedRoutes[index];
+
+    document.getElementById('card-cheapest').classList.toggle('selected', index === 0);
+    document.getElementById('card-fastest').classList.toggle('selected', index === 1);
+    
+    document.getElementById('fastest-badge').style.display = index === 1 ? 'block' : 'none';
+
+    var dist = route.distance / 1000;
+    var consumption = parseFloat(document.getElementById('consumption').value) || 0;
+    var price = parseFloat(document.getElementById('fuelPrice').value) || 0;
+
+    var fuelLiters = ((dist / 100) * consumption).toFixed(1);
+    var fuelCost = (fuelLiters * price).toFixed(2);
+    
+    var tollData = detectTollsForRoute(route, index === 0);
+    var totalCost = (parseFloat(fuelCost) + tollData.totalToll).toFixed(2);
+
+    document.getElementById('fuel-liters').innerText = `${fuelLiters} Litre yakıt harcanır`;
+    document.getElementById('fuel-cost').innerText = parseFloat(fuelCost).toLocaleString('tr-TR') + " TRY";
+    document.getElementById('toll-cost').innerText = tollData.totalToll.toLocaleString('tr-TR') + " TRY";
+    document.getElementById('total-cost').innerText = parseFloat(totalCost).toLocaleString('tr-TR') + " TRY";
+
+    var listHtml = tollData.items.map(item => `<li>${item}</li>`).join('');
+    document.getElementById('toll-details-list').innerHTML = listHtml;
+}
+
+function formatTime(seconds) {
+    var hrs = Math.floor(seconds / 3600);
+    var mins = Math.round((seconds % 3600) / 60);
+    return `${hrs}s ${mins}dk`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+});
+</script>
+
+</body>
+</html>
